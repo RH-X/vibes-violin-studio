@@ -1,0 +1,111 @@
+---
+const navLinks = [
+  { label: 'About', href: '/about' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Practice Pals', href: '/practice-pals' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="w-full bg-white/90 backdrop-blur-sm border-b border-lavender-100 z-40 relative">
+  <div class="container-narrow flex items-center justify-between h-16">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2.5 group" aria-label="Vibrations Violin Studio — home">
+      <!-- Logo mark placeholder -->
+      <span class="flex-shrink-0 w-9 h-9 rounded-full bg-gradient-to-br from-mint-300 to-lavender-300 flex items-center justify-center shadow-sm">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 3 C10 3 7 6 7 10 C7 14 9 16 10 17 C11 16 13 14 13 10 C13 6 10 3 10 3Z" fill="white" opacity="0.9"/>
+          <ellipse cx="10" cy="10.5" rx="2" ry="2" fill="white" opacity="0.7"/>
+        </svg>
+      </span>
+      <span class="text-ink font-medium text-[0.95rem] leading-tight">
+        Vibrations<br />
+        <span class="font-light text-[0.8rem] text-ink/70">Violin Studio</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class={`text-sm font-medium transition-colors duration-150 ${
+            currentPath === href
+              ? 'text-purplePrimary'
+              : 'text-ink/70 hover:text-purplePrimary'
+          }`}
+          aria-current={currentPath === href ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA + mobile toggle -->
+    <div class="flex items-center gap-3">
+      <a href="/contact" class="btn-primary text-sm hidden sm:inline-block">
+        Get Started
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg text-ink/70 hover:text-ink hover:bg-lavender-50 transition-colors"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="icon-open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" class="hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-lavender-100"
+    role="navigation"
+    aria-label="Mobile navigation"
+  >
+    <nav class="container-narrow py-4 flex flex-col gap-1">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+            currentPath === href
+              ? 'bg-purpleSoft text-purplePrimary'
+              : 'text-ink/70 hover:bg-lavender-50 hover:text-purplePrimary'
+          }`}
+          aria-current={currentPath === href ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+      <a href="/contact" class="btn-primary text-sm mt-3 text-center">
+        Get Started
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+  });
+</script>
