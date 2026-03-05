@@ -1,0 +1,43 @@
+---
+const highlights = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>`,
+    label: '20+ Years Teaching Violin',
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+    label: 'Suzuki-Trained Instructor',
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>`,
+    label: 'Supportive, Confidence-Building Lessons',
+  },
+];
+---
+
+<section class="bg-white section-pad" aria-label="Studio highlights">
+  <div class="container-narrow">
+    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-6" role="list">
+      {highlights.map(({ icon, label }) => (
+        <li class="flex flex-col items-center text-center gap-4 bg-white border border-lavender-100 rounded-card shadow-card px-6 py-8">
+          <!-- Dark circle icon -->
+          <span class="flex-shrink-0 w-12 h-12 rounded-full bg-ink flex items-center justify-center">
+            <svg
+              class="text-white"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <Fragment set:html={icon} />
+            </svg>
+          </span>
+          <p class="text-ink font-medium leading-snug">{label}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
