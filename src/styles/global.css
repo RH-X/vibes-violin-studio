@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-ink antialiased;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-purplePrimary;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-light tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-purplePrimary text-white font-medium px-6 py-3 rounded-full
+           hover:bg-purple-800 transition-colors duration-200 focus-visible:outline
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary;
+  }
+
+  .btn-secondary {
+    @apply inline-block bg-purpleSoft text-purplePrimary font-medium px-6 py-3 rounded-full
+           border border-lavender-300 hover:bg-lavender-200 transition-colors duration-200
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+           focus-visible:outline-purplePrimary;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
