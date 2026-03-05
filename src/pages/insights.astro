@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTABand from '../components/CTABand.astro';
+---
+
+<Layout
+  title="Insights — Vibrations Violin Studio | Denver, CO"
+  description="Tips, practice ideas, and insights for violin students and parents from Rae at Vibrations Violin Studio in Denver, Colorado."
+>
+  <section
+    class="section-pad"
+    style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
+    aria-labelledby="insights-heading"
+  >
+    <div class="container-narrow max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">Insights</p>
+      <h1 id="insights-heading" class="text-4xl sm:text-5xl font-light text-ink leading-tight">
+        Violin Tips &amp; Ideas
+      </h1>
+      <p class="mt-4 text-lg text-ink/70 font-light leading-relaxed">
+        Practice strategies, parent guides, and musical musings from the studio.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white section-pad">
+    <div class="container-narrow max-w-3xl">
+      <div class="bg-lavender-50 border border-lavender-200 rounded-card p-8 text-center">
+        <p class="text-ink/50 font-light">Articles coming soon.</p>
+        <p class="text-ink/40 text-sm mt-2">This section is in progress — check back shortly.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</Layout>

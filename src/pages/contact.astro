@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Get Started — Vibrations Violin Studio | Denver, CO"
+  description="Book a free 15-minute intro chat with Rae to explore violin lessons in Denver, CO. No pressure — just a friendly conversation."
+>
+  <section
+    class="section-pad"
+    style="background: linear-gradient(135deg, #fbd0b0 0%, #ddd6fe 100%);"
+    aria-labelledby="contact-heading"
+  >
+    <div class="container-narrow max-w-2xl text-center mx-auto">
+      <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">Get Started</p>
+      <h1 id="contact-heading" class="text-4xl sm:text-5xl font-light text-ink leading-tight">
+        Let's Chat
+      </h1>
+      <p class="mt-4 text-lg text-ink/70 font-light leading-relaxed">
+        Book a friendly 15-minute intro call with Rae. No pressure — just a chance to explore whether violin lessons might be a good fit.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white section-pad" id="get-started">
+    <div class="container-narrow max-w-lg mx-auto">
+      <form
+        method="POST"
+        class="bg-lavender-50 border border-lavender-200 rounded-card shadow-card p-8 flex flex-col gap-5"
+        aria-label="Contact form"
+      >
+        <div class="flex flex-col gap-1.5">
+          <label for="name" class="text-sm font-medium text-ink">Your name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            placeholder="Jane Smith"
+            class="w-full px-4 py-2.5 rounded-xl border border-lavender-200 bg-white text-ink text-sm
+                   placeholder-ink/30 focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-transparent"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="email" class="text-sm font-medium text-ink">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            placeholder="jane@example.com"
+            class="w-full px-4 py-2.5 rounded-xl border border-lavender-200 bg-white text-ink text-sm
+                   placeholder-ink/30 focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-transparent"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="message" class="text-sm font-medium text-ink">Anything you'd like Rae to know? <span class="text-ink/40 font-light">(optional)</span></label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="My 7-year-old has been asking about violin lessons..."
+            class="w-full px-4 py-2.5 rounded-xl border border-lavender-200 bg-white text-ink text-sm
+                   placeholder-ink/30 focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-transparent resize-none"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-full text-center py-3.5 mt-2">
+          Send Message
+        </button>
+
+        <p class="text-xs text-ink/40 text-center leading-relaxed">
+          No spam, ever. Rae typically replies within one business day.
+        </p>
+      </form>
+
+      <!-- Direct contact fallback -->
+      <div class="mt-8 text-center">
+        <p class="text-sm text-ink/50 font-light">Prefer email or phone?</p>
+        <div class="mt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="mailto:rae@vibrationsviolin.com" class="text-sm text-purplePrimary hover:underline">
+            rae@vibrationsviolin.com
+          </a>
+          <span class="hidden sm:inline text-ink/20">|</span>
+          <a href="tel:+17205550100" class="text-sm text-purplePrimary hover:underline">
+            (720) 555-0100
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

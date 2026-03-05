@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTABand from '../components/CTABand.astro';
+---
+
+<Layout
+  title="About Rae — Vibrations Violin Studio | Denver, CO"
+  description="Meet Rae, a Suzuki-trained violin instructor with 20+ years of experience teaching students of all ages in Denver, Colorado."
+>
+  <!-- Page header -->
+  <section
+    class="section-pad"
+    style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
+    aria-labelledby="about-heading"
+  >
+    <div class="container-narrow max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">About</p>
+      <h1 id="about-heading" class="text-4xl sm:text-5xl font-light text-ink leading-tight">
+        Meet Rae
+      </h1>
+      <p class="mt-4 text-lg text-ink/70 font-light leading-relaxed">
+        Suzuki-trained violin instructor &amp; founder of Vibrations Violin Studio in Denver, CO.
+      </p>
+    </div>
+  </section>
+
+  <!-- Placeholder content -->
+  <section class="bg-white section-pad">
+    <div class="container-narrow max-w-3xl">
+      <div class="bg-lavender-50 border border-lavender-200 rounded-card p-8 text-center">
+        <p class="text-ink/50 font-light">Full bio content coming soon.</p>
+        <p class="text-ink/40 text-sm mt-2">This page is in progress — check back shortly.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</Layout>
