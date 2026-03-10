@@ -13,24 +13,43 @@ import CTABand from '../components/CTABand.astro';
     style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
     aria-labelledby="about-heading"
   >
-    <div class="container-narrow max-w-3xl">
-      <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">About</p>
-      <h1 id="about-heading" class="text-4xl sm:text-5xl font-light text-ink leading-tight">
-        Meet Rae
-      </h1>
-      <p class="mt-4 text-lg text-ink/70 font-light leading-relaxed">
-        Suzuki-trained violin instructor &amp; founder of Vibrations Violin Studio in Denver, CO.
-      </p>
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Left: text block -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">About</p>
+          <h1 id="about-heading" class="text-4xl sm:text-5xl font-light text-ink leading-tight">
+            Meet Rae
+          </h1>
+          <p class="mt-4 text-lg text-ink/70 font-light leading-relaxed">
+            Suzuki-trained violin instructor &amp; founder of Vibrations Violin Studio in Denver, CO.
+          </p>
+        </div>
+
+        <!-- Right: Rae's photo -->
+        <div class="flex justify-center lg:justify-end">
+          <img
+            src="/images/rae-mktg-site.png"
+            alt="Violin instructor Rae holding violin"
+            class="w-72 sm:w-80 lg:w-96 h-auto rounded-lg shadow-xl"
+            loading="eager"
+          />
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- Placeholder content -->
+  <!-- Bio content -->
   <section class="bg-white section-pad">
     <div class="container-narrow max-w-3xl">
-      <div class="bg-lavender-50 border border-lavender-200 rounded-card p-8 text-center">
-        <p class="text-ink/50 font-light">Full bio content coming soon.</p>
-        <p class="text-ink/40 text-sm mt-2">This page is in progress — check back shortly.</p>
-      </div>
+      <h2 class="text-xl sm:text-2xl font-light text-ink leading-relaxed">
+        Private violin lessons in Denver, Colorado for children, teens, and adults. Suzuki-based instruction available for beginner and advancing students.
+      </h2>
+      <p class="mt-6 text-base text-ink/70 font-light leading-relaxed">
+        I'm a Suzuki-trained violin teacher offering private violin lessons in Denver, Colorado, where I work with students of all ages—from young beginners to teens and adults returning to music. For more than a decade I've taught violin through private studios, school programs, and community music initiatives across central Denver, helping students develop strong technique, musical expression, and confidence as performers. My teaching approach blends Suzuki pedagogy with real performance experience, creating lessons that are structured, encouraging, and adapted to each student's learning style. Students come to my studio for beginner violin lessons, Suzuki violin training, and personalized coaching that supports long-term musical growth. In addition to teaching and performing, I also design accessible software products in the education and learning technology space, where I'm passionate about building tools that help people learn more effectively.
+      </p>
     </div>
   </section>
 

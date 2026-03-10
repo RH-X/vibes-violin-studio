@@ -19,3 +19,165 @@ import CTABand from '../components/CTABand.astro';
   <PracticePals />
   <CTABand />
 </Layout>
+
+<style>
+  /* ── Keyframes ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes blobFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-6px) rotate(1deg); }
+  }
+
+  /* ── Scroll-reveal base state ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms cubic-bezier(.16,1,.3,1),
+                transform 600ms cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Hero staggered load-in ── */
+  .hero-animate {
+    opacity: 0;
+    animation: fadeUp 650ms cubic-bezier(.16,1,.3,1) forwards;
+  }
+  .hero-delay-1 { animation-delay: 0ms; }
+  .hero-delay-2 { animation-delay: 120ms; }
+  .hero-delay-3 { animation-delay: 240ms; }
+
+  /* ── Blob ambient float ── */
+  .blob-float {
+    animation: blobFloat 16s ease-in-out infinite;
+  }
+
+  /* ── Hover: testimonial image card ── */
+  section[aria-labelledby="testimonials-heading"] .shadow-card {
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+  section[aria-labelledby="testimonials-heading"] .shadow-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px rgba(0,0,0,.12);
+  }
+
+  /* ── Hover: feature cards ── */
+  section#approach ul li {
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+  section#approach ul li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+
+  /* ── Hover: Practice Pals image ── */
+  section[aria-labelledby="practice-pals-heading"] img {
+    transition: transform 300ms ease;
+  }
+  section[aria-labelledby="practice-pals-heading"] img:hover {
+    transform: scale(1.02);
+  }
+
+  /* ── Hover: button lift + shadow ── */
+  .btn-primary,
+  .btn-secondary {
+    transition: background-color 200ms, color 200ms,
+                transform 250ms ease, box-shadow 250ms ease;
+  }
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.10);
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-animate {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .reveal {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+    .blob-float {
+      animation: none;
+    }
+    section[aria-labelledby="testimonials-heading"] .shadow-card,
+    section#approach ul li,
+    section[aria-labelledby="practice-pals-heading"] img,
+    .btn-primary,
+    .btn-secondary {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // ── Hero staggered load-in ──
+  const heroSection = document.querySelector('section[aria-labelledby="hero-heading"]');
+  if (heroSection) {
+    const heading = heroSection.querySelector('#hero-heading');
+    const subtitle = heading?.nextElementSibling;
+    const buttons = subtitle?.nextElementSibling;
+    [heading, subtitle, buttons].forEach((el, i) => {
+      if (el) el.classList.add('hero-animate', `hero-delay-${i + 1}`);
+    });
+  }
+
+  // ── Blob ambient float ──
+  document.querySelectorAll(
+    'section[aria-labelledby="hero-heading"] .pointer-events-none,' +
+    'section[aria-labelledby="cta-heading"] .pointer-events-none'
+  ).forEach(blob => blob.classList.add('blob-float'));
+
+  // ── Scroll-reveal stagger helper ──
+  const addStagger = (selector, delayStep = 120) => {
+    document.querySelectorAll(selector).forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${i * delayStep}ms`;
+    });
+  };
+
+  // Highlights badges
+  addStagger('section[aria-label="Studio highlights"] ul li', 120);
+
+  // Feature cards
+  addStagger('section#approach ul li', 120);
+
+  // Practice Pals — image + text columns
+  document.querySelectorAll(
+    'section[aria-labelledby="practice-pals-heading"] .grid > div'
+  ).forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = `${i * 150}ms`;
+  });
+
+  // CTA band content
+  const ctaContent = document.querySelector(
+    'section[aria-labelledby="cta-heading"] .container-narrow'
+  );
+  if (ctaContent) ctaContent.classList.add('reveal');
+
+  // ── IntersectionObserver ──
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+</script>
