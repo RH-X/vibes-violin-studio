@@ -8,43 +8,38 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="w-full bg-white/90 backdrop-blur-sm border-b border-lavender-100 z-40 relative">
-  <div class="container-narrow flex items-center justify-between h-16">
+<header class="w-full bg-white border-b border-lavender-100 z-40 relative">
+  <div class="container-narrow flex items-center justify-between h-32">
 
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2.5 group" aria-label="Vibrations Violin Studio — home">
-      <!-- Logo mark placeholder -->
-      <span class="flex-shrink-0 w-9 h-9 rounded-full bg-gradient-to-br from-mint-300 to-lavender-300 flex items-center justify-center shadow-sm">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M10 3 C10 3 7 6 7 10 C7 14 9 16 10 17 C11 16 13 14 13 10 C13 6 10 3 10 3Z" fill="white" opacity="0.9"/>
-          <ellipse cx="10" cy="10.5" rx="2" ry="2" fill="white" opacity="0.7"/>
-        </svg>
-      </span>
-      <span class="text-ink font-medium text-[0.95rem] leading-tight">
-        Vibrations<br />
-        <span class="font-light text-[0.8rem] text-ink/70">Violin Studio</span>
-      </span>
+    <a href="/" class="flex items-center group" aria-label="Vibrations Violin Studio — home">
+      <img
+        src="/images/logos/vibrations-logo.jpg"
+        alt="Vibrations Violin Studio"
+        class="h-32 w-auto"
+        loading="eager"
+      />
     </a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
-      {navLinks.map(({ label, href }) => (
-        <a
-          href={href}
-          class={`text-sm font-medium transition-colors duration-150 ${
-            currentPath === href
-              ? 'text-purplePrimary'
-              : 'text-ink/70 hover:text-purplePrimary'
-          }`}
-          aria-current={currentPath === href ? 'page' : undefined}
-        >
-          {label}
-        </a>
-      ))}
-    </nav>
+    <!-- Right group: nav + CTA + mobile toggle -->
+    <div class="flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        {navLinks.map(({ label, href }) => (
+          <a
+            href={href}
+            class={`text-sm font-medium transition-colors duration-150 ${
+              currentPath === href
+                ? 'text-purplePrimary'
+                : 'text-ink/70 hover:text-purplePrimary'
+            }`}
+            aria-current={currentPath === href ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
 
-    <!-- CTA + mobile toggle -->
-    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3">
       <a href="/contact" class="btn-primary text-sm hidden sm:inline-block">
         Get Started
       </a>
@@ -64,6 +59,7 @@ const currentPath = Astro.url.pathname;
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
+      </div>
     </div>
   </div>
 

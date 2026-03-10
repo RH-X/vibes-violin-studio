@@ -3,56 +3,16 @@
 
 <section class="bg-white section-pad" aria-labelledby="practice-pals-heading">
   <div class="container-narrow">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-[5fr_3fr] gap-12 lg:gap-16 items-center">
 
-      <!-- Left: device mockups over green blob -->
-      <div class="relative flex items-center justify-center min-h-[320px]">
-        <!-- Green blob background -->
-        <div
-          class="absolute inset-0 m-auto w-72 h-72 rounded-full opacity-30"
-          style="background: radial-gradient(circle, #84d3b2 0%, #b4e7d0 60%, transparent 100%); filter: blur(32px);"
-          aria-hidden="true"
-        ></div>
-
-        <!-- Mockup placeholders -->
-        <!-- REPLACE: swap these divs with actual mockup images when available -->
-        <!-- Tablet mockup -->
-        <div class="relative z-10 flex gap-4 items-end">
-          <div
-            class="w-44 h-56 sm:w-52 sm:h-64 bg-white border-2 border-mint-300 rounded-2xl shadow-float flex flex-col overflow-hidden"
-            role="img"
-            aria-label="Tablet mockup of Practice Pals app — placeholder"
-          >
-            <div class="h-5 bg-mint-100 flex items-center justify-center">
-              <span class="w-8 h-1.5 rounded-full bg-mint-300"></span>
-            </div>
-            <div class="flex-1 bg-gradient-to-b from-mint-50 to-white p-4 flex flex-col gap-2">
-              <div class="w-full h-3 rounded bg-mint-100"></div>
-              <div class="w-3/4 h-3 rounded bg-lavender-100"></div>
-              <div class="w-full h-16 rounded-xl bg-lavender-50 mt-2 flex items-center justify-center">
-                <svg class="text-lavender-300" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
-                </svg>
-              </div>
-              <div class="w-5/6 h-3 rounded bg-peach-100 mt-1"></div>
-              <div class="w-2/3 h-3 rounded bg-peach-100"></div>
-            </div>
-          </div>
-
-          <!-- TV mockup -->
-          <div
-            class="w-36 h-28 sm:w-44 sm:h-32 bg-ink rounded-xl shadow-float flex flex-col overflow-hidden"
-            role="img"
-            aria-label="TV mockup of Practice Pals content — placeholder"
-          >
-            <div class="flex-1 bg-gradient-to-br from-mint-100 to-lavender-100 m-2 rounded-lg flex items-center justify-center">
-              <svg class="text-purplePrimary opacity-60" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/>
-              </svg>
-            </div>
-            <div class="h-3 bg-ink/80 mx-auto w-8 rounded-full mb-1"></div>
-          </div>
-        </div>
+      <!-- Left: Practice Pals demo image -->
+      <div class="flex items-center justify-center">
+        <img
+          src="/images/practice-pals-demo.png"
+          alt="Practice Pals app shown on a TV screen and tablet, featuring practice adventures and a friendly puppy buddy"
+          class="w-full h-auto"
+          loading="lazy"
+        />
       </div>
 
       <!-- Right: copy -->
@@ -66,14 +26,13 @@
         </h2>
         <p class="mt-2 text-lg text-purplePrimary font-light">Make Violin Practice Fun and Positive</p>
         <p class="mt-4 text-base text-ink/60 font-light leading-relaxed">
-          Practice Pals is a resource built to help students stay motivated and engaged between lessons. With curated videos, guided practice tools, and encouragement built in, it turns at-home practice into something students actually look forward to.
+          Practice Pals is our new violin practice app designed to support beginners and early players in building a healthy practice habit. Think of an at-home practice experience where learning exercises, games and learning check-ins meet the positive guidance of a practice buddy. Practice Pals is inspired by a curated collection of learning directions curated by the greats in music + pedagogy like Dr. Suzuki, Pablo Casals, and Carol Dweck to name a few. We are also highly powered by the experiences of our students and parents here at Vibrations Violin studio.
         </p>
-        <p class="mt-3 text-base text-ink/60 font-light leading-relaxed">
-          Designed by Rae to complement the in-lesson experience and support families in making practice a positive part of the day.
-        </p>
-        <a href="/practice-pals" class="btn-primary inline-block mt-8">
-          Learn More
-        </a>
+        <div class="flex justify-end mt-8">
+          <a href="/practice-pals" class="btn-primary inline-block">
+            Learn More
+          </a>
+        </div>
       </div>
 
     </div>

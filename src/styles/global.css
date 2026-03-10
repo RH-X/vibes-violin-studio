@@ -23,13 +23,13 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-block bg-purplePrimary text-white font-medium px-6 py-3 rounded-full
+    @apply inline-block bg-purplePrimary text-white font-medium px-6 py-3 rounded-lg
            hover:bg-purple-800 transition-colors duration-200 focus-visible:outline
            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary;
   }
 
   .btn-secondary {
-    @apply inline-block bg-purpleSoft text-purplePrimary font-medium px-6 py-3 rounded-full
+    @apply inline-block bg-purpleSoft text-purplePrimary font-medium px-6 py-3 rounded-lg
            border border-lavender-300 hover:bg-lavender-200 transition-colors duration-200
            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
            focus-visible:outline-purplePrimary;
