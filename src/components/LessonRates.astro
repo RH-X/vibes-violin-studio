@@ -1,0 +1,76 @@
+---
+const rates = [
+  {
+    title: '20-minute trial / intro lesson',
+    description: 'A chance to meet, connect, and explore your goals.',
+    note: '*Complementary if you decide to book lessons.',
+    price: '$35.00',
+  },
+  {
+    title: '30-minute student instruction',
+    description: 'Recommended for ages 6+.',
+    price: '$50.00',
+  },
+  {
+    title: '45-minute student instruction',
+    description: 'More time for deeper learning and growth.',
+    price: '$75.00',
+  },
+  {
+    title: '60-minute student instruction',
+    description: 'Ideal for advanced students or intensive focus.',
+    price: '$100.00',
+  },
+];
+
+const footerNotes = [
+  'All lessons are private, one-on-one, and offered weekly.',
+  'Payment is due monthly. Scholarships considered.',
+  'Group rates available on request.',
+];
+---
+
+<section
+  class="bg-white section-pad"
+  aria-labelledby="rates-heading"
+>
+  <div class="container-narrow">
+    <div class="max-w-2xl mb-10">
+      <h2
+        id="rates-heading"
+        class="text-3xl sm:text-4xl font-light text-ink leading-tight"
+      >
+        Lesson Rates
+      </h2>
+      <p class="mt-4 text-base text-ink/60 font-light leading-relaxed">
+        Private violin lessons tailored to your goals, experience, and learning style.
+      </p>
+    </div>
+
+    <ul
+      class="border-t border-lavender-200"
+      role="list"
+    >
+      {rates.map(({ title, description, note, price }) => (
+        <li class="border-b border-lavender-200 py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
+          <div>
+            <p class="font-medium text-ink text-base leading-snug">{title}</p>
+            <p class="text-sm text-ink/60 font-light mt-0.5">{description}</p>
+            {note && (
+              <p class="text-sm text-ink/60 font-light italic mt-0.5">{note}</p>
+            )}
+          </div>
+          <p class="text-base font-medium text-purplePrimary sm:text-right shrink-0">{price}</p>
+        </li>
+      ))}
+    </ul>
+
+    <ul class="mt-8 space-y-1.5" role="list" aria-label="Lesson policy notes">
+      {footerNotes.map((note) => (
+        <li class="text-sm text-ink/60 font-light">
+          <span aria-hidden="true">· </span>{note}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

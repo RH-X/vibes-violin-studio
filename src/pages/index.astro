@@ -5,6 +5,7 @@ import Highlights from '../components/Highlights.astro';
 import Testimonials from '../components/Testimonials.astro';
 import StudentCentered from '../components/StudentCentered.astro';
 import PracticePals from '../components/PracticePals.astro';
+import LessonRates from '../components/LessonRates.astro';
 import CTABand from '../components/CTABand.astro';
 ---
 
@@ -17,6 +18,7 @@ import CTABand from '../components/CTABand.astro';
   <Testimonials />
   <StudentCentered />
   <PracticePals />
+  <LessonRates />
   <CTABand />
 </Layout>
 
@@ -169,6 +171,12 @@ import CTABand from '../components/CTABand.astro';
     el.classList.add('reveal');
     el.style.transitionDelay = `${i * 150}ms`;
   });
+
+  // Lesson rates content
+  const ratesContent = document.querySelector(
+    'section[aria-labelledby="rates-heading"] .container-narrow'
+  );
+  if (ratesContent) ratesContent.classList.add('reveal');
 
   // CTA band content
   const ctaContent = document.querySelector(
