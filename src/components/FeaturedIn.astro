@@ -5,71 +5,58 @@
   class="border-y border-lavender-200 bg-lavender-50"
   aria-label="Press and media features"
 >
-  <div class="container-narrow py-8 sm:py-10">
+  <div class="container-narrow py-10 sm:py-14">
 
-    <!-- Editorial card: photo | eyebrow+headline | body+cta | logo -->
-    <div class="flex flex-col sm:flex-row sm:items-stretch border border-lavender-200 rounded-card overflow-hidden bg-white">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-12">
 
-      <!-- Col 1: Rae's photo -->
-      <div class="sm:w-36 shrink-0">
+      <!-- Photo: strong left anchor -->
+      <div class="shrink-0 sm:w-44 md:w-52">
         <img
           src="/images/rae-mktg-site.png"
           alt="Rae McGee, violin instructor and founder of Vibrations Violin Studio"
           width="1242"
           height="1746"
-          class="w-full h-44 sm:h-full object-cover object-top"
+          class="w-full h-56 sm:h-64 object-cover object-top rounded-lg"
           loading="lazy"
         />
       </div>
 
-      <!-- Vertical divider -->
-      <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
-
-      <!-- Col 2: eyebrow + big headline -->
-      <div class="flex flex-col justify-center px-6 py-5 shrink-0">
-        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-2">Featured In</p>
-        <p class="text-2xl sm:text-3xl font-light text-ink leading-tight uppercase tracking-wide">
-          Voyage<br/>Denver
+      <!-- Press story: eyebrow → headline → body → CTA -->
+      <div class="flex-1 min-w-0">
+        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">
+          Featured In
         </p>
-      </div>
-
-      <!-- Vertical divider -->
-      <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
-
-      <!-- Col 3: body + CTA -->
-      <div class="flex-1 flex flex-col justify-center items-end px-6 py-5 text-right">
-        <p class="text-sm text-ink/70 font-light leading-relaxed mb-4">
+        <h2 class="text-3xl sm:text-4xl font-light text-ink leading-tight mb-3">
+          VoyageDenver
+        </h2>
+        <p class="text-base text-ink/70 font-light leading-relaxed max-w-md mb-6">
           An interview about my journey, teaching philosophy, and life as a musician.
         </p>
-        <div>
-          <a
-            href="https://voyagedenver.com/interview/daily-inspiration-meet-rae-mcgee"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-secondary text-xs px-4 py-2"
-            aria-label="Read the VoyageDenver interview with Rae McGee (opens in new tab)"
-          >
-            Read the Feature
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1.5 -mt-0.5" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
+        <a
+          href="https://voyagedenver.com/interview/daily-inspiration-meet-rae-mcgee"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary text-sm px-5 py-2.5"
+          aria-label="Read the VoyageDenver interview with Rae McGee (opens in new tab)"
+        >
+          Read the Feature
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1.5 -mt-0.5" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
 
-      <!-- Vertical divider -->
-      <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
-
-      <!-- Col 4: VoyageDenver logo pill -->
-      <div class="shrink-0 flex items-center justify-center px-6 py-5">
-        <div class="bg-ink rounded-2xl px-4 py-3 flex items-center justify-center">
+      <!-- Logo: quiet supporting proof -->
+      <div class="shrink-0 flex flex-col items-start sm:items-end gap-1.5">
+        <div class="bg-ink rounded-xl px-5 py-3 inline-flex items-center">
           <img
             src="/images/voyage-denver-logo.png"
             alt="VoyageDenver Magazine"
             width="592"
             height="87"
-            class="h-7 w-auto"
+            class="h-8 w-auto"
             loading="lazy"
           />
         </div>
+        <p class="text-xs text-ink/40 font-light uppercase tracking-widest">Magazine</p>
       </div>
 
     </div>
