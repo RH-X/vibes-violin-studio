@@ -5,54 +5,57 @@
   class="border-y border-lavender-200 bg-lavender-50"
   aria-label="Press and media features"
 >
-  <div class="container-narrow py-10 sm:py-14">
+  <div class="container-narrow py-10 sm:py-16">
 
-    <div class="flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-12">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-0">
 
-      <!-- Photo: strong left anchor -->
-      <div class="shrink-0 sm:w-44 md:w-52">
+      <!-- Col 1 (~40%): editorial photo -->
+      <div class="shrink-0 w-full sm:w-[38%] sm:pr-10">
         <img
           src="/images/rae-mktg-site.png"
-          alt="Rae McGee, violin instructor and founder of Vibrations Violin Studio"
+          alt="Rae McGee holding a violin"
           width="1242"
           height="1746"
-          class="w-full h-56 sm:h-64 object-cover object-top rounded-lg"
+          class="w-full h-72 sm:h-80 object-cover object-top rounded-sm"
           loading="lazy"
         />
       </div>
 
-      <!-- Press story: eyebrow → headline → body → CTA -->
-      <div class="flex-1 min-w-0">
-        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">
+      <!-- Col 2 (~40%): press copy -->
+      <div class="flex-1 sm:px-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-4">
           Featured In
         </p>
-        <h2 class="text-3xl sm:text-4xl font-light text-ink leading-tight mb-3">
+        <h2 class="text-3xl sm:text-4xl font-light text-ink leading-tight mb-4">
           VoyageDenver
         </h2>
-        <p class="text-base text-ink/70 font-light leading-relaxed max-w-md mb-6">
+        <p class="text-base text-ink/70 font-light leading-relaxed mb-6 max-w-sm">
           An interview about my journey, teaching philosophy, and life as a musician.
         </p>
         <a
           href="https://voyagedenver.com/interview/daily-inspiration-meet-rae-mcgee"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn-secondary text-sm px-5 py-2.5"
-          aria-label="Read the VoyageDenver interview with Rae McGee (opens in new tab)"
+          class="inline-flex items-center gap-2 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 hover:decoration-purplePrimary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          aria-label="Read the interview feature on VoyageDenver (opens in new tab)"
         >
           Read the Feature
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1.5 -mt-0.5" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
 
-      <!-- Logo: quiet supporting proof -->
-      <div class="shrink-0 flex flex-col items-start sm:items-end gap-1.5">
-        <div class="bg-ink rounded-xl px-5 py-3 inline-flex items-center">
+      <!-- Subtle vertical divider (desktop only) -->
+      <div class="hidden sm:block w-px self-stretch bg-lavender-200 shrink-0" aria-hidden="true"></div>
+
+      <!-- Col 3 (~20%): logo as supporting proof -->
+      <div class="hidden sm:flex flex-col items-center justify-center pl-10 gap-2 shrink-0">
+        <div class="bg-ink rounded-xl px-4 py-3 inline-flex items-center justify-center">
           <img
             src="/images/voyage-denver-logo.png"
-            alt="VoyageDenver Magazine"
+            alt="VoyageDenver Magazine logo"
             width="592"
             height="87"
-            class="h-8 w-auto"
+            class="h-7 w-auto"
             loading="lazy"
           />
         </div>
