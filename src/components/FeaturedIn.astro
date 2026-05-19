@@ -2,54 +2,73 @@
 ---
 
 <section
-  class="bg-lavender-50 border-y border-lavender-200"
+  class="border-y border-lavender-200 bg-lavender-50"
   aria-label="Press and media features"
 >
-  <div class="container-narrow py-10 sm:py-12">
+  <div class="container-narrow py-10 sm:py-14">
 
-    <!-- Eyebrow label -->
-    <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-6 text-center sm:text-left">
-      As Featured In
+    <!-- Eyebrow -->
+    <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-8 text-center sm:text-left">
+      Featured In
     </p>
 
-    <!-- Three-column layout: publication · description · CTA -->
-    <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+    <!-- Editorial grid: photo | text | logo+cta -->
+    <div class="flex flex-col sm:flex-row sm:items-stretch gap-8 sm:gap-0 border border-lavender-200 rounded-card overflow-hidden bg-white">
 
-      <!-- Publication logo -->
-      <div class="shrink-0 text-center sm:text-left">
-        <div class="inline-block bg-ink rounded-2xl px-5 py-3">
+      <!-- Left: Rae's photo -->
+      <div class="sm:w-48 md:w-56 shrink-0">
+        <img
+          src="/images/rae-mktg-site.png"
+          alt="Rae McGee, violin instructor and founder of Vibrations Violin Studio"
+          width="1242"
+          height="1746"
+          class="w-full h-56 sm:h-full object-cover object-top"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Vertical divider (desktop) -->
+      <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
+
+      <!-- Center: editorial text -->
+      <div class="flex-1 flex flex-col justify-center px-7 py-8 sm:py-7">
+        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-3">Voyage Denver</p>
+        <h2 class="text-2xl sm:text-3xl font-light text-ink leading-tight mb-3">
+          A Conversation About Teaching, Music &amp; Mission
+        </h2>
+        <p class="text-sm sm:text-base text-ink/60 font-light leading-relaxed">
+          An interview about my journey, teaching philosophy, and life as a musician.
+        </p>
+        <div class="mt-6">
+          <a
+            href="https://voyagedenver.com/interview/daily-inspiration-meet-rae-mcgee"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary text-sm px-5 py-2.5"
+            aria-label="Read the VoyageDenver interview with Rae McGee (opens in new tab)"
+          >
+            Read the Feature
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1.5 -mt-0.5" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vertical divider (desktop) -->
+      <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
+
+      <!-- Right: VoyageDenver logo -->
+      <div class="shrink-0 sm:w-44 md:w-52 flex flex-col items-center justify-center px-7 py-8 sm:py-7 gap-2">
+        <div class="bg-ink rounded-2xl px-5 py-4 w-full flex items-center justify-center">
           <img
             src="/images/voyage-denver-logo.png"
-            alt="VoyageDenver"
+            alt="VoyageDenver Magazine"
             width="592"
             height="87"
-            class="h-10 w-auto"
+            class="h-9 w-auto"
             loading="lazy"
           />
         </div>
-        <p class="text-xs text-ink/50 font-light mt-1.5 uppercase tracking-widest text-right">Magazine</p>
-      </div>
-
-      <!-- Divider (desktop only) -->
-      <div class="hidden sm:block w-px self-stretch bg-lavender-300 shrink-0" aria-hidden="true"></div>
-
-      <!-- Description -->
-      <p class="flex-1 text-sm sm:text-base text-ink/80 font-light leading-relaxed">
-        Rae McGee was recently featured in VoyageDenver Magazine in a conversation about human-centered music education, creative learning, and building confidence through meaningful, joyful instruction.
-      </p>
-
-      <!-- CTA button -->
-      <div class="shrink-0 sm:text-right">
-        <a
-          href="https://voyagedenver.com/interview/daily-inspiration-meet-rae-mcgee"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-secondary text-sm px-5 py-2.5"
-          aria-label="Read the VoyageDenver interview with Rae McGee (opens in new tab)"
-        >
-          Read Interview
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1.5 -mt-0.5" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+        <p class="text-xs text-ink/40 font-light uppercase tracking-widest text-center">Magazine</p>
       </div>
 
     </div>
