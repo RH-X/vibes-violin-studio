@@ -7,36 +7,38 @@
 >
   <div class="container-narrow py-8 sm:py-10">
 
-    <!-- Eyebrow -->
-    <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-5 text-center sm:text-left">
-      Featured In
-    </p>
+    <!-- Editorial card: photo | eyebrow+headline | body+cta | logo -->
+    <div class="flex flex-col sm:flex-row sm:items-stretch border border-lavender-200 rounded-card overflow-hidden bg-white">
 
-    <!-- Editorial card: photo | text | logo+cta -->
-    <div class="flex flex-col sm:flex-row sm:items-stretch gap-0 border border-lavender-200 rounded-card overflow-hidden bg-white">
-
-      <!-- Left: Rae's photo -->
-      <div class="sm:w-32 shrink-0">
+      <!-- Col 1: Rae's photo -->
+      <div class="sm:w-36 shrink-0">
         <img
           src="/images/rae-mktg-site.png"
           alt="Rae McGee, violin instructor and founder of Vibrations Violin Studio"
           width="1242"
           height="1746"
-          class="w-full h-40 sm:h-full object-cover object-top"
+          class="w-full h-44 sm:h-full object-cover object-top"
           loading="lazy"
         />
       </div>
 
-      <!-- Vertical divider (desktop) -->
+      <!-- Vertical divider -->
       <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
 
-      <!-- Center: editorial text -->
-      <div class="flex-1 flex flex-col justify-center px-6 py-5">
-        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-1.5">Voyage Denver</p>
-        <p class="text-base sm:text-lg font-light text-ink leading-snug mb-1.5">
-          A Conversation About Teaching, Music &amp; Mission
+      <!-- Col 2: eyebrow + big headline -->
+      <div class="flex flex-col justify-center px-6 py-5 shrink-0">
+        <p class="text-xs font-semibold uppercase tracking-widest text-purplePrimary mb-2">Featured In</p>
+        <p class="text-2xl sm:text-3xl font-light text-ink leading-tight uppercase tracking-wide">
+          Voyage<br/>Denver
         </p>
-        <p class="text-xs sm:text-sm text-ink/60 font-light leading-relaxed mb-4">
+      </div>
+
+      <!-- Vertical divider -->
+      <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
+
+      <!-- Col 3: body + CTA -->
+      <div class="flex-1 flex flex-col justify-center px-6 py-5">
+        <p class="text-sm text-ink/70 font-light leading-relaxed mb-4">
           An interview about my journey, teaching philosophy, and life as a musician.
         </p>
         <div>
@@ -53,22 +55,21 @@
         </div>
       </div>
 
-      <!-- Vertical divider (desktop) -->
+      <!-- Vertical divider -->
       <div class="hidden sm:block w-px bg-lavender-200 shrink-0" aria-hidden="true"></div>
 
-      <!-- Right: VoyageDenver logo -->
-      <div class="shrink-0 sm:w-40 flex flex-col items-center justify-center px-6 py-5 gap-1.5">
-        <div class="bg-ink rounded-xl px-4 py-2.5 inline-flex items-center justify-center">
+      <!-- Col 4: VoyageDenver logo pill -->
+      <div class="shrink-0 flex items-center justify-center px-6 py-5">
+        <div class="bg-ink rounded-2xl px-4 py-3 flex items-center justify-center">
           <img
             src="/images/voyage-denver-logo.png"
             alt="VoyageDenver Magazine"
             width="592"
             height="87"
-            class="h-7 w-auto max-w-none"
+            class="h-7 w-auto"
             loading="lazy"
           />
         </div>
-        <p class="text-xs text-ink/40 font-light uppercase tracking-widest text-center">Magazine</p>
       </div>
 
     </div>
