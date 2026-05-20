@@ -6,34 +6,84 @@
   style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
   aria-labelledby="hero-heading"
 >
-  <!-- Decorative blobs -->
+  <!-- Decorative blobs (ambient background) -->
   <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-mint-200 opacity-40 blur-3xl" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-lavender-300 opacity-30 blur-3xl" aria-hidden="true"></div>
 
-  <div class="relative container-narrow section-pad text-center">
-    <h1
-      id="hero-heading"
-      class="font-heading font-bold text-ink max-w-5xl mx-auto"
-      style="font-size: clamp(2.5rem, 6.5vw, 5.25rem); line-height: 0.93; letter-spacing: -0.045em; text-wrap: balance;"
-    >
-      Violin Lessons That Build <span class="text-purplePrimary">Musicianship,<br class="hidden sm:inline" /> Confidence, and Joy</span>
-    </h1>
+  <div class="relative container-narrow section-pad">
 
-    <p class="mt-6 text-lg sm:text-xl text-ink/70 leading-relaxed max-w-2xl mx-auto">
-      with Rae McGee, M.M.
-    </p>
+    <!-- Desktop: two-column editorial grid / Mobile: stack -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-    <p class="mt-4 text-base text-ink/60 leading-relaxed max-w-[44rem] mx-auto">
-      Private violin lessons in Denver, Colorado for children, teens, and adults, taught with Suzuki-based instruction. Students from beginners through advancing players are welcomed in my central Denver studio.
-    </p>
+      <!-- Left: copy block -->
+      <div class="text-center lg:text-left">
+        <h1
+          id="hero-heading"
+          class="font-heading font-bold text-ink"
+          style="font-size: clamp(2.5rem, 6.5vw, 5.25rem); line-height: 0.93; letter-spacing: -0.045em; text-wrap: balance;"
+        >
+          Violin Lessons That Build<br />
+          <span class="text-purplePrimary">Musicianship, Confidence,<br class="hidden sm:inline" /> and Joy</span>
+        </h1>
 
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
-        Get Started
-      </a>
-      <a href="#approach" class="btn-primary text-base px-8 py-3.5">
-        Learn More
-      </a>
+        <p class="mt-6 text-lg sm:text-xl text-ink/70 leading-relaxed">
+          with Rae McGee, M.M.
+        </p>
+
+        <p class="mt-4 text-base text-ink/60 leading-relaxed max-w-[44rem] lg:max-w-none mx-auto lg:mx-0">
+          Private violin lessons in Denver, Colorado for children, teens, and adults, taught with Suzuki-based instruction. Students from beginners through advancing players are welcomed in my central Denver studio.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
+            Get Started
+          </a>
+          <a href="#approach" class="btn-primary text-base px-8 py-3.5">
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: editorial image art -->
+      <div class="hero-image-art-wrapper relative isolate flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
+
+        <!-- Soft pastel blob behind image -->
+        <div
+          class="pointer-events-none absolute inset-0 m-auto w-[90%] h-[90%] bg-lavender-200 opacity-50 blur-2xl"
+          style="border-radius: 42% 58% 55% 45% / 50% 44% 56% 50%;"
+          aria-hidden="true"
+        ></div>
+
+        <!-- Etched squiggle accent -->
+        <svg
+          class="pointer-events-none absolute bottom-4 right-4 w-24 h-24 text-purplePrimary opacity-20"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M10 50 Q 25 20, 40 50 Q 55 80, 70 50 Q 85 20, 95 50" />
+          <path d="M10 65 Q 25 35, 40 65 Q 55 95, 70 65 Q 85 35, 95 65" opacity="0.6"/>
+        </svg>
+
+        <!-- Child image with organic blob mask -->
+        <div class="hero-student-image relative z-10 w-full max-w-sm lg:max-w-md xl:max-w-lg">
+          <img
+            src="/images/testimonials/testimonial-student.png"
+            alt="A young violin student proudly holding up a hand-drawn picture of a violin"
+            class="w-full h-auto"
+            style="border-radius: 38% 62% 48% 52% / 42% 36% 64% 58%; object-fit: contain; object-position: center center;"
+            width="1297"
+            height="1729"
+            loading="eager"
+          />
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
