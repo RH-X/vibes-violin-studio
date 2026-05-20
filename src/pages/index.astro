@@ -22,16 +22,15 @@ import CTABand from '../components/CTABand.astro';
   <!-- ── Practice Pals → Lesson Rates transition wrapper ── -->
   <div class="relative">
 
-    <!-- Trailing green blob: visually continues the existing Practice Pals green blob
-         downward into the Lesson Rates section, creating a soft spill effect -->
+    <!-- Trailing green blob: faint transition hint, contained to the Practice Pals area -->
     <div
       class="pointer-events-none absolute"
       style="
-        width: 340px; height: 340px;
-        bottom: -90px; left: -60px;
+        width: 260px; height: 260px;
+        bottom: 20px; left: -40px;
         background: radial-gradient(circle, #34d399 0%, #6ee7b7 55%, transparent 100%);
-        opacity: 0.22;
-        filter: blur(52px);
+        opacity: 0.16;
+        filter: blur(56px);
         border-radius: 50%;
         z-index: 0;
       "
