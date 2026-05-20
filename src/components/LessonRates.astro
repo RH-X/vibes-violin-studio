@@ -43,7 +43,7 @@ const footerNotes = [
       >
         Lesson Rates
       </h2>
-      <p class="mt-4 text-base text-ink/60 leading-relaxed">
+      <p class="mt-4 text-base text-[#3A3140] leading-relaxed">
         Private violin lessons tailored to your goals, experience, and learning style.
       </p>
     </div>
@@ -56,9 +56,9 @@ const footerNotes = [
         <li class="border-b border-lavender-200 py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
           <div>
             <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">{title}</p>
-            <p class="text-sm text-ink/60 mt-0.5">{description}</p>
+            <p class="text-sm text-[#3A3140] mt-0.5">{description}</p>
             {note && (
-              <p class="text-sm text-ink/60 font-light italic mt-0.5">{note}</p>
+              <p class="text-sm text-[#3A3140] font-light italic mt-0.5">{note}</p>
             )}
           </div>
           <p class="text-base font-medium text-purplePrimary sm:text-right shrink-0">{price}</p>
@@ -68,7 +68,7 @@ const footerNotes = [
 
     <ul class="mt-8 space-y-1.5" role="list" aria-label="Lesson policy notes">
       {footerNotes.map((note) => (
-        <li class="text-sm text-ink/60 font-light">
+        <li class="text-sm text-[#3A3140] font-light">
           <span aria-hidden="true">· </span>{note}
         </li>
       ))}

@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
         <address class="not-italic flex flex-col gap-3">
 
           <!-- Location -->
-          <span class="flex items-start gap-2 text-sm text-ink/60">
+          <span class="flex items-start gap-2 text-sm text-[#3A3140]">
             <svg class="mt-0.5 flex-shrink-0 text-mint-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -23,11 +23,11 @@ const year = new Date().getFullYear();
 
           <!-- Phone number + call/text -->
           <div class="flex flex-col gap-1">
-            <span class="text-sm text-ink/70 font-medium">(720) 253-0416</span>
+            <span class="text-sm text-[#2F2A35] font-medium">(720) 253-0416</span>
             <div class="flex items-center gap-4">
               <a
                 href="tel:+17202530416"
-                class="flex items-center gap-1.5 text-sm text-ink/60 hover:text-purplePrimary transition-colors duration-150"
+                class="flex items-center gap-1.5 text-sm text-[#3A3140] hover:text-purplePrimary transition-colors duration-150"
                 aria-label="Call Vibrations Violin Studio"
               >
                 <svg class="flex-shrink-0 text-mint-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -38,7 +38,7 @@ const year = new Date().getFullYear();
               <span class="text-ink/20" aria-hidden="true">|</span>
               <a
                 href="sms:+17202530416"
-                class="flex items-center gap-1.5 text-sm text-ink/60 hover:text-purplePrimary transition-colors duration-150"
+                class="flex items-center gap-1.5 text-sm text-[#3A3140] hover:text-purplePrimary transition-colors duration-150"
                 aria-label="Text Vibrations Violin Studio"
               >
                 <svg class="flex-shrink-0 text-mint-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -51,7 +51,7 @@ const year = new Date().getFullYear();
 
           <!-- Email -->
           <button
-            class="copy-email flex items-center gap-2 text-sm text-ink/60 hover:text-purplePrimary transition-colors duration-150 cursor-pointer bg-transparent border-none p-0"
+            class="copy-email flex items-center gap-2 text-sm text-[#3A3140] hover:text-purplePrimary transition-colors duration-150 cursor-pointer bg-transparent border-none p-0"
             data-copy="vibesviolinstudio@gmail.com"
             type="button"
             aria-label="Copy email address to clipboard"
@@ -68,10 +68,10 @@ const year = new Date().getFullYear();
       <!-- Col 2: Studio info (SEO/GEO) -->
       <div>
         <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-4" style="letter-spacing: 0.14em;">About the Studio</p>
-        <p class="text-sm text-ink/60 leading-relaxed">
+        <p class="text-sm text-[#3A3140] leading-relaxed">
           Private violin lessons in Denver, Colorado, taught from my studio in the Globeville neighborhood of central Denver.
         </p>
-        <p class="mt-3 text-xs text-ink/50 leading-relaxed">
+        <p class="mt-3 text-xs text-[#3A3140] leading-relaxed">
           Online lessons available worldwide. Convenient for students across Denver, including Wash Park, Capitol Hill, Cherry Creek, and the Highlands.
         </p>
       </div>
@@ -89,7 +89,7 @@ const year = new Date().getFullYear();
               <li>
                 <a
                   href={href}
-                  class="text-sm text-ink/60 hover:text-purplePrimary transition-colors duration-150"
+                  class="text-sm text-[#3A3140] hover:text-purplePrimary transition-colors duration-150"
                 >
                   {label}
                 </a>
@@ -98,7 +98,7 @@ const year = new Date().getFullYear();
             <li>
               <a
                 href="https://www.google.com/maps/place/Vibrations+Violin+Studio/@39.7637782,-105.184397,106113m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7ff7ec8c4473:0x7211bc2c2fc447b4!8m2!3d39.7642444!4d-104.8547524!16s%2Fg%2F11ll2m56k5?entry=ttu"
-                class="text-sm text-ink/60 hover:text-purplePrimary transition-colors duration-150"
+                class="text-sm text-[#3A3140] hover:text-purplePrimary transition-colors duration-150"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -123,10 +123,10 @@ const year = new Date().getFullYear();
 
     <!-- Bottom bar -->
     <div class="mt-10 pt-6 border-t border-lavender-200 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p class="text-xs text-ink/40">
+      <p class="text-xs text-[#4a4050]">
         &copy; {year} Vibrations Violin Studio &mdash; Denver, CO
       </p>
-      <p class="text-xs text-ink/30">
+      <p class="text-xs text-[#5a5060]">
         Private violin lessons for all ages &amp; levels.
       </p>
     </div>
