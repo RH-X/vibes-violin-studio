@@ -2,17 +2,65 @@
 ---
 
 <section
-  class="relative w-full overflow-hidden"
+  class="relative w-full overflow-hidden isolate"
   style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); min-height: clamp(620px, calc(100vh - 120px), 720px);"
   aria-labelledby="hero-heading"
 >
-  <!-- Ambient background blobs -->
-  <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-mint-200 opacity-40 blur-3xl" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-lavender-300 opacity-30 blur-3xl" aria-hidden="true"></div>
 
+  <!-- ── Animated background blob layer (z-0) ── -->
+
+  <!-- Mint blob — top-left, drifts right+down -->
+  <div
+    class="hero-blob pointer-events-none absolute rounded-full"
+    style="
+      width: 640px; height: 640px;
+      top: -180px; left: -160px;
+      background: radial-gradient(circle, #6ee7b7 0%, #a7f3d0 60%, transparent 100%);
+      opacity: 0.28;
+      filter: blur(56px);
+      z-index: 0;
+      will-change: transform;
+      animation: blobDriftA 26s ease-in-out infinite alternate;
+    "
+    aria-hidden="true"
+  ></div>
+
+  <!-- Lavender blob — bottom-right, drifts left+up, scale pulse -->
+  <div
+    class="hero-blob pointer-events-none absolute rounded-full"
+    style="
+      width: 580px; height: 580px;
+      bottom: -160px; right: -120px;
+      background: radial-gradient(circle, #a78bfa 0%, #ddd6fe 60%, transparent 100%);
+      opacity: 0.30;
+      filter: blur(64px);
+      z-index: 0;
+      will-change: transform;
+      animation: blobDriftB 30s ease-in-out infinite alternate;
+    "
+    aria-hidden="true"
+  ></div>
+
+  <!-- Pale blue-mint accent blob — center right, gentle vertical drift -->
+  <div
+    class="hero-blob pointer-events-none absolute rounded-full"
+    style="
+      width: 380px; height: 380px;
+      top: 30%; right: 18%;
+      background: radial-gradient(circle, #bfdbfe 0%, #e0f2fe 55%, transparent 100%);
+      opacity: 0.20;
+      filter: blur(48px);
+      z-index: 0;
+      will-change: transform;
+      animation: blobDriftC 22s ease-in-out infinite alternate;
+    "
+    aria-hidden="true"
+  ></div>
+
+  <!-- ── Hero content (z-2, above all blobs) ── -->
   <div
     class="relative container-narrow flex items-center"
-    style="padding-top: clamp(3rem, 5vw, 5rem); padding-bottom: clamp(3rem, 5vw, 5rem);"
+    style="padding-top: clamp(3rem, 5vw, 5rem); padding-bottom: clamp(3rem, 5vw, 5rem); z-index: 2;"
   >
 
     <!-- Two-column grid: text left, image right -->
@@ -99,3 +147,24 @@
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes blobDriftA {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(60px, 40px) scale(1.08); }
+  }
+  @keyframes blobDriftB {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-50px, -35px) scale(1.12); }
+  }
+  @keyframes blobDriftC {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-20px, 30px) scale(0.92); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blob {
+      animation: none !important;
+    }
+  }
+</style>
