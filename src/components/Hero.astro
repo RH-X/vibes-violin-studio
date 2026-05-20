@@ -3,38 +3,43 @@
 
 <section
   class="relative w-full overflow-hidden"
-  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
+  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); min-height: 100svh;"
   aria-labelledby="hero-heading"
 >
-  <!-- Decorative blobs (ambient background) -->
+  <!-- Ambient background blobs -->
   <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-mint-200 opacity-40 blur-3xl" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-lavender-300 opacity-30 blur-3xl" aria-hidden="true"></div>
 
-  <div class="relative container-narrow section-pad">
+  <!--
+    pt accounts for transparent nav height (h-20 mobile / h-24 desktop).
+    pb is tighter than section-pad to keep everything above the fold.
+  -->
+  <div class="relative container-narrow pt-28 pb-12 lg:pt-32 lg:pb-16 flex items-center min-h-[inherit]">
 
-    <!-- Desktop: two-column editorial grid / Mobile: stack -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <!-- Two-column grid: text left, image right -->
+    <div class="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-14 items-center">
 
-      <!-- Left: copy block -->
-      <div class="text-center lg:text-left">
+      <!-- ── Left: copy block ── -->
+      <div class="text-center lg:text-left max-w-xl lg:max-w-none">
+
         <h1
           id="hero-heading"
           class="font-heading font-bold text-ink"
-          style="font-size: clamp(2.5rem, 6.5vw, 5.25rem); line-height: 0.93; letter-spacing: -0.045em; text-wrap: balance;"
+          style="font-size: clamp(2.4rem, 5.5vw, 4.75rem); line-height: 0.93; letter-spacing: -0.045em; text-wrap: balance;"
         >
           Violin Lessons That Build<br />
           <span class="text-purplePrimary">Musicianship, Confidence,<br class="hidden sm:inline" /> and Joy</span>
         </h1>
 
-        <p class="mt-6 text-lg sm:text-xl text-ink/70 leading-relaxed">
+        <p class="mt-5 text-lg sm:text-xl text-ink/70 leading-relaxed font-medium">
           with Rae McGee, M.M.
         </p>
 
-        <p class="mt-4 text-base text-ink/60 leading-relaxed max-w-[44rem] lg:max-w-none mx-auto lg:mx-0">
+        <p class="mt-3 text-base text-ink/60 leading-relaxed mx-auto lg:mx-0 max-w-[38rem]">
           Private violin lessons in Denver, Colorado for children, teens, and adults, taught with Suzuki-based instruction. Students from beginners through advancing players are welcomed in my central Denver studio.
         </p>
 
-        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
           <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
             Get Started
           </a>
@@ -44,45 +49,71 @@
         </div>
       </div>
 
-      <!-- Right: editorial image art -->
-      <div class="hero-image-art-wrapper relative isolate flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
+      <!-- ── Right: editorial image composition ── -->
+      <div
+        class="hero-image-art-wrapper relative isolate flex items-center justify-center lg:justify-end mt-4 lg:mt-0 mx-auto lg:mx-0"
+        style="width: min(42vw, 420px); min-width: 260px;"
+      >
 
-        <!-- Soft pastel blob behind image -->
+        <!-- Trailing lavender blob — offset bottom-left for playful shadow effect -->
         <div
-          class="pointer-events-none absolute inset-0 m-auto w-[90%] h-[90%] bg-lavender-200 opacity-50 blur-2xl"
-          style="border-radius: 42% 58% 55% 45% / 50% 44% 56% 50%;"
+          class="pointer-events-none absolute"
+          style="
+            width: 88%;
+            height: 88%;
+            bottom: -6%;
+            left: -8%;
+            background: #c4b5fd;
+            opacity: 0.45;
+            border-radius: 63% 37% 54% 46% / 44% 58% 42% 56%;
+            z-index: 1;
+            filter: blur(2px);
+          "
           aria-hidden="true"
         ></div>
 
-        <!-- Etched squiggle accent -->
+        <!-- Etched squiggle accent — bottom-right, behind image -->
         <svg
-          class="pointer-events-none absolute bottom-4 right-4 w-24 h-24 text-purplePrimary opacity-20"
-          viewBox="0 0 100 100"
+          class="pointer-events-none absolute"
+          style="width: 72px; height: 72px; bottom: -10px; right: -14px; z-index: 1; opacity: 0.22; color: #5b21b6;"
+          viewBox="0 0 80 60"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.5"
+          stroke-width="1.8"
           stroke-linecap="round"
           aria-hidden="true"
           focusable="false"
         >
-          <path d="M10 50 Q 25 20, 40 50 Q 55 80, 70 50 Q 85 20, 95 50" />
-          <path d="M10 65 Q 25 35, 40 65 Q 55 95, 70 65 Q 85 35, 95 65" opacity="0.6"/>
+          <path d="M4 30 C14 10, 24 50, 34 30 C44 10, 54 50, 64 30 C70 18, 75 36, 78 28" />
+          <path d="M4 44 C14 24, 24 64, 34 44 C44 24, 54 64, 64 44 C70 32, 75 50, 78 42" stroke-width="1.2" opacity="0.55"/>
+          <!-- Tiny spark accent -->
+          <g style="transform: translate(66px, 8px);">
+            <line x1="0" y1="-5" x2="0" y2="5" stroke-width="1.4"/>
+            <line x1="-5" y1="0" x2="5" y2="0" stroke-width="1.4"/>
+            <line x1="-3.5" y1="-3.5" x2="3.5" y2="3.5" stroke-width="1"/>
+            <line x1="3.5" y1="-3.5" x2="-3.5" y2="3.5" stroke-width="1"/>
+          </g>
         </svg>
 
-        <!-- Child image with organic blob mask -->
-        <div class="hero-student-image relative z-10 w-full max-w-sm lg:max-w-md xl:max-w-lg">
-          <img
-            src="/images/testimonials/testimonial-student.png"
-            alt="A young violin student proudly holding up a hand-drawn picture of a violin"
-            class="w-full h-auto"
-            style="border-radius: 38% 62% 48% 52% / 42% 36% 64% 58%; object-fit: contain; object-position: center center;"
-            width="1297"
-            height="1729"
-            loading="eager"
-          />
-        </div>
+        <!-- Student photo with abstract organic blob mask -->
+        <img
+          src="/images/testimonials/testimonial-student.png"
+          alt="A young violin student proudly holding up a hand-drawn picture of a violin"
+          class="relative w-full h-auto"
+          style="
+            z-index: 2;
+            object-fit: contain;
+            object-position: center center;
+            border-radius: 44% 56% 38% 62% / 52% 38% 62% 48%;
+            display: block;
+          "
+          width="1297"
+          height="1729"
+          loading="eager"
+        />
 
       </div>
+      <!-- /image art -->
 
     </div>
   </div>
