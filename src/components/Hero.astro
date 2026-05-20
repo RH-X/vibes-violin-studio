@@ -3,17 +3,23 @@
 
 <section
   class="relative w-full overflow-hidden"
-  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); min-height: 100svh;"
+  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
   aria-labelledby="hero-heading"
 >
   <!-- Ambient background blobs -->
   <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-mint-200 opacity-40 blur-3xl" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-lavender-300 opacity-30 blur-3xl" aria-hidden="true"></div>
 
-  <div class="relative container-narrow section-pad flex items-center min-h-[inherit]">
+  <div
+    class="relative container-narrow flex items-center"
+    style="padding-top: clamp(1.75rem, 3.5vw, 3.5rem); padding-bottom: clamp(2rem, 4vw, 4rem);"
+  >
 
     <!-- Two-column grid: text left, image right -->
-    <div class="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-14 items-center">
+    <div
+      class="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center"
+      style="gap: clamp(1.5rem, 3vw, 3.5rem);"
+    >
 
       <!-- ── Left: copy block ── -->
       <div class="text-center lg:text-left max-w-xl lg:max-w-none">
@@ -21,21 +27,24 @@
         <h1
           id="hero-heading"
           class="font-heading font-bold text-ink"
-          style="font-size: clamp(2.4rem, 5.5vw, 4.75rem); line-height: 0.93; letter-spacing: -0.045em; text-wrap: balance;"
+          style="font-size: clamp(2.2rem, 5vw, 4.25rem); line-height: 0.92; letter-spacing: -0.045em; text-wrap: balance;"
         >
           Violin Lessons That Build<br />
           <span class="text-purplePrimary">Musicianship, Confidence,<br class="hidden sm:inline" /> and Joy</span>
         </h1>
 
-        <p class="mt-5 text-lg sm:text-xl text-ink/70 leading-relaxed font-medium">
+        <p class="text-lg sm:text-xl text-ink/70 leading-relaxed font-medium" style="margin-top: clamp(0.75rem, 1.5vw, 1.25rem);">
           with Rae McGee, M.M.
         </p>
 
-        <p class="mt-3 text-base text-ink/60 leading-relaxed mx-auto lg:mx-0 max-w-[38rem]">
+        <p class="text-base text-ink/60 leading-relaxed mx-auto lg:mx-0 max-w-[38rem]" style="margin-top: clamp(0.5rem, 1vw, 0.875rem);">
           Private violin lessons in Denver, Colorado for children, teens, and adults, taught with Suzuki-based instruction. Students from beginners through advancing players are welcomed in my central Denver studio.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+          style="margin-top: clamp(1.25rem, 2.5vw, 2rem);"
+        >
           <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
             Get Started
           </a>
@@ -48,10 +57,10 @@
       <!-- ── Right: editorial image composition ── -->
       <div
         class="hero-image-art-wrapper relative isolate flex items-center justify-center lg:justify-end mt-4 lg:mt-0 mx-auto lg:mx-0"
-        style="width: min(42vw, 420px); min-width: 260px;"
+        style="width: min(32vw, 320px); min-width: 220px;"
       >
 
-        <!-- Trailing lavender blob — offset bottom-left for playful shadow effect -->
+        <!-- Trailing lavender blob — offset bottom-left -->
         <div
           class="pointer-events-none absolute"
           style="
@@ -68,7 +77,7 @@
           aria-hidden="true"
         ></div>
 
-        <!-- Student photo with abstract organic blob mask -->
+        <!-- Student photo with organic blob mask -->
         <img
           src="/images/testimonials/testimonial-student.png"
           alt="A young violin student proudly holding up a hand-drawn picture of a violin"
