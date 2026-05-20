@@ -10,11 +10,7 @@
   <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-mint-200 opacity-40 blur-3xl" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-lavender-300 opacity-30 blur-3xl" aria-hidden="true"></div>
 
-  <!--
-    pt accounts for transparent nav height (h-20 mobile / h-24 desktop).
-    pb is tighter than section-pad to keep everything above the fold.
-  -->
-  <div class="relative container-narrow pt-28 pb-12 lg:pt-32 lg:pb-16 flex items-center min-h-[inherit]">
+  <div class="relative container-narrow section-pad flex items-center min-h-[inherit]">
 
     <!-- Two-column grid: text left, image right -->
     <div class="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-14 items-center">
@@ -71,29 +67,6 @@
           "
           aria-hidden="true"
         ></div>
-
-        <!-- Etched squiggle accent — bottom-right, behind image -->
-        <svg
-          class="pointer-events-none absolute"
-          style="width: 72px; height: 72px; bottom: -10px; right: -14px; z-index: 1; opacity: 0.22; color: #5b21b6;"
-          viewBox="0 0 80 60"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M4 30 C14 10, 24 50, 34 30 C44 10, 54 50, 64 30 C70 18, 75 36, 78 28" />
-          <path d="M4 44 C14 24, 24 64, 34 44 C44 24, 54 64, 64 44 C70 32, 75 50, 78 42" stroke-width="1.2" opacity="0.55"/>
-          <!-- Tiny spark accent -->
-          <g style="transform: translate(66px, 8px);">
-            <line x1="0" y1="-5" x2="0" y2="5" stroke-width="1.4"/>
-            <line x1="-5" y1="0" x2="5" y2="0" stroke-width="1.4"/>
-            <line x1="-3.5" y1="-3.5" x2="3.5" y2="3.5" stroke-width="1"/>
-            <line x1="3.5" y1="-3.5" x2="-3.5" y2="3.5" stroke-width="1"/>
-          </g>
-        </svg>
 
         <!-- Student photo with abstract organic blob mask -->
         <img
