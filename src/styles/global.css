@@ -8,7 +8,9 @@
   }
 
   body {
-    @apply font-sans text-ink antialiased;
+    @apply font-body text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.7;
   }
 
   /* Focus styles for accessibility */
@@ -16,23 +18,39 @@
     @apply outline-2 outline-offset-2 outline-purplePrimary;
   }
 
-  h1, h2, h3, h4 {
-    @apply font-light tracking-tight;
+  /* ── Headings: Plus Jakarta Sans, bold, tight ── */
+  h1, h2 {
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  h3, h4 {
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
+  /* ── Buttons: Plus Jakarta Sans, semibold ── */
   .btn-primary {
-    @apply inline-block bg-purplePrimary text-white font-medium px-6 py-3 rounded-lg
+    @apply inline-block bg-purplePrimary text-white font-semibold px-6 py-3 rounded-lg
            hover:bg-purple-800 transition-colors duration-200 focus-visible:outline
            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    letter-spacing: 0.02em;
   }
 
   .btn-secondary {
-    @apply inline-block bg-purpleSoft text-purplePrimary font-medium px-6 py-3 rounded-lg
+    @apply inline-block bg-purpleSoft text-purplePrimary font-semibold px-6 py-3 rounded-lg
            border border-lavender-300 hover:bg-lavender-200 transition-colors duration-200
            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
            focus-visible:outline-purplePrimary;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    letter-spacing: 0.02em;
   }
 
   .section-pad {
