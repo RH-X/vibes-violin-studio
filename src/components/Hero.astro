@@ -2,38 +2,149 @@
 ---
 
 <section
-  class="relative w-full overflow-hidden"
-  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
+  class="relative w-full overflow-hidden isolate"
+  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); min-height: clamp(620px, calc(100vh - 120px), 720px);"
   aria-labelledby="hero-heading"
 >
-  <!-- Decorative blobs -->
-  <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-mint-200 opacity-40 blur-3xl" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-lavender-300 opacity-30 blur-3xl" aria-hidden="true"></div>
 
-  <div class="relative container-narrow section-pad text-center">
-    <h1
-      id="hero-heading"
-      class="font-heading font-bold text-ink max-w-5xl mx-auto"
-      style="font-size: clamp(2.5rem, 6.5vw, 5.25rem); line-height: 0.93; letter-spacing: -0.045em; text-wrap: balance;"
+  <!-- ── Animated background blob layer (z-0) ── -->
+
+  <!-- Mint blob — top-left, drifts right+down -->
+  <div
+    class="hero-blob pointer-events-none absolute rounded-full"
+    style="
+      width: 680px; height: 680px;
+      top: -160px; left: -140px;
+      background: radial-gradient(circle, #34d399 0%, #6ee7b7 45%, transparent 100%);
+      opacity: 0.42;
+      filter: blur(40px);
+      z-index: 0;
+      will-change: transform;
+      animation: blobDriftA 24s ease-in-out infinite alternate;
+    "
+    aria-hidden="true"
+  ></div>
+
+  <!-- Lavender blob — bottom-right, drifts left+up -->
+  <div
+    class="hero-blob pointer-events-none absolute rounded-full"
+    style="
+      width: 620px; height: 620px;
+      bottom: -140px; right: -100px;
+      background: radial-gradient(circle, #8b5cf6 0%, #c4b5fd 50%, transparent 100%);
+      opacity: 0.38;
+      filter: blur(44px);
+      z-index: 0;
+      will-change: transform;
+      animation: blobDriftB 28s ease-in-out infinite alternate;
+    "
+    aria-hidden="true"
+  ></div>
+
+  <!-- ── Hero content (z-2, above all blobs) ── -->
+  <div
+    class="relative container-narrow flex items-center"
+    style="padding-top: clamp(3rem, 5vw, 5rem); padding-bottom: clamp(3rem, 5vw, 5rem); z-index: 2;"
+  >
+
+    <!-- Two-column grid: text left, image right -->
+    <div
+      class="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center"
+      style="gap: clamp(1.5rem, 3vw, 3.5rem);"
     >
-      Violin Lessons That Build <span class="text-purplePrimary">Musicianship,<br class="hidden sm:inline" /> Confidence, and Joy</span>
-    </h1>
 
-    <p class="mt-6 text-lg sm:text-xl text-ink/70 leading-relaxed max-w-2xl mx-auto">
-      with Rae McGee, M.M.
-    </p>
+      <!-- ── Left: copy block ── -->
+      <div class="text-center lg:text-left max-w-xl lg:max-w-none">
 
-    <p class="mt-4 text-base text-ink/60 leading-relaxed max-w-[44rem] mx-auto">
-      Private violin lessons in Denver, Colorado for children, teens, and adults, taught with Suzuki-based instruction. Students from beginners through advancing players are welcomed in my central Denver studio.
-    </p>
+        <h1
+          id="hero-heading"
+          class="font-heading font-bold text-ink"
+          style="font-size: clamp(2.2rem, 5vw, 4.25rem); line-height: 0.92; letter-spacing: -0.045em; text-wrap: balance;"
+        >
+          Violin Lessons That Build<br />
+          <span class="text-purplePrimary">Musicianship, Confidence,<br class="hidden sm:inline" /> and Joy</span>
+        </h1>
 
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
-        Get Started
-      </a>
-      <a href="#approach" class="btn-primary text-base px-8 py-3.5">
-        Learn More
-      </a>
+        <p class="text-lg sm:text-xl leading-relaxed font-medium" style="margin-top: 1.125rem; color: #2F2A35;">
+          with Rae McGee, M.M.
+        </p>
+
+        <p class="text-base leading-relaxed mx-auto lg:mx-0 max-w-[38rem]" style="margin-top: 1rem; color: #3A3140;">
+          Private violin lessons in Denver, Colorado for children, teens, and adults, taught with Suzuki-based instruction. Students from beginners through advancing players are welcomed in my central Denver studio.
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+          style="margin-top: 2.25rem;"
+        >
+          <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
+            Get Started
+          </a>
+          <a href="#approach" class="btn-primary text-base px-8 py-3.5">
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Right: editorial image composition ── -->
+      <div
+        class="hero-image-art-wrapper relative isolate flex items-center justify-center lg:justify-end mt-4 lg:mt-0 mx-auto lg:mx-0"
+        style="width: min(36vw, 380px); min-width: 240px;"
+      >
+
+        <!-- Trailing lavender blob — offset bottom-left -->
+        <div
+          class="pointer-events-none absolute"
+          style="
+            width: 88%;
+            height: 88%;
+            bottom: -6%;
+            left: -8%;
+            background: #c4b5fd;
+            opacity: 0.50;
+            border-radius: 45% 55% 58% 42% / 48% 42% 58% 52%;
+            z-index: 1;
+          "
+          aria-hidden="true"
+        ></div>
+
+        <!-- Student photo with organic blob mask -->
+        <img
+          src="/images/testimonials/testimonial-student.png"
+          alt="A young violin student proudly holding up a hand-drawn picture of a violin"
+          class="relative w-full h-auto"
+          style="
+            z-index: 2;
+            object-fit: contain;
+            object-position: center center;
+            border-radius: 44% 56% 38% 62% / 52% 38% 62% 48%;
+            display: block;
+          "
+          width="1297"
+          height="1729"
+          loading="eager"
+        />
+
+      </div>
+      <!-- /image art -->
+
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes blobDriftA {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(100px, 70px) scale(1.12); }
+  }
+  @keyframes blobDriftB {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-90px, -60px) scale(1.14); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blob {
+      animation: none !important;
+    }
+  }
+</style>
