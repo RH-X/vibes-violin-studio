@@ -30,11 +30,12 @@ const cards = [
     <div class="max-w-2xl mb-12">
       <h2
         id="approach-heading"
-        class="text-3xl sm:text-4xl font-light text-ink leading-tight"
+        class="font-heading font-bold text-ink"
+        style="font-size: clamp(2rem, 4vw, 3.25rem); line-height: 0.96; letter-spacing: -0.04em;"
       >
         A Supportive, Student-Centered Approach to Violin
       </h2>
-      <p class="mt-4 text-base text-ink/60 font-light leading-relaxed">
+      <p class="mt-4 text-base text-ink/60 leading-relaxed">
         Lessons are designed to meet each student where they are. Drawing on Suzuki teacher training and years of teaching experience, instruction focuses on building musical foundations, confidence, and a lasting connection to music.
       </p>
     </div>
@@ -48,8 +49,8 @@ const cards = [
             <img src={emoji} alt="" class="absolute inset-0 m-auto w-12 h-12 object-contain" aria-hidden="true" />
           </div>
           <div class="text-center">
-            <h3 class="font-medium text-ink text-base leading-snug">{title}</h3>
-            <p class="mt-2 text-sm text-ink/60 font-light leading-relaxed">{body}</p>
+            <h3 class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">{title}</h3>
+            <p class="mt-2 text-sm text-ink/60 leading-relaxed">{body}</p>
           </div>
         </li>
       ))}

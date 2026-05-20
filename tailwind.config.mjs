@@ -35,18 +35,12 @@ export default {
         purpleSoft: '#ede9fe',
       },
       fontFamily: {
-        sans: [
-          'Inter',
-          'ui-sans-serif',
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'Roboto',
-          '"Helvetica Neue"',
-          'Arial',
-          'sans-serif',
-        ],
+        // Heading font: Plus Jakarta Sans (editorial bold, closest available to Neue Montreal)
+        heading: ['"Plus Jakarta Sans"', 'Arial', 'Helvetica', 'sans-serif'],
+        // Body font: IBM Plex Sans (clear, grounded, readable)
+        body: ['"IBM Plex Sans"', 'Arial', 'Helvetica', 'sans-serif'],
+        // Base sans (drives font-sans utility + Tailwind defaults)
+        sans: ['"IBM Plex Sans"', 'Arial', 'Helvetica', 'sans-serif'],
       },
       borderRadius: {
         card: '1.25rem',
