@@ -7,121 +7,128 @@
   aria-labelledby="testimonials-heading"
 >
 
-  <!-- Soft ambient blob behind the panel -->
+  <!-- Large offset lavender blob — upper-right, clean edges, creates depth -->
   <div
     class="pointer-events-none absolute"
     style="
-      width: 50%;
-      height: 65%;
-      top: -8%;
+      width: 48%;
+      height: 80%;
+      top: -12%;
       right: -6%;
       background: #c4b5fd;
-      opacity: 0.28;
-      border-radius: 58% 42% 62% 38% / 44% 56% 44% 56%;
-      filter: blur(52px);
+      opacity: 0.38;
+      border-radius: 62% 38% 48% 52% / 52% 44% 56% 48%;
     "
     aria-hidden="true"
   ></div>
 
-  <!-- Single understated squiggle — lower left only -->
+  <!-- Single understated squiggle — lower left -->
   <svg
     class="pointer-events-none absolute hidden sm:block"
-    style="width: 80px; height: 50px; bottom: 28px; left: 24px; opacity: 0.4;"
-    viewBox="0 0 80 48"
+    style="width: 88px; height: 52px; bottom: 32px; left: 28px; opacity: 0.38;"
+    viewBox="0 0 88 52"
     fill="none"
     stroke="#3b1f6e"
-    stroke-width="1.5"
+    stroke-width="1.6"
     stroke-linecap="round"
     aria-hidden="true"
     focusable="false"
   >
-    <path d="M4 24 C16 6, 28 42, 40 24 C52 6, 64 42, 76 24" />
+    <path d="M4 26 C18 6, 32 46, 46 26 C60 6, 74 46, 86 26" />
   </svg>
 
   <div class="container-narrow relative">
 
-    <!-- Quote panel — softer, more functional blob shape -->
-    <div
-      class="relative mx-auto"
-      style="
-        max-width: 860px;
-        background: rgba(255,255,255,0.80);
-        backdrop-filter: blur(6px);
-        border-radius: 2.5rem 3.5rem 2.5rem 3rem / 2.5rem 2.5rem 3.5rem 2.5rem;
-        box-shadow: 0 4px 28px rgba(91,33,182,0.08);
-        overflow: hidden;
-      "
-    >
-      <!-- Subtle opening quote mark — background layer only -->
-      <span
-        class="pointer-events-none absolute select-none"
-        style="
-          top: -1rem;
-          left: 1.5rem;
-          font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-          font-size: clamp(7rem, 14vw, 11rem);
-          font-weight: 800;
-          line-height: 1;
-          color: #c4b5fd;
-          opacity: 0.3;
-          z-index: 0;
-        "
-        aria-hidden="true"
-      >&ldquo;</span>
+    <!-- Offset editorial composition: blob shifted left-center, not perfectly centered -->
+    <div class="relative mx-auto" style="max-width: 960px;">
 
-      <!-- All content inside, well-padded -->
+      <!-- White quote blob — slightly left-biased, more organic shape -->
       <div
         class="relative"
-        style="padding: clamp(2.5rem, 5vw, 3.75rem) clamp(2rem, 5vw, 3.75rem) clamp(2rem, 4vw, 3rem); z-index: 1;"
+        style="
+          background: rgba(255,255,255,0.82);
+          backdrop-filter: blur(4px);
+          border-radius: 3rem 4rem 3.5rem 2.5rem / 2.5rem 3rem 4rem 3rem;
+          box-shadow: 0 6px 40px rgba(91,33,182,0.09);
+          overflow: hidden;
+          margin-left: 0;
+          margin-right: auto;
+        "
       >
 
-        <!-- Stars -->
-        <div class="flex items-center gap-1 mb-5" aria-label="5 out of 5 stars">
-          {Array.from({ length: 5 }).map(() => (
-            <svg class="text-yellow-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          ))}
+        <!-- Oversized decorative quote mark — main visual anchor, upper-left -->
+        <span
+          class="pointer-events-none absolute select-none"
+          style="
+            top: -1.5rem;
+            left: 1rem;
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            font-size: clamp(9rem, 18vw, 14rem);
+            font-weight: 800;
+            line-height: 1;
+            color: #ddd6fe;
+            opacity: 0.7;
+            z-index: 0;
+            user-select: none;
+          "
+          aria-hidden="true"
+        >&ldquo;</span>
+
+        <!-- Content layer -->
+        <div
+          class="relative"
+          style="padding: clamp(2.75rem, 5.5vw, 4.25rem) clamp(2.25rem, 5vw, 4rem) clamp(2.25rem, 4.5vw, 3.5rem); z-index: 1;"
+        >
+
+          <!-- Stars -->
+          <div class="flex items-center gap-1 mb-6" aria-label="5 out of 5 stars">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="text-yellow-400" width="22" height="22" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Pull quote — stronger editorial scale -->
+          <blockquote style="font-family: 'IBM Plex Sans', Arial, sans-serif;">
+            <p
+              class="text-ink/85"
+              style="font-size: clamp(1.2rem, 1.9vw, 1.7rem); line-height: 1.5; font-weight: 400; max-width: 64ch; font-style: italic;"
+            >
+              "My kids, aged 6 and 3, had a really wonderful experience with violin here. I was impressed with how the lessons were tailored to their abilities, their interests, and also whatever energy and behavior they were bringing with them that day ;) it's also a very approachable entry point to violin, in general. Other Suzuki programs felt a little overwhelming to me in terms of the commitment, especially when I wasn't sure how the kids would take to it. This experience felt relaxed and yet meaningful and supportive of this early learning and exposure."
+            </p>
+          </blockquote>
+
+          <!-- Reviewer + Google link — diagonal flow to lower-right -->
+          <div class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <cite
+              class="not-italic font-semibold text-ink/70"
+              style="font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 1rem; letter-spacing: 0.01em;"
+            >
+              — Aya Takemoto
+            </cite>
+
+            <a
+              href="https://www.google.com/maps/place/Vibrations+Violin+Studio/@39.7637782,-105.184397,106113m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7ff7ec8c4473:0x7211bc2c2fc447b4!8m2!3d39.7642444!4d-104.8547524!16s%2Fg%2F11ll2m56k5?entry=ttu"
+              class="group inline-flex items-center gap-2 text-sm font-semibold text-purplePrimary underline underline-offset-4 decoration-lavender-400 hover:text-purple-800 hover:decoration-purple-800 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Read more reviews on Google (opens in new tab)"
+            >
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">Read More Reviews on Google</span>
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          </div>
+
         </div>
-
-        <!-- Quote -->
-        <blockquote style="font-family: 'IBM Plex Sans', Arial, sans-serif;">
-          <p
-            class="text-ink/80"
-            style="font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.65; font-style: italic; font-weight: 400; max-width: 68ch;"
-          >
-            "My kids, aged 6 and 3, had a really wonderful experience with violin here. I was impressed with how the lessons were tailored to their abilities, their interests, and also whatever energy and behavior they were bringing with them that day ;) it's also a very approachable entry point to violin, in general. Other Suzuki programs felt a little overwhelming to me in terms of the commitment, especially when I wasn't sure how the kids would take to it. This experience felt relaxed and yet meaningful and supportive of this early learning and exposure."
-          </p>
-        </blockquote>
-
-        <!-- Reviewer name + Google link -->
-        <div class="mt-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <cite
-            class="not-italic font-semibold text-ink/70"
-            style="font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 0.95rem;"
-          >
-            — Aya Takemoto
-          </cite>
-
-          <a
-            href="https://www.google.com/maps/place/Vibrations+Violin+Studio/@39.7637782,-105.184397,106113m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7ff7ec8c4473:0x7211bc2c2fc447b4!8m2!3d39.7642444!4d-104.8547524!16s%2Fg%2F11ll2m56k5?entry=ttu"
-            class="group inline-flex items-center gap-2 text-sm font-semibold text-purplePrimary underline underline-offset-4 decoration-lavender-400 hover:text-purple-800 hover:decoration-purple-800 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Read more reviews on Google (opens in new tab)"
-          >
-            <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">Read More Reviews on Google</span>
-            <span class="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
+        <!-- /content -->
 
       </div>
-      <!-- /inner content -->
+      <!-- /white blob -->
 
     </div>
-    <!-- /quote panel -->
 
     <!-- Carousel dots -->
     <div class="mt-10 flex justify-center gap-2" aria-hidden="true">
