@@ -19,8 +19,43 @@ import CTABand from '../components/CTABand.astro';
   <Highlights />
   <Testimonials />
   <StudentCentered />
-  <PracticePals />
-  <LessonRates />
+  <!-- ── Practice Pals → Lesson Rates transition wrapper ── -->
+  <div class="relative">
+
+    <!-- Trailing green blob: visually continues the existing Practice Pals green blob
+         downward into the Lesson Rates section, creating a soft spill effect -->
+    <div
+      class="pointer-events-none absolute"
+      style="
+        width: 340px; height: 340px;
+        bottom: -90px; left: -60px;
+        background: radial-gradient(circle, #34d399 0%, #6ee7b7 55%, transparent 100%);
+        opacity: 0.22;
+        filter: blur(52px);
+        border-radius: 50%;
+        z-index: 0;
+      "
+      aria-hidden="true"
+    ></div>
+
+    <!-- Single understated lavender squiggle in the transition gap -->
+    <svg
+      class="pointer-events-none absolute hidden sm:block"
+      style="width: 72px; height: 44px; bottom: -16px; left: 48px; opacity: 0.28; z-index: 1;"
+      viewBox="0 0 72 44"
+      fill="none"
+      stroke="#6d28d9"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M4 22 C14 6, 26 38, 36 22 C46 6, 58 38, 68 22" />
+    </svg>
+
+    <PracticePals />
+    <LessonRates />
+  </div>
   <CTABand />
 </Layout>
 
