@@ -38,22 +38,24 @@ import CTABand from '../components/CTABand.astro';
       aria-hidden="true"
     ></div>
 
-    <!-- Single understated lavender squiggle in the transition gap -->
-    <svg
-      class="pointer-events-none absolute hidden sm:block"
-      style="width: 72px; height: 44px; bottom: -16px; left: 48px; opacity: 0.28; z-index: 1;"
-      viewBox="0 0 72 44"
-      fill="none"
-      stroke="#6d28d9"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M4 22 C14 6, 26 38, 36 22 C46 6, 58 38, 68 22" />
-    </svg>
-
     <PracticePals />
+
+    <!-- Single understated lavender squiggle — sits in the gap between sections -->
+    <div class="relative hidden sm:block" style="height: 0; overflow: visible;" aria-hidden="true">
+      <svg
+        class="pointer-events-none absolute"
+        style="width: 72px; height: 44px; top: -28px; left: 50%; transform: translateX(-50%); opacity: 0.42; z-index: 1;"
+        viewBox="0 0 72 44"
+        fill="none"
+        stroke="#6d28d9"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        focusable="false"
+      >
+        <path d="M4 22 C14 6, 26 38, 36 22 C46 6, 58 38, 68 22" />
+      </svg>
+    </div>
+
     <LessonRates />
   </div>
   <CTABand />
