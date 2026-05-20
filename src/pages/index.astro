@@ -19,6 +19,23 @@ import CTABand from '../components/CTABand.astro';
   <Highlights />
   <Testimonials />
   <StudentCentered />
+
+  <!-- Single lavender squiggle — transition cue from About cards into Practice Pals -->
+  <div class="relative hidden sm:block" style="height: 0; overflow: visible;" aria-hidden="true">
+    <svg
+      class="pointer-events-none absolute"
+      style="width: 80px; height: 48px; top: -20px; left: 42%; transform: translateX(-50%) rotate(-4deg); opacity: 0.38; z-index: 1;"
+      viewBox="0 0 80 48"
+      fill="none"
+      stroke="#6d28d9"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      focusable="false"
+    >
+      <path d="M4 24 C16 6, 28 42, 40 24 C52 6, 64 42, 76 24" />
+    </svg>
+  </div>
+
   <!-- ── Practice Pals → Lesson Rates transition wrapper ── -->
   <div class="relative">
 
