@@ -3,7 +3,7 @@
 
 <section
   class="hero-breathe relative w-full overflow-hidden isolate"
-  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); background-size: 180% 180%; min-height: clamp(620px, calc(100vh - 120px), 720px);"
+  style="min-height: clamp(620px, calc(100vh - 120px), 720px);"
   aria-labelledby="hero-heading"
 >
 
@@ -133,13 +133,20 @@
 </section>
 
 <style>
-  @keyframes gradientBreathe {
-    0%, 100% { background-position: 45% 50%; background-size: 180% 180%; }
-    50%       { background-position: 58% 45%; background-size: 220% 220%; }
+  /* Gradient lives on a pseudo-element so transform animates it reliably */
+  .hero-breathe::before {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background: linear-gradient(135deg, #b4e7d0 0%, #a5f3fc 30%, #ddd6fe 70%, #c4b5fd 100%);
+    z-index: -1;
+    animation: gradientBreathe 12s ease-in-out infinite;
+    will-change: transform;
   }
 
-  .hero-breathe {
-    animation: gradientBreathe 22s ease-in-out infinite;
+  @keyframes gradientBreathe {
+    0%, 100% { transform: scale(1)    rotate(0deg);   }
+    50%       { transform: scale(1.12) rotate(4deg);   }
   }
 
   @keyframes blobDriftA {
@@ -153,7 +160,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .hero-blob,
-    .hero-breathe {
+    .hero-breathe::before {
       animation: none !important;
     }
   }
