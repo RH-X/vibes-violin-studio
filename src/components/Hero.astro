@@ -137,16 +137,18 @@
   .hero-breathe::before {
     content: '';
     position: absolute;
-    inset: -30%;
-    background: linear-gradient(135deg, #b4e7d0 0%, #a5f3fc 30%, #ddd6fe 70%, #c4b5fd 100%);
+    inset: 0;
+    background: linear-gradient(135deg, #b4e7d0 0%, #a5f3fc 40%, #c4b5fd 70%, #ddd6fe 100%);
     z-index: 0;
-    animation: gradientBreathe 12s ease-in-out infinite;
+    transform-origin: center center;
+    animation: gradientBreathe 10s ease-in-out infinite;
     will-change: transform;
   }
 
   @keyframes gradientBreathe {
-    0%, 100% { transform: scale(1)    rotate(0deg);   }
-    50%       { transform: scale(1.12) rotate(4deg);   }
+    0%   { transform: scale(1)    rotate(0deg);  }
+    50%  { transform: scale(1.35) rotate(6deg);  }
+    100% { transform: scale(1)    rotate(0deg);  }
   }
 
   @keyframes blobDriftA {
