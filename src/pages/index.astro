@@ -71,8 +71,8 @@ import PracticePals from '../components/PracticePals.astro';
     ></div>
 
     <!-- Content -->
-    <div class="container-narrow relative flex items-center justify-center text-center" style="min-height: 480px; z-index: 2;">
-      <div class="max-w-2xl py-24">
+    <div class="container-narrow relative flex items-center" style="min-height: 480px; z-index: 2;">
+      <div class="max-w-xl py-24">
         <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: #c4b5fd; letter-spacing: 0.14em;">
           Begin when you're ready
         </p>
@@ -83,12 +83,14 @@ import PracticePals from '../components/PracticePals.astro';
         >
           Music grows one small step at a time.
         </h2>
-        <p class="mt-5 text-base leading-relaxed mx-auto" style="color: rgba(255,255,255,0.82); max-width: 38ch;">
+        <p class="mt-5 text-base leading-relaxed" style="color: rgba(255,255,255,0.82); max-width: 38ch;">
           Book a friendly intro chat to see whether lessons feel like the right fit.
         </p>
-        <a href="/contact" class="btn-primary inline-block mt-8">
-          Book an Intro Chat
-        </a>
+        <div class="flex justify-center mt-8">
+          <a href="/contact" class="btn-primary inline-block">
+            Book an Intro Chat
+          </a>
+        </div>
       </div>
     </div>
   </section>
