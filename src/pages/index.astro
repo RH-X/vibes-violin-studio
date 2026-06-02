@@ -6,7 +6,6 @@ import Highlights from '../components/Highlights.astro';
 import Testimonials from '../components/Testimonials.astro';
 import StudentCentered from '../components/StudentCentered.astro';
 import PracticePals from '../components/PracticePals.astro';
-import LessonRates from '../components/LessonRates.astro';
 import CTABand from '../components/CTABand.astro';
 ---
 
@@ -36,29 +35,65 @@ import CTABand from '../components/CTABand.astro';
     </svg>
   </div>
 
-  <!-- ── Practice Pals → Lesson Rates transition wrapper ── -->
-  <div class="relative">
+  <PracticePals />
 
-    <PracticePals />
+  <!-- ── Video CTA Banner ── -->
+  <section
+    class="relative overflow-hidden"
+    style="min-height: 480px;"
+    aria-labelledby="video-cta-heading"
+  >
+    <!-- Background video — muted, autoplay, loop, playsInline -->
+    <video
+      class="motion-safe:block motion-reduce:hidden absolute inset-0 w-full h-full object-cover"
+      style="z-index: 0;"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/images/rae-mktg-site.png"
+      aria-hidden="true"
+    >
+      <source src="/videos/violin-cta-loop.mp4" type="video/mp4" />
+    </video>
 
-    <!-- Single understated lavender squiggle — sits in the gap between sections -->
-    <div class="relative hidden sm:block" style="height: 0; overflow: visible;" aria-hidden="true">
-      <svg
-        class="pointer-events-none absolute"
-        style="width: 72px; height: 44px; top: -28px; left: 50%; transform: translateX(-50%); opacity: 0.42; z-index: 1;"
-        viewBox="0 0 72 44"
-        fill="none"
-        stroke="#6d28d9"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        focusable="false"
-      >
-        <path d="M4 22 C14 6, 26 38, 36 22 C46 6, 58 38, 68 22" />
-      </svg>
+    <!-- Poster shown for reduced-motion users (video hidden via motion-reduce:hidden above) -->
+    <div
+      class="motion-safe:hidden motion-reduce:block absolute inset-0 bg-cover bg-center"
+      style="background-image: url('/images/rae-mktg-site.png'); z-index: 0;"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Dark gradient overlay for text legibility -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(135deg, rgba(30,10,50,0.72) 0%, rgba(60,20,90,0.58) 100%); z-index: 1;"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Content -->
+    <div class="container-narrow relative flex items-center" style="min-height: 480px; z-index: 2;">
+      <div class="max-w-xl py-20">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: #c4b5fd; letter-spacing: 0.14em;">
+          Begin when you're ready
+        </p>
+        <h2
+          id="video-cta-heading"
+          class="font-heading font-bold text-white"
+          style="font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.0; letter-spacing: -0.04em;"
+        >
+          Music grows one small step at a time.
+        </h2>
+        <p class="mt-5 text-base leading-relaxed" style="color: rgba(255,255,255,0.82);">
+          Book a friendly intro chat to see whether lessons feel like the right fit.
+        </p>
+        <a href="/contact" class="btn-primary inline-block mt-8">
+          Book an Intro Chat
+        </a>
+      </div>
     </div>
+  </section>
 
-    <LessonRates />
-  </div>
   <CTABand />
 </Layout>
 

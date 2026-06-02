@@ -55,5 +55,71 @@ import CTABand from '../components/CTABand.astro';
     </div>
   </section>
 
+  <!-- ── Pricing Grid ── -->
+  <section
+    id="rates"
+    class="bg-white section-pad"
+    aria-labelledby="rates-heading"
+  >
+    <div class="container-narrow max-w-2xl">
+
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Rates &amp; Lesson Options</p>
+      <h2
+        id="rates-heading"
+        class="font-heading font-bold text-ink"
+        style="font-size: clamp(2rem, 4vw, 3.25rem); line-height: 0.96; letter-spacing: -0.04em;"
+      >
+        Simple, transparent pricing.
+      </h2>
+      <p class="mt-4 text-base text-[#3A3140] leading-relaxed">
+        Choose the lesson length that best fits your age, goals, attention span, and stage of learning.
+      </p>
+
+      <ul class="mt-10 border-t border-lavender-200" role="list">
+
+        <li class="border-b border-lavender-200 py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">20-minute trial / intro lesson</p>
+            <p class="text-sm text-[#3A3140] mt-0.5">A chance to meet, connect, and explore your goals.</p>
+            <p class="text-sm text-[#3A3140] font-light italic mt-0.5">*Complementary if you decide to book lessons.</p>
+          </div>
+          <p class="text-base font-medium text-purplePrimary sm:text-right shrink-0">$35.00</p>
+        </li>
+
+        <li class="border-b border-lavender-200 py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">30-minute student instruction</p>
+            <p class="text-sm text-[#3A3140] mt-0.5">Recommended for ages 6+.</p>
+          </div>
+          <p class="text-base font-medium text-purplePrimary sm:text-right shrink-0">$50.00</p>
+        </li>
+
+        <li class="border-b border-lavender-200 py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">45-minute student instruction</p>
+            <p class="text-sm text-[#3A3140] mt-0.5">More time for deeper learning and growth.</p>
+          </div>
+          <p class="text-base font-medium text-purplePrimary sm:text-right shrink-0">$75.00</p>
+        </li>
+
+        <li class="border-b border-lavender-200 py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">60-minute student instruction</p>
+            <p class="text-sm text-[#3A3140] mt-0.5">Ideal for advanced students or intensive focus.</p>
+          </div>
+          <p class="text-base font-medium text-purplePrimary sm:text-right shrink-0">$100.00</p>
+        </li>
+
+      </ul>
+
+      <ul class="mt-8 space-y-1.5" role="list" aria-label="Lesson policy notes">
+        <li class="text-sm text-[#3A3140] font-light"><span aria-hidden="true">· </span>All lessons are private, one-on-one, and offered weekly.</li>
+        <li class="text-sm text-[#3A3140] font-light"><span aria-hidden="true">· </span>Payment is due monthly. Scholarships considered.</li>
+        <li class="text-sm text-[#3A3140] font-light"><span aria-hidden="true">· </span>Group rates available on request.</li>
+      </ul>
+
+    </div>
+  </section>
+
   <CTABand />
 </Layout>
