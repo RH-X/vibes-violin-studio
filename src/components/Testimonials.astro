@@ -44,7 +44,8 @@
 
       <!-- White quote blob — slightly left-biased, more organic shape -->
       <div
-        class="relative"
+        id="t-card"
+        class="relative t-reveal"
         style="
           background: rgba(255,255,255,0.82);
           backdrop-filter: blur(4px);
@@ -58,7 +59,8 @@
 
         <!-- Oversized decorative quote mark — main visual anchor, upper-left -->
         <span
-          class="pointer-events-none absolute select-none"
+          id="t-quote-mark"
+          class="pointer-events-none absolute select-none t-reveal"
           style="
             top: -1.5rem;
             left: 1rem;
@@ -81,7 +83,7 @@
         >
 
           <!-- Stars -->
-          <div class="flex items-center justify-center gap-1.5 mb-6" aria-label="5 out of 5 stars">
+          <div id="t-stars" class="flex items-center justify-center gap-1.5 mb-6 t-reveal" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map(() => (
               <svg class="text-yellow-400" width="30" height="30" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
@@ -90,7 +92,7 @@
           </div>
 
           <!-- Pull quote — stronger editorial scale -->
-          <blockquote style="font-family: 'IBM Plex Sans', Arial, sans-serif; text-align: center;">
+          <blockquote id="t-quote" class="t-reveal" style="font-family: 'IBM Plex Sans', Arial, sans-serif; text-align: center;">
             <p
               class="text-ink/85 mx-auto"
               style="font-size: clamp(1.2rem, 1.9vw, 1.7rem); line-height: 1.5; font-weight: 400; max-width: 64ch; font-style: italic;"
@@ -100,7 +102,7 @@
           </blockquote>
 
           <!-- Reviewer + Google link — name centered, link right-aligned below -->
-          <div class="mt-8 flex flex-col gap-3">
+          <div id="t-author" class="mt-8 flex flex-col gap-3 t-reveal">
             <cite
               class="not-italic font-semibold text-ink/70 text-center"
               style="font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 1rem; letter-spacing: 0.01em;"
@@ -138,3 +140,61 @@
 
   </div>
 </section>
+
+<style>
+  .t-reveal {
+    opacity: 0;
+    transform: translateY(36px) scale(0.96);
+    transition:
+      opacity 600ms cubic-bezier(.16,1,.3,1),
+      transform 600ms cubic-bezier(.16,1,.3,1);
+  }
+  .t-reveal.t-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* quote mark scales in from slightly smaller */
+  #t-quote-mark.t-reveal {
+    transform: translateY(16px) scale(0.88);
+  }
+  #t-quote-mark.t-visible {
+    transform: translateY(0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  const card = document.getElementById('t-card');
+  if (card && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const layers = [
+      { el: document.getElementById('t-quote-mark'), delay: 0   },
+      { el: document.getElementById('t-stars'),      delay: 120 },
+      { el: document.getElementById('t-quote'),      delay: 240 },
+      { el: document.getElementById('t-author'),     delay: 400 },
+    ];
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Reveal card first
+          card.classList.add('t-visible');
+          // Then stagger the inner layers
+          layers.forEach(({ el, delay }) => {
+            if (el) setTimeout(() => el.classList.add('t-visible'), delay);
+          });
+          observer.unobserve(card);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(card);
+  }
+</script>
