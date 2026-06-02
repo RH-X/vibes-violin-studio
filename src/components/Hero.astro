@@ -2,8 +2,8 @@
 ---
 
 <section
-  class="relative w-full overflow-hidden isolate"
-  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); min-height: clamp(620px, calc(100vh - 120px), 720px);"
+  class="hero-breathe relative w-full overflow-hidden isolate"
+  style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%); background-size: 200% 200%; min-height: clamp(620px, calc(100vh - 120px), 720px);"
   aria-labelledby="hero-heading"
 >
 
@@ -133,6 +133,15 @@
 </section>
 
 <style>
+  @keyframes gradientBreathe {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+  }
+
+  .hero-breathe {
+    animation: gradientBreathe 20s ease-in-out infinite;
+  }
+
   @keyframes blobDriftA {
     from { transform: translate(0, 0) scale(1); }
     to   { transform: translate(100px, 70px) scale(1.12); }
@@ -143,7 +152,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-blob {
+    .hero-blob,
+    .hero-breathe {
       animation: none !important;
     }
   }
