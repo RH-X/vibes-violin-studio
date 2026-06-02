@@ -18,7 +18,7 @@
       background: radial-gradient(circle, #34d399 0%, #6ee7b7 45%, transparent 100%);
       opacity: 0.42;
       filter: blur(40px);
-      z-index: 0;
+      z-index: 1;
       will-change: transform;
       animation: blobDriftA 24s ease-in-out infinite alternate;
     "
@@ -34,7 +34,7 @@
       background: radial-gradient(circle, #8b5cf6 0%, #c4b5fd 50%, transparent 100%);
       opacity: 0.38;
       filter: blur(44px);
-      z-index: 0;
+      z-index: 1;
       will-change: transform;
       animation: blobDriftB 28s ease-in-out infinite alternate;
     "
@@ -139,7 +139,7 @@
     position: absolute;
     inset: -30%;
     background: linear-gradient(135deg, #b4e7d0 0%, #a5f3fc 30%, #ddd6fe 70%, #c4b5fd 100%);
-    z-index: -1;
+    z-index: 0;
     animation: gradientBreathe 12s ease-in-out infinite;
     will-change: transform;
   }
