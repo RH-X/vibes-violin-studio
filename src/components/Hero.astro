@@ -2,10 +2,14 @@
 ---
 
 <section
-  class="hero-breathe relative w-full overflow-hidden isolate"
+  class="relative w-full overflow-hidden isolate"
   style="min-height: clamp(620px, calc(100vh - 120px), 720px);"
   aria-labelledby="hero-heading"
 >
+
+  <!-- ── Animated gradient layers ── -->
+  <div class="hero-grad-a" aria-hidden="true"></div>
+  <div class="hero-grad-b" aria-hidden="true"></div>
 
   <!-- ── Animated background blob layer (z-0) ── -->
 
@@ -133,23 +137,32 @@
 </section>
 
 <style>
-  /* Gradient lives on a pseudo-element so transform animates it reliably */
-  .hero-breathe::before {
-    content: '';
+  /* Two full-bleed gradient layers that crossfade — no transforms, no pseudo-elements */
+  .hero-grad-a,
+  .hero-grad-b {
     position: absolute;
-    inset: -15%;
-    background: linear-gradient(125deg, #34d399 0%, #b4e7d0 25%, #a5f3fc 50%, #ddd6fe 75%, #8b5cf6 100%);
+    inset: 0;
     z-index: 0;
-    transform-origin: 60% 40%;
-    animation: gradientBreathe 10s ease-in-out infinite;
-    animation-delay: -3s;
-    will-change: transform;
   }
 
-  @keyframes gradientBreathe {
-    0%   { transform: scale(1)    rotate(0deg);  }
-    50%  { transform: scale(1.18) rotate(5deg);  }
-    100% { transform: scale(1)    rotate(0deg);  }
+  .hero-grad-a {
+    background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);
+    animation: heroFadeA 8s ease-in-out infinite alternate;
+  }
+
+  .hero-grad-b {
+    background: linear-gradient(135deg, #a5f3fc 0%, #8b5cf6 100%);
+    animation: heroFadeB 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroFadeA {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes heroFadeB {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
   }
 
   @keyframes blobDriftA {
@@ -163,7 +176,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .hero-blob,
-    .hero-breathe::before {
+    .hero-grad-a,
+    .hero-grad-b {
       animation: none !important;
     }
   }
