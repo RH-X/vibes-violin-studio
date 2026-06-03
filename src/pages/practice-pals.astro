@@ -208,27 +208,31 @@ import CTABand from '../components/CTABand.astro';
     </div>
   </section>
 
-  <!-- ── Curious About Practice Pals? ── -->
+  <!-- ── Help Shape Practice Pals ── -->
   <section
     class="section-pad"
     style="background: linear-gradient(135deg, #6ee7b7 0%, #c4b5fd 100%);"
-    aria-labelledby="interest-heading"
+    aria-labelledby="feedback-heading"
   >
     <div class="container-narrow">
       <div class="max-w-xl">
-        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Stay in the Loop</p>
-        <h2 id="interest-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
-          Curious About Practice Pals?
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Share Your Perspective</p>
+        <h2 id="feedback-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+          Interested in Helping Shape Practice Pals?
         </h2>
         <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          Practice Pals is still in the research and development phase, but I'd love to hear from teachers, parents, and students who are curious about the project.
+          Practice Pals is still in the research and development phase. If you're a teacher, parent, adult learner, student, or someone who enjoys thinking about how people learn, I'd love to hear your thoughts.
         </p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <a href="/contact" class="btn-primary inline-block" aria-label="Ask about Practice Pals or share your interest">
-            Ask About Practice Pals
-          </a>
-          <a href="/contact" class="btn-secondary inline-block" aria-label="Join the Practice Pals interest list">
-            Join the Interest List
+        <p class="mt-3 text-base text-ink/70 font-light leading-relaxed">
+          Questions, ideas, frustrations, and early feedback are all welcome.
+        </p>
+        <div class="mt-8">
+          <a
+            href="/contact"
+            class="btn-primary inline-block"
+            aria-label="Share your thoughts and help shape the Practice Pals project"
+          >
+            Help Shape Practice Pals
           </a>
         </div>
       </div>
@@ -252,7 +256,7 @@ import CTABand from '../components/CTABand.astro';
     document.querySelector('section[aria-labelledby="different-heading"]'),
     document.querySelector('section[aria-labelledby="features-heading"] .container-narrow'),
     document.querySelector('section[aria-labelledby="founder-heading"] .container-narrow'),
-    document.querySelector('section[aria-labelledby="interest-heading"] .container-narrow'),
+    document.querySelector('section[aria-labelledby="feedback-heading"] .container-narrow'),
   ];
 
   sections.forEach((el, i) => {
