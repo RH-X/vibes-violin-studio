@@ -177,6 +177,17 @@ import CTABand from '../../components/CTABand.astro';
         if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => {
+      // If already in the viewport on page load, reveal immediately
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  } else {
+    // Reduced motion: ensure all reveal elements are visible
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
 </script>
