@@ -7,6 +7,119 @@ import CTABand from '../components/CTABand.astro';
   title="FAQ — Violin Lessons in Denver | Vibrations Violin Studio"
   description="Answers to common questions from parents, adult beginners, and prospective students considering violin lessons in Denver or online."
 >
+
+  <!-- FAQPage structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How Do I Get Started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The first step is a friendly 15-minute introductory conversation. This provides an opportunity to discuss goals, answer questions, and determine whether the studio feels like a good fit for you or your child. There is no pressure or obligation — simply a chance to explore whether violin lessons make sense for your situation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I Need My Own Violin Before Starting Lessons?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. Many families and adult beginners have questions about instrument sizing, rentals, and setup before beginning. Guidance is available on finding an appropriate instrument and avoiding common beginner purchasing mistakes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How Often Should Violin Lessons Be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most students take lessons once per week. Weekly lessons provide enough consistency for skill development while allowing time for practice and reflection between sessions. Lesson length depends on age, experience level, and individual goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How Much Practice Is Expected?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The goal is consistency, not perfection. A few focused practice sessions each week are often more effective than occasional marathon practice sessions. Practice expectations are individualized based on age, experience, schedule, and goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How Long Does It Take To Learn Violin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Violin is a long-term skill, but meaningful progress can happen much sooner than many people expect. Most beginners can begin playing recognizable songs and developing foundational skills within the first months of study. Learning violin is best viewed as an ongoing journey rather than a race toward a finish line."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Makes a Good Teacher-Student Fit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A strong teacher-student relationship is built on trust, communication, shared expectations, and a supportive learning environment. The best fit is not necessarily the strictest teacher or the most advanced teacher. It is the teacher whose approach helps a student stay engaged, grow steadily, and feel supported throughout the learning process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Age Should a Child Start Violin Lessons?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every child develops differently, but many students are ready to begin violin lessons around ages 4–6. Readiness often matters more than age. A child does not need perfect focus or prior musical experience to start learning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What If My Child Loses Interest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is one of the most common concerns parents have. Motivation naturally rises and falls while learning any complex skill. Part of a teacher's role is helping students develop confidence, curiosity, and resilience while keeping lessons engaging and appropriately challenging. The goal is building a healthy long-term relationship with learning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Am I Too Old to Learn Violin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. Many adult students begin violin later in life. Some are returning to music after years away, while others are starting for the very first time. Learning as an adult comes with unique strengths, including patience, self-awareness, and clear personal goals. Progress may look different than it does for a child, but meaningful musical growth is absolutely possible at any age."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do You Teach Adult Beginners?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Adult beginners are warmly welcome. Many adults worry they are behind, not naturally talented, or starting too late. These concerns are incredibly common. Lessons are adapted to each student's pace, interests, and goals while building strong musical fundamentals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Violin Lessons Be Taken Online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Online violin lessons are available for students who are not located in Denver or who prefer remote learning. Thoughtful online instruction can still provide personalized feedback, technical guidance, accountability, and meaningful musical growth. Many students are surprised by how effective online lessons can be when the learning environment is supportive and structured."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are Lessons Based on the Suzuki Method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lessons are Suzuki-informed but not rigidly Suzuki-only. Suzuki philosophy offers many valuable ideas about listening, encouragement, repetition, and long-term growth. At the same time, every learner is different. Teaching is adapted to each student's needs, learning style, interests, and goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Styles of Music Can Students Learn?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Students often begin with foundational technique and musicianship skills, but lessons can include a variety of musical interests — classical music, folk music, fiddle styles, popular music, and other genres. The focus is on building strong fundamentals while supporting student agency and curiosity."
+        }
+      }
+    ]
+  })} />
+
   <!-- Page header -->
   <section
     class="section-pad"
@@ -24,7 +137,7 @@ import CTABand from '../components/CTABand.astro';
     </div>
   </section>
 
-  <!-- About intro -->
+  <!-- Intro blurb -->
   <section class="bg-white section-pad" style="padding-bottom: 0;">
     <div class="container-narrow max-w-3xl">
       <p class="text-base text-ink/70 leading-relaxed font-light">
@@ -36,173 +149,273 @@ import CTABand from '../components/CTABand.astro';
       <p class="mt-4 text-base text-ink/70 leading-relaxed font-light">
         Below are answers to some of the most common questions families and adult beginners ask when considering violin lessons.
       </p>
+
+      <!-- Quick Navigation -->
+      <nav class="mt-10 border border-lavender-200 rounded-card p-6 bg-lavender-50" aria-label="FAQ sections">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4" style="letter-spacing: 0.14em; color: #6d3fc1;">Jump to a section</p>
+        <ul class="flex flex-wrap gap-2" role="list">
+          <li>
+            <a href="#getting-started" class="inline-block px-4 py-2 rounded-lg text-sm font-medium text-purplePrimary bg-white border border-lavender-300 hover:bg-lavender-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Getting Started
+            </a>
+          </li>
+          <li>
+            <a href="#lessons-and-learning" class="inline-block px-4 py-2 rounded-lg text-sm font-medium text-purplePrimary bg-white border border-lavender-300 hover:bg-lavender-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Lessons &amp; Learning
+            </a>
+          </li>
+          <li>
+            <a href="#parents-and-children" class="inline-block px-4 py-2 rounded-lg text-sm font-medium text-purplePrimary bg-white border border-lavender-300 hover:bg-lavender-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Parents &amp; Children
+            </a>
+          </li>
+          <li>
+            <a href="#adult-beginners" class="inline-block px-4 py-2 rounded-lg text-sm font-medium text-purplePrimary bg-white border border-lavender-300 hover:bg-lavender-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Adult Beginners
+            </a>
+          </li>
+          <li>
+            <a href="#online-lessons" class="inline-block px-4 py-2 rounded-lg text-sm font-medium text-purplePrimary bg-white border border-lavender-300 hover:bg-lavender-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Online Lessons
+            </a>
+          </li>
+          <li>
+            <a href="#teaching-philosophy" class="inline-block px-4 py-2 rounded-lg text-sm font-medium text-purplePrimary bg-white border border-lavender-300 hover:bg-lavender-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Teaching Philosophy
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </section>
 
   <!-- FAQ content -->
   <section class="bg-white section-pad">
     <div class="container-narrow max-w-3xl">
-      <dl class="space-y-10">
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">Am I Too Old to Learn Violin?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Not at all.</p>
-            <p>Many adult students begin violin later in life. Some are returning to music after years away, while others are starting for the very first time.</p>
-            <p>Learning as an adult comes with unique strengths, including patience, self-awareness, and clear personal goals.</p>
-            <p>Progress may look different than it does for a child, but meaningful musical growth is absolutely possible at any age.</p>
-            <div class="mt-5">
-              <a href="/contact" class="btn-secondary text-sm" aria-label="Ask a question about adult beginner violin lessons in Denver">
-                Ask a Question About Lessons
-              </a>
-            </div>
-          </dd>
-        </div>
+      <!-- ── Getting Started ── -->
+      <div id="getting-started" class="scroll-mt-8">
+        <h2 class="font-heading font-bold text-ink border-b border-lavender-200 pb-3" style="font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em;">Getting Started</h2>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">What Age Should a Child Start Violin Lessons?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Every child develops differently, but many students are ready to begin violin lessons around ages 4–6.</p>
-            <p>Readiness often matters more than age. A child does not need perfect focus or prior musical experience to start learning.</p>
-            <p>During an introductory conversation, we can discuss your child's personality, attention span, and goals to determine whether it feels like a good fit.</p>
-            <div class="mt-5">
-              <a href="/contact" class="btn-secondary text-sm" aria-label="Book an intro conversation about violin lessons for children in Denver">
-                Book an Intro Conversation
-              </a>
-            </div>
-          </dd>
-        </div>
+        <dl class="mt-8 space-y-10">
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">Do I Need My Own Violin Before Starting Lessons?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Not necessarily.</p>
-            <p>Many families and adult beginners have questions about instrument sizing, rentals, and setup before beginning.</p>
-            <p>I am happy to provide guidance on finding an appropriate instrument and avoiding common beginner purchasing mistakes.</p>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">How Do I Get Started?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>The first step is a friendly 15-minute introductory conversation.</p>
+              <p>This provides an opportunity to discuss goals, answer questions, and determine whether the studio feels like a good fit for you or your child.</p>
+              <p>There is no pressure or obligation.</p>
+              <p>Simply a chance to explore whether violin lessons make sense for your situation.</p>
+              <div class="mt-5">
+                <a href="/contact" class="btn-primary text-sm" aria-label="Book a 15-minute intro call about violin lessons in Denver or online">
+                  Book a 15-Minute Intro Call
+                </a>
+              </div>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">How Often Should Violin Lessons Be?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Most students take lessons once per week.</p>
-            <p>Weekly lessons provide enough consistency for skill development while allowing time for practice and reflection between sessions.</p>
-            <p>Lesson length depends on age, experience level, and individual goals.</p>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">Do I Need My Own Violin Before Starting Lessons?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Not necessarily.</p>
+              <p>Many families and adult beginners have questions about instrument sizing, rentals, and setup before beginning.</p>
+              <p>I am happy to provide guidance on finding an appropriate instrument and avoiding common beginner purchasing mistakes.</p>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">How Much Practice Is Expected?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>The goal is consistency, not perfection.</p>
-            <p>A few focused practice sessions each week are often more effective than occasional marathon practice sessions.</p>
-            <p>Practice expectations are individualized based on age, experience, schedule, and goals.</p>
-            <p>Students are encouraged to build sustainable habits rather than pursue unrealistic perfection.</p>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">How Often Should Violin Lessons Be?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Most students take lessons once per week.</p>
+              <p>Weekly lessons provide enough consistency for skill development while allowing time for practice and reflection between sessions.</p>
+              <p>Lesson length depends on age, experience level, and individual goals.</p>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">What If My Child Loses Interest?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>This is one of the most common concerns parents have.</p>
-            <p>Motivation naturally rises and falls while learning any complex skill.</p>
-            <p>Part of a teacher's role is helping students develop confidence, curiosity, and resilience while keeping lessons engaging and appropriately challenging.</p>
-            <p>The goal is not perfection. The goal is building a healthy long-term relationship with learning.</p>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">How Much Do Violin Lessons Cost?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Lesson pricing depends on session length. Options include 30-minute, 45-minute, and 60-minute lessons, with rates that reflect the time and depth of instruction.</p>
+              <p>A short introductory lesson is also available for students who would like to get a feel for the studio before committing.</p>
+              <p class="mt-4 text-sm text-ink/60 font-light">
+                Full pricing details are available on the <a href="/about#rates" class="text-purplePrimary hover:text-purple-800 underline underline-offset-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary rounded">rates &amp; lesson options</a> section of the About page.
+              </p>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">Do You Teach Adult Beginners?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Yes.</p>
-            <p>Adult beginners are warmly welcome.</p>
-            <p>Many adults worry they are behind, not naturally talented, or starting too late. These concerns are incredibly common.</p>
-            <p>Lessons are adapted to each student's pace, interests, and goals while building strong musical fundamentals.</p>
-            <div class="mt-5">
-              <a href="/contact" class="btn-secondary text-sm" aria-label="Start with a friendly conversation about adult beginner violin lessons">
-                Start With a Friendly Conversation
-              </a>
-            </div>
-          </dd>
-        </div>
+        </dl>
+      </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">What Styles of Music Can Students Learn?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Students often begin with foundational technique and musicianship skills, but lessons can include a variety of musical interests.</p>
-            <p>Depending on a student's goals, lessons may incorporate:</p>
-            <ul class="mt-2 ml-4 space-y-1 list-none">
-              <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Classical music</li>
-              <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Folk music</li>
-              <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Fiddle styles</li>
-              <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Popular music</li>
-              <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Other genres of interest</li>
-            </ul>
-            <p>The focus is on building strong fundamentals while supporting student agency and curiosity.</p>
-          </dd>
-        </div>
+      <!-- ── Lessons & Learning ── -->
+      <div id="lessons-and-learning" class="mt-16 scroll-mt-8">
+        <h2 class="font-heading font-bold text-ink border-b border-lavender-200 pb-3" style="font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em;">Lessons &amp; Learning</h2>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">Are Lessons Based on the Suzuki Method?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Lessons are Suzuki-informed but not rigidly Suzuki-only.</p>
-            <p>Suzuki philosophy offers many valuable ideas about listening, encouragement, repetition, and long-term growth.</p>
-            <p>At the same time, every learner is different. Teaching is adapted to each student's needs, learning style, interests, and goals.</p>
-          </dd>
-        </div>
+        <dl class="mt-8 space-y-10">
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">Can Violin Lessons Be Taken Online?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Yes.</p>
-            <p>Online violin lessons are available for students who are not located in Denver or who prefer remote learning.</p>
-            <p>Thoughtful online instruction can still provide personalized feedback, technical guidance, accountability, and meaningful musical growth.</p>
-            <p>Many students are surprised by how effective online lessons can be when the learning environment is supportive and structured.</p>
-            <div class="mt-5">
-              <a href="/contact" class="btn-secondary text-sm" aria-label="Ask about online violin lessons with Vibrations Violin Studio">
-                Ask About Online Violin Lessons
-              </a>
-            </div>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">How Much Practice Is Expected?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>The goal is consistency, not perfection.</p>
+              <p>A few focused practice sessions each week are often more effective than occasional marathon practice sessions.</p>
+              <p>Practice expectations are individualized based on age, experience, schedule, and goals.</p>
+              <p>Students are encouraged to build sustainable habits rather than pursue unrealistic perfection.</p>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">How Long Does It Take To Learn Violin?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>Violin is a long-term skill, but meaningful progress can happen much sooner than many people expect.</p>
-            <p>Most beginners can begin playing recognizable songs and developing foundational skills within the first months of study.</p>
-            <p>Learning violin is best viewed as an ongoing journey rather than a race toward a finish line.</p>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">How Long Does It Take To Learn Violin?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Violin is a long-term skill, but meaningful progress can happen much sooner than many people expect.</p>
+              <p>Most beginners can begin playing recognizable songs and developing foundational skills within the first months of study.</p>
+              <p>Learning violin is best viewed as an ongoing journey rather than a race toward a finish line.</p>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">What Makes a Good Teacher-Student Fit?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>A strong teacher-student relationship is built on trust, communication, shared expectations, and a supportive learning environment.</p>
-            <p>The best fit is not necessarily the strictest teacher or the most advanced teacher.</p>
-            <p>It is the teacher whose approach helps a student stay engaged, grow steadily, and feel supported throughout the learning process.</p>
-            <p class="mt-4 text-sm text-ink/60 font-light">
-              Curious about Rae's approach? <a href="/about" class="text-purplePrimary hover:text-purple-800 underline underline-offset-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary rounded">Learn more about the studio.</a>
-            </p>
-          </dd>
-        </div>
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">What Makes a Good Teacher-Student Fit?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>A strong teacher-student relationship is built on trust, communication, shared expectations, and a supportive learning environment.</p>
+              <p>The best fit is not necessarily the strictest teacher or the most advanced teacher.</p>
+              <p>It is the teacher whose approach helps a student stay engaged, grow steadily, and feel supported throughout the learning process.</p>
+              <p class="mt-4 text-sm text-ink/60 font-light">
+                Curious about Rae's approach? <a href="/about" class="text-purplePrimary hover:text-purple-800 underline underline-offset-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary rounded">Learn more about the studio.</a>
+              </p>
+            </dd>
+          </div>
 
-        <div>
-          <dt class="font-heading font-bold text-ink" style="font-size: clamp(1.15rem, 2.2vw, 1.4rem); letter-spacing: -0.02em;">How Do I Get Started?</dt>
-          <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
-            <p>The first step is a friendly 15-minute introductory conversation.</p>
-            <p>This provides an opportunity to discuss goals, answer questions, and determine whether the studio feels like a good fit for you or your child.</p>
-            <p>There is no pressure or obligation.</p>
-            <p>Simply a chance to explore whether violin lessons make sense for your situation.</p>
-            <div class="mt-5">
-              <a href="/contact" class="btn-primary text-sm" aria-label="Book a 15-minute intro call about violin lessons in Denver or online">
-                Book a 15-Minute Intro Call
-              </a>
-            </div>
-          </dd>
-        </div>
+        </dl>
+      </div>
 
-      </dl>
+      <!-- ── Parents & Children ── -->
+      <div id="parents-and-children" class="mt-16 scroll-mt-8">
+        <h2 class="font-heading font-bold text-ink border-b border-lavender-200 pb-3" style="font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em;">Parents &amp; Children</h2>
+
+        <dl class="mt-8 space-y-10">
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">What Age Should a Child Start Violin Lessons?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Every child develops differently, but many students are ready to begin violin lessons around ages 4–6.</p>
+              <p>Readiness often matters more than age. A child does not need perfect focus or prior musical experience to start learning.</p>
+              <p>During an introductory conversation, we can discuss your child's personality, attention span, and goals to determine whether it feels like a good fit.</p>
+              <div class="mt-5">
+                <a href="/contact" class="btn-secondary text-sm" aria-label="Book an intro conversation about violin lessons for children in Denver">
+                  Book an Intro Conversation
+                </a>
+              </div>
+            </dd>
+          </div>
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">What If My Child Loses Interest?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>This is one of the most common concerns parents have.</p>
+              <p>Motivation naturally rises and falls while learning any complex skill.</p>
+              <p>Part of a teacher's role is helping students develop confidence, curiosity, and resilience while keeping lessons engaging and appropriately challenging.</p>
+              <p>The goal is not perfection. The goal is building a healthy long-term relationship with learning.</p>
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+
+      <!-- ── Adult Beginners ── -->
+      <div id="adult-beginners" class="mt-16 scroll-mt-8">
+        <h2 class="font-heading font-bold text-ink border-b border-lavender-200 pb-3" style="font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em;">Adult Beginners</h2>
+
+        <dl class="mt-8 space-y-10">
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">Am I Too Old to Learn Violin?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Not at all.</p>
+              <p>Many adult students begin violin later in life. Some are returning to music after years away, while others are starting for the very first time.</p>
+              <p>Learning as an adult comes with unique strengths, including patience, self-awareness, and clear personal goals.</p>
+              <p>Progress may look different than it does for a child, but meaningful musical growth is absolutely possible at any age.</p>
+              <div class="mt-5">
+                <a href="/contact" class="btn-secondary text-sm" aria-label="Ask a question about adult beginner violin lessons in Denver">
+                  Ask a Question About Lessons
+                </a>
+              </div>
+            </dd>
+          </div>
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">Do You Teach Adult Beginners?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Yes.</p>
+              <p>Adult beginners are warmly welcome.</p>
+              <p>Many adults worry they are behind, not naturally talented, or starting too late. These concerns are incredibly common.</p>
+              <p>Lessons are adapted to each student's pace, interests, and goals while building strong musical fundamentals.</p>
+              <div class="mt-5">
+                <a href="/contact" class="btn-secondary text-sm" aria-label="Start with a friendly conversation about adult beginner violin lessons">
+                  Start With a Friendly Conversation
+                </a>
+              </div>
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+
+      <!-- ── Online Lessons ── -->
+      <div id="online-lessons" class="mt-16 scroll-mt-8">
+        <h2 class="font-heading font-bold text-ink border-b border-lavender-200 pb-3" style="font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em;">Online Lessons</h2>
+
+        <dl class="mt-8 space-y-10">
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">Can Violin Lessons Be Taken Online?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Yes.</p>
+              <p>Online violin lessons are available for students who are not located in Denver or who prefer remote learning.</p>
+              <p>Thoughtful online instruction can still provide personalized feedback, technical guidance, accountability, and meaningful musical growth.</p>
+              <p>Many students are surprised by how effective online lessons can be when the learning environment is supportive and structured.</p>
+              <div class="mt-5">
+                <a href="/contact" class="btn-secondary text-sm" aria-label="Ask about online violin lessons with Vibrations Violin Studio">
+                  Ask About Online Violin Lessons
+                </a>
+              </div>
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+
+      <!-- ── Teaching Philosophy ── -->
+      <div id="teaching-philosophy" class="mt-16 scroll-mt-8">
+        <h2 class="font-heading font-bold text-ink border-b border-lavender-200 pb-3" style="font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em;">Teaching Philosophy</h2>
+
+        <dl class="mt-8 space-y-10">
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">Are Lessons Based on the Suzuki Method?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Lessons are Suzuki-informed but not rigidly Suzuki-only.</p>
+              <p>Suzuki philosophy offers many valuable ideas about listening, encouragement, repetition, and long-term growth.</p>
+              <p>At the same time, every learner is different. Teaching is adapted to each student's needs, learning style, interests, and goals.</p>
+            </dd>
+          </div>
+
+          <div>
+            <dt><h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: -0.015em;">What Styles of Music Can Students Learn?</h3></dt>
+            <dd class="mt-3 space-y-3 text-base text-ink/70 leading-relaxed font-light">
+              <p>Students often begin with foundational technique and musicianship skills, but lessons can include a variety of musical interests.</p>
+              <p>Depending on a student's goals, lessons may incorporate:</p>
+              <ul class="mt-2 ml-4 space-y-1 list-none">
+                <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Classical music</li>
+                <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Folk music</li>
+                <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Fiddle styles</li>
+                <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Popular music</li>
+                <li class="before:content-['·'] before:mr-2 before:text-purplePrimary">Other genres of interest</li>
+              </ul>
+              <p>The focus is on building strong fundamentals while supporting student agency and curiosity.</p>
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+
     </div>
   </section>
 
