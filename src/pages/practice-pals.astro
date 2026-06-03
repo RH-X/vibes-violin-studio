@@ -29,60 +29,80 @@ import CTABand from '../components/CTABand.astro';
   <!-- ── Why I'm Building Practice Pals ── -->
   <section class="bg-white section-pad" aria-labelledby="why-heading">
     <div class="container-narrow">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
-
-        <!-- Left: copy -->
-        <div class="max-w-2xl">
-          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">The Idea</p>
-          <h2 id="why-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
-            Why I'm Building Practice Pals
-          </h2>
-          <div class="mt-6 space-y-4 text-base text-ink/70 font-light leading-relaxed">
-            <p>
-              Over the years, I've noticed that many beginner violin students don't struggle because they lack potential.
-            </p>
-            <p>
-              They struggle because lessons happen once a week, while learning happens between lessons.
-            </p>
-            <p>
-              Practice Pals is an experiment in helping bridge that gap.
-            </p>
-            <p>
-              The goal isn't to replace teachers, create pressure, or turn practice into a game.
-            </p>
-            <p>
-              The goal is to make beginning practice feel a little more approachable, a little more personalized, and a little less overwhelming.
-            </p>
-          </div>
+      <div class="max-w-2xl">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">The Idea</p>
+        <h2 id="why-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+          Why I'm Building Practice Pals
+        </h2>
+        <div class="mt-6 space-y-4 text-base text-ink/70 font-light leading-relaxed">
+          <p>
+            Over the years, I've noticed that many beginner violin students don't struggle because they lack potential.
+          </p>
+          <p>
+            They struggle because lessons happen once a week, while learning happens between lessons.
+          </p>
+          <p>
+            Practice Pals is an experiment in helping bridge that gap.
+          </p>
+          <p>
+            The goal isn't to replace teachers, create pressure, or turn practice into a game.
+          </p>
+          <p>
+            The goal is to make beginning practice feel a little more approachable, a little more personalized, and a little less overwhelming.
+          </p>
         </div>
-
-        <!-- Right: demo image -->
-        <div class="flex justify-center lg:justify-end lg:pt-2 shrink-0">
-          <div class="relative w-full max-w-xs lg:max-w-[280px]">
-            <!-- Lavender trailing blob behind image -->
-            <div
-              class="pointer-events-none absolute"
-              style="width: 90%; height: 90%; bottom: -5%; right: -8%; background: #c4b5fd; opacity: 0.35; border-radius: 45% 55% 52% 48% / 50% 44% 56% 50%; z-index: 0;"
-              aria-hidden="true"
-            ></div>
-            <img
-              src="/images/practice-pals-demo.png"
-              alt="Practice Pals demo screen for beginner violin practice support, shown on a TV and tablet"
-              class="relative w-full h-auto rounded-xl"
-              style="z-index: 1;"
-              width="2983"
-              height="2105"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
+  <!-- ── Practice Pals Preview ── -->
+  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="preview-heading">
+    <div class="container-narrow">
+
+      <!-- Label + heading -->
+      <div class="text-center mb-10">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Practice Pals Preview</p>
+        <h2 id="preview-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+          An Early Concept
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed mx-auto" style="max-width: 44ch;">
+          Exploring how beginner violin students might receive more personalized support between lessons.
+        </p>
+      </div>
+
+      <!-- Featured image — full container width, generous breathing room -->
+      <div class="relative mx-auto" style="max-width: 860px;">
+        <!-- Soft lavender blob behind image — depth without noise -->
+        <div
+          class="pointer-events-none absolute"
+          style="
+            width: 75%; height: 75%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: #c4b5fd;
+            opacity: 0.28;
+            border-radius: 48% 52% 44% 56% / 52% 46% 54% 48%;
+            filter: blur(48px);
+            z-index: 0;
+          "
+          aria-hidden="true"
+        ></div>
+        <img
+          src="/images/practice-pals-demo.png"
+          alt="Practice Pals demo screen showing a practice adventure interface and a friendly puppy buddy for beginner violin students"
+          class="relative w-full h-auto rounded-2xl"
+          style="z-index: 1; box-shadow: 0 8px 40px rgba(109, 40, 217, 0.10), 0 2px 12px rgba(0,0,0,0.06);"
+          width="2983"
+          height="2105"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Squiggle divider ── -->
-  <div class="hidden sm:block bg-white" style="padding-top: 0.5rem; padding-bottom: 2rem;" aria-hidden="true">
+  <div class="hidden sm:block bg-white" style="padding-top: 2rem; padding-bottom: 0.5rem;" aria-hidden="true">
     <div class="container-narrow" style="position: relative;">
       <svg
         class="pointer-events-none"
@@ -100,7 +120,7 @@ import CTABand from '../components/CTABand.astro';
   </div>
 
   <!-- ── What Makes It Different ── -->
-  <section class="bg-white section-pad" style="padding-top: 0;" aria-labelledby="different-heading">
+  <section class="bg-white section-pad" aria-labelledby="different-heading">
     <div class="container-narrow">
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">The Approach</p>
       <h2 id="different-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
@@ -253,6 +273,7 @@ import CTABand from '../components/CTABand.astro';
   // Body sections: reveal on scroll
   const sections = [
     document.querySelector('section[aria-labelledby="why-heading"]'),
+    document.querySelector('section[aria-labelledby="preview-heading"] .container-narrow'),
     document.querySelector('section[aria-labelledby="different-heading"]'),
     document.querySelector('section[aria-labelledby="features-heading"] .container-narrow'),
     document.querySelector('section[aria-labelledby="founder-heading"] .container-narrow'),
