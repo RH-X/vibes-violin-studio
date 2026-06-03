@@ -4,10 +4,12 @@ import CTABand from '../components/CTABand.astro';
 ---
 
 <Layout
-  title="Practice Pals — Vibrations Violin Studio | Denver, CO"
-  description="Practice Pals helps violin students stay motivated and engaged between lessons with curated videos, guided practice tools, and encouragement."
+  title="Practice Pals — Violin Practice Support for Beginners | Vibrations Violin Studio"
+  description="Practice Pals is a developing practice support tool for beginner violin students, designed to make at-home practice feel more approachable, personalized, and sustainable."
   noindex={true}
 >
+
+  <!-- ── Hero ── -->
   <section
     class="hero-interior"
     style="background: linear-gradient(135deg, #6ee7b7 0%, #c4b5fd 100%);"
@@ -18,53 +20,254 @@ import CTABand from '../components/CTABand.astro';
       <h1 id="practice-pals-heading" class="font-heading font-bold text-ink" style="font-size: clamp(2.75rem, 6vw, 5rem); line-height: 0.93; letter-spacing: -0.045em;">
         Practice Pals
       </h1>
-      <p class="mt-4 text-lg text-ink/70 leading-relaxed">
-        Make violin practice fun and positive — every single day.
+      <p class="mt-4 text-lg text-ink/70 leading-relaxed max-w-xl">
+        A practice support experiment growing out of real beginner student needs.
       </p>
     </div>
   </section>
 
-  <section class="bg-white section-pad">
+  <!-- ── Why I'm Building Practice Pals ── -->
+  <section class="bg-white section-pad" aria-labelledby="why-heading">
     <div class="container-narrow">
-      <div class="prose prose-lg max-w-none text-ink/70 font-light leading-relaxed space-y-5">
-        <p>
-          Practice Pals is a resource built to help students stay motivated and engaged between lessons. With curated videos, guided practice tools, and built-in encouragement, it turns at-home practice into something students actually look forward to.
-        </p>
-        <p>
-          Designed by Rae to complement the in-lesson experience and support families in making practice a positive, consistent part of the day — without the battles.
-        </p>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
 
-      <div class="mt-12 bg-lavender-50 border border-lavender-200 rounded-card p-8 text-center">
-        <p class="text-ink/50 font-light">Full Practice Pals details coming soon.</p>
-        <p class="text-ink/40 text-sm mt-2">This page is in progress — check back shortly.</p>
+        <!-- Left: copy -->
+        <div class="max-w-2xl">
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">The Idea</p>
+          <h2 id="why-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+            Why I'm Building Practice Pals
+          </h2>
+          <div class="mt-6 space-y-4 text-base text-ink/70 font-light leading-relaxed">
+            <p>
+              Over the years, I've noticed that many beginner violin students don't struggle because they lack potential.
+            </p>
+            <p>
+              They struggle because lessons happen once a week, while learning happens between lessons.
+            </p>
+            <p>
+              Practice Pals is an experiment in helping bridge that gap.
+            </p>
+            <p>
+              The goal isn't to replace teachers, create pressure, or turn practice into a game.
+            </p>
+            <p>
+              The goal is to make beginning practice feel a little more approachable, a little more personalized, and a little less overwhelming.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: demo image -->
+        <div class="flex justify-center lg:justify-end lg:pt-2 shrink-0">
+          <div class="relative w-full max-w-xs lg:max-w-[280px]">
+            <!-- Lavender trailing blob behind image -->
+            <div
+              class="pointer-events-none absolute"
+              style="width: 90%; height: 90%; bottom: -5%; right: -8%; background: #c4b5fd; opacity: 0.35; border-radius: 45% 55% 52% 48% / 50% 44% 56% 50%; z-index: 0;"
+              aria-hidden="true"
+            ></div>
+            <img
+              src="/images/practice-pals-demo.png"
+              alt="Practice Pals demo screen for beginner violin practice support, shown on a TV and tablet"
+              class="relative w-full h-auto rounded-xl"
+              style="z-index: 1;"
+              width="2983"
+              height="2105"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <CTABand />
+  <!-- ── Squiggle divider ── -->
+  <div class="hidden sm:block bg-white" style="padding-top: 0.5rem; padding-bottom: 2rem;" aria-hidden="true">
+    <div class="container-narrow" style="position: relative;">
+      <svg
+        class="pointer-events-none"
+        style="width: 80px; height: 48px; transform: rotate(4deg); opacity: 0.28; margin-left: 52%;"
+        viewBox="0 0 80 48"
+        fill="none"
+        stroke="#6d28d9"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        focusable="false"
+      >
+        <path d="M4 24 C16 6, 28 42, 40 24 C52 6, 64 42, 76 24" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── What Makes It Different ── -->
+  <section class="bg-white section-pad" style="padding-top: 0;" aria-labelledby="different-heading">
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">The Approach</p>
+      <h2 id="different-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+        What Makes It Different
+      </h2>
+      <p class="mt-4 text-base text-ink/70 font-light leading-relaxed max-w-2xl">
+        Most practice tools are built by technologists. Practice Pals grows from the teaching side — from watching real beginners navigate real challenges.
+      </p>
+
+      <ul class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6" role="list">
+
+        <li class="bg-lavender-50 border border-lavender-200 rounded-lg p-6 flex flex-col gap-4">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">Teacher-Guided</p>
+            <p class="mt-2 text-sm text-[#3A3140] leading-relaxed">
+              Built from real violin teaching experience and designed to support — not replace — the relationship between student and teacher.
+            </p>
+          </div>
+        </li>
+
+        <li class="bg-lavender-50 border border-lavender-200 rounded-lg p-6 flex flex-col gap-4">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">Emotionally Grounding</p>
+            <p class="mt-2 text-sm text-[#3A3140] leading-relaxed">
+              Practice should help students feel more capable, not more pressured. The tool is being designed with flexibility, choice, and low-pressure pacing in mind.
+            </p>
+          </div>
+        </li>
+
+        <li class="bg-lavender-50 border border-lavender-200 rounded-lg p-6 flex flex-col gap-4">
+          <div>
+            <p class="font-heading font-semibold text-ink text-base leading-snug" style="letter-spacing: -0.01em;">Personalized</p>
+            <p class="mt-2 text-sm text-[#3A3140] leading-relaxed">
+              The long-term vision is for practice suggestions to adapt based on age, experience level, goals, and student feedback.
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── What It Might Eventually Include ── -->
+  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="features-heading">
+    <div class="container-narrow">
+      <div class="max-w-2xl">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">In Development</p>
+        <h2 id="features-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+          What It Might Eventually Include
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          Practice Pals is still in active research and development. The specific features are evolving, but the current direction includes ideas like:
+        </p>
+        <ul class="mt-7 space-y-3" role="list" aria-label="Potential Practice Pals features">
+          {[
+            "Short guided practice sessions",
+            "Personalized activity suggestions",
+            "Beginner-friendly daily routines",
+            "Listening activities and musical exploration",
+            "Practice reflections",
+            "Teacher customization tools",
+            "Optional timer-free practice support",
+            "On-the-go practice ideas for moments without an instrument",
+          ].map(item => (
+            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="mt-7 text-sm text-ink/50 font-light italic">
+          These are directions, not promises. The shape of the product will continue to change as it's tested with real students.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Founder Note ── -->
+  <section class="bg-white section-pad" aria-labelledby="founder-heading">
+    <div class="container-narrow">
+
+      <!-- Pull quote / founder note card -->
+      <div class="max-w-3xl mx-auto">
+        <blockquote class="border-l-4 border-lavender-300 pl-6 py-1">
+          <p class="text-xl sm:text-2xl font-light text-ink leading-relaxed">
+            "Practice Pals grows out of real teaching questions, real student experiences, and a curiosity about how technology might support learning without getting in the way of it."
+          </p>
+        </blockquote>
+
+        <div class="mt-8 text-base text-ink/70 font-light leading-relaxed space-y-4">
+          <p>
+            As a violin teacher and human-centered designer, Rae is exploring how practice support can feel more adaptive, humane, and sustainable for beginners — especially the ones who find the space between lessons the hardest part.
+          </p>
+          <p>
+            This project is guided by the same values that shape every lesson at Vibrations Violin Studio: consistency over intensity, growth over performance, and the belief that learning should feel safe enough to be honest.
+          </p>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          <div class="w-8 h-px bg-lavender-300" aria-hidden="true"></div>
+          <p class="text-sm font-semibold text-purplePrimary" style="letter-spacing: 0.01em;">Rae McGee, M.M. — Violin Teacher &amp; Studio Founder</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Curious About Practice Pals? ── -->
+  <section
+    class="section-pad"
+    style="background: linear-gradient(135deg, #6ee7b7 0%, #c4b5fd 100%);"
+    aria-labelledby="interest-heading"
+  >
+    <div class="container-narrow">
+      <div class="max-w-xl">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Stay in the Loop</p>
+        <h2 id="interest-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 0.97; letter-spacing: -0.04em;">
+          Curious About Practice Pals?
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          Practice Pals is still in the research and development phase, but I'd love to hear from teachers, parents, and students who are curious about the project.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="btn-primary inline-block" aria-label="Ask about Practice Pals or share your interest">
+            Ask About Practice Pals
+          </a>
+          <a href="/contact" class="btn-secondary inline-block" aria-label="Join the Practice Pals interest list">
+            Join the Interest List
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <script>
   // ── Practice Pals: scroll-reveal ──
+  // Hero: load-in
   const heroSection = document.querySelector('section[aria-labelledby="practice-pals-heading"]');
   if (heroSection) {
     const inner = heroSection.querySelector('.container-narrow');
     if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
   }
 
-  const bodySection = document.querySelector('section.bg-white.section-pad .container-narrow');
-  if (bodySection) bodySection.classList.add('reveal');
+  // Body sections: reveal on scroll
+  const sections = [
+    document.querySelector('section[aria-labelledby="why-heading"]'),
+    document.querySelector('section[aria-labelledby="different-heading"]'),
+    document.querySelector('section[aria-labelledby="features-heading"] .container-narrow'),
+    document.querySelector('section[aria-labelledby="founder-heading"] .container-narrow'),
+    document.querySelector('section[aria-labelledby="interest-heading"] .container-narrow'),
+  ];
 
-  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
-  if (ctaBand) ctaBand.classList.add('reveal');
+  sections.forEach((el, i) => {
+    if (el) {
+      el.classList.add('reveal');
+      (el as HTMLElement).style.transitionDelay = `${i * 40}ms`;
+    }
+  });
 
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.10 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
 </script>
