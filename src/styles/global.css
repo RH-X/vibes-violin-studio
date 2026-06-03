@@ -83,6 +83,12 @@
     @apply py-16 md:py-24;
   }
 
+  /* ── Interior page hero padding — tighter than section-pad ── */
+  .hero-interior {
+    padding-top: clamp(3rem, 5vw, 4.5rem);
+    padding-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+
   .container-narrow {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
