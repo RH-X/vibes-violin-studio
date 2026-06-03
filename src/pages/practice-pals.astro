@@ -44,3 +44,27 @@ import CTABand from '../components/CTABand.astro';
 
   <CTABand />
 </Layout>
+
+<script>
+  // ── Practice Pals: scroll-reveal ──
+  const heroSection = document.querySelector('section[aria-labelledby="practice-pals-heading"]');
+  if (heroSection) {
+    const inner = heroSection.querySelector('.container-narrow');
+    if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
+  }
+
+  const bodySection = document.querySelector('section.bg-white.section-pad .container-narrow');
+  if (bodySection) bodySection.classList.add('reveal');
+
+  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
+  if (ctaBand) ctaBand.classList.add('reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+</script>

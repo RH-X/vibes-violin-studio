@@ -27,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
         >
           Let's Chat
         </h1>
-        <p class="mt-5 text-lg leading-relaxed" style="color: #2F2A35; max-width: 38rem;">
+        <p class="mt-4 text-lg leading-relaxed" style="color: #2F2A35; max-width: 38rem;">
           Let's say hello 👋 — Book a friendly 15-minute intro chat with Rae to explore whether violin lessons might be something you'd like to try.
         </p>
       </div>
@@ -213,6 +213,26 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+  // ── Contact page: scroll-reveal ──
+  const heroSection = document.querySelector('section[aria-labelledby="contact-heading"]');
+  if (heroSection) {
+    const inner = heroSection.querySelector('.container-narrow');
+    if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
+  }
+
+  const formSection = document.querySelector('section#get-started .container-narrow');
+  if (formSection) formSection.classList.add('reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  // ── Email copy button ──
   document.querySelectorAll('.copy-email').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const email = btn.getAttribute('data-copy');

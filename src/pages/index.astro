@@ -98,36 +98,10 @@ import PracticePals from '../components/PracticePals.astro';
 
 <style>
   /* ── Keyframes ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
   @keyframes blobFloat {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50%      { transform: translateY(-6px) rotate(1deg); }
   }
-
-  /* ── Scroll-reveal base state ── */
-  :global(.reveal) {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 600ms cubic-bezier(.16,1,.3,1),
-                transform 600ms cubic-bezier(.16,1,.3,1);
-  }
-  :global(.reveal.visible) {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── Hero staggered load-in ── */
-  :global(.hero-animate) {
-    opacity: 0;
-    animation: fadeUp 650ms cubic-bezier(.16,1,.3,1) forwards;
-  }
-  :global(.hero-delay-1) { animation-delay: 0ms; }
-  :global(.hero-delay-2) { animation-delay: 120ms; }
-  :global(.hero-delay-3) { animation-delay: 240ms; }
 
   /* ── Blob ambient float ── */
   :global(.blob-float) {
@@ -168,18 +142,8 @@ import PracticePals from '../components/PracticePals.astro';
     transform: scale(1.02);
   }
 
-  /* ── Reduced motion ── */
+  /* ── Reduced motion: hover effects ── */
   @media (prefers-reduced-motion: reduce) {
-    :global(.hero-animate) {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-    :global(.reveal) {
-      transition: none;
-      opacity: 1;
-      transform: none;
-    }
     :global(.blob-float) {
       animation: none;
     }

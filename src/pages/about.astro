@@ -123,3 +123,38 @@ import CTABand from '../components/CTABand.astro';
 
   <CTABand />
 </Layout>
+
+<script>
+  // ── About page: scroll-reveal ──
+  // Hero: animate heading block on load
+  const heroSection = document.querySelector('section[aria-labelledby="about-heading"]');
+  if (heroSection) {
+    const textBlock = heroSection.querySelector('.grid > div:first-child');
+    const photoBlock = heroSection.querySelector('.grid > div:last-child');
+    if (textBlock) { textBlock.classList.add('hero-animate', 'hero-delay-1'); }
+    if (photoBlock) { photoBlock.classList.add('hero-animate', 'hero-delay-2'); }
+  }
+
+  // Body sections: reveal on scroll
+  const bioSection = document.querySelector('section.bg-white.section-pad:not(#rates)');
+  if (bioSection) bioSection.classList.add('reveal');
+
+  const ratesSection = document.querySelector('section#rates .container-narrow');
+  if (ratesSection) ratesSection.classList.add('reveal');
+
+  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
+  if (ctaBand) ctaBand.classList.add('reveal');
+
+  // IntersectionObserver
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+</script>
