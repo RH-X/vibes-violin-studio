@@ -168,18 +168,6 @@ import PracticePals from '../components/PracticePals.astro';
     transform: scale(1.02);
   }
 
-  /* ── Hover: button lift + shadow ── */
-  :global(.btn-primary),
-  :global(.btn-secondary) {
-    transition: background-color 200ms, color 200ms,
-                transform 250ms ease, box-shadow 250ms ease;
-  }
-  :global(.btn-primary:hover),
-  :global(.btn-secondary:hover) {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,.10);
-  }
-
   /* ── Reduced motion ── */
   @media (prefers-reduced-motion: reduce) {
     :global(.hero-animate) {
@@ -198,9 +186,7 @@ import PracticePals from '../components/PracticePals.astro';
     :global(section[aria-labelledby="testimonials-heading"] .shadow-card),
     :global(section[aria-label="Studio highlights"] ul li > div),
     :global(section#approach ul li),
-    :global(section[aria-labelledby="practice-pals-heading"] img),
-    :global(.btn-primary),
-    :global(.btn-secondary) {
+    :global(section[aria-labelledby="practice-pals-heading"] img) {
       transition: none;
     }
   }

@@ -38,19 +38,45 @@
   /* ── Buttons: Plus Jakarta Sans, semibold ── */
   .btn-primary {
     @apply inline-block bg-purplePrimary text-white font-semibold px-6 py-3 rounded-lg
-           hover:bg-purple-800 transition-colors duration-200 focus-visible:outline
+           hover:bg-purple-800 focus-visible:outline
            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary;
     font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
     letter-spacing: 0.02em;
+    /* Full transition: color + lift + shadow — matches homepage hover behavior on every page */
+    transition: background-color 200ms, color 200ms,
+                transform 250ms ease, box-shadow 250ms ease;
   }
 
   .btn-secondary {
     @apply inline-block bg-purpleSoft text-purplePrimary font-semibold px-6 py-3 rounded-lg
-           border border-lavender-300 hover:bg-lavender-200 transition-colors duration-200
+           border border-lavender-300 hover:bg-lavender-200
            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
            focus-visible:outline-purplePrimary;
     font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
     letter-spacing: 0.02em;
+    /* Full transition: color + lift + shadow — matches homepage hover behavior on every page */
+    transition: background-color 200ms, color 200ms,
+                transform 250ms ease, box-shadow 250ms ease;
+  }
+
+  /* ── Button hover: lift + shadow (all pages) ── */
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+  }
+
+  /* ── Button: reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-secondary {
+      transition: background-color 200ms, color 200ms;
+    }
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .section-pad {
