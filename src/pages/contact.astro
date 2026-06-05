@@ -28,30 +28,512 @@ import Layout from '../layouts/Layout.astro';
           Let's Chat
         </h1>
         <p class="mt-4 text-lg leading-relaxed" style="color: #2F2A35; max-width: 38rem;">
-          Let's say hello 👋 — Book a friendly 15-minute intro chat with Rae to explore whether violin lessons might be something you'd like to try.
+          Not sure where to start? Pick the path that fits you best — or scroll down to send a message directly.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Form section — editorial two-zone layout -->
+  <!-- ══════════════════════════════════════════════
+       NEW STUDENT FIT FINDER
+  ══════════════════════════════════════════════ -->
   <section
     class="section-pad relative overflow-hidden bg-white"
-    id="get-started"
+    id="fit-finder"
+    aria-labelledby="fit-finder-heading"
   >
 
-    <!-- Soft lavender blob — upper right, behind layout -->
+    <!-- Soft lavender blob — upper right -->
     <div
       class="pointer-events-none absolute"
       style="
         width: 480px; height: 480px;
         top: -80px; right: -100px;
         background: #c4b5fd;
-        opacity: 0.18;
+        opacity: 0.13;
         border-radius: 58% 42% 48% 52% / 44% 56% 44% 56%;
       "
       aria-hidden="true"
     ></div>
+
+    <div class="container-narrow relative">
+
+      <!-- Section heading -->
+      <div class="max-w-xl mb-10 reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">New Student Fit Finder</p>
+        <h2
+          id="fit-finder-heading"
+          class="font-heading font-bold text-ink"
+          style="font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.0; letter-spacing: -0.035em;"
+        >
+          What brings you here?
+        </h2>
+        <p class="mt-3 text-base leading-relaxed" style="color: #3A3140;">
+          Choose the path that feels most like your situation. Each one leads to a short intro chat — just a friendly conversation to learn more.
+        </p>
+      </div>
+
+      <!-- Pathway cards — 3-column on desktop, stacked on mobile -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-3 gap-5 reveal"
+        role="group"
+        aria-label="Choose your learning path"
+      >
+
+        <!-- Card: Parents -->
+        <button
+          class="fit-card group text-left w-full rounded-2xl border border-lavender-200 bg-lavender-50 overflow-hidden flex flex-col gap-0
+                 hover:border-lavender-300 hover:bg-lavender-100
+                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary
+                 transition-colors duration-200"
+          data-pathway="parents"
+          aria-expanded="false"
+          aria-controls="pathway-parents"
+          type="button"
+        >
+          <!--
+            PLACEHOLDER IMAGE — parents card
+            Replace src with: real studio photo, editorial image, or remove the entire
+            <div class="fit-card-image"> block to revert to icon-only layout.
+            Suggested final asset: child-sized violin on a music stand, natural light, warm tones.
+          -->
+          <div class="fit-card-image w-full overflow-hidden flex-shrink-0" style="height: 140px;">
+            <img
+              src="https://images.pexels.com/photos/8471864/pexels-photo-8471864.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt=""
+              aria-hidden="true"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              style="object-position: center 15%;"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="flex flex-col gap-4 p-6 flex-1">
+            <!-- Icon -->
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-lavender-200 text-purplePrimary flex-shrink-0" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+
+            <div class="flex flex-col gap-1.5 flex-1">
+              <h3 class="font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.01em;">For parents</h3>
+              <p class="text-sm leading-relaxed" style="color: #3A3140;">Looking for violin lessons for your child.</p>
+            </div>
+
+            <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-purplePrimary group-hover:text-purple-800 transition-colors duration-150">
+              Explore this path
+              <svg class="transition-transform duration-200 group-hover:translate-x-1" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </button>
+
+        <!-- Card: Adult Beginners -->
+        <button
+          class="fit-card group text-left w-full rounded-2xl border border-lavender-200 bg-lavender-50 overflow-hidden flex flex-col gap-0
+                 hover:border-lavender-300 hover:bg-lavender-100
+                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary
+                 transition-colors duration-200"
+          data-pathway="adults"
+          aria-expanded="false"
+          aria-controls="pathway-adults"
+          type="button"
+        >
+          <!--
+            PLACEHOLDER IMAGE — adult learners card
+            Replace src with: real studio photo, editorial image, or remove the entire
+            <div class="fit-card-image"> block to revert to icon-only layout.
+            Suggested final asset: adult hands holding a violin bow, natural light, quiet atmosphere.
+          -->
+          <div class="fit-card-image w-full overflow-hidden flex-shrink-0" style="height: 140px;">
+            <img
+              src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&q=72&auto=format&fit=crop"
+              alt=""
+              aria-hidden="true"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="flex flex-col gap-4 p-6 flex-1">
+            <!-- Icon -->
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-lavender-200 text-purplePrimary flex-shrink-0" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="18" cy="16" r="3"/>
+              </svg>
+            </span>
+
+            <div class="flex flex-col gap-1.5 flex-1">
+              <h3 class="font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.01em;">For adult learners</h3>
+              <p class="text-sm leading-relaxed" style="color: #3A3140;">Violin has been calling my name.</p>
+            </div>
+
+            <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-purplePrimary group-hover:text-purple-800 transition-colors duration-150">
+              Explore this path
+              <svg class="transition-transform duration-200 group-hover:translate-x-1" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </button>
+
+        <!-- Card: Online Lessons -->
+        <button
+          class="fit-card group text-left w-full rounded-2xl border border-lavender-200 bg-lavender-50 overflow-hidden flex flex-col gap-0
+                 hover:border-lavender-300 hover:bg-lavender-100
+                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary
+                 transition-colors duration-200"
+          data-pathway="online"
+          aria-expanded="false"
+          aria-controls="pathway-online"
+          type="button"
+        >
+          <!--
+            PLACEHOLDER IMAGE — online lessons card
+            Replace src with: real studio photo, editorial image, or remove the entire
+            <div class="fit-card-image"> block to revert to icon-only layout.
+            Suggested final asset: violin resting near a laptop or music stand by a window, home setting.
+          -->
+          <div class="fit-card-image w-full overflow-hidden flex-shrink-0" style="height: 140px;">
+            <img
+              src="https://images.pexels.com/photos/6671395/pexels-photo-6671395.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt=""
+              aria-hidden="true"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              style="object-position: center 50%;"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="flex flex-col gap-4 p-6 flex-1">
+            <!-- Icon -->
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-lavender-200 text-purplePrimary flex-shrink-0" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </span>
+
+            <div class="flex flex-col gap-1.5 flex-1">
+              <h3 class="font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.01em;">For online lessons</h3>
+              <p class="text-sm leading-relaxed" style="color: #3A3140;">I'm located outside of Denver or prefer online.</p>
+            </div>
+
+            <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-purplePrimary group-hover:text-purple-800 transition-colors duration-150">
+              Explore this path
+              <svg class="transition-transform duration-200 group-hover:translate-x-1" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </button>
+
+      </div>
+      <!-- /cards -->
+
+      <!-- ── Pathway detail panels ── -->
+
+      <!-- Panel: Parents -->
+      <div
+        id="pathway-parents"
+        class="pathway-panel hidden mt-8"
+        role="region"
+        aria-label="For parents — pathway details"
+      >
+        <div class="rounded-2xl border border-lavender-200 bg-lavender-50 overflow-hidden">
+
+          <!-- 3-col content grid -->
+          <div class="grid grid-cols-1 md:grid-cols-[240px_1fr_1fr] gap-0">
+
+            <!-- Left: image -->
+            <div class="panel-image-col relative overflow-hidden md:rounded-tl-2xl">
+              <img
+                src="https://images.pexels.com/photos/8471864/pexels-photo-8471864.jpeg?auto=compress&cs=tinysrgb&w=480"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover"
+                style="object-position: center 30%;"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Centre: curiosity text -->
+            <div class="flex flex-col gap-4 p-7 border-b md:border-b-0 md:border-r border-lavender-200">
+              <!-- close button — top-right of this cell on mobile; absolute on desktop -->
+              <div class="flex items-start justify-between gap-3 md:hidden">
+                <div>
+                  <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-1" style="letter-spacing: 0.14em;">For parents</p>
+                  <h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.02em; line-height: 1.15;">I'm looking for violin lessons for my child.</h3>
+                </div>
+                <button
+                  class="pathway-close flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-lavender-200 text-ink/50 hover:text-ink hover:border-lavender-300 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                  data-close="parents" aria-label="Close this section" type="button"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <!-- desktop heading -->
+              <div class="hidden md:block">
+                <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-2" style="letter-spacing: 0.14em;">For parents</p>
+                <h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.02em; line-height: 1.15;">I'm looking for violin lessons for my child.</h3>
+              </div>
+              <p class="text-xs font-semibold text-purplePrimary uppercase tracking-widest" style="letter-spacing: 0.13em;">Let's get curious —</p>
+              <p class="font-heading font-semibold text-ink" style="font-size: 1.05rem; letter-spacing: -0.01em; line-height: 1.2; margin-top: -0.75rem;">Tell me about your child.</p>
+              <div class="flex flex-col gap-3 text-sm leading-relaxed" style="color: #3A3140;">
+                <p>I'd love to learn more about your child — what lights them up, how they learn, and what you're hoping music might bring into their life.</p>
+                <p>Our first conversation is a chance to talk about your questions, your child's interests, and what a meaningful start could look like.</p>
+              </div>
+            </div>
+
+            <!-- Right: topics + close button -->
+            <div class="flex flex-col gap-4 p-7">
+              <div class="hidden md:flex items-start justify-end">
+                <button
+                  class="pathway-close flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-lavender-200 text-ink/50 hover:text-ink hover:border-lavender-300 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                  data-close="parents" aria-label="Close this section" type="button"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <h4 class="font-heading font-semibold text-ink text-sm uppercase tracking-wide" style="letter-spacing: 0.08em;">Common topics I can help you explore</h4>
+              <ul class="flex flex-col gap-4" role="list">
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Getting started with violin</p>
+                  <p class="text-sm leading-relaxed">What beginners need and how first lessons are paced.</p>
+                </li>
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Practice support at home</p>
+                  <p class="text-sm leading-relaxed">How families can encourage learning without adding pressure.</p>
+                </li>
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Creating a positive learning experience</p>
+                  <p class="text-sm leading-relaxed">Supporting curiosity, engagement, and long-term enjoyment of music.</p>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Bottom CTA bar -->
+          <div class="border-t border-lavender-200 px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
+            <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
+              <a href="https://calendly.com/vibesviolinstudio/intro" class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">Book a 15-minute intro chat</a>
+              <a href="#contact-form" class="btn-secondary text-sm">Send a message</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Panel: Adult Beginners -->
+      <div
+        id="pathway-adults"
+        class="pathway-panel hidden mt-8"
+        role="region"
+        aria-label="For adult learners — pathway details"
+      >
+        <div class="rounded-2xl border border-lavender-200 bg-lavender-50 overflow-hidden">
+
+          <!-- 3-col content grid -->
+          <div class="grid grid-cols-1 md:grid-cols-[240px_1fr_1fr] gap-0">
+
+            <!-- Left: image -->
+            <div class="panel-image-col relative overflow-hidden md:rounded-tl-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=480&q=72&auto=format&fit=crop"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover"
+                style="object-position: center 20%;"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Centre: curiosity text -->
+            <div class="flex flex-col gap-4 p-7 border-b md:border-b-0 md:border-r border-lavender-200">
+              <div class="flex items-start justify-between gap-3 md:hidden">
+                <div>
+                  <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-1" style="letter-spacing: 0.14em;">For adult learners</p>
+                  <h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.02em; line-height: 1.15;">Violin has been calling my name.</h3>
+                </div>
+                <button
+                  class="pathway-close flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-lavender-200 text-ink/50 hover:text-ink hover:border-lavender-300 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                  data-close="adults" aria-label="Close this section" type="button"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <div class="hidden md:block">
+                <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-2" style="letter-spacing: 0.14em;">For adult learners</p>
+                <h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.02em; line-height: 1.15;">Violin has been calling my name.</h3>
+              </div>
+              <p class="text-xs font-semibold text-purplePrimary uppercase tracking-widest" style="letter-spacing: 0.13em;">Let's get curious —</p>
+              <p class="font-heading font-semibold text-ink" style="font-size: 1.05rem; letter-spacing: -0.01em; line-height: 1.2; margin-top: -0.75rem;">Tell me what inspires you.</p>
+              <div class="flex flex-col gap-3 text-sm leading-relaxed" style="color: #3A3140;">
+                <p>I'd love to learn more about what drew you to the violin, what inspires you, and any goals you'd like to explore through music.</p>
+                <p>Whether you're returning after years away or starting fresh, our first conversation is a chance to talk about what feels meaningful to you.</p>
+              </div>
+            </div>
+
+            <!-- Right: topics + close button -->
+            <div class="flex flex-col gap-4 p-7">
+              <div class="hidden md:flex items-start justify-end">
+                <button
+                  class="pathway-close flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-lavender-200 text-ink/50 hover:text-ink hover:border-lavender-300 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                  data-close="adults" aria-label="Close this section" type="button"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <h4 class="font-heading font-semibold text-ink text-sm uppercase tracking-wide" style="letter-spacing: 0.08em;">Common topics I can help you explore</h4>
+              <ul class="flex flex-col gap-4" role="list">
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Playing violin as an adult</p>
+                  <p class="text-sm leading-relaxed">What to expect when beginning or returning to music later in life.</p>
+                </li>
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Exploring the music you love</p>
+                  <p class="text-sm leading-relaxed">How lessons can connect with your interests, tastes, and goals.</p>
+                </li>
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Fitting lessons into real life</p>
+                  <p class="text-sm leading-relaxed">How practice and goals can support your schedule and lifestyle.</p>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Bottom CTA bar -->
+          <div class="border-t border-lavender-200 px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
+            <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
+              <a href="https://calendly.com/vibesviolinstudio/intro" class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">Book a 15-minute intro chat</a>
+              <a href="#contact-form" class="btn-secondary text-sm">Send a message</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Panel: Online Lessons -->
+      <div
+        id="pathway-online"
+        class="pathway-panel hidden mt-8"
+        role="region"
+        aria-label="For online lessons — pathway details"
+      >
+        <div class="rounded-2xl border border-lavender-200 bg-lavender-50 overflow-hidden">
+
+          <!-- 3-col content grid -->
+          <div class="grid grid-cols-1 md:grid-cols-[240px_1fr_1fr] gap-0">
+
+            <!-- Left: image -->
+            <div class="panel-image-col relative overflow-hidden md:rounded-tl-2xl">
+              <img
+                src="https://images.pexels.com/photos/6671395/pexels-photo-6671395.jpeg?auto=compress&cs=tinysrgb&w=480"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover"
+                style="object-position: center 50%;"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Centre: curiosity text -->
+            <div class="flex flex-col gap-4 p-7 border-b md:border-b-0 md:border-r border-lavender-200">
+              <div class="flex items-start justify-between gap-3 md:hidden">
+                <div>
+                  <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-1" style="letter-spacing: 0.14em;">For online lessons</p>
+                  <h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.02em; line-height: 1.15;">I'm located outside of Denver or prefer online.</h3>
+                </div>
+                <button
+                  class="pathway-close flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-lavender-200 text-ink/50 hover:text-ink hover:border-lavender-300 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                  data-close="online" aria-label="Close this section" type="button"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <div class="hidden md:block">
+                <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-2" style="letter-spacing: 0.14em;">For online lessons</p>
+                <h3 class="font-heading font-semibold text-ink" style="font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.02em; line-height: 1.15;">I'm located outside of Denver or prefer online.</h3>
+              </div>
+              <p class="text-xs font-semibold text-purplePrimary uppercase tracking-widest" style="letter-spacing: 0.13em;">Let's get curious —</p>
+              <p class="font-heading font-semibold text-ink" style="font-size: 1.05rem; letter-spacing: -0.01em; line-height: 1.2; margin-top: -0.75rem;">Tell me about your goals.</p>
+              <div class="flex flex-col gap-3 text-sm leading-relaxed" style="color: #3A3140;">
+                <p>I'd love to learn more about your experience, what draws you to the violin, and how you're imagining lessons fitting into your life.</p>
+                <p>Whether you're nearby or across the country, thoughtful learning can happen wherever you are.</p>
+              </div>
+            </div>
+
+            <!-- Right: topics + close button -->
+            <div class="flex flex-col gap-4 p-7">
+              <div class="hidden md:flex items-start justify-end">
+                <button
+                  class="pathway-close flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-lavender-200 text-ink/50 hover:text-ink hover:border-lavender-300 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                  data-close="online" aria-label="Close this section" type="button"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <h4 class="font-heading font-semibold text-ink text-sm uppercase tracking-wide" style="letter-spacing: 0.08em;">Common topics I can help you explore</h4>
+              <ul class="flex flex-col gap-4" role="list">
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">How online violin lessons work</p>
+                  <p class="text-sm leading-relaxed">What a typical lesson looks and feels like over video.</p>
+                </li>
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Recommended tech and setup</p>
+                  <p class="text-sm leading-relaxed">Simple things you can do at home to make lessons sound and feel great.</p>
+                </li>
+                <li style="color: #3A3140;">
+                  <p class="text-sm font-semibold text-ink leading-snug mb-0.5">Staying connected and supported</p>
+                  <p class="text-sm leading-relaxed">How progress and communication are supported between sessions.</p>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Bottom CTA bar -->
+          <div class="border-t border-lavender-200 px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
+            <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
+              <a href="https://calendly.com/vibesviolinstudio/intro" class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">Book a 15-minute intro chat</a>
+              <a href="#contact-form" class="btn-secondary text-sm">Send a message</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FORM SECTION — preserved, clearly anchored
+  ══════════════════════════════════════════════ -->
+  <section
+    class="section-pad relative overflow-hidden"
+    id="contact-form"
+    style="background: #fafaf9;"
+    aria-labelledby="form-heading"
+  >
 
     <!-- Single squiggle accent — lower left -->
     <svg
@@ -74,9 +556,10 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-start">
 
         <!-- ── Left: form zone ── -->
-        <div>
+        <div class="reveal">
           <div class="mb-8">
             <h2
+              id="form-heading"
               class="font-heading font-bold text-ink"
               style="font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.0; letter-spacing: -0.035em;"
             >
@@ -135,11 +618,23 @@ import Layout from '../layouts/Layout.astro';
               ></textarea>
             </div>
 
-            <div class="flex flex-col items-center gap-2 pt-1">
-              <button type="submit" class="btn-primary text-base px-8 py-3.5" style="width: fit-content; align-self: center;">
+            <div class="flex flex-col items-end gap-2 pt-1">
+              <button
+                id="submit-btn"
+                type="submit"
+                class="btn-primary text-base px-8 py-3.5 relative"
+                style="width: fit-content;"
+              >
                 Send Message
+                <!-- Paper airplane: absolutely positioned, never affects text centering -->
+                <span id="submit-icon" class="submit-plane absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
+                </span>
               </button>
-              <p class="text-xs text-center leading-relaxed" style="color: #5a5060;">
+              <p class="text-xs text-right leading-relaxed" style="color: #5a5060;">
                 No spam, ever. Rae typically replies within one business day.
               </p>
             </div>
@@ -148,7 +643,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- ── Right: contact sidebar ── -->
-        <div class="lg:pt-2">
+        <div class="lg:pt-2 reveal">
           <div
             class="rounded-2xl p-6 flex flex-col gap-5"
             style="background: #f5f3ff; border: 1px solid #e9d5ff;"
@@ -203,6 +698,14 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
           </div>
+
+          <!-- Nudge to scroll back up to fit finder -->
+          <p class="mt-5 text-sm leading-relaxed text-center" style="color: #5a5060;">
+            Not sure which path fits?
+            <a href="#fit-finder" class="text-purplePrimary font-medium hover:text-purple-800 underline decoration-lavender-300 hover:decoration-purple-800 transition-colors duration-150">
+              Explore the fit finder
+            </a>
+          </p>
         </div>
         <!-- /sidebar -->
 
@@ -212,25 +715,151 @@ import Layout from '../layouts/Layout.astro';
 
 </Layout>
 
+<style>
+  /* ── Expanded panel image column ── */
+  .panel-image-col {
+    /* Mobile: fixed height so absolute-positioned img has something to fill */
+    height: 220px;
+  }
+  @media (min-width: 768px) {
+    .panel-image-col {
+      /* Desktop: stretch to fill the full grid row height */
+      height: auto;
+      min-height: 260px;
+    }
+  }
+
+  /* ── Fit cards: lift + shadow on hover, matching home page approach cards ── */
+  .fit-card {
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease,
+      border-color 200ms ease,
+      background-color 200ms ease;
+  }
+  .fit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(109, 40, 217, 0.10);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fit-card {
+      transition: border-color 200ms ease, background-color 200ms ease;
+    }
+    .fit-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  /* Paper airplane: always occupies its 15px width so button never resizes.
+     Invisible at rest, fades in on hover. */
+  .submit-plane {
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+  #submit-btn:hover .submit-plane,
+  #submit-btn:focus-visible .submit-plane {
+    opacity: 1;
+  }
+
+  /* Fly-off: diagonal up-right with fade */
+  @keyframes plane-fly-off {
+    0%   { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+    100% { opacity: 0; transform: translate(18px, -16px) rotate(-20deg); }
+  }
+  .submit-plane-flying {
+    animation: plane-fly-off 420ms cubic-bezier(.4, 0, .6, 1) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .submit-plane { transition: none; }
+    .submit-plane-flying { animation: none; opacity: 0; }
+  }
+</style>
+
 <script>
-  // ── Contact page: scroll-reveal ──
+  // ── Contact page: hero animate ──
   const heroSection = document.querySelector('section[aria-labelledby="contact-heading"]');
   if (heroSection) {
     const inner = heroSection.querySelector('.container-narrow');
     if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
   }
 
-  const formSection = document.querySelector('section#get-started .container-narrow');
-  if (formSection) formSection.classList.add('reveal');
-
+  // ── Scroll-reveal ──
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  } else {
+    // Reduced motion: immediately show all reveal elements
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
+
+  // ── Fit Finder: pathway card open/close ──
+  const cards = document.querySelectorAll<HTMLButtonElement>('.fit-card');
+  const panels = document.querySelectorAll<HTMLElement>('.pathway-panel');
+
+  function openPanel(pathwayId: string) {
+    // Close all panels and reset all cards first
+    panels.forEach(p => p.classList.add('hidden'));
+    cards.forEach(c => {
+      c.setAttribute('aria-expanded', 'false');
+      c.classList.remove('border-purplePrimary', 'bg-white', 'shadow-card');
+    });
+
+    // Open the selected panel
+    const panel = document.getElementById(`pathway-${pathwayId}`);
+    const card = document.querySelector<HTMLButtonElement>(`.fit-card[data-pathway="${pathwayId}"]`);
+
+    if (panel) {
+      panel.classList.remove('hidden');
+      // Scroll panel into view smoothly
+      setTimeout(() => {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+    if (card) {
+      card.setAttribute('aria-expanded', 'true');
+      card.classList.add('border-purplePrimary', 'bg-white', 'shadow-card');
+    }
+  }
+
+  function closePanel(pathwayId: string) {
+    const panel = document.getElementById(`pathway-${pathwayId}`);
+    const card = document.querySelector<HTMLButtonElement>(`.fit-card[data-pathway="${pathwayId}"]`);
+    if (panel) panel.classList.add('hidden');
+    if (card) {
+      card.setAttribute('aria-expanded', 'false');
+      card.classList.remove('border-purplePrimary', 'bg-white', 'shadow-card');
+    }
+  }
+
+  // Card click handlers
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const pathway = card.getAttribute('data-pathway');
+      if (!pathway) return;
+      // Toggle: if already open, close it
+      const isExpanded = card.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closePanel(pathway);
+      } else {
+        openPanel(pathway);
+      }
+    });
+  });
+
+  // Close button handlers
+  document.querySelectorAll<HTMLButtonElement>('.pathway-close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pathway = btn.getAttribute('data-close');
+      if (pathway) closePanel(pathway);
+    });
+  });
 
   // ── Email copy button ──
   document.querySelectorAll('.copy-email').forEach((btn) => {
@@ -258,15 +887,43 @@ import Layout from '../layouts/Layout.astro';
       }
       if (success) {
         textEl.textContent = '✓ Copied!';
-        textEl.classList.add('text-green-600');
+        (textEl as HTMLElement).classList.add('text-green-600');
       } else {
         textEl.textContent = 'Copy failed';
-        textEl.classList.add('text-red-500');
+        (textEl as HTMLElement).classList.add('text-red-500');
       }
       setTimeout(() => {
         textEl.textContent = original;
-        textEl.classList.remove('text-green-600', 'text-red-500');
+        (textEl as HTMLElement).classList.remove('text-green-600', 'text-red-500');
       }, 2000);
     });
   });
+
+  // ── Submit button: fly-off microinteraction ──
+  const form = document.querySelector<HTMLFormElement>('form[aria-label="Contact form"]');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const planeIcon = document.getElementById('submit-icon') as HTMLElement | null;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (form && submitBtn && planeIcon) {
+    form.addEventListener('submit', (e) => {
+      if (!form.checkValidity()) return;
+
+      if (reducedMotion) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        setTimeout(() => form.submit(), 200);
+        return;
+      }
+
+      e.preventDefault();
+      submitBtn.disabled = true;
+
+      // Trigger fly-off CSS animation on the icon
+      planeIcon.classList.add('submit-plane-flying');
+
+      // Submit after animation completes (420ms) + small buffer
+      setTimeout(() => form.submit(), 480);
+    });
+  }
 </script>

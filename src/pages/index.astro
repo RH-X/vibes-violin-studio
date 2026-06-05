@@ -119,11 +119,20 @@ import PracticePals from '../components/PracticePals.astro';
 
   /* ── Hover: feature cards ── */
   :global(section#approach ul li) {
-    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 200ms ease, background-color 200ms ease;
+    cursor: default;
   }
   :global(section#approach ul li:hover) {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    box-shadow: 0 8px 24px rgba(109,40,217,.10);
+    border-color: #c4b5fd;
+    background-color: #f5f3ff;
+  }
+  :global(section#approach ul li .relative.w-20) {
+    transition: transform 300ms ease;
+  }
+  :global(section#approach ul li:hover .relative.w-20) {
+    transform: scale(1.08);
   }
 
   /* ── Hover: highlight blob cards ── */
@@ -149,9 +158,13 @@ import PracticePals from '../components/PracticePals.astro';
     }
     :global(section[aria-labelledby="testimonials-heading"] .shadow-card),
     :global(section[aria-label="Studio highlights"] ul li > div),
-    :global(section#approach ul li),
     :global(section[aria-labelledby="practice-pals-heading"] img) {
       transition: none;
+    }
+    :global(section#approach ul li),
+    :global(section#approach ul li .relative.w-20) {
+      transition: border-color 200ms ease, background-color 200ms ease;
+      transform: none !important;
     }
   }
 </style>
