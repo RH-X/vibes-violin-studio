@@ -572,9 +572,15 @@ import Layout from '../layouts/Layout.astro';
 
           <form
             method="POST"
+            action="https://api.web3forms.com/submit"
             class="flex flex-col gap-6"
             aria-label="Contact form"
           >
+            <input type="hidden" name="access_key" value="460b8135-0bf3-4091-9e14-794027910920" />
+            <input type="hidden" name="subject" value="New enquiry via Vibrations Violin Studio website" />
+            <input type="hidden" name="from_name" value="Vibrations Violin Studio" />
+            <!-- Honeypot spam protection -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
 
             <div class="flex flex-col gap-1.5">
               <label for="name" class="text-sm font-semibold text-ink" style="letter-spacing: 0.01em;">Your name</label>
@@ -638,6 +644,9 @@ import Layout from '../layouts/Layout.astro';
                 No spam, ever. Rae typically replies within one business day.
               </p>
             </div>
+
+            <!-- Submission feedback -->
+            <div id="form-result" role="alert" aria-live="polite" class="hidden rounded-xl px-4 py-3 text-sm font-medium"></div>
 
           </form>
         </div>
@@ -899,31 +908,72 @@ import Layout from '../layouts/Layout.astro';
     });
   });
 
-  // ── Submit button: fly-off microinteraction ──
+  // ── Submit button: fly-off microinteraction + Web3Forms fetch ──
   const form = document.querySelector<HTMLFormElement>('form[aria-label="Contact form"]');
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
   const planeIcon = document.getElementById('submit-icon') as HTMLElement | null;
+  const resultEl = document.getElementById('form-result') as HTMLElement | null;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function showResult(success: boolean, message: string) {
+    if (!resultEl) return;
+    resultEl.textContent = message;
+    resultEl.className = success
+      ? 'rounded-xl px-4 py-3 text-sm font-medium bg-green-50 text-green-800 border border-green-200'
+      : 'rounded-xl px-4 py-3 text-sm font-medium bg-red-50 text-red-800 border border-red-200';
+  }
+
+  async function submitForm() {
+    if (!form || !submitBtn) return;
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+      if (json.success) {
+        showResult(true, "Message sent! Rae will be in touch within one business day.");
+        form.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+          // Re-add the plane icon (reset removes inner HTML changes)
+          const span = document.createElement('span');
+          span.id = 'submit-icon';
+          span.className = 'submit-plane absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center';
+          span.setAttribute('aria-hidden', 'true');
+          span.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+          submitBtn.appendChild(span);
+        }
+      } else {
+        showResult(false, "Something went wrong. Please try emailing directly at vibesviolinstudio@gmail.com.");
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    } catch {
+      showResult(false, "Something went wrong. Please try emailing directly at vibesviolinstudio@gmail.com.");
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  }
 
   if (form && submitBtn && planeIcon) {
     form.addEventListener('submit', (e) => {
+      e.preventDefault();
       if (!form.checkValidity()) return;
 
+      submitBtn.disabled = true;
+
       if (reducedMotion) {
-        submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
-        setTimeout(() => form.submit(), 200);
+        submitForm();
         return;
       }
-
-      e.preventDefault();
-      submitBtn.disabled = true;
 
       // Trigger fly-off CSS animation on the icon
       planeIcon.classList.add('submit-plane-flying');
 
       // Submit after animation completes (420ms) + small buffer
-      setTimeout(() => form.submit(), 480);
+      setTimeout(() => submitForm(), 480);
     });
   }
 </script>
