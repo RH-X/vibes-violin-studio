@@ -7,7 +7,8 @@ export default defineConfig({
     tailwind(),
     sitemap({
       filter: (page) =>
-        !page.includes('/practice-pals') && !page.includes('/insights'),
+        !page.endsWith('/practice-pals/') &&
+        page !== 'https://vibesviolinstudio.vercel.app/insights/',
     }),
   ],
   site: 'https://vibesviolinstudio.vercel.app',
