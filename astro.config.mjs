@@ -10,5 +10,5 @@ export default defineConfig({
         !page.includes('/practice-pals') && !page.includes('/insights'),
     }),
   ],
-  site: 'https://vibesviolinstudio.com',
+  site: 'https://vibesviolinstudio.vercel.app',
 });
