@@ -570,82 +570,13 @@ import Layout from '../layouts/Layout.astro';
             </p>
           </div>
 
-          <form
-            method="POST"
-            action="https://api.web3forms.com/submit"
-            class="flex flex-col gap-6"
-            aria-label="Contact form"
-          >
-            <input type="hidden" name="access_key" value="460b8135-0bf3-4091-9e14-794027910920" />
-            <input type="hidden" name="subject" value="New enquiry via Vibrations Violin Studio website" />
-            <input type="hidden" name="from_name" value="Vibrations Violin Studio" />
-            <!-- Honeypot spam protection -->
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
-
-            <div class="flex flex-col gap-1.5">
-              <label for="name" class="text-sm font-semibold text-ink" style="letter-spacing: 0.01em;">Your name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autocomplete="name"
-                required
-                placeholder="Jane Smith"
-                class="w-full px-4 py-3 rounded-xl border border-lavender-200 bg-lavender-50/60 text-ink text-sm
-                       placeholder-ink/30 focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-transparent focus:bg-white transition-colors duration-150"
-              />
-            </div>
-
-            <div class="flex flex-col gap-1.5">
-              <label for="email" class="text-sm font-semibold text-ink" style="letter-spacing: 0.01em;">Email address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                required
-                placeholder="jane@example.com"
-                class="w-full px-4 py-3 rounded-xl border border-lavender-200 bg-lavender-50/60 text-ink text-sm
-                       placeholder-ink/30 focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-transparent focus:bg-white transition-colors duration-150"
-              />
-            </div>
-
-            <div class="flex flex-col gap-1.5">
-              <label for="message" class="text-sm font-semibold text-ink" style="letter-spacing: 0.01em;">
-                Anything you'd like Rae to know? <span class="text-ink/40 font-normal">(optional)</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="My 7-year-old has been asking about violin lessons..."
-                class="w-full px-4 py-3 rounded-xl border border-lavender-200 bg-lavender-50/60 text-ink text-sm
-                       placeholder-ink/30 focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-transparent focus:bg-white transition-colors duration-150 resize-none"
-              ></textarea>
-            </div>
-
-            <div class="flex flex-col items-end gap-2 pt-1">
-              <button
-                id="submit-btn"
-                type="submit"
-                class="btn-primary text-base px-8 py-3.5 relative"
-                style="width: fit-content;"
-              >
-                Send Message
-                <!-- Paper airplane: absolutely positioned, never affects text centering -->
-                <span id="submit-icon" class="submit-plane absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center" aria-hidden="true">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                </span>
-              </button>
-            </div>
-
-            <!-- Submission feedback -->
-            <div id="form-result" role="alert" aria-live="polite" class="hidden rounded-xl px-4 py-3 text-sm font-medium"></div>
-
-          </form>
+          <!-- FORM TEMPORARILY OFFLINE — restore form + script section when ready -->
+          <p class="text-base leading-relaxed" style="color: #3A3140;">
+            The contact form is temporarily unavailable. In the meantime, you can
+            <a href="https://calendly.com/vibesviolinstudio/30min" class="underline text-purplePrimary" target="_blank" rel="noopener noreferrer">book a 15-minute intro chat on Calendly</a>
+            or email Rae directly at
+            <a href="mailto:vibesviolinstudio@gmail.com" class="underline text-purplePrimary">vibesviolinstudio@gmail.com</a>.
+          </p>
         </div>
 
         <!-- ── Right: contact sidebar ── -->
@@ -906,71 +837,5 @@ import Layout from '../layouts/Layout.astro';
   });
 
   // ── Submit button: fly-off microinteraction + Web3Forms fetch ──
-  const form = document.querySelector<HTMLFormElement>('form[aria-label="Contact form"]');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
-  const planeIcon = document.getElementById('submit-icon') as HTMLElement | null;
-  const resultEl = document.getElementById('form-result') as HTMLElement | null;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function showResult(success: boolean, message: string) {
-    if (!resultEl) return;
-    resultEl.textContent = message;
-    resultEl.className = success
-      ? 'rounded-xl px-4 py-3 text-sm font-medium bg-green-50 text-green-800 border border-green-200'
-      : 'rounded-xl px-4 py-3 text-sm font-medium bg-red-50 text-red-800 border border-red-200';
-  }
-
-  async function submitForm() {
-    if (!form || !submitBtn) return;
-    const data = new FormData(form);
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: data,
-      });
-      const json = await res.json();
-      if (json.success) {
-        showResult(true, "No spam, ever. Rae typically replies within one business day.");
-        form.reset();
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
-          // Re-add the plane icon (reset removes inner HTML changes)
-          const span = document.createElement('span');
-          span.id = 'submit-icon';
-          span.className = 'submit-plane absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center';
-          span.setAttribute('aria-hidden', 'true');
-          span.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
-          submitBtn.appendChild(span);
-        }
-      } else {
-        showResult(false, "Something went wrong. Please try emailing directly at vibesviolinstudio@gmail.com.");
-        if (submitBtn) submitBtn.disabled = false;
-      }
-    } catch {
-      showResult(false, "Something went wrong. Please try emailing directly at vibesviolinstudio@gmail.com.");
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  }
-
-  if (form && submitBtn && planeIcon) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!form.checkValidity()) return;
-
-      submitBtn.disabled = true;
-
-      if (reducedMotion) {
-        submitBtn.textContent = 'Sending…';
-        submitForm();
-        return;
-      }
-
-      // Trigger fly-off CSS animation on the icon
-      planeIcon.classList.add('submit-plane-flying');
-
-      // Submit after animation completes (420ms) + small buffer
-      setTimeout(() => submitForm(), 480);
-    });
-  }
+  // TEMPORARILY REMOVED — form is offline. Restore this section with the form HTML.
 </script>
