@@ -12,15 +12,6 @@ const year = new Date().getFullYear();
         <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-4" style="letter-spacing: 0.14em;">Get in Touch</p>
         <address class="not-italic flex flex-col gap-3">
 
-          <!-- Location -->
-          <span class="flex items-start gap-2 text-sm text-[#3A3140]">
-            <svg class="mt-0.5 flex-shrink-0 text-mint-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-            Globeville, Denver, CO
-          </span>
-
           <!-- Phone number + call/text -->
           <div class="flex flex-col gap-1">
             <span class="text-sm text-[#2F2A35] font-medium">(720) 253-0416</span>
@@ -62,6 +53,37 @@ const year = new Date().getFullYear();
             <span class="copy-email-text">vibesviolinstudio@gmail.com</span>
           </button>
 
+          <!-- Location -->
+          <span class="flex items-start gap-2 text-sm text-[#3A3140]">
+            <svg class="mt-0.5 flex-shrink-0 text-mint-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Globeville, Denver, CO
+          </span>
+
+          <!-- Map card -->
+          <a
+            href="https://www.google.es/maps/place/Globeville,+Denver,+CO/@39.7802491,-105.0034895,14z/data=!3m1!4b1!4m6!3m5!1s0x876c785343ecec75:0x7680f4ea53e05c22!8m2!3d39.7838389!4d-104.9858266!16s%2Fm%2F05h40yg?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Globeville studio area on Google Maps (opens in new tab)"
+            class="group block"
+          >
+            <img
+              src="/images/map-preview-globeville.jpg"
+              alt="Map preview showing the Globeville studio area in central Denver"
+              class="w-full rounded-xl border border-lavender-200 shadow-sm group-hover:shadow-md transition-shadow duration-200"
+              width="1766"
+              height="1308"
+              loading="lazy"
+            />
+            <p class="mt-2 text-xs text-[#3A3140] flex items-center justify-between">
+              <span>Studio area: Globeville / Central Denver</span>
+              <span class="text-purplePrimary group-hover:underline transition-colors duration-150">View map ↗</span>
+            </p>
+          </a>
+
         </address>
       </div>
 
@@ -74,28 +96,6 @@ const year = new Date().getFullYear();
         <p class="mt-3 text-xs text-[#3A3140] leading-relaxed">
           Online lessons available worldwide. Convenient for students across Denver, including Wash Park, Capitol Hill, Cherry Creek, and the Highlands.
         </p>
-
-        <!-- Map card -->
-        <a
-          href="https://www.google.es/maps/place/Globeville,+Denver,+CO/@39.7802491,-105.0034895,14z/data=!3m1!4b1!4m6!3m5!1s0x876c785343ecec75:0x7680f4ea53e05c22!8m2!3d39.7838389!4d-104.9858266!16s%2Fm%2F05h40yg?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View Globeville studio area on Google Maps (opens in new tab)"
-          class="group block mt-5"
-        >
-          <img
-            src="/images/map-preview-globeville.jpg"
-            alt="Map preview showing the Globeville studio area in central Denver"
-            class="w-full rounded-xl border border-lavender-200 shadow-sm group-hover:shadow-md transition-shadow duration-200"
-            width="1766"
-            height="1308"
-            loading="lazy"
-          />
-          <p class="mt-2 text-xs text-[#3A3140] flex items-center justify-between">
-            <span>Studio area: Globeville / Central Denver</span>
-            <span class="text-purplePrimary group-hover:underline transition-colors duration-150">View map ↗</span>
-          </p>
-        </a>
       </div>
 
       <!-- Col 3: Navigation + logo -->
