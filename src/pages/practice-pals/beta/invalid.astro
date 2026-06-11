@@ -1,0 +1,41 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Invalid Link — Practice Pals | Vibrations Violin Studio"
+  description="This verification link is not valid. Please sign up again."
+  noindex={true}
+>
+
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #6ee7b7 0%, #c4b5fd 100%);"
+    aria-labelledby="invalid-heading"
+  >
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 text-purplePrimary" style="letter-spacing: 0.14em;">Something's off</p>
+      <h1 id="invalid-heading" class="font-heading font-bold text-ink" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.04em;">
+        That link isn't valid
+      </h1>
+      <p class="mt-4 text-lg text-ink/70 leading-relaxed max-w-xl">
+        This verification link doesn't match any signup on record. It may have already been used or the URL may be incomplete.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background: #f5f3ff;">
+    <div class="container-narrow">
+      <div class="max-w-md mx-auto">
+        <div class="rounded-2xl border border-lavender-200 bg-white p-8 shadow-sm text-center">
+          <h2 class="font-heading font-bold text-ink mb-3" style="font-size: 1.3rem; letter-spacing: -0.02em;">Want to try again?</h2>
+          <p class="text-sm text-ink/60 leading-relaxed mb-7">
+            If you think something went wrong, go back and sign up again — I'll send a fresh link.
+          </p>
+          <a href="/practice-pals/beta" class="btn-primary text-sm">Sign up again</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,43 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Already Verified — Practice Pals | Vibrations Violin Studio"
+  description="Your email is already confirmed on the Practice Pals beta interest list."
+  noindex={true}
+>
+
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #6ee7b7 0%, #c4b5fd 100%);"
+    aria-labelledby="already-heading"
+  >
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 text-purplePrimary" style="letter-spacing: 0.14em;">Already confirmed</p>
+      <h1 id="already-heading" class="font-heading font-bold text-ink" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.04em;">
+        You're already on the list
+      </h1>
+      <p class="mt-4 text-lg text-ink/70 leading-relaxed max-w-xl">
+        Your email has already been verified. No need to do anything else.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background: #f5f3ff;">
+    <div class="container-narrow">
+      <div class="max-w-md mx-auto">
+        <div class="rounded-2xl border border-lavender-200 bg-white p-8 shadow-sm text-center">
+          <h2 class="font-heading font-bold text-ink mb-3" style="font-size: 1.3rem; letter-spacing: -0.02em;">You're all set</h2>
+          <p class="text-sm text-ink/60 leading-relaxed">
+            Your spot on the Practice Pals beta interest list is confirmed. I'll reach out when beta testing is ready.
+          </p>
+          <div class="mt-7">
+            <a href="/practice-pals" class="btn-secondary text-sm">Back to Practice Pals</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

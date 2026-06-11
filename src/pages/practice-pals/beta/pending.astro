@@ -1,0 +1,57 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Check Your Email — Practice Pals | Vibrations Violin Studio"
+  description="Please check your email to confirm your Practice Pals beta interest list signup."
+  noindex={true}
+>
+
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #6ee7b7 0%, #c4b5fd 100%);"
+    aria-labelledby="pending-heading"
+  >
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 text-purplePrimary" style="letter-spacing: 0.14em;">Almost there</p>
+      <h1 id="pending-heading" class="font-heading font-bold text-ink" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.04em;">
+        Check your inbox
+      </h1>
+      <p class="mt-4 text-lg text-ink/70 leading-relaxed max-w-xl">
+        A verification email is on its way. Click the link inside to confirm your spot on the interest list.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background: #f5f3ff;">
+    <div class="container-narrow">
+      <div class="max-w-md mx-auto">
+        <div class="rounded-2xl border border-lavender-200 bg-white p-8 shadow-sm text-center">
+
+          <!-- Icon -->
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-lavender-50 border border-lavender-200 mb-6" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+
+          <h2 class="font-heading font-bold text-ink mb-3" style="font-size: 1.3rem; letter-spacing: -0.02em;">Verification email sent</h2>
+          <p class="text-sm text-ink/60 leading-relaxed mb-2">
+            The link expires in 48 hours. If you don't see the email, check your spam folder.
+          </p>
+          <p class="text-sm text-ink/60 leading-relaxed">
+            Submitted the wrong email? <a href="/practice-pals/beta" class="text-purplePrimary hover:text-purple-800 underline transition-colors duration-150">Go back and try again.</a>
+          </p>
+        </div>
+
+        <p class="mt-6 text-center text-sm text-ink/50">
+          <a href="/practice-pals" class="text-purplePrimary hover:text-purple-800 transition-colors duration-150">
+            ← Back to Practice Pals
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</Layout>
