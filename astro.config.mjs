@@ -11,8 +11,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/practice-pals/beta') &&
-        !page.endsWith('/practice-pals/') &&
-        page !== 'https://vibesviolinstudio.vercel.app/insights/',
+        !page.endsWith('/practice-pals/'),
     }),
   ],
   site: 'https://vibesviolinstudio.vercel.app',
