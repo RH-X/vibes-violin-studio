@@ -12,6 +12,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const redirect = (path: string) =>
     new Response(null, { status: 302, headers: { Location: path } });
 
+  try {
   let body: FormData;
   try {
     body = await request.formData();
@@ -116,4 +117,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 
   return redirect('/practice-pals/beta/pending');
+  } catch (err) {
+    console.error('[beta-signup] Unhandled error:', err);
+    return redirect('/practice-pals/beta?error=server');
+  }
 };
