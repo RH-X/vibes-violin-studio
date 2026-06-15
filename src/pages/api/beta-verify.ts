@@ -2,6 +2,9 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { supabase } from '../../lib/supabase';
+import { resend, buildNotificationEmail } from '../../lib/resend';
+
+const FROM_EMAIL = process.env.BETA_FROM_EMAIL ?? 'onboarding@resend.dev';
 
 export const GET: APIRoute = async ({ url }) => {
   const redirect = (path: string) =>
@@ -15,7 +18,7 @@ export const GET: APIRoute = async ({ url }) => {
 
   const { data: signup, error } = await supabase
     .from('beta_signups')
-    .select('id, verified, token_expires')
+    .select('id, verified, token_expires, email, name, role')
     .eq('token', token)
     .maybeSingle();
 
@@ -45,6 +48,23 @@ export const GET: APIRoute = async ({ url }) => {
   if (updateError) {
     console.error('Supabase update error:', updateError);
     return redirect('/practice-pals/beta/invalid');
+  }
+
+  // ── Notify Rae of the new verified signup ──
+  const notif = buildNotificationEmail({
+    email: signup.email,
+    name: signup.name ?? null,
+    role: signup.role ?? null,
+  });
+  const { error: notifError } = await resend.emails.send({
+    from: FROM_EMAIL,
+    to: 'vibesviolinstudio@gmail.com',
+    subject: notif.subject,
+    html: notif.html,
+    text: notif.text,
+  });
+  if (notifError) {
+    console.error('Notification email error:', notifError);
   }
 
   return redirect('/practice-pals/beta/success');

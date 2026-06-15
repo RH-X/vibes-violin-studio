@@ -97,3 +97,24 @@ If you didn't sign up for this, you can safely ignore this email.
 
   return { subject, html, text };
 }
+
+export function buildNotificationEmail(opts: {
+  name: string | null;
+  email: string;
+  role: string | null;
+}): { subject: string; html: string; text: string } {
+  const subject = `New Practice Pals signup: ${opts.email}`;
+  const nameLabel = opts.name ?? 'not provided';
+  const roleLabel = opts.role ?? 'not specified';
+
+  const html = `<p>A new signup just verified their email.</p>
+<ul>
+  <li><strong>Email:</strong> ${opts.email}</li>
+  <li><strong>Name:</strong> ${nameLabel}</li>
+  <li><strong>Role:</strong> ${roleLabel}</li>
+</ul>`;
+
+  const text = `New Practice Pals verified signup:\nEmail: ${opts.email}\nName: ${nameLabel}\nRole: ${roleLabel}`;
+
+  return { subject, html, text };
+}
