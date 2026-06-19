@@ -5,7 +5,7 @@ import { supabase } from '../../lib/supabase';
 import { resend, buildVerificationEmail } from '../../lib/resend';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://vibesviolinstudio.vercel.app';
+const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://vibesviolin.studio';
 const FROM_EMAIL = process.env.BETA_FROM_EMAIL ?? 'onboarding@resend.dev';
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {

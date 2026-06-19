@@ -70,7 +70,7 @@ export function buildVerificationEmail(opts: {
             <td style="border-top:1px solid #e9d5ff;padding:20px 40px;">
               <p style="margin:0;font-size:11px;color:#a094b0;line-height:1.6;">
                 Vibrations Violin Studio · Globeville, Denver, CO<br/>
-                You're receiving this because you signed up at vibesviolinstudio.vercel.app.
+                You're receiving this because you signed up at vibesviolin.studio.
               </p>
             </td>
           </tr>
