@@ -5,8 +5,8 @@ export const contactConfig: InquiryConfig = {
   table: 'contact_inquiries',
   basePath: '/inquiry/contact',
   formPath: '/contact#inquiry-engine',
-  title: 'Get in Touch',
-  subtitle: "Whether you're exploring lessons for yourself, your child, or another opportunity, I'd love to learn a little about what you're looking for.",
+  title: "Let's Start a Conversation.",
+  subtitle: "Whether you're ready to get started or still have questions — this is the right place. Rae reads every message and will reach out personally.",
   intro: {
     label: 'Get in Touch',
     heading: 'Get in Touch',
