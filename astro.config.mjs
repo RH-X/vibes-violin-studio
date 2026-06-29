@@ -11,7 +11,6 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/practice-pals/beta') &&
-        !page.endsWith('/practice-pals/') &&
         // Violin Kickstart is hidden/prelaunch — remove this line when launching
         // (see VIOLIN_KICKSTART_LAUNCHED in src/pages/violin-kickstart.astro).
         !page.includes('/violin-kickstart'),
