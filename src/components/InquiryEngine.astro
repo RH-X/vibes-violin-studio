@@ -1,0 +1,171 @@
+---
+import type { InquiryConfig } from '../lib/inquiry/types';
+import { INQUIRY_EVENTS } from '../lib/inquiry/analytics-events';
+
+interface Props {
+  config: InquiryConfig;
+  error?: string | null;
+}
+
+const { config, error = null } = Astro.props;
+
+const errorMessages: Record<string, string> = {
+  email: 'Please enter a valid email address.',
+  required: 'Please fill in all required fields.',
+  ratelimit: 'Too many submissions — please wait a little while and try again.',
+  server: 'Something went wrong on our end. Please try again in a moment.',
+  turnstile: "We couldn't verify you're human. Please try again.",
+  invalid: 'Something went wrong. Please try again.',
+};
+const errorMessage = error ? (errorMessages[error] ?? errorMessages.invalid) : null;
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
+<div class="inquiry-engine" data-inquiry-slug={config.slug} data-inquiry-error={error ?? ''}>
+
+{errorMessage && (
+  <div class="mb-6 rounded-lg border border-red-200 bg-red-50 px-5 py-4" role="alert">
+    <p class="text-sm text-red-700">{errorMessage}</p>
+  </div>
+)}
+
+<div class="rounded-2xl border border-lavender-200 bg-white p-8 shadow-sm">
+  <form
+    method="POST"
+    action={`/api/inquiry/${config.slug}/submit`}
+    novalidate
+    aria-label={`${config.title} ${config.subtitle}`.trim()}
+  >
+    <!-- Honeypot — hidden from real users, filled by bots -->
+    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+      <label for="website">Leave this empty</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    {config.fields.map((field) => (
+      <div class:list={[field.type === 'radio' ? 'mb-7' : 'mb-5']}>
+        {field.type === 'radio' ? (
+          <fieldset>
+            <legend class="block text-sm font-semibold text-ink mb-2">
+              {field.label} {field.optionalLabel && <span class="text-ink/40 font-normal text-xs ml-1">{field.optionalLabel}</span>}
+            </legend>
+            <div class="flex flex-wrap gap-2">
+              {field.options?.map((opt) => (
+                <label class="role-option">
+                  <input type="radio" name={field.name} value={opt.value} class="sr-only" />
+                  <span class="inline-block px-4 py-2 rounded-full border border-lavender-300 bg-lavender-50
+                               text-sm text-ink/70 cursor-pointer transition-colors duration-150
+                               hover:border-purplePrimary hover:text-purplePrimary">
+                    {opt.label}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ) : field.type === 'textarea' ? (
+          <>
+            <label for={field.name} class="block text-sm font-semibold text-ink mb-1.5">
+              {field.label} {field.required ? (
+                <span class="text-purplePrimary" aria-label="required">*</span>
+              ) : (
+                field.optionalLabel && <span class="text-ink/40 font-normal text-xs ml-1">{field.optionalLabel}</span>
+              )}
+            </label>
+            <textarea
+              id={field.name}
+              name={field.name}
+              required={field.required}
+              placeholder={field.placeholder}
+              rows={4}
+              class="w-full rounded-lg border border-lavender-300 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40
+                     focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-purplePrimary
+                     transition-colors duration-150"
+            ></textarea>
+          </>
+        ) : (
+          <>
+            <label for={field.name} class="block text-sm font-semibold text-ink mb-1.5">
+              {field.label} {field.required ? (
+                <span class="text-purplePrimary" aria-label="required">*</span>
+              ) : (
+                field.optionalLabel && <span class="text-ink/40 font-normal text-xs ml-1">{field.optionalLabel}</span>
+              )}
+            </label>
+            <input
+              type={field.type}
+              id={field.name}
+              name={field.name}
+              required={field.required}
+              autocomplete={field.autocomplete}
+              placeholder={field.placeholder}
+              class="w-full rounded-lg border border-lavender-300 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40
+                     focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-purplePrimary
+                     transition-colors duration-150"
+            />
+          </>
+        )}
+      </div>
+    ))}
+
+    {config.turnstile && turnstileSiteKey && (
+      <div class="mb-6">
+        <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+      </div>
+    )}
+
+    <p class="text-xs text-ink/50 leading-relaxed mb-6">
+      {config.consentText}
+    </p>
+
+    <button type="submit" class="btn-primary w-full justify-center">
+      {config.buttonText}
+    </button>
+  </form>
+</div>
+
+{config.turnstile && turnstileSiteKey && (
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+</div>
+
+<style>
+  .role-option input[type="radio"]:checked + span {
+    background-color: #ede9fe;
+    border-color: #6d28d9;
+    color: #6d28d9;
+    font-weight: 600;
+  }
+  .role-option input[type="radio"]:focus-visible + span {
+    outline: 2px solid #6d28d9;
+    outline-offset: 2px;
+  }
+</style>
+
+<script define:vars={{ events: INQUIRY_EVENTS }}>
+  document.querySelectorAll('.inquiry-engine').forEach((root) => {
+    if (root.dataset.analyticsBound) return;
+    root.dataset.analyticsBound = 'true';
+
+    const slug = root.dataset.inquirySlug || 'unknown';
+    const error = root.dataset.inquiryError || '';
+    const gtag = window.gtag;
+
+    if (typeof gtag === 'function') {
+      if (error === 'turnstile') gtag('event', events.turnstileFailed, { inquiry_slug: slug });
+      if (error === 'ratelimit') gtag('event', events.rateLimited, { inquiry_slug: slug });
+    }
+
+    const form = root.querySelector('form');
+    if (!form) return;
+    let interacted = false;
+    form.addEventListener('focusin', () => {
+      if (interacted) return;
+      interacted = true;
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', events.firstInteraction, { inquiry_slug: slug });
+      }
+    }, { once: true });
+  });
+</script>

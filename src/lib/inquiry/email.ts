@@ -1,14 +1,15 @@
 import { Resend } from 'resend';
+import type { InquiryConfig } from './types';
+import type { FieldValues } from './validate';
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+export const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
-export function buildVerificationEmail(opts: {
-  name: string | null;
-  verifyUrl: string;
-}): { subject: string; html: string; text: string } {
+export function buildVerificationEmail(
+  config: InquiryConfig,
+  opts: { name: string | null; verifyUrl: string }
+): { subject: string; html: string; text: string } {
   const greeting = opts.name ? `Hi ${opts.name},` : 'Hi there,';
-
-  const subject = 'Confirm your Practice Pals interest list signup';
+  const subject = config.emailTemplate.verificationSubject;
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -27,8 +28,7 @@ export function buildVerificationEmail(opts: {
           <tr>
             <td style="background:linear-gradient(135deg,#6ee7b7 0%,#c4b5fd 100%);padding:32px 40px;">
               <p style="margin:0;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6d3fc1;">Vibrations Violin Studio</p>
-              <h1 style="margin:8px 0 0;font-size:26px;font-weight:700;color:#1f1535;line-height:1.1;letter-spacing:-0.03em;">Practice Pals</h1>
-              <p style="margin:6px 0 0;font-size:14px;color:#3a3140;">Beta Interest List</p>
+              <h1 style="margin:8px 0 0;font-size:26px;font-weight:700;color:#1f1535;line-height:1.1;letter-spacing:-0.03em;">${config.title}</h1>
             </td>
           </tr>
 
@@ -37,7 +37,7 @@ export function buildVerificationEmail(opts: {
             <td style="padding:36px 40px;">
               <p style="margin:0 0 16px;font-size:15px;color:#2f2a35;">${greeting}</p>
               <p style="margin:0 0 16px;font-size:15px;color:#3a3140;line-height:1.6;">
-                Thanks for signing up to hear about Practice Pals. Please confirm your email address so I know where to reach you when beta testing is ready.
+                ${config.emailTemplate.verificationIntro}
               </p>
               <p style="margin:0 0 28px;font-size:15px;color:#3a3140;line-height:1.6;">
                 This link expires in 48 hours.
@@ -84,7 +84,7 @@ export function buildVerificationEmail(opts: {
 
   const text = `${greeting}
 
-Thanks for signing up to hear about Practice Pals.
+${config.emailTemplate.verificationIntro}
 
 Please confirm your email address by clicking the link below:
 ${opts.verifyUrl}
@@ -98,23 +98,26 @@ If you didn't sign up for this, you can safely ignore this email.
   return { subject, html, text };
 }
 
-export function buildNotificationEmail(opts: {
-  name: string | null;
-  email: string;
-  role: string | null;
-}): { subject: string; html: string; text: string } {
-  const subject = `New Practice Pals signup: ${opts.email}`;
-  const nameLabel = opts.name ?? 'not provided';
-  const roleLabel = opts.role ?? 'not specified';
+export function buildNotificationEmail(
+  config: InquiryConfig,
+  fields: FieldValues
+): { subject: string; html: string; text: string } {
+  const email = String(fields.email ?? '');
+  const subject = `${config.emailTemplate.notificationSubjectPrefix}: ${email}`;
 
-  const html = `<p>A new signup just verified their email.</p>
+  const rows = config.fields
+    .filter((f) => f.name !== 'email')
+    .map((f) => ({ label: f.label, value: fields[f.name] ?? 'not provided' }));
+
+  const html = `<p>A new ${config.title} submission just verified their email.</p>
 <ul>
-  <li><strong>Email:</strong> ${opts.email}</li>
-  <li><strong>Name:</strong> ${nameLabel}</li>
-  <li><strong>Role:</strong> ${roleLabel}</li>
+  <li><strong>Email:</strong> ${email}</li>
+  ${rows.map((r) => `<li><strong>${r.label}:</strong> ${r.value}</li>`).join('\n  ')}
 </ul>`;
 
-  const text = `New Practice Pals verified signup:\nEmail: ${opts.email}\nName: ${nameLabel}\nRole: ${roleLabel}`;
+  const text = `New ${config.title} verified submission:\nEmail: ${email}\n${rows
+    .map((r) => `${r.label}: ${r.value}`)
+    .join('\n')}`;
 
   return { subject, html, text };
 }

@@ -1,5 +1,10 @@
 ---
+export const prerender = false;
 import Layout from '../layouts/Layout.astro';
+import InquiryEngine from '../components/InquiryEngine.astro';
+import { contactConfig } from '../lib/inquiries/contact';
+
+const error = Astro.url.searchParams.get('error');
 ---
 
 <Layout
@@ -331,7 +336,7 @@ import Layout from '../layouts/Layout.astro';
             <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
             <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
               <a href="https://calendly.com/vibesviolinstudio/30min" class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">Book a 15-Minute Intro Chat</a>
-              <a href="#contact-form" class="btn-secondary text-sm">Send a Message</a>
+              <a href="#inquiry-engine" class="btn-secondary text-sm send-message-link">Send a Message</a>
             </div>
           </div>
 
@@ -423,7 +428,7 @@ import Layout from '../layouts/Layout.astro';
             <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
             <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
               <a href="https://calendly.com/vibesviolinstudio/30min" class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">Book a 15-Minute Intro Chat</a>
-              <a href="#contact-form" class="btn-secondary text-sm">Send a Message</a>
+              <a href="#inquiry-engine" class="btn-secondary text-sm send-message-link">Send a Message</a>
             </div>
           </div>
 
@@ -515,10 +520,25 @@ import Layout from '../layouts/Layout.astro';
             <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
             <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
               <a href="https://calendly.com/vibesviolinstudio/30min" class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">Book a 15-Minute Intro Chat</a>
-              <a href="#contact-form" class="btn-secondary text-sm">Send a Message</a>
+              <a href="#inquiry-engine" class="btn-secondary text-sm send-message-link">Send a Message</a>
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- ── Inquiry Engine — revealed once a buyer-type pathway is selected ── -->
+      <div id="inquiry-engine" class="inquiry-engine-wrapper hidden mt-10 reveal" role="region" aria-label="Send an inquiry">
+        <div class="max-w-xl mx-auto">
+          <div class="mb-6">
+            <h3 class="font-heading font-bold text-ink" style="font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.05; letter-spacing: -0.03em;">
+              {contactConfig.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: #3A3140;">
+              {contactConfig.subtitle}
+            </p>
+          </div>
+          <InquiryEngine config={contactConfig} error={error} />
         </div>
       </div>
 
@@ -740,6 +760,15 @@ import Layout from '../layouts/Layout.astro';
   // ── Fit Finder: pathway card open/close ──
   const cards = document.querySelectorAll<HTMLButtonElement>('.fit-card');
   const panels = document.querySelectorAll<HTMLElement>('.pathway-panel');
+  const inquiryEngineEl = document.getElementById('inquiry-engine');
+
+  function showInquiryEngine() {
+    inquiryEngineEl?.classList.remove('hidden');
+    inquiryEngineEl?.classList.add('visible');
+  }
+  function hideInquiryEngine() {
+    inquiryEngineEl?.classList.add('hidden');
+  }
 
   function openPanel(pathwayId: string) {
     // Close all panels and reset all cards first
@@ -764,6 +793,7 @@ import Layout from '../layouts/Layout.astro';
       card.setAttribute('aria-expanded', 'true');
       card.classList.add('border-purplePrimary', 'bg-white', 'shadow-card');
     }
+    showInquiryEngine();
   }
 
   function closePanel(pathwayId: string) {
@@ -774,6 +804,13 @@ import Layout from '../layouts/Layout.astro';
       card.setAttribute('aria-expanded', 'false');
       card.classList.remove('border-purplePrimary', 'bg-white', 'shadow-card');
     }
+    hideInquiryEngine();
+  }
+
+  // If we were redirected back here with an error (e.g. #inquiry-engine?error=...),
+  // keep the engine visible even though no pathway card is selected.
+  if (new URLSearchParams(window.location.search).has('error')) {
+    showInquiryEngine();
   }
 
   // Card click handlers

@@ -1,15 +1,10 @@
 ---
 export const prerender = false;
 import Layout from '../../../layouts/Layout.astro';
+import InquiryEngine from '../../../components/InquiryEngine.astro';
+import { practicePalsConfig } from '../../../lib/inquiries/practice-pals';
 
 const error = Astro.url.searchParams.get('error');
-const errorMessages: Record<string, string> = {
-  email: 'Please enter a valid email address.',
-  ratelimit: 'Too many submissions — please wait a little while and try again.',
-  server: 'Something went wrong on our end. Please try again in a moment.',
-  invalid: 'Something went wrong. Please try again.',
-};
-const errorMessage = error ? (errorMessages[error] ?? errorMessages.invalid) : null;
 ---
 
 <Layout
@@ -42,118 +37,16 @@ const errorMessage = error ? (errorMessages[error] ?? errorMessages.invalid) : n
 
         <!-- Intro -->
         <div class="mb-8">
-          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">What this is</p>
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">{practicePalsConfig.intro.label}</p>
           <h2 id="form-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-            Be part of shaping Practice Pals
+            {practicePalsConfig.intro.heading}
           </h2>
           <div class="mt-4 space-y-3 text-base text-ink/70 font-light leading-relaxed">
-            <p>
-              Practice Pals is a practice support tool growing out of real beginner violin student needs. It's not ready yet — but when beta testing opens, I'd love to have thoughtful people involved.
-            </p>
-            <p>
-              This is an interest list, not a product launch. I'll reach out personally when the time comes.
-            </p>
+            {practicePalsConfig.intro.paragraphs.map((p) => <p>{p}</p>)}
           </div>
         </div>
 
-        <!-- Error message -->
-        {errorMessage && (
-          <div class="mb-6 rounded-lg border border-red-200 bg-red-50 px-5 py-4" role="alert">
-            <p class="text-sm text-red-700">{errorMessage}</p>
-          </div>
-        )}
-
-        <!-- Form card -->
-        <div class="rounded-2xl border border-lavender-200 bg-white p-8 shadow-sm">
-          <form
-            method="POST"
-            action="/api/beta-signup"
-            novalidate
-            aria-label="Practice Pals beta interest list signup"
-          >
-
-            <!-- Honeypot — hidden from real users, filled by bots -->
-            <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
-              <label for="website">Leave this empty</label>
-              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-            </div>
-
-            <!-- Email (required) -->
-            <div class="mb-5">
-              <label for="email" class="block text-sm font-semibold text-ink mb-1.5">
-                Email address <span class="text-purplePrimary" aria-label="required">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                autocomplete="email"
-                placeholder="you@example.com"
-                class="w-full rounded-lg border border-lavender-300 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40
-                       focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-purplePrimary
-                       transition-colors duration-150"
-              />
-            </div>
-
-            <!-- Name (optional) -->
-            <div class="mb-5">
-              <label for="name" class="block text-sm font-semibold text-ink mb-1.5">
-                Name <span class="text-ink/40 font-normal text-xs ml-1">(optional)</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                autocomplete="given-name"
-                placeholder="What should I call you?"
-                class="w-full rounded-lg border border-lavender-300 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40
-                       focus:outline-none focus:ring-2 focus:ring-purplePrimary focus:border-purplePrimary
-                       transition-colors duration-150"
-              />
-            </div>
-
-            <!-- Role (optional) -->
-            <div class="mb-7">
-              <fieldset>
-                <legend class="block text-sm font-semibold text-ink mb-2">
-                  I am a… <span class="text-ink/40 font-normal text-xs ml-1">(optional)</span>
-                </legend>
-                <div class="flex flex-wrap gap-2">
-                  {[
-                    { value: 'parent', label: 'Parent' },
-                    { value: 'adult_learner', label: 'Adult learner' },
-                    { value: 'violin_teacher', label: 'Violin teacher' },
-                    { value: 'other', label: 'Other' },
-                  ].map(({ value, label }) => (
-                    <label class="role-option">
-                      <input type="radio" name="role" value={value} class="sr-only" />
-                      <span class="inline-block px-4 py-2 rounded-full border border-lavender-300 bg-lavender-50
-                                   text-sm text-ink/70 cursor-pointer transition-colors duration-150
-                                   hover:border-purplePrimary hover:text-purplePrimary">
-                        {label}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-            </div>
-
-            <!-- Consent -->
-            <p class="text-xs text-ink/50 leading-relaxed mb-6">
-              By signing up, you're joining an early interest list. I'll reach out when beta testing is ready. No spam, ever. Unsubscribe anytime.
-            </p>
-
-            <!-- Submit -->
-            <button
-              type="submit"
-              class="btn-primary w-full justify-center"
-            >
-              Join the Interest List
-            </button>
-
-          </form>
-        </div>
+        <InquiryEngine config={practicePalsConfig} error={error} />
 
         <!-- Back link -->
         <p class="mt-6 text-center text-sm text-ink/50">
@@ -167,17 +60,3 @@ const errorMessage = error ? (errorMessages[error] ?? errorMessages.invalid) : n
   </section>
 
 </Layout>
-
-<style>
-  /* Highlight selected role pill */
-  .role-option input[type="radio"]:checked + span {
-    background-color: #ede9fe;
-    border-color: #6d28d9;
-    color: #6d28d9;
-    font-weight: 600;
-  }
-  .role-option input[type="radio"]:focus-visible + span {
-    outline: 2px solid #6d28d9;
-    outline-offset: 2px;
-  }
-</style>

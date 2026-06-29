@@ -1,0 +1,10 @@
+---
+export const prerender = false;
+import InquiryStatusCard from '../../../components/inquiry/InquiryStatusCard.astro';
+import { getInquiryConfig } from '../../../lib/inquiries';
+
+const config = getInquiryConfig(Astro.params.slug ?? '');
+if (!config) return new Response(null, { status: 404 });
+---
+
+<InquiryStatusCard config={config} kind="pending" />

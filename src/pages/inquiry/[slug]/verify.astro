@@ -1,0 +1,10 @@
+---
+export const prerender = false;
+// Proxies the token verification to the generic API endpoint and redirects.
+// All logic lives in /api/inquiry/[slug]/verify.ts — this page exists so the email link
+// goes to a clean URL (/inquiry/{slug}/verify?token=...) rather than /api/...
+
+const slug = Astro.params.slug ?? '';
+const token = Astro.url.searchParams.get('token') ?? '';
+return Astro.redirect(`/api/inquiry/${slug}/verify?token=${encodeURIComponent(token)}`);
+---
