@@ -530,25 +530,10 @@ const error = Astro.url.searchParams.get('error');
       <!-- ── Inquiry Engine — revealed once a buyer-type pathway is selected ── -->
       <div id="inquiry-engine" class="inquiry-engine-wrapper hidden mt-10 reveal relative" role="region" aria-label="Send an inquiry">
 
-        <!-- Squiggle accent — lower left, anchored to the merged form + sidebar pair -->
-        <svg
-          class="pointer-events-none absolute hidden lg:block"
-          style="width: 80px; height: 50px; bottom: -10px; left: 0; opacity: 0.3;"
-          viewBox="0 0 80 48"
-          fill="none"
-          stroke="#5b21b6"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M4 24 C16 6, 28 42, 40 24 C52 6, 64 42, 76 24" />
-        </svg>
-
-        <div class="max-w-3xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10 lg:gap-12 items-start relative">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-12 items-start relative">
 
           <!-- ── Left: form ── -->
-          <div>
+          <div class="relative">
             <div class="mb-6">
               <h3 class="font-heading font-bold text-ink" style="font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.05; letter-spacing: -0.03em;">
                 {contactConfig.title}
@@ -558,6 +543,21 @@ const error = Astro.url.searchParams.get('error');
               </p>
             </div>
             <InquiryEngine config={contactConfig} error={error} />
+
+            <!-- Squiggle accent — below the form, left-aligned -->
+            <svg
+              class="pointer-events-none absolute hidden lg:block"
+              style="width: 80px; height: 50px; top: 100%; margin-top: 28px; left: 0; opacity: 0.3;"
+              viewBox="0 0 80 48"
+              fill="none"
+              stroke="#5b21b6"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 24 C16 6, 28 42, 40 24 C52 6, 64 42, 76 24" />
+            </svg>
           </div>
 
           <!-- ── Right: contact sidebar ── -->
