@@ -24,18 +24,61 @@ const error = Astro.url.searchParams.get('error');
 
   <!-- Hero -->
   <section
-    class="hero-interior"
-    style="background: linear-gradient(135deg, #fb923c 0%, #c4b5fd 100%);"
+    class="hero-interior kickstart-hero relative overflow-hidden isolate"
+    style="
+      background:
+        radial-gradient(circle at 16% 18%, rgba(251,208,176,0.55) 0%, transparent 56%),
+        radial-gradient(circle at 88% 12%, rgba(253,230,138,0.32) 0%, transparent 50%),
+        radial-gradient(circle at 82% 92%, rgba(196,181,253,0.38) 0%, transparent 55%),
+        linear-gradient(160deg, #fdf6ee 0%, #fbeee1 50%, #f7ebe0 100%);
+    "
     aria-labelledby="kickstart-heading"
   >
-    <div class="container-narrow">
-      <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 text-purplePrimary" style="letter-spacing: 0.14em;">A 4-Week Beginner Cohort for Adults</p>
-      <h1 id="kickstart-heading" class="font-heading font-bold text-ink" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.04em;">
-        Violin Kickstart
-      </h1>
-      <p class="mt-4 text-lg text-ink/70 leading-relaxed max-w-xl">
-        A small, low-pressure group for adults who've always been curious about the violin but never quite started. You don't need an instrument for the first session — just curiosity.
-      </p>
+    <!-- Paper-grain texture — very low opacity, purely tactile -->
+    <div class="kickstart-hero-grain pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+    <!-- Abstract staff-line motif — a music staff drawn as a soft, bending ribbon -->
+    <svg
+      class="pointer-events-none absolute inset-0 w-full h-full"
+      viewBox="0 0 1200 500"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+      style="z-index: 1;"
+    >
+      <g fill="none" stroke="#6d3fc1" stroke-width="1.4" stroke-linecap="round">
+        <path d="M-50,130 C 250,80 450,180 750,120 S 1150,70 1250,120" opacity="0.14" />
+        <path d="M-50,168 C 250,118 450,218 750,158 S 1150,108 1250,158" opacity="0.12" />
+        <path d="M-50,206 C 250,156 450,256 750,196 S 1150,146 1250,196" opacity="0.10" />
+        <path d="M-50,244 C 250,194 450,294 750,234 S 1150,184 1250,234" opacity="0.08" />
+        <path d="M-50,282 C 250,232 450,332 750,272 S 1150,222 1250,272" opacity="0.06" />
+      </g>
+    </svg>
+
+    <div class="container-narrow relative" style="z-index: 2;">
+      <div class="kickstart-hero-panel">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 text-purplePrimary" style="letter-spacing: 0.14em;">A 4-Week Beginner Cohort for Adults</p>
+        <h1 id="kickstart-heading" class="font-heading font-bold text-ink" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.04em;">
+          Violin Kickstart
+        </h1>
+        <p class="mt-4 text-lg text-ink/70 leading-relaxed max-w-xl">
+          A small, low-pressure group for adults who've always been curious about the violin but never quite started. You don't need an instrument for the first session — just curiosity.
+        </p>
+
+        <!-- Quiet trust strip — scannable details, no badges -->
+        <div
+          class="mt-7 pt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-semibold uppercase"
+          style="border-top: 1px solid rgba(45,45,58,0.12); color: rgba(45,45,58,0.72); letter-spacing: 0.1em;"
+        >
+          <span>4 Weeks</span>
+          <span aria-hidden="true" style="color: rgba(45,45,58,0.3);">·</span>
+          <span>Adults</span>
+          <span aria-hidden="true" style="color: rgba(45,45,58,0.3);">·</span>
+          <span>No Instrument Needed for Session One</span>
+          <span aria-hidden="true" style="color: rgba(45,45,58,0.3);">·</span>
+          <span>Small Group</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -92,6 +135,34 @@ const error = Astro.url.searchParams.get('error');
   </section>
 
 </Layout>
+
+<style>
+  /* ── Kickstart hero: paper-grain texture, very low opacity ── */
+  .kickstart-hero-grain {
+    z-index: 1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  /* ── Kickstart hero: translucent text panel — lifts copy off the textured background ── */
+  .kickstart-hero-panel {
+    max-width: 40rem;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 1.5rem;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 60px rgba(76, 46, 20, 0.08);
+  }
+
+  @media (max-width: 640px) {
+    .kickstart-hero-panel {
+      padding: 1.5rem;
+    }
+  }
+</style>
 
 <script>
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
