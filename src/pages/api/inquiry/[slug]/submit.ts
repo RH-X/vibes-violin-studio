@@ -13,7 +13,7 @@ import {
 } from '../../../../lib/inquiry/submissions';
 import { buildVerificationEmail, resend } from '../../../../lib/inquiry/email';
 
-const SITE_URL = import.meta.env.PUBLIC_SITE_URL ?? 'https://vibesviolin.studio';
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL ?? 'https://www.vibesviolin.studio';
 const FROM_EMAIL = import.meta.env.BETA_FROM_EMAIL ?? 'onboarding@resend.dev';
 
 export const POST: APIRoute = async ({ params, request, clientAddress }) => {

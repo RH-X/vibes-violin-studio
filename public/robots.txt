@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vibesviolin.studio/sitemap-index.xml
+Sitemap: https://www.vibesviolin.studio/sitemap-index.xml

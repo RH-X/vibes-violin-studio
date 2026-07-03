@@ -16,5 +16,5 @@ export default defineConfig({
         !page.includes('/violin-kickstart'),
     }),
   ],
-  site: 'https://vibesviolin.studio',
+  site: 'https://www.vibesviolin.studio',
 });
