@@ -82,4 +82,5 @@ export const violinKickstartConfig: InquiryConfig = {
   },
   turnstile: true,
   successMessage: "Thanks for joining the Violin Kickstart waitlist! Once your email is verified, you'll be on the list — I'll reach out personally as the next cohort date is set.",
+  emailConfirmedMessage: "Thanks for confirming your email. Rae has you on the list! Look out for more details to come; they'll be here soon.",
 };

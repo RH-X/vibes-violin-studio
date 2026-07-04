@@ -62,6 +62,14 @@ export function buildVerificationEmail(
                 Or copy this link into your browser:<br/>
                 <span style="color:#6d28d9;word-break:break-all;">${opts.verifyUrl}</span>
               </p>
+
+              <p style="margin:28px 0 0;font-size:15px;color:#3a3140;line-height:1.6;">
+                Thanks and I look forward to connecting with you!
+              </p>
+              <p style="margin:16px 0 0;font-size:15px;color:#3a3140;line-height:1.6;">
+                Warmly,<br/>
+                Rae McGee
+              </p>
             </td>
           </tr>
 
@@ -92,6 +100,11 @@ ${opts.verifyUrl}
 This link expires in 48 hours.
 
 If you didn't sign up for this, you can safely ignore this email.
+
+Thanks and I look forward to connecting with you!
+
+Warmly,
+Rae McGee
 
 — Vibrations Violin Studio, Globeville, Denver, CO`;
 

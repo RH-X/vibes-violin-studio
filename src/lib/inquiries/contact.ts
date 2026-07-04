@@ -43,11 +43,13 @@ export const contactConfig: InquiryConfig = {
   ],
   notifyEmail: 'vibesviolinstudio@gmail.com',
   emailTemplate: {
-    verificationSubject: 'Confirm your inquiry to Vibrations Violin Studio',
+    verificationSubject: '🎻 Please Confirm Your inquiry to Vibrations Violin Studio',
     verificationIntro: "Thanks for reaching out to Vibrations Violin Studio. Please confirm your email address so I know your inquiry is really from you.",
-    notificationSubjectPrefix: 'New contact inquiry',
+    notificationSubjectPrefix: '🤖 Congratulations, Boss! A New Violin Lessons Inquiry Has Been Received',
   },
   turnstile: true,
   backHref: '/contact',
   successMessage: "Thanks for reaching out! Once your email has been verified, your inquiry will be sent. I'll respond within one business day whenever possible.",
+  emailConfirmedHeading: 'Hooray! 🎻',
+  emailConfirmedMessage: "Thanks for confirming your email. Your inquiry to the studio has been received, Rae is getting a heads up and will respond to you soon.",
 };

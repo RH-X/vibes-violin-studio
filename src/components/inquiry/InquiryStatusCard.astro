@@ -21,8 +21,8 @@ const copy: Record<Kind, { label: string; heading: string; body: string; iconCol
   },
   success: {
     label: "You're in",
-    heading: 'Email confirmed',
-    body: `Thanks for confirming your email. Your ${config.title.toLowerCase()} has been sent.`,
+    heading: config.emailConfirmedHeading ?? 'Email confirmed',
+    body: config.emailConfirmedMessage ?? `Thanks for confirming your email. Your ${config.title.toLowerCase()} has been sent.`,
     iconColor: '#059669',
   },
   invalid: {

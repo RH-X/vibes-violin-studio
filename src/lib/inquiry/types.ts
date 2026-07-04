@@ -50,6 +50,12 @@ export interface InquiryConfig {
   /** Shown on the "pending" status page right after submission, before email verification completes.
    * Falls back to a generic message if omitted (see practice-pals' dedicated pending.astro). */
   successMessage?: string;
+  /** Heading on the "success" status page after email verification completes.
+   * Falls back to "Email confirmed" if omitted. */
+  emailConfirmedHeading?: string;
+  /** Body text on the "success" status page after email verification completes.
+   * Falls back to a generic "Your {title} has been sent" message if omitted. */
+  emailConfirmedMessage?: string;
   /** Where the generic status pages (pending/success/invalid/expired/already) link back to. Defaults to "/". */
   backHref?: string;
 }
