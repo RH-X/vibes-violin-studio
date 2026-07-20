@@ -2,6 +2,12 @@
   "framework": "astro",
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "vibesviolinstudio.vercel.app" }],
+      "destination": "https://www.vibesviolin.studio/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "vibesviolinstudio.vercel.app" }],
       "destination": "https://www.vibesviolin.studio/:path*",
