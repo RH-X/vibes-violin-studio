@@ -72,7 +72,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
             Violin Kickstart was created for adults who have always wondered what learning violin might be like—but who want a supportive place to begin without pressure, comparison, or the expectation of already knowing what they're doing.
           </p>
           <p>
-            Over four weeks, you'll learn how the violin is held, how sound is made, and how to approach practice in manageable steps. Sessions are held online, with optional in-person support available for local Denver students who'd like it. The first session does not require an instrument—you can simply arrive with curiosity and see how it feels.
+            Over four weeks, you'll learn how the violin is held, how sound is made, and how to approach practice in manageable steps. Sessions are held live online, with optional in-person support available for local Denver students when applicable. The first session does not require an instrument—you can simply arrive with curiosity and see how it feels.
           </p>
           <p>
             This isn't about becoming a performer in four weeks. It's about discovering whether violin can become something meaningful in your life.
@@ -140,8 +140,39 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
     </div>
   </section>
 
+  <!-- Planned timeline section -->
+  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="timeline-heading">
+    <div class="container-narrow">
+      <div class="max-w-2xl reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Planned timeline</p>
+        <h2 id="timeline-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          A four-week beginning this September.
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          The first Violin Kickstart cohort is planned for mid-September 2026. The exact weekly meeting time will be selected based on the availability of people who join the founding cohort waitlist.
+        </p>
+        <ul class="mt-4 space-y-2 pl-5 list-none">
+          {[
+            ["Target start", "Mid-September 2026"],
+            ["Format", "Four weekly live online group sessions"],
+            ["Session length", "Approximately 60–75 minutes"],
+            ["Scheduling", "The final day and time will be chosen to work for the greatest number of founding participants"],
+          ].map(([label, value]) => (
+            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+              <span><strong class="font-semibold text-ink">{label}:</strong> {value}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          Joining the waitlist helps shape the final schedule, but does not require payment or commit you to enrolling.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Waitlist form section -->
-  <section id="waitlist" class="section-pad" style="background: #f5f3ff;" aria-labelledby="form-heading">
+  <section id="waitlist" class="section-pad bg-white" aria-labelledby="form-heading">
     <div class="container-narrow">
       <div class="max-w-3xl mx-auto">
 

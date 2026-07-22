@@ -14,6 +14,8 @@ export interface InquiryField {
   /** Email fields with verify=true must be confirmed via double opt-in before notification. */
   verify?: boolean;
   options?: InquiryFieldOption[];
+  /** Small supporting note rendered under the label/legend, e.g. clarifying how a response will be used. */
+  helperText?: string;
 }
 
 export interface InquiryEmailTemplate {

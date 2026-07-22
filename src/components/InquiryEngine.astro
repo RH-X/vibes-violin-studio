@@ -48,12 +48,17 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         {field.type === 'radio' ? (
           <fieldset>
             <legend class="block text-sm font-semibold text-ink mb-2">
-              {field.label} {field.optionalLabel && <span class="text-ink/40 font-normal text-xs ml-1">{field.optionalLabel}</span>}
+              {field.label} {field.required ? (
+                <span class="text-purplePrimary" aria-label="required">*</span>
+              ) : (
+                field.optionalLabel && <span class="text-ink/40 font-normal text-xs ml-1">{field.optionalLabel}</span>
+              )}
             </legend>
+            {field.helperText && <p class="text-xs text-ink/50 mb-2 -mt-1">{field.helperText}</p>}
             <div class="flex flex-wrap gap-2">
               {field.options?.map((opt) => (
                 <label class="role-option">
-                  <input type="radio" name={field.name} value={opt.value} class="sr-only" />
+                  <input type="radio" name={field.name} value={opt.value} required={field.required} class="sr-only" />
                   <span class="inline-block px-4 py-2 rounded-full border border-lavender-300 bg-lavender-50
                                text-sm text-ink/70 cursor-pointer transition-colors duration-150
                                hover:border-purplePrimary hover:text-purplePrimary">

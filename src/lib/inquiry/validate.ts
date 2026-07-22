@@ -29,7 +29,11 @@ export function extractAndValidateFields(config: InquiryConfig, formData: FormDa
 
     if (field.type === 'radio') {
       const allowed = field.options?.map((o) => o.value) ?? [];
-      values[field.name] = allowed.includes(raw) ? raw : null;
+      const value = allowed.includes(raw) ? raw : null;
+      if (field.required && !value) {
+        return { values, error: 'required' };
+      }
+      values[field.name] = value;
       continue;
     }
 

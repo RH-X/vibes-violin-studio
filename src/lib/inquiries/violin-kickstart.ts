@@ -15,12 +15,13 @@ export const violinKickstartConfig: InquiryConfig = {
     label: 'Join the Founding Cohort',
     heading: 'Join the Violin Kickstart Founding Cohort Waitlist',
     paragraphs: [
-      "Violin Kickstart is a small, low-pressure cohort for adults who have always been curious about violin but have not quite started.",
-      "I'll personally contact people on this waitlist when registration opens. Because this is the first cohort, space will be intentionally limited so I can work closely with each participant.",
+      "The first four-week cohort is planned to begin in mid-September 2026 and will meet live online once each week.",
+      "I'll personally contact people on this waitlist when registration opens. The final meeting day and time will be selected based on founding cohort availability.",
+      "Because this is the first cohort, space will be intentionally limited so I can work closely with each participant.",
     ],
   },
   buttonText: 'Join the Founding Cohort Waitlist',
-  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when registration is ready. No spam, ever.",
+  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when registration is ready. Joining also helps me choose the weekly time that works for the greatest number of participants. No spam, ever.",
   fields: [
     {
       name: 'name',
@@ -57,6 +58,22 @@ export const violinKickstartConfig: InquiryConfig = {
         { value: 'yes', label: 'Yes' },
         { value: 'no', label: 'No' },
         { value: 'not_yet', label: 'Not yet' },
+      ],
+    },
+    {
+      name: 'preferred_cohort_time',
+      label: 'Which time would you be most likely to attend a weekly live online session?',
+      type: 'radio',
+      required: true,
+      helperText: 'Choose the option that generally works best. The final schedule will be selected based on founding cohort availability.',
+      options: [
+        { value: 'weekday_mornings', label: 'Weekday mornings' },
+        { value: 'weekday_afternoons', label: 'Weekday afternoons' },
+        { value: 'weekday_evenings', label: 'Weekday evenings' },
+        { value: 'saturday_mornings', label: 'Saturday mornings' },
+        { value: 'saturday_afternoons', label: 'Saturday afternoons' },
+        { value: 'sunday_afternoons', label: 'Sunday afternoons' },
+        { value: 'availability_varies', label: 'My availability varies' },
       ],
     },
     {
