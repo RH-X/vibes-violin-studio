@@ -4,20 +4,17 @@ import Layout from '../layouts/Layout.astro';
 import InquiryEngine from '../components/InquiryEngine.astro';
 import { violinKickstartConfig } from '../lib/inquiries/violin-kickstart';
 
-// ── Launch flag ──
-// This page is hidden/prelaunch: not linked from nav/footer/homepage, noindex+nofollow,
-// and excluded from the sitemap (see the matching filter in astro.config.mjs).
-// To launch: flip this to true, then add a real link to the page somewhere on the
-// site, and remove the '/violin-kickstart' exclusion line from the sitemap filter
-// in astro.config.mjs.
-const VIOLIN_KICKSTART_LAUNCHED = false;
+const VIOLIN_KICKSTART_LAUNCHED = true;
 
 const error = Astro.url.searchParams.get('error');
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 ---
 
 <Layout
-  title="Violin Kickstart — A 4-Week Beginner Cohort for Adults | Vibrations Violin Studio"
-  description="Join the waitlist for Violin Kickstart, a low-pressure 4-week group cohort for adults curious about starting violin. No instrument needed for the first session."
+  title="Violin Kickstart — A 4-Week Online Cohort for Adult Beginners | Vibrations Violin Studio"
+  description="Join the waitlist for Violin Kickstart, a low-pressure 4-week online cohort for adults curious about starting violin, with optional in-person support for local Denver students. No instrument needed for the first session."
   noindex={!VIOLIN_KICKSTART_LAUNCHED}
   nofollow={!VIOLIN_KICKSTART_LAUNCHED}
 >
@@ -41,7 +38,7 @@ const error = Astro.url.searchParams.get('error');
           Violin Kickstart
         </h1>
         <p class="kickstart-body mt-4">
-          A small, low-pressure group for adults who've always been curious about the violin but never quite started. You don't need an instrument for the first session — just curiosity.
+          Most adults don't stop learning because they aren't musical — practicing alone can simply feel confusing or overwhelming. Violin Kickstart is a small, supportive cohort designed to help you begin with confidence and build a practice habit that can last.
         </p>
 
         <!-- Quiet trust strip — scannable details, no badges -->
@@ -53,6 +50,8 @@ const error = Astro.url.searchParams.get('error');
           <span>Beginner-Friendly</span>
           <span aria-hidden="true" class="kickstart-trust-sep">·</span>
           <span>Small Group</span>
+          <span aria-hidden="true" class="kickstart-trust-sep">·</span>
+          <span>Online</span>
           <span aria-hidden="true" class="kickstart-trust-sep">·</span>
           <span>No Instrument Needed for Session One</span>
         </div>
@@ -70,13 +69,71 @@ const error = Astro.url.searchParams.get('error');
         </h2>
         <div class="mt-4 space-y-3 text-base text-ink/70 font-light leading-relaxed">
           <p>
-            Violin Kickstart is built for total beginners and near-beginners — adults who are curious about violin but want a gentle, structured way in, without pressure or comparison.
+            Violin Kickstart was created for adults who have always wondered what learning violin might be like—but who want a supportive place to begin without pressure, comparison, or the expectation of already knowing what they're doing.
           </p>
           <p>
-            Over four weeks, in a small group setting, you'll get a real feel for the instrument: how it's held, how sound is made, and whether it's something you want to keep exploring. The first session doesn't require an instrument at all — just show up and see how it feels.
+            Over four weeks, you'll learn how the violin is held, how sound is made, and how to approach practice in manageable steps. Sessions are held online, with optional in-person support available for local Denver students who'd like it. The first session does not require an instrument—you can simply arrive with curiosity and see how it feels.
           </p>
           <p>
-            This is a waitlist for the next cohort, not an open enrollment. I'll reach out personally as the date comes together.
+            This isn't about becoming a performer in four weeks. It's about discovering whether violin can become something meaningful in your life.
+          </p>
+          <p>
+            <strong class="font-semibold text-ink">You don't need an instrument for the first session—just curiosity.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course differentiation section -->
+  <section class="bg-white section-pad" aria-labelledby="differentiation-heading">
+    <div class="container-narrow">
+      <div class="max-w-2xl reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">A different kind of beginning</p>
+        <h2 id="differentiation-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          Learning how to continue matters, too.
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          Many beginner courses focus primarily on the notes you will learn. Violin Kickstart also helps you understand how to keep learning after class.
+        </p>
+        <ul class="mt-4 space-y-2 pl-5 list-none">
+          {[
+            "Begin with manageable steps.",
+            "Learn alongside other adult beginners.",
+            "Build confidence before adding complexity.",
+            "Create a practice approach that fits real life.",
+            "Discover whether violin belongs in your future.",
+          ].map(item => (
+            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practice Pals founding-participant section -->
+  <section class="bg-white section-pad" aria-labelledby="practice-pals-heading">
+    <div class="container-narrow">
+      <div class="max-w-2xl reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Help shape something new</p>
+        <h2 id="practice-pals-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          A better experience between lessons.
+        </h2>
+        <div class="mt-4 space-y-3 text-base text-ink/70 font-light leading-relaxed">
+          <p>
+            I've spent more than twenty years teaching violin. One pattern I've seen again and again is that beginners often struggle not because they lack ability, but because practicing between lessons can feel overwhelming.
+          </p>
+          <p>
+            That's why I'm developing Practice Pals, a teacher-guided practice tool designed to make home practice feel more approachable through short, manageable practice sessions.
+          </p>
+          <p>
+            Members of this first Violin Kickstart cohort will have the opportunity to try an early version and share honest feedback about what helps and what could be clearer.
+          </p>
+          <p>
+            You aren't being asked to become a software expert. You'll be helping shape a better learning experience for future beginners.
           </p>
         </div>
       </div>
@@ -113,6 +170,20 @@ const error = Astro.url.searchParams.get('error');
   </section>
 
 </Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Violin Kickstart",
+  "description": "A 4-week beginner cohort for adults curious about starting violin, held online with optional in-person support for local Denver students. A small, supportive, low-pressure starting point for building confidence and a sustainable practice habit. No instrument needed for the first session.",
+  "provider": { "@id": `${siteOrigin}/#business` },
+  "url": canonicalURL,
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "blended",
+    "courseWorkload": "P4W",
+  },
+})} />
 
 <style>
   /* ── Kickstart hero: cinematic layout shell ── */

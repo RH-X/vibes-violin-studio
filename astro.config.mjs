@@ -10,10 +10,7 @@ export default defineConfig({
     tailwind(),
     sitemap({
       filter: (page) =>
-        !page.includes('/practice-pals/beta') &&
-        // Violin Kickstart is hidden/prelaunch — remove this line when launching
-        // (see VIOLIN_KICKSTART_LAUNCHED in src/pages/violin-kickstart.astro).
-        !page.includes('/violin-kickstart'),
+        !page.includes('/practice-pals/beta'),
     }),
   ],
   site: 'https://www.vibesviolin.studio',

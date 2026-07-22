@@ -12,15 +12,15 @@ export const violinKickstartConfig: InquiryConfig = {
   title: 'Violin Kickstart',
   subtitle: 'A 4-Week Beginner Cohort for Adults',
   intro: {
-    label: 'Join the Waitlist',
-    heading: 'Join the Violin Kickstart Waitlist',
+    label: 'Join the Founding Cohort',
+    heading: 'Join the Violin Kickstart Founding Cohort Waitlist',
     paragraphs: [
-      "Violin Kickstart is a small, low-pressure cohort for adults who've always been curious about the violin but never quite started. No experience needed, and you don't need an instrument for the first session.",
-      "This is a waitlist, not a commitment — I'll reach out personally as the next cohort date comes together.",
+      "Violin Kickstart is a small, low-pressure cohort for adults who have always been curious about violin but have not quite started.",
+      "I'll personally contact people on this waitlist when registration opens. Because this is the first cohort, space will be intentionally limited so I can work closely with each participant.",
     ],
   },
-  buttonText: 'Join the Waitlist',
-  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when the next cohort is ready. No spam, ever.",
+  buttonText: 'Join the Founding Cohort Waitlist',
+  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when registration is ready. No spam, ever.",
   fields: [
     {
       name: 'name',
