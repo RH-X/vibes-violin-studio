@@ -9,7 +9,7 @@
     <!-- Desktop / tablet sequence -->
     <p class="kb-banner-row kb-banner-row--wide">
       <span class="kb-diamond" aria-hidden="true"></span>
-      <span class="kb-strong">Founding Violin Kickstart Cohort Now Forming</span>
+      <span class="kb-strong">Founding <span class="kb-highlight">Violin Kickstart</span> Cohort Now Forming</span>
       <span class="kb-dot kb-optional" style="animation-delay: 200ms;" aria-hidden="true"></span>
       <span class="kb-optional">Adult Beginners</span>
       <span class="kb-dot" style="animation-delay: 400ms;" aria-hidden="true"></span>
@@ -21,7 +21,7 @@
     <!-- Mobile compact copy: an inline (not flex) row so it merges with the CTA below into one shared line-wrapping context, capping the banner at two short lines -->
     <p class="kb-banner-row kb-banner-row--compact">
       <span class="kb-diamond" aria-hidden="true"></span>
-      <span class="kb-strong">Founding Violin Kickstart Cohort</span>
+      <span class="kb-strong">Founding <span class="kb-highlight">Violin Kickstart</span> Cohort</span>
       <span class="kb-dot" style="animation-delay: 200ms;" aria-hidden="true"></span>
       <span>Starts September 2026</span>
     </p>
@@ -86,6 +86,17 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #FFF8EC;
+  }
+
+  /* The literal purplePrimary (#6d3fc1) only measures ~2.5:1 against this dark
+     banner, failing WCAG AA. Uses the same lighter on-dark purple as the
+     Kickstart hero eyebrow (violin-kickstart.astro) instead — same brand hue,
+     ~8:1 contrast here. */
+  .kb-highlight {
+    color: #C4A5FF;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
   }
 
   .kb-banner-row--wide {
