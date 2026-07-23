@@ -157,6 +157,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
             ["Format", "Four weekly live online group sessions"],
             ["Session length", "Approximately 60–75 minutes"],
             ["Scheduling", "The final day and time will be chosen to work for the greatest number of founding participants"],
+            ["Cohort cost", "$149 for all four sessions, payable only if you enroll once registration opens"],
           ].map(([label, value]) => (
             <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
@@ -209,6 +210,13 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
   "description": "A 4-week beginner cohort for adults curious about starting violin, held online with optional in-person support for local Denver students. A small, supportive, low-pressure starting point for building confidence and a sustainable practice habit. No instrument needed for the first session.",
   "provider": { "@id": `${siteOrigin}/#business` },
   "url": canonicalURL,
+  "offers": {
+    "@type": "Offer",
+    "price": "149",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder",
+    "url": canonicalURL,
+  },
   "hasCourseInstance": {
     "@type": "CourseInstance",
     "courseMode": "blended",

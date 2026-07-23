@@ -25,6 +25,10 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
+
+// The banner promotes the Violin Kickstart page itself — redundant (and a
+// little odd) to show it to someone already there.
+const isKickstartPage = Astro.url.pathname === '/violin-kickstart';
 ---
 
 <!doctype html>
@@ -191,7 +195,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
       Skip to main content
     </a>
 
-    <KickstartAnnouncementBanner />
+    {!isKickstartPage && <KickstartAnnouncementBanner />}
     <Header />
     <main id="main-content">
       <slot />
