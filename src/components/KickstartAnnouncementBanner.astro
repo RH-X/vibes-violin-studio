@@ -1,0 +1,174 @@
+---
+// Slim global announcement banner promoting the Violin Kickstart founding-cohort
+// waitlist. Rendered once, above the header, on every page via Layout.astro.
+---
+
+<aside class="kb-banner" aria-label="Violin Kickstart announcement">
+  <div class="container-narrow kb-banner-inner">
+
+    <!-- Desktop / tablet sequence -->
+    <p class="kb-banner-row kb-banner-row--wide">
+      <span class="kb-diamond" aria-hidden="true"></span>
+      <span class="kb-strong">Founding Cohort Now Forming</span>
+      <span class="kb-dot kb-optional" style="animation-delay: 200ms;" aria-hidden="true"></span>
+      <span class="kb-optional">Adult Beginners</span>
+      <span class="kb-dot" style="animation-delay: 400ms;" aria-hidden="true"></span>
+      <span>Starts September 2026</span>
+      <span class="kb-dot kb-optional" style="animation-delay: 600ms;" aria-hidden="true"></span>
+      <span class="kb-optional">No instrument needed for Session One</span>
+    </p>
+
+    <!-- Mobile compact copy: an inline (not flex) row so it merges with the CTA below into one shared line-wrapping context, capping the banner at two short lines -->
+    <p class="kb-banner-row kb-banner-row--compact">
+      <span class="kb-diamond" aria-hidden="true"></span>
+      <span class="kb-strong">Founding Violin Kickstart Cohort</span>
+      <span class="kb-dot" style="animation-delay: 200ms;" aria-hidden="true"></span>
+      <span>Starts September 2026</span>
+    </p>
+
+    <a href="/violin-kickstart#waitlist" class="kb-cta">Join the Waitlist →</a>
+  </div>
+</aside>
+
+<style>
+  .kb-banner {
+    background: linear-gradient(90deg, #18161b 0%, #221e2a 100%);
+    border-bottom: 1px solid rgba(246, 197, 92, 0.3);
+  }
+
+  /* Mobile-first: plain centered block so the compact row and CTA flow together
+     as inline content and wrap as one shared line pool (avoids a stray third line). */
+  .kb-banner-inner {
+    min-height: 44px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .kb-banner-row {
+    margin: 0;
+    display: inline;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: #F1E7DD;
+    line-height: 1.6;
+  }
+
+  .kb-strong {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #FFF8EC;
+  }
+
+  .kb-banner-row--wide {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .kb-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      flex-wrap: wrap;
+    }
+    .kb-banner-row--wide {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 0.55rem;
+    }
+    .kb-banner-row--compact {
+      display: none;
+    }
+    .kb-banner-row--wide .kb-optional {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .kb-banner-row--wide .kb-optional {
+      display: inline-flex;
+    }
+  }
+
+  .kb-diamond {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 0.25em -1px 0;
+    background: #F6C55C;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    vertical-align: middle;
+    animation: kb-wave-pulse-diamond 4s ease-in-out infinite;
+  }
+
+  .kb-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 0.1em;
+    border-radius: 9999px;
+    background: #F6C55C;
+    flex-shrink: 0;
+    vertical-align: middle;
+    animation: kb-wave-pulse-dot 4s ease-in-out infinite;
+  }
+
+  .kb-cta {
+    display: inline-block;
+    margin-left: 0.6em;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #F6C55C;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 0.25rem;
+    transition: color 150ms;
+  }
+
+  @media (min-width: 640px) {
+    .kb-cta {
+      margin-left: 0;
+    }
+  }
+
+  .kb-cta:hover {
+    color: #FFF8EC;
+    text-decoration: underline;
+  }
+
+  /* Diamond and dots share this timing shape — a quick rise-and-fall near the
+     start of each 4s cycle, then a calm hold. Staggered animation-delay values
+     (0ms → 600ms, left to right in the markup) turn the shared shape into a
+     left-to-right wave sweep instead of independent pulses. */
+  @keyframes kb-wave-pulse-diamond {
+    0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.72; }
+    10% { transform: rotate(45deg) scale(1.15); opacity: 1; }
+    20% { transform: rotate(45deg) scale(1); opacity: 0.72; }
+  }
+
+  @keyframes kb-wave-pulse-dot {
+    0%, 100% { opacity: 0.72; }
+    10% { opacity: 1; }
+    20% { opacity: 0.72; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kb-diamond,
+    .kb-dot {
+      animation: none;
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+    }
+    .kb-dot {
+      transform: none;
+    }
+  }
+</style>
