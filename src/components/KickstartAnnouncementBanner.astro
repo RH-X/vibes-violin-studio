@@ -4,12 +4,12 @@
 ---
 
 <aside class="kb-banner" aria-label="Violin Kickstart announcement">
-  <div class="container-narrow kb-banner-inner">
+  <div class="kb-banner-container kb-banner-inner">
 
     <!-- Desktop / tablet sequence -->
     <p class="kb-banner-row kb-banner-row--wide">
       <span class="kb-diamond" aria-hidden="true"></span>
-      <span class="kb-strong">Founding Cohort Now Forming</span>
+      <span class="kb-strong">Founding Violin Kickstart Cohort Now Forming</span>
       <span class="kb-dot kb-optional" style="animation-delay: 200ms;" aria-hidden="true"></span>
       <span class="kb-optional">Adult Beginners</span>
       <span class="kb-dot" style="animation-delay: 400ms;" aria-hidden="true"></span>
@@ -34,6 +34,32 @@
   .kb-banner {
     background: linear-gradient(90deg, #18161b 0%, #221e2a 100%);
     border-bottom: 1px solid rgba(246, 197, 92, 0.3);
+  }
+
+  /* Wider than the site's shared .container-narrow (max-w-6xl / 1152px) —
+     the longer "Founding Violin Kickstart Cohort Now Forming" copy needs the
+     extra room to stay on one line at desktop widths. Same padding scale as
+     .container-narrow, just a taller max-width cap. */
+  .kb-banner-container {
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .kb-banner-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .kb-banner-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   /* Mobile-first: plain centered block so the compact row and CTA flow together
@@ -89,7 +115,10 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  /* Raised from the usual lg (1024px) breakpoint: with the longer "Founding
+     Violin Kickstart Cohort Now Forming" copy, these phrases only have room
+     to appear without wrapping once the viewport reaches xl (1280px). */
+  @media (min-width: 1280px) {
     .kb-banner-row--wide .kb-optional {
       display: inline-flex;
     }
