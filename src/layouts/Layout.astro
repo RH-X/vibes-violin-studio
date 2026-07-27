@@ -73,7 +73,7 @@ const isKickstartPage = Astro.url.pathname === '/violin-kickstart';
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
