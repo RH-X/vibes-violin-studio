@@ -10,11 +10,12 @@ export const violinKickstartConfig: InquiryConfig = {
   formPath: '/violin-kickstart',
   backHref: '/violin-kickstart',
   title: 'Violin Kickstart',
-  subtitle: 'A 4-Week Beginner Cohort for Adults',
+  subtitle: 'A 4-Week Cohort for Adult Beginners and Returning Players',
   intro: {
     label: 'Join the Founding Cohort',
     heading: 'Join the Violin Kickstart Founding Cohort Waitlist',
     paragraphs: [
+      "Whether you're starting violin for the first time or returning after time away, this founding cohort is designed to meet you where you are.",
       "The first four-week cohort is planned to begin in mid-September 2026 and will meet live online once each week.",
       "I'll personally contact people on this waitlist when registration opens. The final meeting day and time will be selected based on founding cohort availability.",
       "Because this is the first cohort, space will be intentionally limited so I can work closely with each participant.",
