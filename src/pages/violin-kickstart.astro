@@ -45,7 +45,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
         <div class="kickstart-trust-strip font-heading mt-7 pt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <span>4 Weeks</span>
           <span aria-hidden="true" class="kickstart-trust-sep">·</span>
-          <span>Adults and Adult-Accompanied Youth</span>
+          <span>Adults</span>
           <span aria-hidden="true" class="kickstart-trust-sep">·</span>
           <span>Beginner-Friendly</span>
           <span aria-hidden="true" class="kickstart-trust-sep">·</span>
@@ -54,6 +54,43 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
           <span>Online</span>
           <span aria-hidden="true" class="kickstart-trust-sep">·</span>
           <span>No Instrument Needed for Session One</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included section -->
+  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="included-heading">
+    <div class="container-narrow">
+      <div class="rounded-2xl border border-lavender-200 bg-white p-6 sm:p-8 md:p-10 shadow-sm reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div class="max-w-md">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">What's included</p>
+            <h2 id="included-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+              Support for starting—and continuing.
+            </h2>
+            <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+              The founding cohort combines live instruction, individual guidance, and practical support between sessions.
+            </p>
+          </div>
+          <ul class="space-y-4" role="list">
+            {[
+              "Four live group classes that build confidence week by week",
+              "One 30-minute private lesson focused on your individual goals",
+              "Weekly personalized feedback so you know what to practice next",
+              "Early access to the Practice Pals learning companion",
+              "Direct communication with Rae when questions come up",
+              "A voice in shaping Practice Pals and future cohorts",
+            ].map(item => (
+              <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d3fc1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
