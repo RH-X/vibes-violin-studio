@@ -521,4 +521,22 @@ import CTABand from '../components/CTABand.astro';
       plus?.classList.add('hidden');
     }
   }
+
+  // Deep-link support: if the URL hash targets a specific FAQ answer (e.g. a
+  // link from another page like #panel-own-violin), open that accordion item
+  // and scroll it into view. Panels are display:none while closed, so the
+  // browser's own hash-scroll can't reach them — this runs the equivalent
+  // scroll manually once the target is actually visible.
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const panel = document.getElementById(id);
+    if (!panel || !panel.classList.contains('faq-panel')) return;
+    const trigger = document.querySelector<HTMLButtonElement>(`.faq-trigger[aria-controls="${id}"]`);
+    if (!trigger) return;
+    if (trigger.getAttribute('aria-expanded') !== 'true') toggle(trigger);
+    trigger.closest('.faq-item')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 </script>

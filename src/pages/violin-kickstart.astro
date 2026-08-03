@@ -95,6 +95,37 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
     </div>
   </section>
 
+  <!-- Audience-fit section -->
+  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="audience-fit-heading">
+    <div class="container-narrow">
+      <div class="max-w-2xl reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Is this for you?</p>
+        <h2 id="audience-fit-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          A supportive way to start—or begin again.
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          Violin Kickstart is designed for adults who want a clear, encouraging path into violin without the pressure of figuring everything out alone. This may be a good fit if:
+        </p>
+        <ul class="mt-4 space-y-3" role="list">
+          {[
+            "You're curious about violin but have never played.",
+            "You played years ago and want an affordable refresh.",
+            "You're unsure about starting or returning on your own.",
+            "You want structure and personal guidance instead of piecing together YouTube videos.",
+          ].map(item => (
+            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d3fc1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- About section -->
   <section class="section-pad bg-white" aria-labelledby="about-heading">
     <div class="container-narrow">
@@ -116,6 +147,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
           <p>
             <strong class="font-semibold text-ink">You don't need an instrument for the first session—just curiosity.</strong>
           </p>
+          <p class="text-sm text-ink/60">Not sure how you'll get a violin? <a href="/insights/how-to-buy-your-first-violin" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">Read my beginner guide →</a></p>
         </div>
       </div>
     </div>
@@ -223,8 +255,62 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
           </div>
         </div>
 
+        <div class="mb-10 reveal">
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">What happens next</p>
+          <h3 class="font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.5rem); line-height: 1.1; letter-spacing: -0.03em;">
+            Join the waitlist without committing to enroll.
+          </h3>
+          <p class="mt-3 text-base text-ink/70 font-light leading-relaxed">
+            Joining helps shape the final schedule and gives you first access when registration opens.
+          </p>
+          <ol class="mt-6 space-y-4 list-none" role="list">
+            {[
+              ["Join the waitlist", "Share your contact information and general availability."],
+              ["I'll personally email you", "I'll follow up with cohort details and any important updates."],
+              ["We'll choose the best meeting time", "The final weekly session time will be selected based on founding-cohort availability."],
+              ["Registration opens", "Waitlist members will receive the enrollment details first."],
+              ["Then you decide whether to enroll", "Joining the waitlist does not require payment or commit you to the cohort."],
+            ].map(([title, desc], i) => (
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-lavender-100 border border-lavender-300 flex items-center justify-center font-heading font-bold text-purplePrimary text-xs" aria-hidden="true">{i + 1}</span>
+                <span class="text-base text-ink/70 font-light leading-relaxed pt-0.5"><strong class="font-semibold text-ink">{title}.</strong> {desc}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
         <div class="reveal">
           <InquiryEngine config={violinKickstartConfig} error={error} />
+        </div>
+
+        <div class="mt-14 pt-8 border-t border-lavender-200 reveal">
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Helpful before you begin</p>
+          <h3 class="font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.5rem); line-height: 1.1; letter-spacing: -0.03em;">
+            Questions about getting started?
+          </h3>
+          <p class="mt-3 text-base text-ink/70 font-light leading-relaxed">
+            These short guides can help you understand the practical side of beginning or returning to violin.
+          </p>
+          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4" role="list">
+            {[
+              { href: "/insights/how-to-buy-your-first-violin", title: "How to choose your first violin", desc: "A practical guide to renting vs. buying, what to spend, and what to avoid." },
+              { href: "/faq#panel-own-violin", title: "Do I need a violin before the first session?", desc: "No—the first Kickstart session doesn't require an instrument at all." },
+              { href: "/insights/can-you-learn-violin-online", title: "Can beginners really learn violin online?", desc: "How live online lessons still provide real feedback and structure." },
+              { href: "/insights/what-happens-during-your-first-violin-lesson", title: "What should I expect when starting violin?", desc: "A walkthrough of what actually happens in an early violin lesson." },
+              { href: "/insights/the-real-timeline-of-learning-violin-as-an-adult", title: "What if I haven't played in years?", desc: "A realistic look at rebuilding skill and confidence as a returning adult player." },
+              { href: "/faq#panel-practice", title: "How much should a beginner practice?", desc: "What consistent, sustainable practice actually looks like early on." },
+            ].map(({ href, title, desc }) => (
+              <li>
+                <a
+                  href={href}
+                  class="block h-full rounded-xl border border-lavender-200 p-5 hover:border-purplePrimary hover:bg-lavender-50 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                >
+                  <span class="font-heading font-semibold text-purplePrimary text-sm">{title} →</span>
+                  <span class="block mt-1.5 text-sm text-ink/60 leading-relaxed">{desc}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <p class="mt-6 text-center text-sm text-ink/50">
