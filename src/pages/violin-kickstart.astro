@@ -14,7 +14,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
 <Layout
   title="Violin Kickstart — A 4-Week Online Cohort for Adult Beginners and Returning Players | Vibrations Violin Studio"
-  description="Join the waitlist for Violin Kickstart, a low-pressure 4-week online cohort for adult beginners and adults returning to violin after time away, with optional in-person support for local Denver students. No instrument needed for the first session."
+  description="Join the waitlist for Violin Kickstart, a low-pressure 4-week online cohort for adult beginners and adults returning to violin after time away. The founding cohort begins Tuesday, September 22, 2026, with optional in-person support for local Denver students. No instrument needed for the first session."
   noindex={!VIOLIN_KICKSTART_LAUNCHED}
   nofollow={!VIOLIN_KICKSTART_LAUNCHED}
 >
@@ -214,17 +214,17 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
       <div class="max-w-2xl reveal">
         <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Planned timeline</p>
         <h2 id="timeline-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-          A four-week beginning this September.
+          A four-week beginning September 22.
         </h2>
         <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          The first Violin Kickstart cohort is planned for mid-September 2026. The exact weekly meeting time will be selected based on the availability of people who join the founding cohort waitlist.
+          The first Violin Kickstart cohort begins Tuesday, September 22, 2026, and meets weekly through October 13.
         </p>
         <ul class="mt-4 space-y-2 pl-5 list-none">
           {[
-            ["Target start", "Mid-September 2026"],
+            ["Starts", "Tuesday, September 22, 2026"],
+            ["Meets", "Weekly on Tuesdays through October 13 (Sept 22, Sept 29, Oct 6, Oct 13)"],
+            ["Time", "5:00–6:10 PM Mountain Time"],
             ["Format", "Four weekly live online group sessions"],
-            ["Session length", "Approximately 60–75 minutes"],
-            ["Scheduling", "The final day and time will be chosen to work for the greatest number of founding participants"],
             ["Cohort cost", "$149 for all four sessions, payable only if you enroll once registration opens"],
           ].map(([label, value]) => (
             <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
@@ -234,7 +234,10 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
           ))}
         </ul>
         <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          Joining the waitlist helps shape the final schedule, but does not require payment or commit you to enrolling.
+          Joining the list doesn't require payment or commit you to enrolling—it just means I'll follow up personally with enrollment details before the cohort begins.
+        </p>
+        <p class="mt-3 text-sm text-ink/60">
+          Not sure what the four weeks actually look like? <a href="/insights/what-to-expect-violin-kickstart" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">Read what to expect →</a>
         </p>
       </div>
     </div>
@@ -261,13 +264,13 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
             Join the waitlist without committing to enroll.
           </h3>
           <p class="mt-3 text-base text-ink/70 font-light leading-relaxed">
-            Joining helps shape the final schedule and gives you first access when registration opens.
+            Joining gives you first access when registration opens.
           </p>
           <ol class="mt-6 space-y-4 list-none" role="list">
             {[
-              ["Join the waitlist", "Share your contact information and general availability."],
+              ["Join the waitlist", "Share your contact information and a little about where you're starting from."],
               ["I'll personally email you", "I'll follow up with cohort details and any important updates."],
-              ["We'll choose the best meeting time", "The final weekly session time will be selected based on founding-cohort availability."],
+              ["Mark your calendar", "The schedule is already set: Tuesdays, September 22–October 13, 5:00–6:10 PM Mountain Time."],
               ["Registration opens", "Waitlist members will receive the enrollment details first."],
               ["Then you decide whether to enroll", "Joining the waitlist does not require payment or commit you to the cohort."],
             ].map(([title, desc], i) => (
@@ -343,6 +346,8 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
     "@type": "CourseInstance",
     "courseMode": "blended",
     "courseWorkload": "P4W",
+    "startDate": "2026-09-22",
+    "endDate": "2026-10-13",
   },
 })} />
 

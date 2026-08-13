@@ -16,13 +16,13 @@ export const violinKickstartConfig: InquiryConfig = {
     heading: 'Join the Violin Kickstart Founding Cohort Waitlist',
     paragraphs: [
       "Whether you're starting violin for the first time or returning after time away, this founding cohort is designed to meet you where you are.",
-      "The first four-week cohort is planned to begin in mid-September 2026 and will meet live online once each week.",
-      "I'll personally contact people on this waitlist when registration opens. The final meeting day and time will be selected based on founding cohort availability.",
+      "The founding cohort begins Tuesday, September 22, 2026, meeting live online every Tuesday through October 13, from 5:00–6:10 PM Mountain Time.",
+      "I'll personally contact people on this waitlist when registration opens.",
       "Because this is the first cohort, space will be intentionally limited so I can work closely with each participant.",
     ],
   },
   buttonText: 'Join the Founding Cohort Waitlist',
-  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when registration is ready. Joining also helps me choose the weekly time that works for the greatest number of participants. No spam, ever.",
+  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when registration is ready. No spam, ever.",
   fields: [
     {
       name: 'name',
@@ -63,10 +63,10 @@ export const violinKickstartConfig: InquiryConfig = {
     },
     {
       name: 'preferred_cohort_time',
-      label: 'Which time would you be most likely to attend a weekly live online session?',
+      label: 'The founding cohort meets Tuesdays, 5:00–6:10 PM Mountain Time. If that doesn’t usually work for you, what time would work best for a future cohort?',
       type: 'radio',
-      required: true,
-      helperText: 'Choose the option that generally works best. The final schedule will be selected based on founding cohort availability.',
+      required: false,
+      helperText: 'Optional — this helps me plan future Violin Kickstart sessions.',
       options: [
         { value: 'weekday_mornings', label: 'Weekday mornings' },
         { value: 'weekday_afternoons', label: 'Weekday afternoons' },
