@@ -49,19 +49,45 @@
       <!-- Subtle vertical divider (desktop only) -->
       <div class="hidden sm:block w-px self-stretch bg-lavender-200 shrink-0" aria-hidden="true"></div>
 
-      <!-- Col 3 (~20%): logo as supporting proof -->
-      <div class="hidden sm:flex flex-col items-center justify-center pl-10 gap-2 shrink-0">
-        <div class="bg-ink rounded-xl px-4 py-3 inline-flex items-center justify-center">
-          <img
-            src="/images/voyage-denver-logo.png"
-            alt="VoyageDenver Magazine logo"
-            width="592"
-            height="87"
-            class="h-7 w-auto"
-            loading="lazy"
-          />
+      <!-- Col 3 (~20%): logos as supporting proof -->
+      <div class="hidden sm:flex flex-col items-center justify-center pl-10 gap-5 shrink-0">
+        <div class="flex flex-col items-center gap-2">
+          <div class="bg-ink rounded-xl px-4 py-3 inline-flex items-center justify-center">
+            <img
+              src="/images/voyage-denver-logo.png"
+              alt="VoyageDenver Magazine logo"
+              width="592"
+              height="87"
+              class="h-7 w-auto"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-xs text-ink/60 font-light uppercase tracking-widest">Magazine</p>
         </div>
-        <p class="text-xs text-ink/60 font-light uppercase tracking-widest">Magazine</p>
+
+        <!-- Colorado ASTA: no dark pill here — the source logo already sits on
+             its own white background, so a second dark box would double up
+             as a mismatched white-on-black rectangle. Matching px-4/py-3
+             keeps the same spacing rhythm as the VoyageDenver mark above. -->
+        <div class="flex flex-col items-center gap-2">
+          <a
+            href="https://www.colo-asta.org/find-a-teacher"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-3 inline-flex items-center justify-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+            aria-label="Colorado ASTA teacher directory listing for Rae McGee (opens in new tab)"
+          >
+            <img
+              src="/images/social-proof/colorado-asta-logo.png"
+              alt="Colorado ASTA — American String Teachers Association logo"
+              width="224"
+              height="80"
+              class="h-7 w-auto"
+              loading="lazy"
+            />
+          </a>
+          <p class="text-xs text-ink/60 font-light uppercase tracking-widest">Listed Teacher</p>
+        </div>
       </div>
 
     </div>
