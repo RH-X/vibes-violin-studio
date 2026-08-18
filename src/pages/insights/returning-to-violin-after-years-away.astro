@@ -1,0 +1,365 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
+
+const publishedDate = '2026-08-18';
+---
+
+<Layout
+  title="Returning to Violin After Years Away: Adult Guide | Vibrations Violin Studio"
+  description="Thinking about returning to violin as an adult? Learn what to expect, what you may remember, how to restart practice, and why you don't need to start completely over."
+  ogImage="/images/insights/returning-to-violin-after-years-away.jpg"
+>
+
+  <!-- ── Hero banner ── -->
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #fdba74 0%, #ddd6fe 100%);"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+      <!-- Pinned metadata row: category · date · reading time -->
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
+        Insights
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <span class="font-normal normal-case tracking-normal text-ink/50">August 18, 2026</span>
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <span class="font-normal normal-case tracking-normal text-ink/50">6 min read</span>
+      </p>
+      <!-- Editorial title -->
+      <h1
+        id="post-heading"
+        class="font-heading font-bold text-ink"
+        style="font-size: clamp(2.75rem, 6vw, 5rem); line-height: 0.93; letter-spacing: -0.045em;"
+      >
+        Returning to Violin After Years Away: What to Expect
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── Article body ── -->
+  <article
+    class="bg-white section-pad"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+    <div class="max-w-2xl">
+
+      <!-- Intro -->
+      <p class="text-base text-ink/70 leading-relaxed">Maybe you played violin as a child and haven't opened the case in twenty years.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Maybe you made it through a few years of school orchestra, stopped sometime around high school, and have periodically wondered what it would feel like to play again.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Or maybe "returning" means something much more recent. Life got busy. Your instrument sat untouched for a few years. Now you miss it.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Whatever brought you back, returning to violin as an adult can be a strange experience: you're not exactly a beginner, but you may not feel like the violinist you remember being, either.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">That's normal. And you don't need to get yourself "back in shape" before taking lessons again.</p>
+
+      <!-- Section: You may remember more than you think -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">You May Remember More Than You Think</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">One of the interesting things about returning to an instrument is that knowledge doesn't always come back evenly.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You might immediately remember how to hold the violin but struggle to read a passage you once would have found easy. Your fingers may recognize part of a scale while your bow feels surprisingly unfamiliar. You may remember the sound you want long before your hands can reliably produce it.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">That's okay. Learning an instrument involves many interconnected skills: listening, coordination, reading, physical habits, musical memory, and technique. They don't necessarily disappear—or return—at the same rate.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Instead of asking, "Why can't I still do this?", it can be more useful to get curious: <span class="font-semibold text-ink">"What is still here, and what needs rebuilding?"</span> That's a much better starting point.</p>
+
+      <!-- Section: Your previous experience still counts -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Your Previous Experience Still Counts</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Returning adults sometimes minimize what they already know because their current playing doesn't match their memories.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">But previous musical experience gives you something valuable to build from. You may already understand things like:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "How a phrase should sound",
+          "What being in tune feels like",
+          "Basic musical notation",
+          "Rhythm and pulse",
+          "How the instrument responds",
+          "What focused practice feels like",
+          "How much repetition learning music sometimes requires",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Exactly what remains will vary enormously from person to person.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A thoughtful return to violin isn't about pretending you're a complete beginner or expecting yourself to immediately resume where you stopped. It's about figuring out your current starting point.</p>
+
+      <!-- Section: Your adult brain may approach violin differently -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Your Adult Brain May Approach Violin Differently</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You aren't the same learner you were at 10, 14, or 18.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">As an adult, you may be better able to articulate what isn't working, understand explanations, notice patterns, make deliberate practice decisions, and connect technique with a larger musical goal.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You also bring your adult interests with you. Perhaps the repertoire you were assigned as a child isn't what you want anymore. Maybe you're interested in classical music now even though you weren't then—or you'd rather explore fiddle, folk, pop, film music, or another style.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Returning to violin can be an opportunity to build a musical life that belongs to the person you are now.</p>
+
+    </div><!-- /max-w-2xl -->
+      <!-- Pull quote — breaks out of narrow column -->
+      <div class="my-14 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10" style="background: #f5f3ff;">
+        <div class="max-w-3xl mx-auto">
+          <blockquote class="border-l-4 border-lavender-300 pl-6 py-1">
+            <p class="text-xl sm:text-2xl font-light text-ink leading-relaxed">
+              "You don't have to earn the right to come back."
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    <div class="max-w-2xl"><!-- resume narrow column -->
+
+      <!-- Section: The frustrating part -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">The Frustrating Part: You May Know What Good Playing Sounds Like</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">There's a particular challenge returning musicians sometimes face. Your musical ear may be ahead of your current physical ability.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You know what you want the violin to sound like. You may even remember being able to produce something closer to that sound. But your hands haven't caught up yet.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">That gap can make early playing feel more frustrating than it would for someone who has never played before.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Try not to interpret that gap as evidence that you've "lost it." It may simply mean that your musical awareness returned before some of the physical coordination did. Those skills can be rebuilt.</p>
+
+      <!-- Section: You probably don't need to start completely over -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">You Probably Don't Need to Start Completely Over</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Returning doesn't necessarily mean opening the first beginner book and spending months retracing every step. It also doesn't mean skipping fundamentals because you learned them once.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A good teacher can help determine which foundations are still secure and which ones would benefit from attention.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Sometimes a small technical adjustment unlocks something quickly. Other times, slowing down and rebuilding a fundamental skill is exactly what makes more advanced playing comfortable again.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The goal isn't to prove how much you remember. The goal is to create a foundation that supports where you'd like to go next.</p>
+
+      <!-- Section: Your old violin may need some attention, too -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Your Old Violin May Need Some Attention, Too</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">If your instrument has been sitting in a closet for years, don't assume it's ready to play immediately.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Strings age. Bows need rehairs. Bridges can shift. Pegs may become difficult to use. Instruments that have been stored for a long time may benefit from being checked by a qualified violin shop before you begin playing regularly.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">If you no longer own an instrument, <a href="/insights/how-to-buy-your-first-violin" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">renting can also be a perfectly reasonable way to return</a> without making a large purchase immediately.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You don't need to solve every equipment question before reaching out to a teacher. Instrument setup can be part of the conversation about getting started again.</p>
+
+      <!-- Section: Practice doesn't have to look like it did when you were a kid -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Practice Doesn't Have to Look Like It Did When You Were a Kid</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Returning adults often have jobs, relationships, families, responsibilities, and very full calendars. You may not have an uninterrupted hour every day for violin.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Fortunately, meaningful practice doesn't require recreating your childhood practice schedule. <a href="/insights/how-much-should-beginners-practice-violin" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">A focused 10 or 20 minutes</a> can accomplish quite a lot when you know what you're listening for and what you're trying to change.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Consistency usually matters more than constructing an ideal practice routine that doesn't fit your actual life. Your musical life needs to be sustainable enough that you want to keep having one.</p>
+
+      <!-- Section: You don't have to earn the right to come back -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">You Don't Have to Earn the Right to Come Back</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You don't need to practice for a month before contacting a teacher. You don't need to remember all your scales. You don't need to apologize for how long it has been. And you don't need an impressive reason for returning.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Maybe you miss making music. Maybe you've wanted to come back for years. Maybe something recently reminded you of how it felt to play. Maybe you're simply curious about who you would be as a violinist now.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">That's enough.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Returning to violin isn't about recovering an earlier version of yourself perfectly. It can be about discovering what music has to offer the person you've become.</p>
+
+      <!-- Local SEO closing section -->
+      <div class="mt-12 pt-8 border-t border-lavender-200">
+        <h2 class="font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Looking for Violin Lessons as a Returning Adult?</h2>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">Vibrations Violin Studio offers individualized violin instruction for adults in Denver and online. Lessons are adapted around your current experience, musical interests, goals, and the way you learn—not around an assumption that every returning player should follow the same path.</p>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're wondering what starting again could look like, a <a href="/contact" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">short discovery call</a> is an easy place to begin.</p>
+        <a href="/contact" class="btn-primary inline-block mt-8" aria-label="Get started with a free discovery call about returning to violin">
+          Get Started
+        </a>
+      </div>
+
+    </div>
+    </div>
+  </article>
+
+  <!-- ── Related Articles ── -->
+  <section class="bg-lavender-50 section-pad" aria-labelledby="related-heading">
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Keep Reading</p>
+      <h2 id="related-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+        Related Articles
+      </h2>
+      <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
+
+        <li>
+          <a
+            href="/insights/the-real-timeline-of-learning-violin-as-an-adult"
+            aria-label="Read: The Real Timeline of Learning Violin as an Adult"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/the-real-timeline-of-learning-violin-as-an-adult.jpg"
+                alt="An adult student sitting by a sunny window, violin in her lap, writing notes in a practice journal next to sheet music."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>June 29, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                The Real Timeline of Learning Violin as an Adult
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Wondering how long it takes to learn violin as an adult? Here's what realistic progress actually looks like, what matters more than talent, and how confidence builds over time.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-to-buy-your-first-violin"
+            aria-label="Read: How to Buy Your First Violin"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-to-buy-your-first-violin.jpg"
+                alt="A beginner violin displayed on a stand in a violin shop, ready for a first-time buyer."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>July 28, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How to Buy Your First Violin
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Buying your first violin? Learn whether to rent or buy, how much to spend, what to avoid, and how to choose the right beginner violin with confidence.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/can-you-learn-violin-online"
+            aria-label="Read: Can You Learn Violin Online?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/can-you-learn-violin-online.jpg"
+                alt="A student taking a violin lesson online, with a laptop set up on a music stand."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>July 28, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                Can You Learn Violin Online?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Can you really learn violin online? Discover how thoughtful virtual lessons help beginners and adults build confidence with personalized guidance.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-much-should-beginners-practice-violin"
+            aria-label="Read: How Much Should Beginners Practice Violin?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-much-should-beginners-practice-violin.jpg"
+                alt="A violin resting on a kitchen counter beside its bow, open sheet music, and a laptop, set up for home practice."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>August 9, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How Much Should Beginners Practice Violin?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Beginner violin practice doesn't need to take hours. Learn how often children and adults should practice, how to build a sustainable routine, and what to do when practice feels difficult.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <CTABand />
+
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Returning to Violin After Years Away: What to Expect",
+  "description": "Thinking about returning to violin as an adult? Learn what to expect, what you may remember, how to restart practice, and why you don't need to start completely over.",
+  "image": `${siteOrigin}/images/insights/returning-to-violin-after-years-away.jpg`,
+  "datePublished": publishedDate,
+  "dateModified": publishedDate,
+  "author": { "@id": `${siteOrigin}/#person` },
+  "publisher": { "@id": `${siteOrigin}/#business` },
+  "mainEntityOfPage": canonicalURL,
+  "articleSection": "Adult Violin Lessons",
+})} />
+
+<script>
+  // ── Article page: scroll-reveal ──
+  const heroSection = document.querySelector('section[aria-labelledby="post-heading"]');
+  if (heroSection) {
+    const inner = heroSection.querySelector('.container-narrow');
+    if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
+  }
+
+  const articleBody = document.querySelector('article .container-narrow');
+  if (articleBody) articleBody.classList.add('reveal');
+
+  const relatedSection = document.querySelector('section[aria-labelledby="related-heading"] .container-narrow');
+  if (relatedSection) relatedSection.classList.add('reveal');
+
+  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
+  if (ctaBand) ctaBand.classList.add('reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+</script>
