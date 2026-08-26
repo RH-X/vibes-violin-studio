@@ -11,7 +11,8 @@ export default defineConfig({
     tailwind(),
     sitemap({
       filter: (page) =>
-        !page.includes('/practice-pals/beta'),
+        !page.includes('/practice-pals/beta') &&
+        !page.includes('/creative-mornings-kickstart'),
     }),
   ],
   site: 'https://www.vibesviolin.studio',

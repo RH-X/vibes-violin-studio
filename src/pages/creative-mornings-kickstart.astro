@@ -1,0 +1,448 @@
+---
+import '../styles/global.css';
+
+// ── Editable campaign constants — update these for future cohorts/events ──
+const courseStart = 'September 22';
+const foundingPrice = '$149';
+const foundingPriceDeadline = 'September 6';
+const finalPrice = '$200';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Violin Kickstart — CreativeMornings Denver | Vibrations Violin Studio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Same font stack as the rest of the site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="cm-viewport">
+      <div id="cm-slide" class="cm-slide">
+        <!-- Background: same approved Kickstart hero photography, darkened for legibility -->
+        <div class="cm-slide-bg" style="background-image: url('/images/violin-kickstart-hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="cm-slide-overlay" aria-hidden="true"></div>
+
+        <div class="cm-content">
+          <!-- Left column: message + price -->
+          <div class="cm-left">
+            <p class="cm-eyebrow">CreativeMornings Denver</p>
+
+            <h1 class="cm-headline-group">
+              <span class="cm-headline">Want to be more creative?</span>
+              <span class="cm-headline cm-headline-accent">Learn an instrument.</span>
+            </h1>
+
+            <div class="cm-offer-row">
+              <span class="cm-badge">Violin Kickstart</span>
+              <span class="cm-offer-tag">Starts {courseStart}</span>
+            </div>
+            <p class="cm-offer-desc">A 4-week live online experience for adults ready to begin—or begin again.</p>
+            <p class="cm-instrument-line">Violin · Viola · Cello welcome</p>
+
+            <div class="cm-divider" role="presentation"></div>
+
+            <p class="cm-price-eyebrow">Founding Cohort Price</p>
+            <p class="cm-price">{foundingPrice}</p>
+            <p class="cm-price-sub">
+              <span class="cm-price-deadline">Ends {foundingPriceDeadline}</span>
+              <span class="cm-price-sep" aria-hidden="true">·</span>
+              Final enrollment: {finalPrice}
+            </p>
+
+            <p class="cm-reassurance">Small live cohort &nbsp;·&nbsp; No experience required &nbsp;·&nbsp; No instrument needed for session one</p>
+          </div>
+
+          <!-- Right column: single QR conversion panel -->
+          <div class="cm-right">
+            <div class="cm-qr-panel">
+              <p class="cm-qr-eyebrow">Scan to enroll</p>
+              <img
+                src="/images/creative-mornings-kickstart-qr.png"
+                alt="QR code linking to the Violin Kickstart enrollment page"
+                width="440"
+                height="440"
+                class="cm-qr-image"
+                decoding="sync"
+              />
+              <p class="cm-cta">Go for it. Start here →</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utility controls: outside the slide canvas, never captured in the export -->
+    <div class="cm-controls">
+      <button id="cm-download-btn" type="button" class="btn-primary">Download PNG</button>
+      <span id="cm-download-status" class="cm-status" role="status" aria-live="polite"></span>
+    </div>
+
+    <script>
+      const slide = document.getElementById('cm-slide') as HTMLElement;
+      const viewport = document.querySelector('.cm-viewport') as HTMLElement;
+
+      // ── Lock the 1920×1080 composition, scale proportionally to fit the window ──
+      function scaleSlide() {
+        const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        slide.style.transform = `scale(${scale})`;
+      }
+      scaleSlide();
+      window.addEventListener('resize', scaleSlide);
+
+      // ── PNG export: capture the slide at true 1920×1080, ignoring on-screen scale ──
+      const downloadBtn = document.getElementById('cm-download-btn') as HTMLButtonElement;
+      const statusEl = document.getElementById('cm-download-status') as HTMLElement;
+
+      // Preload + fully decode every image the slide references so a freshly
+      // cloned node (background-image and <img> alike) paints immediately
+      // instead of racing the capture.
+      function preloadImage(url: string) {
+        return new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => img.decode().then(() => resolve()).catch(() => resolve());
+          img.onerror = () => resolve();
+          img.src = url;
+        });
+      }
+
+      downloadBtn.addEventListener('click', async () => {
+        downloadBtn.disabled = true;
+        statusEl.textContent = 'Preparing image…';
+
+        await Promise.all([
+          preloadImage('/images/violin-kickstart-hero-bg.jpg'),
+          preloadImage('/images/creative-mornings-kickstart-qr.png'),
+          document.fonts.ready,
+        ]);
+
+        // Render an unambiguous, un-transformed, top-left-anchored copy of the
+        // slide for capture — sidesteps html2canvas positioning quirks that
+        // show up when the source element sits inside a centering flex
+        // container with a CSS transform applied for on-screen scaling.
+        const clone = slide.cloneNode(true) as HTMLElement;
+        clone.style.position = 'fixed';
+        clone.style.top = '0';
+        clone.style.left = '0';
+        clone.style.transform = 'none';
+        clone.style.zIndex = '-1';
+
+        // html2canvas's manual text renderer sits a hair taller than real CSS
+        // line-height at very large font sizes — pad the price line's own
+        // clone (only) so it can never visually touch the line below it.
+        const priceEl = clone.querySelector('.cm-price') as HTMLElement | null;
+        if (priceEl) priceEl.style.paddingBottom = '90px';
+
+        document.body.appendChild(clone);
+
+        // A short pause gives the freshly inserted clone's background-image
+        // and <img> a chance to actually paint before capture. (Images were
+        // already preloaded/decoded above, so this just covers layout/paint.)
+        await new Promise((resolve) => setTimeout(resolve, 120));
+
+        try {
+          const html2canvas = (await import('html2canvas')).default;
+
+          const canvas = await html2canvas(clone, {
+            width: 1920,
+            height: 1080,
+            windowWidth: 1920,
+            windowHeight: 1080,
+            scale: 1,
+            useCORS: true,
+            backgroundColor: '#14101a',
+          });
+
+          const link = document.createElement('a');
+          link.download = 'violin-kickstart-creative-mornings-sept-2026.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          statusEl.textContent = 'Downloaded.';
+        } catch (err) {
+          console.error(err);
+          statusEl.textContent = 'Something went wrong — try again.';
+        } finally {
+          clone.remove();
+          downloadBtn.disabled = false;
+        }
+      });
+    </script>
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #14101a;
+        overflow: hidden;
+      }
+
+      /* ── Full-viewport stage: centers and letterboxes the fixed 16:9 canvas ── */
+      .cm-viewport {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #14101a;
+      }
+
+      .cm-slide {
+        width: 1920px;
+        height: 1080px;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        transform-origin: center center;
+        border-radius: 0;
+      }
+
+      .cm-slide-bg {
+        position: absolute;
+        inset: 0;
+        background-position: center center;
+        background-size: cover;
+      }
+
+      .cm-slide-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(20, 16, 20, 0.93) 0%, rgba(20, 16, 20, 0.88) 55%, rgba(20, 16, 20, 0.95) 100%);
+      }
+
+      .cm-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        width: 100%;
+        height: 100%;
+        padding: 0 96px;
+        box-sizing: border-box;
+        font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+      }
+
+      .cm-left {
+        width: 1088px;
+        flex-shrink: 0;
+      }
+
+      .cm-eyebrow {
+        margin: 0 0 22px;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #C4A5FF;
+      }
+
+      .cm-headline-group {
+        display: block;
+        margin: 0 0 36px;
+      }
+
+      .cm-headline {
+        display: block;
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 80px;
+        line-height: 88px;
+        letter-spacing: normal;
+        color: #FFF8EC;
+        white-space: nowrap;
+      }
+
+      .cm-headline-accent {
+        color: #F6C55C;
+      }
+
+      .cm-offer-row {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+
+      .cm-badge {
+        display: inline-block;
+        padding: 10px 22px;
+        border-radius: 999px;
+        border: 1px solid rgba(196, 165, 255, 0.45);
+        background: rgba(196, 165, 255, 0.12);
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #C4A5FF;
+        white-space: nowrap;
+      }
+
+      .cm-offer-tag {
+        font-size: 22px;
+        font-weight: 600;
+        color: rgba(241, 231, 221, 0.8);
+      }
+
+      .cm-offer-desc {
+        margin: 0 0 12px;
+        max-width: 640px;
+        font-size: 27px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #F1E7DD;
+      }
+
+      .cm-instrument-line {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #F6C55C;
+      }
+
+      .cm-divider {
+        margin: 36px 0;
+        height: 1px;
+        width: 100%;
+        background: rgba(246, 197, 92, 0.4);
+      }
+
+      .cm-price-eyebrow {
+        margin: 0 0 6px;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #F6C55C;
+      }
+
+      .cm-price {
+        display: block;
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 210px;
+        line-height: 210px;
+        letter-spacing: normal;
+        color: #FFF8EC;
+        white-space: nowrap;
+      }
+
+      .cm-price-sub {
+        margin: 26px 0 0;
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 600;
+        color: rgba(241, 231, 221, 0.72);
+        white-space: nowrap;
+      }
+
+      .cm-price-deadline {
+        color: #F6C55C;
+        font-weight: 700;
+      }
+
+      .cm-price-sep {
+        margin: 0 10px;
+        color: rgba(246, 197, 92, 0.5);
+      }
+
+      .cm-reassurance {
+        margin: 40px 0 0;
+        font-size: 19px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: rgba(241, 231, 221, 0.55);
+      }
+
+      .cm-right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cm-qr-panel {
+        width: 560px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 56px;
+        box-sizing: border-box;
+        background: #FFFDF8;
+        border: 1px solid #ddd6fe;
+        border-radius: 32px;
+        box-shadow: 0 28px 80px rgba(24, 14, 10, 0.35);
+      }
+
+      .cm-qr-eyebrow {
+        margin: 0 0 24px;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #6d3fc1;
+      }
+
+      .cm-qr-image {
+        display: block;
+        width: 440px;
+        height: 440px;
+      }
+
+      .cm-cta {
+        margin: 28px 0 0;
+        font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        color: #6d3fc1;
+        text-align: center;
+      }
+
+      /* ── Utility controls: never part of the exported slide ── */
+      .cm-controls {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.92);
+        padding: 8px 12px;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+      }
+
+      .cm-status {
+        font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+        color: #2d2d3a;
+      }
+
+      @media print {
+        .cm-controls {
+          display: none !important;
+        }
+        @page {
+          size: landscape;
+          margin: 0;
+        }
+      }
+    </style>
+  </body>
+</html>
