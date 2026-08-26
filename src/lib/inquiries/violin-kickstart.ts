@@ -13,16 +13,15 @@ export const violinKickstartConfig: InquiryConfig = {
   subtitle: 'A 4-Week Cohort for Adult Beginners and Returning Players',
   intro: {
     label: 'Join the Founding Cohort',
-    heading: 'Join the Violin Kickstart Founding Cohort Waitlist',
+    heading: "You're ready. Save your place.",
     paragraphs: [
       "Whether you're starting violin for the first time or returning after time away, this founding cohort is designed to meet you where you are.",
-      "The founding cohort begins Tuesday, September 22, 2026, meeting live online every Tuesday through October 13, from 5:00–6:10 PM Mountain Time.",
-      "I'll personally contact people on this waitlist when registration opens.",
-      "Because this is the first cohort, space will be intentionally limited so I can work closely with each participant.",
+      "Enrollment is now open for the first Violin Kickstart cohort — $149 through September 6, then $200 through final enrollment on September 18. The cohort begins Tuesday, September 22, meeting live online every Tuesday through October 13, from 5:30–6:40 PM Mountain Time.",
+      "I'm keeping this first group intentionally small so I can give each participant meaningful individual attention and personalized feedback.",
     ],
   },
-  buttonText: 'Join the Founding Cohort Waitlist',
-  consentText: "This is a waitlist, not a payment or commitment. I'll reach out personally when registration is ready. No spam, ever.",
+  buttonText: 'Join the Founding Cohort — $149',
+  consentText: "Share a little about where you're starting so I can support you well in the cohort. I'll personally follow up with next steps to finish enrolling — no spam, ever.",
   fields: [
     {
       name: 'name',
@@ -63,7 +62,7 @@ export const violinKickstartConfig: InquiryConfig = {
     },
     {
       name: 'preferred_cohort_time',
-      label: 'The founding cohort meets Tuesdays, 5:00–6:10 PM Mountain Time. If that doesn’t usually work for you, what time would work best for a future cohort?',
+      label: 'The founding cohort meets Tuesdays, 5:30–6:40 PM Mountain Time. If that doesn’t usually work for you, what time would work best for a future cohort?',
       type: 'radio',
       required: false,
       helperText: 'Optional — this helps me plan future Violin Kickstart sessions.',
@@ -94,11 +93,11 @@ export const violinKickstartConfig: InquiryConfig = {
   ],
   notifyEmail: 'vibesviolinstudio@gmail.com',
   emailTemplate: {
-    verificationSubject: 'Confirm your spot on the Violin Kickstart waitlist',
-    verificationIntro: "Thanks for your interest in Violin Kickstart. Please confirm your email address so I know where to reach you as the next cohort comes together.",
-    notificationSubjectPrefix: 'New Violin Kickstart waitlist signup',
+    verificationSubject: 'Confirm your spot for Violin Kickstart',
+    verificationIntro: "Thanks for requesting your spot in the Violin Kickstart founding cohort. Please confirm your email address so I can follow up with next steps to complete your enrollment.",
+    notificationSubjectPrefix: 'New Violin Kickstart enrollment request',
   },
   turnstile: true,
-  successMessage: "Thanks for joining the Violin Kickstart waitlist! Once your email is verified, you'll be on the list — I'll reach out personally as the next cohort date is set.",
-  emailConfirmedMessage: "Thanks for confirming your email. Rae has you on the list! Look out for more details to come; they'll be here soon.",
+  successMessage: "Thanks for requesting your spot in the Violin Kickstart founding cohort! Once your email is verified, I'll follow up personally with next steps to complete your enrollment.",
+  emailConfirmedMessage: "Thanks for confirming your email. You're on your way to the founding cohort — Rae will personally follow up with next steps to complete your enrollment.",
 };
