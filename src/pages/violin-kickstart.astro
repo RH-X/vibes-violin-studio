@@ -80,31 +80,44 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
   <!-- Why now section -->
   <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="why-now-heading">
     <div class="container-narrow">
-      <div class="max-w-2xl reveal">
-        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Sound familiar?</p>
-        <h2 id="why-now-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-          Maybe you've been thinking about violin for years.
-        </h2>
-        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          You hear someone play and think, <em>I've always wanted to do that.</em>
-        </p>
-        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">Then the practical questions arrive.</p>
-        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">Am I too old?</p>
-        <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">Do I need to be musical?</p>
-        <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What violin am I supposed to buy?</p>
-        <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What if I sound terrible?</p>
-        <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">Will I actually have time to practice?</p>
-        <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What if everyone else is better than me?</p>
-        <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What if I used to play and don't remember any of it?</p>
-        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          Those aren't reasons you can't learn violin. They're normal questions—whether you're starting for the first time or coming back to it.
-        </p>
-        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          Violin Kickstart exists to get you out of the "someday" stage and give you a supported place to actually begin. You don't have to figure out the beginning by yourself.
-        </p>
-        <a href="#waitlist" class="btn-primary inline-block mt-8">
-          Join the Founding Cohort — $149 →
-        </a>
+      <div class="flex flex-col md:flex-row md:items-center gap-10 md:gap-14 reveal">
+        <div class="max-w-2xl">
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Sound familiar?</p>
+          <h2 id="why-now-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+            Maybe you've been thinking about violin for years.
+          </h2>
+          <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+            You hear someone play and think, <em>I've always wanted to do that.</em>
+          </p>
+          <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">Then the practical questions arrive.</p>
+          <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">Am I too old?</p>
+          <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">Do I need to be musical?</p>
+          <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What violin am I supposed to buy?</p>
+          <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What if I sound terrible?</p>
+          <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">Will I actually have time to practice?</p>
+          <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What if everyone else is better than me?</p>
+          <p class="mt-2 text-base text-ink/70 font-light leading-relaxed">What if I used to play and don't remember any of it?</p>
+          <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+            Those aren't reasons you can't learn violin. They're normal questions—whether you're starting for the first time or coming back to it.
+          </p>
+          <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+            Violin Kickstart exists to get you out of the "someday" stage and give you a supported place to actually begin. You don't have to figure out the beginning by yourself.
+          </p>
+          <a href="#waitlist" class="btn-primary inline-block mt-8">
+            Join the Founding Cohort — $149 →
+          </a>
+        </div>
+        <div class="w-full max-w-xs mx-auto md:w-80 md:mx-0 flex-shrink-0">
+          <img
+            src="/images/violin-kickstart-begin-anywhere-quote.png"
+            alt="A quote card reading “Begin anywhere,” attributed to John Cage"
+            width="710"
+            height="720"
+            class="w-full h-auto rounded-2xl border border-lavender-200 shadow-sm"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
     </div>
   </section>
