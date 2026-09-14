@@ -1,4 +1,42 @@
 ---
+const recognitionItems = [
+  {
+    type: "logo",
+    href: "https://voyagedenver.com/interview/daily-inspiration-meet-rae-mcgee",
+    ariaLabel: "Read the interview feature on VoyageDenver (opens in new tab)",
+    src: "/images/voyage-denver-logo.png",
+    alt: "VoyageDenver Magazine logo",
+    width: 592,
+    height: 87,
+    imgClass: "h-6 sm:h-7 w-auto",
+    pill: true,
+    caption: "Magazine",
+  },
+  {
+    type: "logo",
+    href: "https://www.colo-asta.org/find-a-teacher",
+    ariaLabel: "Colorado ASTA teacher directory listing for Rae McGee (opens in new tab)",
+    src: "/images/social-proof/colorado-asta-logo.png",
+    alt: "Colorado ASTA — American String Teachers Association logo",
+    width: 224,
+    height: 80,
+    imgClass: "h-11 sm:h-14 w-auto",
+    pill: false,
+    caption: "Listed Teacher",
+  },
+  {
+    type: "logo",
+    href: null,
+    ariaLabel: null,
+    src: "/images/social-proof/university-of-denver-logo.png",
+    alt: "University of Denver logo",
+    width: 498,
+    height: 162,
+    imgClass: "h-8 sm:h-9 w-auto",
+    pill: false,
+    caption: "Alumni Spotlight",
+  },
+];
 ---
 
 <section
@@ -46,6 +84,76 @@
         </a>
       </div>
 
+      <!-- Mobile-only recognition strip: below sm, the column-3 logos are
+           hidden, so this auto-scrolling marquee surfaces all three
+           recognition items without stacking them vertically and pushing
+           the page copy down. Duplicated track for a seamless loop; the
+           duplicate is aria-hidden with its links removed from tab order.
+           prefers-reduced-motion swaps it for a static, manually
+           scrollable strip. -->
+      <div class="sm:hidden -mx-1 featured-in-marquee">
+        <div class="featured-in-marquee__track">
+          {[0, 1].map((copy) => (
+            <div class="flex items-center gap-8 px-1" aria-hidden={copy === 1 ? "true" : undefined}>
+              {recognitionItems.map((item) => (
+                <div class="flex flex-col items-center gap-2 shrink-0">
+                  {item.pill ? (
+                    <div class="bg-ink rounded-xl px-4 py-3 inline-flex items-center justify-center">
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={item.ariaLabel}
+                        tabindex={copy === 1 ? -1 : undefined}
+                      >
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          width={item.width}
+                          height={item.height}
+                          class={item.imgClass}
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                  ) : item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.ariaLabel}
+                      tabindex={copy === 1 ? -1 : undefined}
+                      class="px-4 py-3 inline-flex items-center justify-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        width={item.width}
+                        height={item.height}
+                        class={item.imgClass}
+                        loading="lazy"
+                      />
+                    </a>
+                  ) : (
+                    <div class="px-4 py-3 inline-flex items-center justify-center">
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        width={item.width}
+                        height={item.height}
+                        class={item.imgClass}
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <p class="text-[11px] text-ink/60 font-light uppercase tracking-widest whitespace-nowrap">{item.caption}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <!-- Subtle vertical divider (desktop only) -->
       <div class="hidden sm:block w-px self-stretch bg-lavender-200 shrink-0" aria-hidden="true"></div>
 
@@ -88,8 +196,64 @@
           </a>
           <p class="text-xs text-ink/60 font-light uppercase tracking-widest">Listed Teacher</p>
         </div>
+
+        <!-- University of Denver: logo sits on its own white background
+             like the ASTA mark, so no dark pill here either. Not a link —
+             this is a spotlight feature, not an endorsement with a
+             citable source URL. -->
+        <div class="flex flex-col items-center gap-2">
+          <div class="px-4 py-3 inline-flex items-center justify-center">
+            <img
+              src="/images/social-proof/university-of-denver-logo.png"
+              alt="University of Denver logo"
+              width="498"
+              height="162"
+              class="h-9 w-auto"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-xs text-ink/60 font-light uppercase tracking-widest">Alumni Spotlight</p>
+        </div>
       </div>
 
     </div>
   </div>
+
+  <style>
+    .featured-in-marquee {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .featured-in-marquee__track {
+      display: flex;
+      width: max-content;
+      animation: featured-in-scroll 16s linear infinite;
+    }
+
+    .featured-in-marquee:hover .featured-in-marquee__track,
+    .featured-in-marquee:focus-within .featured-in-marquee__track {
+      animation-play-state: paused;
+    }
+
+    @keyframes featured-in-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .featured-in-marquee {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+      .featured-in-marquee__track {
+        animation: none;
+      }
+      .featured-in-marquee__track > div[aria-hidden="true"] {
+        display: none;
+      }
+    }
+  </style>
 </section>
