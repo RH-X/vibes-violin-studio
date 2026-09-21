@@ -1,0 +1,393 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const publishedDate = '2026-09-21';
+---
+
+<Layout
+  title="My Child Wants to Quit Violin. What Should I Do? | Vibrations Violin Studio"
+  description="Your child says they want to quit violin. Learn how to tell normal frustration from a deeper mismatch—and what to try before making the decision."
+  ogImage="/images/insights/my-child-wants-to-quit-violin.jpg"
+>
+
+  <!-- ── Hero banner ── -->
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
+        Insights
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <time datetime="2026-09-21" class="font-normal normal-case tracking-normal text-ink/50">September 21, 2026</time>
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <span class="font-normal normal-case tracking-normal text-ink/50">8 min read</span>
+      </p>
+      <h1
+        id="post-heading"
+        class="font-heading font-bold text-ink"
+        style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 0.95; letter-spacing: -0.045em;"
+      >
+        My Child Wants to Quit Violin. What Should I Do?
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── Article body ── -->
+  <article
+    class="bg-white section-pad"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+    <div class="max-w-2xl">
+
+      <p class="text-base text-ink/70 leading-relaxed">Your child comes home from practice, or maybe just from thinking about it, and says the sentence every music parent eventually hears in some form:</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed italic">"I want to quit violin."</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">It's a strange thing to hear, specifically because it doesn't come with instructions attached. Does it mean encourage them through it? Take it seriously and let them stop? Something in between?</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The honest answer is that "I want to quit" is rarely a complete sentence. Before deciding anything, it helps to find out what your child is actually asking to stop.</p>
+
+      <!-- Section 1 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">First, Find Out What They Want to Quit</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">When a child says they want to quit, it's tempting to respond right away—either with reassurance ("you're doing so well, don't give up") or agreement ("okay, if you really don't want to"). Both reactions skip a step.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Before you respond, it helps to find out what your child actually means. "I want to quit violin" can sometimes translate to:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "I hate this specific piece",
+          "I feel like I'm bad at this",
+          "Practice has turned into a fight",
+          "Lessons feel stressful or confusing",
+          "I don't want to play violin at all anymore",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Each of those is a real feeling. Only one of them is actually about violin.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A simple, curious question—"What part of it feels hard right now?" or "Is it practice, or lessons, or the whole thing?"—often tells you more in two minutes than a week of guessing. If you're looking for a deeper look at the most common reasons kids lose steam in the first place, <a href="/insights/why-kids-quit-violin-and-what-actually-helps" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">why kids quit violin (and what actually helps)</a> goes further into that pattern.</p>
+
+      <!-- Section 2 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">A Bad Week Is Different From Sustained Disengagement</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Almost every violin student goes through a rough stretch: a piece that won't come together, a recital that didn't go the way they hoped, a week where practice feels like the last thing they want to do after school.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">None of that is unusual, and none of it means something is wrong.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">What's worth paying closer attention to is a pattern, not a moment. A child who complains about practice on a hard day is different from a child who has stopped bringing any energy to lessons, stopped mentioning what they're working on, or dreads violin week after week. For a closer look at where the line usually falls, <a href="/insights/how-much-frustration-is-normal-when-learning-violin" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">how much frustration is normal when learning violin</a> walks through that distinction in more detail.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">There's no exact number of days or weeks that marks the line between a bad stretch and something more. Every child is different, and so is every stretch of learning. What matters more than the calendar is the direction things are heading—are things easing up, staying the same, or getting worse?</p>
+
+    </div><!-- /max-w-2xl -->
+      <!-- Pull quote — breaks out of narrow column -->
+      <div class="my-14 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10" style="background: #f5f3ff;">
+        <div class="max-w-3xl mx-auto">
+          <blockquote class="border-l-4 border-lavender-300 pl-6 py-1">
+            <p class="text-xl sm:text-2xl font-light text-ink leading-relaxed">
+              "The useful first question isn't whether to make them keep going. It's what they're actually asking to stop."
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    <div class="max-w-2xl"><!-- resume narrow column -->
+
+      <!-- Section 3 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Is the Problem Violin—or the Way Violin Is Happening?</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Before assuming a child is done with violin altogether, it's worth asking a more specific question: is it violin itself, or is it the way violin is currently happening?</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A few things worth examining:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "Practice structure — Is practice a predictable part of the day, or does it happen in unpredictable bursts of pressure?",
+          "Repertoire — Is the current piece too far above, or too far below, where the student actually is?",
+          "Expectations — Is progress being measured against a realistic pace, or an invisible standard nobody agreed to?",
+          "Lesson fit — Does the student feel comfortable asking questions and making mistakes in front of their teacher?",
+          "Scheduling — Is violin competing with too many other commitments to get a fair chance each week?",
+          "Agency — Does the student have any say in what they're working on, or does every decision happen to them?",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Changing even one of these variables can be revealing. A child who seems more willing after a shorter, calmer practice routine—see <a href="/insights/how-to-encourage-violin-practice-without-constant-reminders" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">how to encourage violin practice without constant reminders</a> for specific ways to rebuild that routine—or after switching to a piece they actually chose, is telling you something: the resistance was about the setup, not the instrument.</p>
+
+      <!-- Section 4 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">When Encouraging Persistence Can Be Helpful</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">There's real value in helping a child get through a stretch that's hard but not too hard.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Learning to sit with a difficult passage, work through it in smaller pieces, and eventually play it teaches something that goes beyond music. It's one of the more durable lessons an instrument can offer: that things that feel impossible at first often become possible with patience and the right approach.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Persistence tends to help when the challenge is sized appropriately, when progress is visible even in small amounts, when expectations are clear, and when the child has support along the way rather than pressure applied from a distance.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">What doesn't tend to help is persistence for its own sake—continuing simply because stopping feels like giving up, without addressing whatever is actually making the moment hard.</p>
+
+      <!-- Section 5 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">When It's Worth Listening More Closely to the Desire to Stop</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Persistence isn't automatically the right answer, either.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">If you've looked closely at what's going on, tried adjusting practice, repertoire, or lesson dynamics, and talked with the teacher—and your child is still consistently disengaged—that's real information, not a failure on anyone's part.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Some children try an instrument and, after a genuine chance, discover it isn't the thing that lights them up. That's a legitimate outcome, not a problem to be solved. If you're also weighing this against how lessons are going more broadly, <a href="/insights/is-my-child-progressing-normally-in-violin-lessons" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">is my child progressing normally in violin lessons</a> can help separate ordinary slow stretches from something that needs a closer look.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The distinction isn't about how much a parent loves music, or how much a child struggled. It's about whether the reluctance has stayed the same, or grown, after the things actually within your control have been addressed.</p>
+
+      <!-- Section 6 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Before You Decide, Try Changing One Variable</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're not sure yet whether this is a bad week or something more, here are a few specific things worth trying before making a decision:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "Simplify practice. Shrink the session to something almost too easy to skip, and build back up from there.",
+          "Change the repertoire. Ask the teacher about switching to a piece the student is more excited about, even temporarily.",
+          "Clarify the assignment. Make sure your child actually understands what they're supposed to be working on—confusion often looks like resistance.",
+          "Reduce unnecessary pressure. Notice whether performances, comparisons, or expectations have quietly raised the stakes.",
+          "Talk with the teacher. A teacher who knows your child can often tell you whether what you're seeing is typical or worth a closer look.",
+          "Offer a real choice. Let your child pick something within lessons—a piece, a practice order, a small goal—so the experience feels less like something happening to them.",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Try one change at a time, and give it a real week or two before drawing conclusions. Small shifts often reveal more than a single hard conversation can. If your child is still fairly new to lessons, it also helps to know what's typical for that early stage—<a href="/insights/what-to-expect-first-three-months-violin-lessons" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">what to expect in the first three months of violin lessons</a> covers the adjustment period most beginners go through.</p>
+
+      <!-- Section 7 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">A Good Teacher Should Be Part of This Conversation</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A violin teacher sees your child in a context you don't: mid-lesson, working through something difficult, in real time. That vantage point matters.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A good teacher can usually help sort out whether what's happening is technical frustration with a specific skill, confusion about what to practice and how, a mismatch between the current lesson structure and how your child learns best, or something broader than any single lesson.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">If you bring this conversation to your child's teacher, a strong one won't treat "my child wants to quit" as a failure to be defended against. They should be willing to talk it through honestly, adjust what's adjustable, and tell you plainly if they think something deeper is going on. If you're not sure whether your current teacher is that kind of partner, <a href="/insights/how-to-know-if-a-violin-teacher-is-a-good-fit" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">how to know if a violin teacher is a good fit</a> lays out what to look for.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">That conversation is worth having before any final decision, not after.</p>
+
+      <!-- Section 8 -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">The Goal Isn't to Make a Child Play Violin Forever</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">It helps to step back and ask what the instrument is actually for.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Learning violin can teach a child patience, focus, how to sit with something difficult, and how to notice their own progress over time. Those are the real gains—not a lifelong commitment to the instrument itself.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">None of that happens if music becomes primarily a battleground. A child who associates violin mainly with conflict and pressure is unlikely to carry forward the parts of the experience that were actually meant to help them.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The goal isn't to guarantee your child plays violin forever. It's to help them get comfortable with the feeling of not being good at something yet—a skill they'll carry into whatever they do next, whether that's more violin or something else entirely.</p>
+
+      <!-- Mid-article CTA -->
+      <div class="mt-10 flex">
+        <a href="/about" class="btn-secondary" aria-label="Learn about Rae's teaching approach at Vibrations Violin Studio">
+          Learn About Rae's Teaching Approach
+        </a>
+      </div>
+
+      <!-- Local SEO closing section -->
+      <div class="mt-12 pt-8 border-t border-lavender-200">
+        <h2 class="font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Not Sure If It's Violin, or the Way Lessons Are Set Up?</h2>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">Vibrations Violin Studio offers violin lessons for children and adults in Denver, Colorado, with online lessons available worldwide.</p>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're trying to figure out whether the issue is the instrument, the current practice routine, or the fit with a particular teacher, that's exactly the kind of thing worth talking through.</p>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">You're welcome to reach out for a low-pressure conversation about what might help.</p>
+        <a href="/contact" class="btn-primary inline-block mt-8" aria-label="Book a 15-minute intro call about whether to continue violin lessons">
+          Book a 15-Minute Intro Call
+        </a>
+      </div>
+
+    </div>
+    </div>
+  </article>
+
+  <!-- ── Related Articles ── -->
+  <section class="bg-lavender-50 section-pad" aria-labelledby="related-heading">
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Keep Reading</p>
+      <h2 id="related-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+        Related Articles
+      </h2>
+      <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
+
+        <li>
+          <a
+            href="/insights/why-kids-quit-violin-and-what-actually-helps"
+            aria-label="Read: Why Kids Quit Violin (And What Actually Helps)"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/why-kids-quit-violin-and-what-actually-helps.jpg"
+                alt="Black-and-white photo of a young boy playing violin outdoors on a bridge, focused on his bow hand."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>June 21, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                Why Kids Quit Violin (And What Actually Helps)
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Most kids don't quit violin because learning is hard. They quit when difficulty starts to feel confusing, lonely, or disconnected from progress. Here's what actually makes the difference.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-much-frustration-is-normal-when-learning-violin"
+            aria-label="Read: How Much Frustration Is Normal When Learning Violin?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-much-frustration-is-normal-when-learning-violin.jpg"
+                alt="Close-up of handwritten violin sheet music catching soft light."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>August 18, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How Much Frustration Is Normal When Learning Violin?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Frustration is a normal part of learning violin—but constant distress isn't the goal. Learn the difference between productive struggle and signs your approach needs to change.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/is-my-child-progressing-normally-in-violin-lessons"
+            aria-label="Read: Is My Child Progressing Normally in Violin Lessons?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/is-my-child-progressing-normally-in-violin-lessons.jpg"
+                alt="A student practicing violin indoors, bow drawn across the strings, in a home studio setting."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>June 16, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                Is My Child Progressing Normally in Violin Lessons?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Wondering whether violin lessons are working? Learn what beginner progress actually looks like, why growth often feels slow, and what parents and adult learners can realistically expect.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-to-know-if-a-violin-teacher-is-a-good-fit"
+            aria-label="Read: How to Know If a Violin Teacher Is a Good Fit"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-to-know-if-a-violin-teacher-is-a-good-fit.jpg"
+                alt="Portrait of Rae, violin teacher at Vibrations Violin Studio, standing outdoors in Denver."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>June 9, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How to Know If a Violin Teacher Is a Good Fit
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Credentials matter, but fit matters more. What to look for when choosing a violin teacher for yourself or your child.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <CTABand />
+
+</Layout>
+
+  <ArticleSchema
+    title="My Child Wants to Quit Violin. What Should I Do?"
+    description="Your child says they want to quit violin. Learn how to tell normal frustration from a deeper mismatch—and what to try before making the decision."
+    imageUrl="/images/insights/my-child-wants-to-quit-violin.jpg"
+    imageAlt="A young violinist in a suit stands alone on a stage, playing to an empty theater lined with red seats."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Parent Guides"
+  />
+
+<script>
+  // ── Article page: scroll-reveal ──
+  const heroSection = document.querySelector('section[aria-labelledby="post-heading"]');
+  if (heroSection) {
+    const inner = heroSection.querySelector('.container-narrow');
+    if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
+  }
+
+  // Article body
+  const articleBody = document.querySelector('article .container-narrow');
+  if (articleBody) articleBody.classList.add('reveal');
+
+  // Related Articles
+  const relatedSection = document.querySelector('section[aria-labelledby="related-heading"] .container-narrow');
+  if (relatedSection) relatedSection.classList.add('reveal');
+
+  // CTA Band
+  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
+  if (ctaBand) ctaBand.classList.add('reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+</script>
