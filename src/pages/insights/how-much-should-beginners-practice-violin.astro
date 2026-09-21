@@ -1,9 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
 const publishedDate = '2026-08-09';
 ---
@@ -25,7 +24,7 @@ const publishedDate = '2026-08-09';
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
         Insights
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
-        <span class="font-normal normal-case tracking-normal text-ink/50">August 9, 2026</span>
+        <time datetime="2026-08-09" class="font-normal normal-case tracking-normal text-ink/50">August 9, 2026</time>
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
         <span class="font-normal normal-case tracking-normal text-ink/50">8 min read</span>
       </p>
@@ -441,32 +440,19 @@ const publishedDate = '2026-08-09';
 
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How Much Should Beginners Practice Violin?",
-  "description": "How long should a beginner practice violin? Explore flexible practice ranges for children and adults, daily routines, and ways to build consistency without pressure.",
-  "image": `${siteOrigin}/images/insights/how-much-should-beginners-practice-violin.jpg`,
-  "datePublished": publishedDate,
-  "dateModified": publishedDate,
-  "author": { "@id": `${siteOrigin}/#person` },
-  "publisher": { "@id": `${siteOrigin}/#business` },
-  "mainEntityOfPage": canonicalURL,
-  "articleSection": "Beginner Violin Practice",
-})} />
+  <ArticleSchema
+    title="How Much Should Beginners Practice Violin?"
+    description="How long should a beginner practice violin? Explore flexible practice ranges for children and adults, daily routines, and ways to build consistency without pressure."
+    imageUrl="/images/insights/how-much-should-beginners-practice-violin.jpg"
+    imageAlt="A violin resting on a kitchen counter beside its bow, open sheet music, and a laptop, set up for home practice."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Beginner Violin Practice"
+    faqItems={[{"question":"Is 10 minutes of violin practice enough for a beginner?","answer":"It can be, especially for a young or brand-new beginner. Ten focused minutes spent on a few clear goals may be more useful than a much longer distracted session."},{"question":"Should beginner violin students practice every day?","answer":"Daily practice can help, but it is not necessary to treat a perfect daily streak as the only path to progress. Practicing briefly on most days of the week is often a sustainable starting goal."},{"question":"How long should an adult beginner practice violin?","answer":"Many adult beginners can start with approximately 15–30 minutes per session. The right amount depends on schedule, attention, physical comfort, current goals, and teacher guidance."},{"question":"What should I do if my child refuses to practice?","answer":"First look for the source of the resistance. The assignment may feel unclear, too difficult, too long, or disconnected from the child's interests. Shortening the session and asking the teacher for a simpler plan may be more effective than increasing pressure."},{"question":"Can beginners divide practice into shorter sessions?","answer":"Yes. Two short sessions can sometimes be more focused and physically comfortable than one long session."},{"question":"Does listening count as violin practice?","answer":"Listening can support violin learning by strengthening familiarity with rhythm, pitch, phrasing, and repertoire. It works best as one part of a broader routine that also includes playing and physical skill development."}]}
+  />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is 10 minutes of violin practice enough for a beginner?", "acceptedAnswer": { "@type": "Answer", "text": "It can be, especially for a young or brand-new beginner. Ten focused minutes spent on a few clear goals may be more useful than a much longer distracted session." } },
-    { "@type": "Question", "name": "Should beginner violin students practice every day?", "acceptedAnswer": { "@type": "Answer", "text": "Daily practice can help, but it is not necessary to treat a perfect daily streak as the only path to progress. Practicing briefly on most days of the week is often a sustainable starting goal." } },
-    { "@type": "Question", "name": "How long should an adult beginner practice violin?", "acceptedAnswer": { "@type": "Answer", "text": "Many adult beginners can start with approximately 15–30 minutes per session. The right amount depends on schedule, attention, physical comfort, current goals, and teacher guidance." } },
-    { "@type": "Question", "name": "What should I do if my child refuses to practice?", "acceptedAnswer": { "@type": "Answer", "text": "First look for the source of the resistance. The assignment may feel unclear, too difficult, too long, or disconnected from the child's interests. Shortening the session and asking the teacher for a simpler plan may be more effective than increasing pressure." } },
-    { "@type": "Question", "name": "Can beginners divide practice into shorter sessions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Two short sessions can sometimes be more focused and physically comfortable than one long session." } },
-    { "@type": "Question", "name": "Does listening count as violin practice?", "acceptedAnswer": { "@type": "Answer", "text": "Listening can support violin learning by strengthening familiarity with rhythm, pitch, phrasing, and repertoire. It works best as one part of a broader routine that also includes playing and physical skill development." } }
-  ]
-})} />
+
 
 <script>
   // ── Article page: scroll-reveal ──

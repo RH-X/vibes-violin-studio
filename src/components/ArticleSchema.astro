@@ -1,0 +1,94 @@
+---
+// Centralized structured data for an Insights article: BlogPosting, BreadcrumbList,
+// and optional FAQPage / entity linking. Keeps the JSON-LD shape identical across
+// every article instead of hand-duplicating it per file.
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface AboutEntity {
+  name: string;
+  sameAs: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  publishedDate: string;
+  dateModified?: string;
+  articleSection: string;
+  faqItems?: FAQItem[];
+  aboutEntities?: AboutEntity[];
+}
+
+const {
+  title,
+  description,
+  imageUrl,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  publishedDate,
+  dateModified = publishedDate,
+  articleSection,
+  faqItems,
+  aboutEntities,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
+
+const blogPosting = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "image": {
+    "@type": "ImageObject",
+    "url": new URL(imageUrl, siteOrigin).toString(),
+    "width": imageWidth,
+    "height": imageHeight,
+    "caption": imageAlt,
+  },
+  "datePublished": publishedDate,
+  "dateModified": dateModified,
+  "author": { "@id": `${siteOrigin}/#person` },
+  "publisher": { "@id": `${siteOrigin}/#business` },
+  "mainEntityOfPage": canonicalURL,
+  "articleSection": articleSection,
+  "inLanguage": "en-US",
+  "isPartOf": { "@id": `${siteOrigin}/insights#collectionpage` },
+  ...(aboutEntities && aboutEntities.length > 0
+    ? { "about": aboutEntities.map(e => ({ "@type": "Thing", "name": e.name, "sameAs": e.sameAs })) }
+    : {}),
+};
+
+const breadcrumbList = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteOrigin + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Insights", "item": `${siteOrigin}/insights` },
+    { "@type": "ListItem", "position": 3, "name": title, "item": canonicalURL.toString() },
+  ],
+};
+
+const faqPage = faqItems && faqItems.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+  })),
+} : null;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(blogPosting)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+{faqPage && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
