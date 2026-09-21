@@ -1,9 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
 const publishedDate = '2026-09-01';
 ---
@@ -25,7 +24,7 @@ const publishedDate = '2026-09-01';
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
         Insights
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
-        <span class="font-normal normal-case tracking-normal text-ink/50">September 1, 2026</span>
+        <time datetime="2026-09-01" class="font-normal normal-case tracking-normal text-ink/50">September 1, 2026</time>
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
         <span class="font-normal normal-case tracking-normal text-ink/50">9 min read</span>
       </p>
@@ -277,31 +276,19 @@ const publishedDate = '2026-09-01';
 
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How Adults Learn Violin Differently Than Kids (And Why That Can Be an Advantage)",
-  "description": "Wondering if it's too late to learn violin as an adult? Here's how adult learners approach violin differently than kids, and why that difference can work in your favor.",
-  "image": `${siteOrigin}/images/insights/how-adults-learn-violin-differently.jpg`,
-  "datePublished": publishedDate,
-  "dateModified": publishedDate,
-  "author": { "@id": `${siteOrigin}/#person` },
-  "publisher": { "@id": `${siteOrigin}/#business` },
-  "mainEntityOfPage": canonicalURL,
-  "articleSection": "Adult Beginner Violin",
-})} />
+  <ArticleSchema
+    title="How Adults Learn Violin Differently Than Kids (And Why That Can Be an Advantage)"
+    description="Wondering if it's too late to learn violin as an adult? Here's how adult learners approach violin differently than kids, and why that difference can work in your favor."
+    imageUrl="/images/insights/how-adults-learn-violin-differently.jpg"
+    imageAlt="An adult violinist wearing glasses, holding her violin by the scroll and looking off to the side."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Adult Beginner Violin"
+    faqItems={[{"question":"Am I too old to learn violin?","answer":"No single age makes someone too old to start. What matters more is whether you're willing to be a genuine beginner and whether your teaching fits how you specifically learn."},{"question":"Is violin harder to learn as an adult?","answer":"Not inherently harder, but the shape of the challenge is different. Adults tend to face tighter schedules, more established physical habits, and a musical ear more advanced than their current playing ability."},{"question":"How much should an adult beginner practice violin?","answer":"A focused, realistic short session done consistently matters far more than one long session done occasionally. You do not need an hour a day to make real progress."},{"question":"Do I need to know how to read music before learning violin?","answer":"No. Reading music is something you learn alongside playing, not a prerequisite for starting."},{"question":"Do I need to own a violin before my first lesson?","answer":"Not for Violin Kickstart specifically. The first session doesn't require an instrument, which gives you room to learn before deciding what to buy."}]}
+  />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Am I too old to learn violin?", "acceptedAnswer": { "@type": "Answer", "text": "No single age makes someone too old to start. What matters more is whether you're willing to be a genuine beginner and whether your teaching fits how you specifically learn." } },
-    { "@type": "Question", "name": "Is violin harder to learn as an adult?", "acceptedAnswer": { "@type": "Answer", "text": "Not inherently harder, but the shape of the challenge is different. Adults tend to face tighter schedules, more established physical habits, and a musical ear more advanced than their current playing ability." } },
-    { "@type": "Question", "name": "How much should an adult beginner practice violin?", "acceptedAnswer": { "@type": "Answer", "text": "A focused, realistic short session done consistently matters far more than one long session done occasionally. You do not need an hour a day to make real progress." } },
-    { "@type": "Question", "name": "Do I need to know how to read music before learning violin?", "acceptedAnswer": { "@type": "Answer", "text": "No. Reading music is something you learn alongside playing, not a prerequisite for starting." } },
-    { "@type": "Question", "name": "Do I need to own a violin before my first lesson?", "acceptedAnswer": { "@type": "Answer", "text": "Not for Violin Kickstart specifically. The first session doesn't require an instrument, which gives you room to learn before deciding what to buy." } }
-  ]
-})} />
+
 
 <script>
   // ── Article page: scroll-reveal ──

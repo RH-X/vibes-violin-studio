@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
 
 // ── Launch flag ──
@@ -11,6 +12,8 @@ import CTABand from '../../components/CTABand.astro';
 //   3. Add a card for this post at the top of src/pages/insights.astro,
 //      matching the existing card pattern.
 const POST_LAUNCHED = true;
+
+const publishedDate = '2026-07-02';
 ---
 
 <Layout
@@ -30,7 +33,7 @@ const POST_LAUNCHED = true;
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
         Insights
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
-        <span class="font-normal normal-case tracking-normal text-ink/50">July 2, 2026</span>
+        <time datetime="2026-07-02" class="font-normal normal-case tracking-normal text-ink/50">July 2, 2026</time>
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
         <span class="font-normal normal-case tracking-normal text-ink/50">6 min read</span>
       </p>
@@ -169,9 +172,177 @@ const POST_LAUNCHED = true;
     </div>
   </article>
 
+  <!-- ── Related Articles ── -->
+  <section class="bg-lavender-50 section-pad" aria-labelledby="related-heading">
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Keep Reading</p>
+      <h2 id="related-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+        Related Articles
+      </h2>
+      <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
+
+        <li>
+          <a
+            href="/insights/how-much-do-violin-lessons-cost-denver"
+            aria-label="Read: How Much Do Violin Lessons Cost in Denver?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-much-do-violin-lessons-cost-denver.jpg"
+                alt="A violin viewed from above against a black background, showing its scroll, fingerboard, and body."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>August 4, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How Much Do Violin Lessons Cost in Denver?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Wondering how much violin lessons cost in Denver? Compare typical rates, lesson lengths, teacher experience, and what families and adult beginners should consider.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-to-know-if-a-violin-teacher-is-a-good-fit"
+            aria-label="Read: How to Know If a Violin Teacher Is a Good Fit"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-to-know-if-a-violin-teacher-is-a-good-fit.jpg"
+                alt="Portrait of Rae, violin teacher at Vibrations Violin Studio, standing outdoors in Denver."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>June 9, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How to Know If a Violin Teacher Is a Good Fit
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Credentials matter, but fit matters more. What to look for when choosing a violin teacher for yourself or your child.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/the-real-timeline-of-learning-violin-as-an-adult"
+            aria-label="Read: The Real Timeline of Learning Violin as an Adult"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/the-real-timeline-of-learning-violin-as-an-adult.jpg"
+                alt="An adult student sitting by a sunny window, violin in her lap, writing notes in a practice journal next to sheet music."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>June 29, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                The Real Timeline of Learning Violin as an Adult
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Wondering how long it takes to learn violin as an adult? Here's what realistic progress actually looks like, what matters more than talent, and how confidence builds over time.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/returning-to-violin-after-years-away"
+            aria-label="Read: Returning to Violin After Years Away: What to Expect"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/returning-to-violin-after-years-away.jpg"
+                alt="A violin resting in its open case on grass, surrounded by dried autumn leaves."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>August 18, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                Returning to Violin After Years Away: What to Expect
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Thinking about picking up violin again after years away? Here's what returning adult players can expect—and why you don't need to start completely over.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
   <CTABand />
 
 </Layout>
+
+  <ArticleSchema
+    title="Can You Learn Violin Online? What Beginners and Advancing Students Should Know"
+    description="Can you really learn violin online? Discover how thoughtful virtual lessons help beginners and advancing students of all ages build confidence with personalized guidance."
+    imageUrl="/images/insights/can-you-learn-violin-online.jpg"
+    imageAlt="A violin resting in the foreground of a cozy living room, with a laptop showing sheet music set up for an online lesson."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Online Violin Lessons"
+  />
 
 <script>
   // ── Article page: scroll-reveal ──

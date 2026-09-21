@@ -1,9 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
 const publishedDate = '2026-08-18';
 ---
@@ -25,7 +24,7 @@ const publishedDate = '2026-08-18';
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
         Insights
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
-        <span class="font-normal normal-case tracking-normal text-ink/50">August 18, 2026</span>
+        <time datetime="2026-08-18" class="font-normal normal-case tracking-normal text-ink/50">August 18, 2026</time>
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
         <span class="font-normal normal-case tracking-normal text-ink/50">8 min read</span>
       </p>
@@ -383,19 +382,17 @@ const publishedDate = '2026-08-18';
 
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How Much Frustration Is Normal When Learning Violin?",
-  "description": "Frustration is normal when learning violin—but constant distress isn't the goal. Learn the difference between productive struggle and signs that your approach needs to change.",
-  "image": `${siteOrigin}/images/insights/how-much-frustration-is-normal-when-learning-violin.jpg`,
-  "datePublished": publishedDate,
-  "dateModified": publishedDate,
-  "author": { "@id": `${siteOrigin}/#person` },
-  "publisher": { "@id": `${siteOrigin}/#business` },
-  "mainEntityOfPage": canonicalURL,
-  "articleSection": "Practice Mindset",
-})} />
+  <ArticleSchema
+    title="How Much Frustration Is Normal When Learning Violin?"
+    description="Frustration is normal when learning violin—but constant distress isn't the goal. Learn the difference between productive struggle and signs that your approach needs to change."
+    imageUrl="/images/insights/how-much-frustration-is-normal-when-learning-violin.jpg"
+    imageAlt="Close-up of handwritten violin sheet music catching soft light."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Practice Mindset"
+  />
+
 
 <script>
   // ── Article page: scroll-reveal ──

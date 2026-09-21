@@ -1,9 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
 const publishedDate = '2026-09-08';
 ---
@@ -25,7 +24,7 @@ const publishedDate = '2026-09-08';
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
         Insights
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
-        <span class="font-normal normal-case tracking-normal text-ink/50">September 8, 2026</span>
+        <time datetime="2026-09-08" class="font-normal normal-case tracking-normal text-ink/50">September 8, 2026</time>
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
         <span class="font-normal normal-case tracking-normal text-ink/50">8 min read</span>
       </p>
@@ -352,30 +351,19 @@ const publishedDate = '2026-09-08';
 
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How to Encourage Violin Practice Without Constant Reminders",
-  "description": "Tired of reminding your child to practice violin? Learn how routines, smaller goals, student ownership, and supportive guidance can make practice more sustainable.",
-  "image": `${siteOrigin}/images/insights/how-to-encourage-violin-practice-without-constant-reminders.jpg`,
-  "datePublished": publishedDate,
-  "dateModified": publishedDate,
-  "author": { "@id": `${siteOrigin}/#person` },
-  "publisher": { "@id": `${siteOrigin}/#business` },
-  "mainEntityOfPage": canonicalURL,
-  "articleSection": "Beginner Violin Practice",
-})} />
+  <ArticleSchema
+    title="How to Encourage Violin Practice Without Constant Reminders"
+    description="Tired of reminding your child to practice violin? Learn how routines, smaller goals, student ownership, and supportive guidance can make practice more sustainable."
+    imageUrl="/images/insights/how-to-encourage-violin-practice-without-constant-reminders.jpg"
+    imageAlt="Close-up of a violin's scroll and tuning pegs, softly lit against a dark background."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Beginner Violin Practice"
+    faqItems={[{"question":"How often should I remind my child to practice violin?","answer":"Occasional reminders are normal, especially for younger beginners. If practice consistently requires several reminders every day, it can help to attach practice to an existing routine and shrink the starting goal so beginning feels easier."},{"question":"What should I do if my child refuses to practice violin?","answer":"Look for the source of the resistance before adding pressure. The assignment may feel unclear, too long, or disconnected from what the student is currently interested in. A shorter, more specific goal—and a conversation with the teacher—is often more effective than insisting."},{"question":"How long should beginner violin practice sessions be?","answer":"Many beginners do well with short, focused sessions rather than long ones. The right length depends on age and attention span, with younger beginners often starting around 5-15 minutes and older students working up to 15-30 minutes."},{"question":"Should parents sit with children while they practice violin?","answer":"It depends on the student's age and stage. Younger beginners often need an adult nearby to help with setup and focus. As students build independence, parents can gradually step back to noticing and encouraging rather than directing every moment."}]}
+  />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "How often should I remind my child to practice violin?", "acceptedAnswer": { "@type": "Answer", "text": "Occasional reminders are normal, especially for younger beginners. If practice consistently requires several reminders every day, it can help to attach practice to an existing routine and shrink the starting goal so beginning feels easier." } },
-    { "@type": "Question", "name": "What should I do if my child refuses to practice violin?", "acceptedAnswer": { "@type": "Answer", "text": "Look for the source of the resistance before adding pressure. The assignment may feel unclear, too long, or disconnected from what the student is currently interested in. A shorter, more specific goal—and a conversation with the teacher—is often more effective than insisting." } },
-    { "@type": "Question", "name": "How long should beginner violin practice sessions be?", "acceptedAnswer": { "@type": "Answer", "text": "Many beginners do well with short, focused sessions rather than long ones. The right length depends on age and attention span, with younger beginners often starting around 5-15 minutes and older students working up to 15-30 minutes." } },
-    { "@type": "Question", "name": "Should parents sit with children while they practice violin?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the student's age and stage. Younger beginners often need an adult nearby to help with setup and focus. As students build independence, parents can gradually step back to noticing and encouraging rather than directing every moment." } }
-  ]
-})} />
+
 
 <script>
   // ── Article page: scroll-reveal ──

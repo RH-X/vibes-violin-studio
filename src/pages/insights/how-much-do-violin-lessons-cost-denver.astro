@@ -1,9 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
 const publishedDate = '2026-08-04';
 ---
@@ -25,7 +24,7 @@ const publishedDate = '2026-08-04';
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
         Insights
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
-        <span class="font-normal normal-case tracking-normal text-ink/50">August 4, 2026</span>
+        <time datetime="2026-08-04" class="font-normal normal-case tracking-normal text-ink/50">August 4, 2026</time>
         <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
         <span class="font-normal normal-case tracking-normal text-ink/50">7 min read</span>
       </p>
@@ -350,30 +349,20 @@ const publishedDate = '2026-08-04';
 
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How Much Do Violin Lessons Cost in Denver?",
-  "description": "Wondering how much violin lessons cost in Denver? Compare typical rates, lesson lengths, teacher experience, and what families and adult beginners should consider.",
-  "image": `${siteOrigin}/images/insights/how-much-do-violin-lessons-cost-denver.jpg`,
-  "datePublished": publishedDate,
-  "dateModified": publishedDate,
-  "author": { "@id": `${siteOrigin}/#person` },
-  "publisher": { "@id": `${siteOrigin}/#business` },
-  "mainEntityOfPage": canonicalURL,
-  "articleSection": "Violin Lesson Pricing",
-})} />
+  <ArticleSchema
+    title="How Much Do Violin Lessons Cost in Denver?"
+    description="Wondering how much violin lessons cost in Denver? Compare typical rates, lesson lengths, teacher experience, and what families and adult beginners should consider."
+    imageUrl="/images/insights/how-much-do-violin-lessons-cost-denver.jpg"
+    imageAlt="A violin viewed from above against a black background, showing its scroll, fingerboard, and body."
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Violin Lesson Pricing"
+    faqItems={[{"question":"Are more expensive violin teachers always better?","answer":"Not necessarily. Experience and training matter, but teaching style and student fit are just as important."},{"question":"How often should beginners take lessons?","answer":"Most beginners benefit from one lesson each week paired with consistent home practice."},{"question":"Is 30 minutes enough?","answer":"For many beginners, yes. As students develop greater focus and more material to work on, longer lessons often become beneficial."},{"question":"Are online violin lessons less expensive?","answer":"Sometimes, but not always. High-quality online lessons still provide personalized instruction and meaningful feedback."}]}
+    aboutEntities={[{"name":"Denver","sameAs":"https://www.wikidata.org/wiki/Q16554"}]}
+  />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Are more expensive violin teachers always better?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Experience and training matter, but teaching style and student fit are just as important." } },
-    { "@type": "Question", "name": "How often should beginners take lessons?", "acceptedAnswer": { "@type": "Answer", "text": "Most beginners benefit from one lesson each week paired with consistent home practice." } },
-    { "@type": "Question", "name": "Is 30 minutes enough?", "acceptedAnswer": { "@type": "Answer", "text": "For many beginners, yes. As students develop greater focus and more material to work on, longer lessons often become beneficial." } },
-    { "@type": "Question", "name": "Are online violin lessons less expensive?", "acceptedAnswer": { "@type": "Answer", "text": "Sometimes, but not always. High-quality online lessons still provide personalized instruction and meaningful feedback." } }
-  ]
-})} />
+
 
 <script>
   // ── Article page: scroll-reveal ──
