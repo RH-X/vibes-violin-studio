@@ -2,6 +2,11 @@
   "framework": "astro",
   "redirects": [
     {
+      "source": "/creative-mornings-kickstart",
+      "destination": "/violin-kickstart",
+      "permanent": true
+    },
+    {
       "source": "/",
       "has": [{ "type": "host", "value": "vibesviolinstudio.vercel.app" }],
       "destination": "https://www.vibesviolin.studio/",
