@@ -1,11 +1,8 @@
 ---
 import '../styles/global.css';
 
-// ── Editable campaign constants — update these for future cohorts/events ──
-const courseStart = 'September 22';
-const foundingPrice = '$149';
-const foundingPriceDeadline = 'September 6';
-const finalPrice = '$200';
+// ── Editable flyer constants — update these for future cohorts ──
+const cohortStart = 'January 2027';
 ---
 
 <!doctype html>
@@ -14,7 +11,7 @@ const finalPrice = '$200';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Violin Kickstart — CreativeMornings Denver | Vibrations Violin Studio</title>
+    <title>Violin Kickstart | Vibrations Violin Studio</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Same font stack as the rest of the site -->
@@ -30,42 +27,33 @@ const finalPrice = '$200';
         <div class="cm-slide-overlay" aria-hidden="true"></div>
 
         <div class="cm-content">
-          <!-- Left column: message + price -->
+          <!-- Left column: message -->
           <div class="cm-left">
-            <p class="cm-eyebrow">👋 Hey, Creative Mornings Denver</p>
+            <p class="cm-eyebrow">👋 Vibrations Violin Studio</p>
 
             <h1 class="cm-headline-group">
-              <span class="cm-headline">Want to be more creative?</span>
-              <span class="cm-headline cm-headline-accent">Learn an instrument.</span>
+              <span class="cm-headline">Always wanted to</span>
+              <span class="cm-headline cm-headline-accent">learn violin?</span>
             </h1>
 
             <div class="cm-offer-row">
               <span class="cm-badge">Violin Kickstart</span>
-              <span class="cm-offer-tag">🔥 Starts {courseStart}</span>
+              <span class="cm-offer-tag">🔥 Starts {cohortStart}</span>
             </div>
-            <p class="cm-offer-desc">A 4-week live online experience for adults ready to begin...or begin again.</p>
-            <p class="cm-instrument-line">Violin · Viola · Cello welcome</p>
+            <p class="cm-offer-desc">A 4-week live online beginner experience for adults.</p>
 
             <div class="cm-divider" role="presentation"></div>
 
-            <p class="cm-price-eyebrow">Founding Cohort Member Enrollment Price</p>
-            <p class="cm-price">{foundingPrice}</p>
-            <p class="cm-price-sub">
-              <span class="cm-price-deadline">Ends {foundingPriceDeadline}</span>
-              <span class="cm-price-sep" aria-hidden="true">·</span>
-              Enrollment price moves to {finalPrice} after {foundingPriceDeadline}
-            </p>
-
-            <p class="cm-reassurance">Small live cohort &nbsp;·&nbsp; No experience required &nbsp;·&nbsp; No instrument needed for session one</p>
+            <p class="cm-reassurance">Small live cohort &nbsp;·&nbsp; No experience required &nbsp;·&nbsp; No violin needed for the first session</p>
           </div>
 
           <!-- Right column: single QR conversion panel -->
           <div class="cm-right">
             <div class="cm-qr-panel">
-              <p class="cm-qr-eyebrow">Scan to enroll</p>
+              <p class="cm-qr-eyebrow">Scan to join the waitlist</p>
               <img
-                src="/images/creative-mornings-kickstart-qr.png"
-                alt="QR code linking to the Violin Kickstart enrollment page"
+                src="/images/violin-kickstart-qr.png"
+                alt="QR code linking to the Violin Kickstart page on the Vibrations Violin Studio website"
                 width="440"
                 height="440"
                 class="cm-qr-image"
@@ -118,7 +106,7 @@ const finalPrice = '$200';
 
         await Promise.all([
           preloadImage('/images/violin-kickstart-hero-bg.jpg'),
-          preloadImage('/images/creative-mornings-kickstart-qr.png'),
+          preloadImage('/images/violin-kickstart-qr.png'),
           document.fonts.ready,
         ]);
 
@@ -160,7 +148,7 @@ const finalPrice = '$200';
           });
 
           const link = document.createElement('a');
-          link.download = 'violin-kickstart-creative-mornings-sept-2026.png';
+          link.download = 'violin-kickstart-flyer.png';
           link.href = canvas.toDataURL('image/png');
           link.click();
           statusEl.textContent = 'Downloaded.';
