@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/fix-vercel-runtime.mjs",
     "preview": "astro preview"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
