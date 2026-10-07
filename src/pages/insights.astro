@@ -1,6 +1,72 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTABand from '../components/CTABand.astro';
+
+// ── Topic filters + pagination ──
+// Every card is rendered into the HTML (so all article links stay crawlable
+// on /insights); the inline script below the grid shows one topic/page at a
+// time based on ?topic= and ?page=. Those query states canonicalize to
+// /insights via Layout, so they don't create separate indexable pages.
+const PER_PAGE = 8;
+
+const topics = [
+  { id: 'parents-kids', label: 'Parents & Kids' },
+  { id: 'adult-learners', label: 'Adult Learners' },
+  { id: 'practice-progress', label: 'Practice & Progress' },
+  { id: 'getting-started', label: 'Getting Started' },
+  { id: 'online-lessons', label: 'Online Lessons' },
+] as const;
+
+type TopicId = (typeof topics)[number]['id'];
+
+// Article slug → topics. The first topic is the one shown on the card.
+// Every article card below must have an entry here (the build fails otherwise).
+const articleTopics: Record<string, TopicId[]> = {
+  'is-it-worth-taking-violin-lessons-just-to-play-for-yourself': ['adult-learners', 'practice-progress'],
+  'how-to-know-if-child-enjoys-violin': ['parents-kids'],
+  'my-child-wants-to-quit-violin': ['parents-kids'],
+  'what-does-learning-violin-give-you': ['getting-started', 'adult-learners', 'parents-kids'],
+  'how-to-encourage-violin-practice-without-constant-reminders': ['parents-kids', 'practice-progress'],
+  'how-adults-learn-violin-differently': ['adult-learners'],
+  'how-old-should-child-start-violin': ['parents-kids', 'getting-started'],
+  'returning-to-violin-after-years-away': ['adult-learners'],
+  'how-much-frustration-is-normal-when-learning-violin': ['practice-progress'],
+  'what-to-expect-violin-kickstart': ['adult-learners', 'getting-started', 'online-lessons'],
+  'how-much-should-beginners-practice-violin': ['practice-progress', 'getting-started'],
+  'how-much-do-violin-lessons-cost-denver': ['getting-started'],
+  'why-music-is-still-worth-learning-in-an-ai-world': ['getting-started', 'adult-learners', 'parents-kids'],
+  'what-to-expect-first-three-months-violin-lessons': ['getting-started', 'practice-progress'],
+  'what-happens-during-your-first-violin-lesson': ['getting-started'],
+  'how-to-buy-your-first-violin': ['getting-started'],
+  'can-you-learn-violin-online': ['online-lessons', 'getting-started'],
+  'the-real-timeline-of-learning-violin-as-an-adult': ['adult-learners', 'practice-progress'],
+  'why-kids-quit-violin-and-what-actually-helps': ['parents-kids', 'practice-progress'],
+  'is-my-child-progressing-normally-in-violin-lessons': ['parents-kids', 'practice-progress'],
+  'how-to-know-if-a-violin-teacher-is-a-good-fit': ['getting-started'],
+  'why-violin-lessons-should-feel-supportive-denver': ['getting-started', 'practice-progress'],
+  'beginner-violin-learning-myths-denver': ['getting-started', 'practice-progress'],
+};
+
+function topicsFor(slug: string) {
+  const ids = articleTopics[slug];
+  if (!ids?.length) throw new Error(`Insights: no topics assigned for "${slug}" in insights.astro`);
+  return ids.join(' ');
+}
+
+function primaryTopicLabel(slug: string) {
+  return topics.find((t) => t.id === articleTopics[slug][0])!.label;
+}
+
+function pageHref(topic: string, page: number) {
+  const params = new URLSearchParams();
+  if (topic !== 'all') params.set('topic', topic);
+  if (page > 1) params.set('page', String(page));
+  const query = params.toString();
+  return `/insights${query ? `?${query}` : ''}#topics`;
+}
+
+const totalPages = Math.ceil(Object.keys(articleTopics).length / PER_PAGE);
+const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 ---
 
 <Layout
@@ -26,10 +92,32 @@ import CTABand from '../components/CTABand.astro';
 
   <section id="article-grid" class="bg-white pt-8 md:pt-12 pb-16 md:pb-24">
     <div class="container-narrow">
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
+      <!-- Topic filters -->
+      <div id="topics" class="scroll-mt-6 mb-8 md:mb-10">
+        <p id="topics-label" class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Explore by topic</p>
+        <nav aria-labelledby="topics-label">
+          <ul class="flex flex-wrap gap-2" role="list">
+            {[{ id: 'all', label: 'All' }, ...topics].map((topic) => (
+              <li>
+                <a
+                  href={pageHref(topic.id, 1)}
+                  data-topic-link={topic.id}
+                  aria-current={topic.id === 'all' ? 'page' : undefined}
+                  class="inline-flex items-center min-h-[44px] px-4 rounded-full border border-lavender-200 bg-white text-sm font-medium text-ink/70 transition-colors duration-150 hover:bg-lavender-50 hover:border-lavender-300 hover:text-ink aria-[current=page]:bg-purplePrimary aria-[current=page]:border-purplePrimary aria-[current=page]:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+                >
+                  {topic.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      <p id="insights-status" class="sr-only" aria-live="polite" tabindex="-1"></p>
+
+      <ul id="article-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
 
         <!-- Post: Is It Worth Taking Violin Lessons If You Just Want to Play for Yourself? -->
-        <li>
+        <li data-topics={topicsFor('is-it-worth-taking-violin-lessons-just-to-play-for-yourself')}>
           <a
             href="/insights/is-it-worth-taking-violin-lessons-just-to-play-for-yourself"
             aria-label="Read: Is It Worth Taking Violin Lessons If You Just Want to Play for Yourself?"
@@ -47,6 +135,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('is-it-worth-taking-violin-lessons-just-to-play-for-yourself')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>October 7, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -66,7 +155,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How Do I Know If My Child Is Actually Enjoying Violin? -->
-        <li>
+        <li data-topics={topicsFor('how-to-know-if-child-enjoys-violin')}>
           <a
             href="/insights/how-to-know-if-child-enjoys-violin"
             aria-label="Read: How Do I Know If My Child Is Actually Enjoying Violin?"
@@ -84,6 +173,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-to-know-if-child-enjoys-violin')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>September 29, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -103,7 +193,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: My Child Wants to Quit Violin. What Should I Do? -->
-        <li>
+        <li data-topics={topicsFor('my-child-wants-to-quit-violin')}>
           <a
             href="/insights/my-child-wants-to-quit-violin"
             aria-label="Read: My Child Wants to Quit Violin. What Should I Do?"
@@ -121,6 +211,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('my-child-wants-to-quit-violin')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>September 21, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -140,7 +231,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: What Does Learning Violin Actually Give You—Besides the Ability to Play Violin? -->
-        <li>
+        <li data-topics={topicsFor('what-does-learning-violin-give-you')}>
           <a
             href="/insights/what-does-learning-violin-give-you"
             aria-label="Read: What Does Learning Violin Actually Give You—Besides the Ability to Play Violin?"
@@ -158,6 +249,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('what-does-learning-violin-give-you')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>September 15, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -177,7 +269,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How to Encourage Violin Practice Without Constant Reminders -->
-        <li>
+        <li data-topics={topicsFor('how-to-encourage-violin-practice-without-constant-reminders')}>
           <a
             href="/insights/how-to-encourage-violin-practice-without-constant-reminders"
             aria-label="Read: How to Encourage Violin Practice Without Constant Reminders"
@@ -195,6 +287,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-to-encourage-violin-practice-without-constant-reminders')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>September 8, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -214,7 +307,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How Adults Learn Violin Differently Than Kids -->
-        <li>
+        <li data-topics={topicsFor('how-adults-learn-violin-differently')}>
           <a
             href="/insights/how-adults-learn-violin-differently"
             aria-label="Read: How Adults Learn Violin Differently Than Kids (And Why That Can Be an Advantage)"
@@ -232,6 +325,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-adults-learn-violin-differently')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>September 1, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -251,7 +345,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How Old Should My Child Be to Start Violin? -->
-        <li>
+        <li data-topics={topicsFor('how-old-should-child-start-violin')}>
           <a
             href="/insights/how-old-should-child-start-violin"
             aria-label="Read: How Old Should My Child Be to Start Violin? A Parent's Guide to Violin Lesson Readiness"
@@ -269,6 +363,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-old-should-child-start-violin')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>August 24, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -288,7 +383,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: Returning to Violin After Years Away -->
-        <li>
+        <li data-topics={topicsFor('returning-to-violin-after-years-away')}>
           <a
             href="/insights/returning-to-violin-after-years-away"
             aria-label="Read: Returning to Violin After Years Away: What to Expect"
@@ -306,6 +401,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('returning-to-violin-after-years-away')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>August 18, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -325,7 +421,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How Much Frustration Is Normal When Learning Violin -->
-        <li>
+        <li data-topics={topicsFor('how-much-frustration-is-normal-when-learning-violin')}>
           <a
             href="/insights/how-much-frustration-is-normal-when-learning-violin"
             aria-label="Read: How Much Frustration Is Normal When Learning Violin?"
@@ -343,6 +439,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-much-frustration-is-normal-when-learning-violin')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>August 18, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -362,7 +459,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: What to Expect from Violin Kickstart -->
-        <li>
+        <li data-topics={topicsFor('what-to-expect-violin-kickstart')}>
           <a
             href="/insights/what-to-expect-violin-kickstart"
             aria-label="Read: What to Expect from Violin Kickstart: A 4-Week Beginner Violin Course for Adults"
@@ -380,6 +477,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('what-to-expect-violin-kickstart')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>August 13, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -399,7 +497,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How Much Should Beginners Practice Violin? -->
-        <li>
+        <li data-topics={topicsFor('how-much-should-beginners-practice-violin')}>
           <a
             href="/insights/how-much-should-beginners-practice-violin"
             aria-label="Read: How Much Should Beginners Practice Violin?"
@@ -417,6 +515,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-much-should-beginners-practice-violin')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>August 9, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -436,7 +535,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How Much Do Violin Lessons Cost in Denver? -->
-        <li>
+        <li data-topics={topicsFor('how-much-do-violin-lessons-cost-denver')}>
           <a
             href="/insights/how-much-do-violin-lessons-cost-denver"
             aria-label="Read: How Much Do Violin Lessons Cost in Denver?"
@@ -454,6 +553,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-much-do-violin-lessons-cost-denver')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>August 4, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -473,7 +573,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: Why Music is Still Worth Learning in an AI World -->
-        <li>
+        <li data-topics={topicsFor('why-music-is-still-worth-learning-in-an-ai-world')}>
           <a
             href="/insights/why-music-is-still-worth-learning-in-an-ai-world"
             aria-label="Read: Why Music is Still Worth Learning in an AI World"
@@ -491,6 +591,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('why-music-is-still-worth-learning-in-an-ai-world')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>July 28, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -510,7 +611,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: What to Expect in the First Three Months of Violin Lessons -->
-        <li>
+        <li data-topics={topicsFor('what-to-expect-first-three-months-violin-lessons')}>
           <a
             href="/insights/what-to-expect-first-three-months-violin-lessons"
             aria-label="Read: What to Expect in the First Three Months of Violin Lessons"
@@ -528,6 +629,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('what-to-expect-first-three-months-violin-lessons')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>July 22, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -547,7 +649,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: What Happens During Your First Violin Lesson? -->
-        <li>
+        <li data-topics={topicsFor('what-happens-during-your-first-violin-lesson')}>
           <a
             href="/insights/what-happens-during-your-first-violin-lesson"
             aria-label="Read: What Happens During Your First Violin Lesson?"
@@ -565,6 +667,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('what-happens-during-your-first-violin-lesson')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>July 13, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -584,7 +687,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How to Buy Your First Violin -->
-        <li>
+        <li data-topics={topicsFor('how-to-buy-your-first-violin')}>
           <a
             href="/insights/how-to-buy-your-first-violin"
             aria-label="Read: How to Buy Your First Violin (Without Wasting Money)"
@@ -602,6 +705,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-to-buy-your-first-violin')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>July 6, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -621,7 +725,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: Can You Learn Violin Online? -->
-        <li>
+        <li data-topics={topicsFor('can-you-learn-violin-online')}>
           <a
             href="/insights/can-you-learn-violin-online"
             aria-label="Read: Can You Learn Violin Online? What Beginners and Advancing Students Should Know"
@@ -639,6 +743,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('can-you-learn-violin-online')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>July 2, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -658,7 +763,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: The Real Timeline of Learning Violin as an Adult -->
-        <li>
+        <li data-topics={topicsFor('the-real-timeline-of-learning-violin-as-an-adult')}>
           <a
             href="/insights/the-real-timeline-of-learning-violin-as-an-adult"
             aria-label="Read: The Real Timeline of Learning Violin as an Adult"
@@ -676,6 +781,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('the-real-timeline-of-learning-violin-as-an-adult')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>June 29, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -695,7 +801,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: Why Kids Quit Violin (And What Actually Helps) -->
-        <li>
+        <li data-topics={topicsFor('why-kids-quit-violin-and-what-actually-helps')}>
           <a
             href="/insights/why-kids-quit-violin-and-what-actually-helps"
             aria-label="Read: Why Kids Quit Violin (And What Actually Helps)"
@@ -713,6 +819,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('why-kids-quit-violin-and-what-actually-helps')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>June 21, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -732,7 +839,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: Is My Child Progressing Normally in Violin Lessons? -->
-        <li>
+        <li data-topics={topicsFor('is-my-child-progressing-normally-in-violin-lessons')}>
           <a
             href="/insights/is-my-child-progressing-normally-in-violin-lessons"
             aria-label="Read: Is My Child Progressing Normally in Violin Lessons?"
@@ -750,6 +857,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('is-my-child-progressing-normally-in-violin-lessons')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>June 16, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -769,7 +877,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: How to Know if a Violin Teacher is a Good Fit -->
-        <li>
+        <li data-topics={topicsFor('how-to-know-if-a-violin-teacher-is-a-good-fit')}>
           <a
             href="/insights/how-to-know-if-a-violin-teacher-is-a-good-fit"
             aria-label="Read: How to Know if a Violin Teacher is a Good Fit"
@@ -787,6 +895,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('how-to-know-if-a-violin-teacher-is-a-good-fit')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>June 9, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -806,7 +915,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: Why Violin Lessons Should Feel Supportive, Not Intimidating -->
-        <li>
+        <li data-topics={topicsFor('why-violin-lessons-should-feel-supportive-denver')}>
           <a
             href="/insights/why-violin-lessons-should-feel-supportive-denver"
             aria-label="Read: Why Violin Lessons Should Feel Supportive, Not Intimidating"
@@ -824,6 +933,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('why-violin-lessons-should-feel-supportive-denver')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>June 2, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -843,7 +953,7 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
         <!-- Post: What Most Beginners Get Wrong About Learning Violin -->
-        <li>
+        <li data-topics={topicsFor('beginner-violin-learning-myths-denver')}>
           <a
             href="/insights/beginner-violin-learning-myths-denver"
             aria-label="Read: What Most Beginners Get Wrong About Learning Violin"
@@ -861,6 +971,7 @@ import CTABand from '../components/CTABand.astro';
               />
             </div>
             <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <p class="font-heading font-semibold text-xs uppercase text-purplePrimary mb-2" style="letter-spacing: 0.14em;">{primaryTopicLabel('beginner-violin-learning-myths-denver')}</p>
               <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
                 <span>May 15, 2026</span>
                 <span aria-hidden="true">·</span>
@@ -880,6 +991,130 @@ import CTABand from '../components/CTABand.astro';
         </li>
 
       </ul>
+
+      <p id="insights-empty" class="text-base text-ink/70 leading-relaxed" hidden>
+        There aren't any articles on this topic yet.
+        <a href="/insights#topics" data-topic-link-reset class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">Browse all articles</a>.
+      </p>
+
+      <!-- Pagination -->
+      <nav id="insights-pagination" aria-label="Insights article pages" class="mt-12" hidden={totalPages <= 1}>
+        <ul class="flex flex-wrap items-center justify-center gap-2" role="list">
+          <li data-page-prev hidden>
+            <a href={pageHref('all', 1)} class="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg border border-lavender-200 bg-white text-sm font-medium text-ink/70 transition-colors duration-150 hover:bg-lavender-50 hover:border-lavender-300 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              <span aria-hidden="true">←&nbsp;</span>Previous
+            </a>
+          </li>
+          {pageNumbers.map((n) => (
+            <li data-page-item={n}>
+              <a
+                href={pageHref('all', n)}
+                aria-label={`Page ${n}`}
+                aria-current={n === 1 ? 'page' : undefined}
+                class="inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-3 rounded-lg border border-lavender-200 bg-white text-sm font-medium text-ink/70 transition-colors duration-150 hover:bg-lavender-50 hover:border-lavender-300 hover:text-ink aria-[current=page]:bg-purplePrimary aria-[current=page]:border-purplePrimary aria-[current=page]:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+              >
+                {n}
+              </a>
+            </li>
+          ))}
+          <li data-page-next hidden={totalPages <= 1}>
+            <a href={pageHref('all', 2)} class="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg border border-lavender-200 bg-white text-sm font-medium text-ink/70 transition-colors duration-150 hover:bg-lavender-50 hover:border-lavender-300 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+              Next<span aria-hidden="true">&nbsp;→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Without JS every article stays visible, so the filter/page controls are hidden. -->
+      <noscript><style>#topics, #insights-pagination { display: none !important; }</style></noscript>
+
+      <!--
+        Runs synchronously as the grid is parsed so the right topic/page is
+        showing before first paint (no flash of all 23 cards / layout shift).
+      -->
+      <script is:inline define:vars={{ PER_PAGE }}>
+        (() => {
+          const grid = document.getElementById('article-grid');
+          const items = Array.from(document.getElementById('article-list').children);
+          const chips = Array.from(grid.querySelectorAll('[data-topic-link]'));
+          const topicIds = chips.map((chip) => chip.dataset.topicLink);
+          const pager = document.getElementById('insights-pagination');
+          const prev = pager.querySelector('[data-page-prev]');
+          const next = pager.querySelector('[data-page-next]');
+          const pageItems = Array.from(pager.querySelectorAll('[data-page-item]'));
+          const empty = document.getElementById('insights-empty');
+          const status = document.getElementById('insights-status');
+
+          const hrefFor = (topic, page) => {
+            const params = new URLSearchParams();
+            if (topic !== 'all') params.set('topic', topic);
+            if (page > 1) params.set('page', String(page));
+            const query = params.toString();
+            return '/insights' + (query ? '?' + query : '') + '#topics';
+          };
+
+          const readState = () => {
+            const params = new URLSearchParams(location.search);
+            const topic = topicIds.includes(params.get('topic')) ? params.get('topic') : 'all';
+            const page = parseInt(params.get('page'), 10);
+            return { topic, page: page >= 1 ? page : 1 };
+          };
+
+          const setCurrent = (el, isCurrent) =>
+            isCurrent ? el.setAttribute('aria-current', 'page') : el.removeAttribute('aria-current');
+
+          const render = ({ topic, page }) => {
+            const matches = items.filter((li) => topic === 'all' || li.dataset.topics.split(' ').includes(topic));
+            const pages = Math.max(1, Math.ceil(matches.length / PER_PAGE));
+            page = Math.min(page, pages);
+            const start = (page - 1) * PER_PAGE;
+            const visible = new Set(matches.slice(start, start + PER_PAGE));
+
+            items.forEach((li) => { li.hidden = !visible.has(li); });
+            chips.forEach((chip) => setCurrent(chip, chip.dataset.topicLink === topic));
+
+            pager.hidden = pages <= 1;
+            prev.hidden = page === 1;
+            next.hidden = page === pages;
+            prev.querySelector('a').href = hrefFor(topic, page - 1);
+            next.querySelector('a').href = hrefFor(topic, page + 1);
+            pageItems.forEach((li) => {
+              const n = Number(li.dataset.pageItem);
+              const link = li.querySelector('a');
+              li.hidden = n > pages;
+              link.href = hrefFor(topic, n);
+              setCurrent(link, n === page);
+            });
+
+            empty.hidden = matches.length > 0;
+            const label = topic === 'all' ? 'all topics' : chips.find((c) => c.dataset.topicLink === topic).textContent.trim();
+            status.textContent = matches.length
+              ? `Showing articles ${start + 1} to ${start + visible.size} of ${matches.length} in ${label}, page ${page} of ${pages}.`
+              : `There aren't any articles in ${label} yet.`;
+          };
+
+          render(readState());
+
+          // Enhance the real links: update in place instead of reloading.
+          grid.addEventListener('click', (event) => {
+            const link = event.target.closest('[data-topic-link], [data-topic-link-reset], #insights-pagination a');
+            if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            const url = new URL(link.href);
+            const target = url.pathname + url.search + url.hash;
+            if (target === location.pathname + location.search + location.hash) return;
+            history.pushState(null, '', target);
+            render(readState());
+            if (!link.matches('[data-topic-link]')) {
+              document.getElementById('topics').scrollIntoView({ block: 'start' });
+              const firstCard = items.find((li) => !li.hidden);
+              (firstCard ? firstCard.querySelector('a') : status).focus({ preventScroll: true });
+            }
+          });
+
+          window.addEventListener('popstate', () => render(readState()));
+        })();
+      </script>
     </div>
   </section>
 
