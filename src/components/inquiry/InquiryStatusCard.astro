@@ -83,6 +83,21 @@ const { label, heading, body, iconColor } = copy[kind];
     if (typeof window.gtag === 'function') {
       if (kind === 'pending') {
         window.gtag('event', events.verificationEmailSent, { inquiry_slug: slug });
+
+        // lead_form_submit: the server only redirects here after the inquiry is
+        // saved and the verification email sent (errors go back to the form).
+        // Fired here, in the same session as the form, so GA4 keeps the visit's
+        // original source; skipped on reload/back so one inquiry counts once.
+        const nav = performance.getEntriesByType('navigation')[0];
+        const isRepeatView = nav && (nav.type === 'reload' || nav.type === 'back_forward');
+        if (slug === 'contact' && !isRepeatView) {
+          let lessonType = 'not_selected';
+          try {
+            lessonType = sessionStorage.getItem('vvs_lesson_type') || 'not_selected';
+            sessionStorage.removeItem('vvs_lesson_type');
+          } catch (e) { /* storage unavailable */ }
+          window.gtag('event', 'lead_form_submit', { lesson_type: lessonType, form_location: 'contact_page' });
+        }
       } else if (kind === 'success') {
         window.gtag('event', events.verificationCompleted, { inquiry_slug: slug });
         window.gtag('event', events.submitted, { inquiry_slug: slug });

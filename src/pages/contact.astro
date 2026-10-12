@@ -775,6 +775,17 @@ const error = Astro.url.searchParams.get('error');
     showInquiryEngine();
   }
 
+  // ── Analytics: lesson_type_selected (GA4 via gtag in Layout) ──
+  // The choice is also kept for this tab so a successful inquiry can report it.
+  const LESSON_TYPES: Record<string, string> = { parents: 'parent', adults: 'adult', online: 'online' };
+  function trackLessonType(pathway: string) {
+    const lessonType = LESSON_TYPES[pathway];
+    if (!lessonType) return;
+    try { sessionStorage.setItem('vvs_lesson_type', lessonType); } catch { /* storage unavailable */ }
+    const gtag = (window as any).gtag;
+    if (typeof gtag === 'function') gtag('event', 'lesson_type_selected', { lesson_type: lessonType });
+  }
+
   // Card click handlers
   cards.forEach(card => {
     card.addEventListener('click', () => {
@@ -786,6 +797,7 @@ const error = Astro.url.searchParams.get('error');
         closePanel(pathway);
       } else {
         openPanel(pathway);
+        trackLessonType(pathway);
       }
     });
   });

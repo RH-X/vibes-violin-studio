@@ -36,11 +36,32 @@ const isKickstartPage = Astro.url.pathname === '/violin-kickstart';
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVE1CSG4NC"></script>
-    <script>
+    <!-- is:inline keeps gtag on window; bundling it made window.gtag undefined, so custom events never sent -->
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-SVE1CSG4NC');
+
+      // ── get_started_click: any link into the /contact (Get Started) page ──
+      document.addEventListener('click', function (event) {
+        var link = event.target.closest && event.target.closest('a[href]');
+        if (!link) return;
+        var url = new URL(link.href, location.href);
+        if (url.origin !== location.origin || url.pathname !== '/contact' || location.pathname === '/contact') return;
+        var ctaLocation = link.dataset.ctaLocation ||
+          (link.closest('header') ? 'header' :
+           link.closest('footer') ? 'footer' :
+           link.closest('[aria-labelledby="hero-heading"]') ? 'home_hero' :
+           link.closest('[aria-labelledby="cta-heading"]') ? 'cta_band' :
+           link.closest('article') ? 'article' : 'page_body');
+        gtag('event', 'get_started_click', {
+          page_path: location.pathname,
+          cta_location: ctaLocation,
+          cta_text: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100),
+          transport_type: 'beacon'
+        });
+      });
     </script>
     <!-- Microsoft Clarity — production only, personal opt-out via localStorage -->
     <!-- To disable tracking: localStorage.setItem('disableClarity', 'true')  -->
