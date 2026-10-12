@@ -175,9 +175,12 @@ import PracticePals from '../components/PracticePals.astro';
   const heroSection = document.querySelector('section[aria-labelledby="hero-heading"]');
   if (heroSection) {
     const heading = heroSection.querySelector('#hero-heading');
-    const subtitle = heading?.nextElementSibling;
-    const buttons = subtitle?.nextElementSibling;
-    [heading, subtitle, buttons].forEach((el, i) => {
+    // Heading + the next two *visible* elements (mobile and desktop show different ones)
+    const following = [];
+    for (let el = heading?.nextElementSibling; el && following.length < 2; el = el.nextElementSibling) {
+      if (el.offsetParent !== null) following.push(el);
+    }
+    [heading, ...following].forEach((el, i) => {
       if (el) el.classList.add('hero-animate', `hero-delay-${i + 1}`);
     });
   }

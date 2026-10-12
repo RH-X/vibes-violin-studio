@@ -81,7 +81,22 @@
           <span class="text-purplePrimary">Musicianship, Confidence,<br class="hidden sm:inline" /> and Joy</span>
         </h1>
 
-        <p class="text-lg sm:text-xl leading-relaxed font-medium" style="margin-top: 1.125rem; color: #2F2A35;">
+        <!-- Mobile only (below md): short summary + CTAs right under the headline.
+             Tablet/desktop keep the original order, with the CTAs after the intro. -->
+        <p class="md:hidden text-base leading-relaxed mx-auto max-w-[38rem]" style="margin-top: 1rem; color: #3A3140;">
+          Private violin lessons for children and adults in Denver and online, tailored to how you learn.
+        </p>
+
+        <div class="flex md:hidden flex-col sm:flex-row items-center justify-center gap-4" style="margin-top: 1.75rem;">
+          <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
+            Get Started
+          </a>
+          <a href="#approach" class="btn-primary text-base px-8 py-3.5">
+            Learn More
+          </a>
+        </div>
+
+        <p class="text-lg sm:text-xl leading-relaxed font-medium mt-9 md:mt-[1.125rem]" style="color: #2F2A35;">
           with Rae McGee, M.M.
         </p>
 
@@ -94,7 +109,7 @@
         </p>
 
         <div
-          class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+          class="hidden md:flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
           style="margin-top: 2.25rem;"
         >
           <a href="/contact" class="btn-secondary text-base px-8 py-3.5">
