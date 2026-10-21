@@ -1,0 +1,525 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const publishedDate = '2026-10-21';
+
+// Sources cited in the article body and listed in the Sources section.
+const sources = {
+  sharSizing: 'https://www.sharmusic.com/blogs/all/the-complete-string-instrument-sizing-guide',
+  sharFirstInstrument: 'https://www.sharmusic.com/blogs/all/how-to-choose-your-first-instrument-a-guide-from-shar-music',
+  sharParents: 'https://www.sharmusic.com/blogs/all/understanding-instrument-sizes-a-parent-s-guide-to-choosing-the-right-fit',
+  johnson: 'https://www.johnsonstring.com/resources/articles/music-students/violin-sizing-for-children/',
+};
+
+const faqItems = [
+  {
+    question: "Can a 3-year-old start violin lessons?",
+    answer: "Some three-year-olds can begin successfully when lessons are short, playful, and supported by a parent at home. In my studio, very young beginners often start with a box violin before moving to a real fractional violin.",
+  },
+  {
+    question: "What is the difference between a 1/8 and a 1/4 violin?",
+    answer: "A 1/4 violin is the larger of the two. On Shar Music's sizing chart, a 1/8 corresponds to an arm length of about 16.5 inches (roughly ages 5–6) and a 1/4 to about 18.5 inches (roughly ages 6–7). If your child falls between sizes, Shar Music recommends going slightly smaller.",
+  },
+  {
+    question: "Should I buy a bigger violin for my child to grow into?",
+    answer: "No. A violin that is too large makes posture, reaching, and bowing harder, and can lead to tension and frustration. Choose the size that fits now and plan to move up when your child grows.",
+  },
+  {
+    question: "How often should I check my child's violin size?",
+    answer: "Checking fit every 6–12 months is a helpful habit, and sooner after a growth spurt. Many young students move up a size every one to two years.",
+  },
+  {
+    question: "Can I measure my child for a violin at home?",
+    answer: "Yes. All you need is a soft measuring tape and a helper. Measure from the base of the neck to the center of the palm with the arm extended, then confirm the fit with a teacher or violin shop before renting or buying.",
+  },
+];
+
+const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition-colors duration-150';
+---
+
+<Layout
+  title="What Size Violin Does My Child Need? | Vibrations Violin Studio"
+  description="Not sure what size violin your child needs? Explore violin sizes, arm measurements, fitting tips, and how children as young as three can begin."
+  ogImage="/images/insights/how-to-choose-the-right-violin-size-for-your-child.jpg"
+>
+
+  <!-- ── Hero banner ── -->
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #b4e7d0 0%, #ddd6fe 100%);"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+      <!-- Pinned metadata row: category · date · reading time -->
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
+        Insights
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <time datetime="2026-10-21" class="font-normal normal-case tracking-normal text-ink/50">October 21, 2026</time>
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <span class="font-normal normal-case tracking-normal text-ink/50">8 min read</span>
+      </p>
+      <!-- Editorial title -->
+      <h1
+        id="post-heading"
+        class="font-heading font-bold text-ink"
+        style="font-size: clamp(2.75rem, 6vw, 5rem); line-height: 0.93; letter-spacing: -0.045em;"
+      >
+        What Size Violin Does My Child Need? A Parent's Guide to Violin Sizes (Ages 3–12)
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── Article body ── -->
+  <article
+    class="bg-white section-pad"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+    <div class="max-w-2xl">
+
+      <!-- Intro -->
+      <p class="text-base text-ink/70 leading-relaxed">If your child is about to begin violin lessons, one of the first practical questions is: what size violin does my child need?</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Children don't play smaller "toy" versions of the violin. They play fully functional fractional violins—1/16, 1/8, 1/4, 1/2, and so on—built to match a growing child's proportions. Choosing the right one makes holding the instrument, reaching the notes, and drawing a good sound much easier from the very first lesson.</p>
+
+      <!-- Section: Direct answer -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">The Short Answer: Measure the Arm, Then Check the Fit</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">Violin size is determined by arm length, not age.</strong> Measure your child's left arm from the base of the neck to the center of the palm, with the arm extended and turned palm-up, then compare that measurement with a violin size chart. Finally, confirm the fit with the actual instrument—ideally with help from a teacher or violin shop.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Age ranges can give you a rough idea, but children of the same age can vary a great deal in arm length, which is why sizing guides from both <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music</a> and <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> treat measurement as more reliable than age.</p>
+
+      <!-- Section: Size chart -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Violin Size Chart for Kids: 1/32 Through 4/4</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The chart below uses the arm measurements and approximate ages published in <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's string instrument sizing guide</a>. Shar describes the ages as general guidelines only—measurement should come first.</p>
+
+      <figure class="mt-8">
+        <img
+          src="/images/insights/how-to-choose-the-right-violin-size-for-your-child.jpg"
+          alt="Violin size chart for kids showing approximate arm length, measured from the base of the neck to the center of the palm, for each violin size: 1/32 at 14 inches or less, 1/16 at 14 inches, 1/10 at 15 inches, 1/8 at 16.5 inches, 1/4 at 18.5 inches, 1/2 at 20 inches, 3/4 at 22 inches, 7/8 at 22.5 inches, and 4/4 at 23 inches."
+          width="1200"
+          height="900"
+          class="w-full h-auto rounded-card border border-lavender-200"
+          decoding="async"
+        />
+        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Measurements and age ranges from <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's sizing guide</a>. Chart by Vibrations Violin Studio.</figcaption>
+      </figure>
+
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <caption class="sr-only">Violin sizes by arm length and approximate age</caption>
+          <thead>
+            <tr class="border-b border-lavender-200">
+              <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Violin size</th>
+              <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Arm length (neck to center of palm)</th>
+              <th scope="col" class="py-3 font-heading font-semibold text-ink text-sm">Approximate age</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["1/32", "14 in. and under", "5 and under"],
+              ["1/16", "14 in.", "5 and under"],
+              ["1/10", "15 in.", "4–5"],
+              ["1/8", "16.5 in.", "5–6"],
+              ["1/4", "18.5 in.", "6–7"],
+              ["1/2", "20 in.", "7–9"],
+              ["3/4", "22 in.", "9–11"],
+              ["7/8", "22.5 in.", "10+ and adults"],
+              ["4/4 (full size)", "23 in.", "11+ and adults"],
+            ].map(([size, arm, age]) => (
+              <tr class="border-b border-lavender-100">
+                <th scope="row" class="py-3 pr-4 text-base text-ink font-semibold">{size}</th>
+                <td class="py-3 pr-4 text-base text-ink/70 font-light">{arm}</td>
+                <td class="py-3 text-base text-ink/70 font-light">{age}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6 text-base text-ink/70 leading-relaxed">Published charts don't all agree to the inch—even different guides from the same retailer list slightly different numbers—so treat any chart as a starting point rather than a final answer. If your child lands between two sizes, <a href={sources.sharFirstInstrument} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music recommends going slightly smaller</a> for comfort and healthy technique.</p>
+
+      <!-- Section: How to measure -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">How to Measure Your Child's Arm for a Violin</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You'll need a soft measuring tape and a second pair of hands. Following <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's measuring method</a>:</p>
+      <ol class="mt-4 space-y-4 pl-5 list-decimal marker:text-purplePrimary marker:font-semibold">
+        <li class="text-base text-ink/70 leading-relaxed">
+          <span class="font-semibold text-ink">Extend the left arm to the side.</span> Have your child stand and hold their left arm straight out to the side, parallel to the floor and in line with the shoulders.
+        </li>
+        <li class="text-base text-ink/70 leading-relaxed">
+          <span class="font-semibold text-ink">Swing it forward 45°.</span> Move the arm forward so it sits at about a 45-degree angle to the shoulders, and turn the palm up toward the ceiling.
+        </li>
+        <li class="text-base text-ink/70 leading-relaxed">
+          <span class="font-semibold text-ink">Measure neck to palm.</span> Measure from the base of the neck, where it meets the shoulder, to the center of the palm.
+        </li>
+        <li class="text-base text-ink/70 leading-relaxed">
+          <span class="font-semibold text-ink">Compare with the chart.</span> Find the closest arm length in the chart above. If the measurement falls between two sizes, start with the smaller one.
+        </li>
+      </ol>
+
+      <figure class="mt-8">
+        <img
+          src="/images/insights/how-to-choose-the-right-violin-size-for-your-child-arm-measurement.jpg"
+          alt="Top-view diagram of a child measuring for a violin: the left arm starts straight out to the side, swings 45 degrees forward with the palm up, and a measuring line runs from the base of the neck to the center of the palm."
+          width="1200"
+          height="900"
+          class="w-full h-auto rounded-card border border-lavender-200"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Measuring method from <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's sizing guide</a>. Original illustration by Vibrations Violin Studio.</figcaption>
+      </figure>
+
+      <p class="mt-6 text-base text-ink/70 leading-relaxed">Use the same method every time you re-measure. Different shops sometimes measure to different points on the hand, and mixing methods is one of the easiest ways to end up with a confusing result.</p>
+
+      <!-- Section: Check the actual instrument -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">How to Check the Fit With the Actual Violin</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A tape measure gets you close. The instrument itself tells you whether the size truly works. <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> suggests two simple checks:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "Place the violin on your child's left shoulder and have them extend the left arm straight out under the instrument, palm up. The scroll should reach about the wrist—no further than the bottom of the palm.",
+          "Have your child bend the arm and hold the neck of the violin as if playing. The elbow should be bent at roughly 90 degrees.",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Also watch how your child looks and feels. Raised or tense shoulders, a straining reach for the scroll, or difficulty reaching first position comfortably are all signs the instrument may be too large.</p>
+
+      <!-- Section: Don't buy to grow into -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Why Not Buy a Violin to Grow Into?</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">It's an understandable instinct—kids grow, and a bigger instrument seems like it will last longer. But both <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> and <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music</a> name sizing up "for growth" as one of the most common sizing mistakes.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A violin that's too large forces a child to compensate: shoulders creep up, the left arm overreaches, and the bow becomes harder to control. Over time that can build tension and habits that are difficult to undo. It's also discouraging. When the instrument is hard to hold, a child may decide that <em>they</em> are the problem.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The right size is the one that fits today.</p>
+
+    </div><!-- /max-w-2xl -->
+      <!-- Pull quote — breaks out of narrow column -->
+      <div class="my-14 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10" style="background: #f5f3ff;">
+        <div class="max-w-3xl mx-auto">
+          <blockquote class="border-l-4 border-lavender-300 pl-6 py-1">
+            <p class="text-xl sm:text-2xl font-light text-ink leading-relaxed">
+              "A violin that fits your child today will teach them far more than a violin they might fit next year."
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    <div class="max-w-2xl"><!-- resume narrow column -->
+
+      <!-- Section: Age three / box violin -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Starting at Age Three: Why I Often Begin With a Box Violin</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Some children can begin violin as young as three. For these very young beginners, I often recommend starting with a <strong class="font-semibold text-ink">Suzuki-style box violin</strong> before moving to a real fractional instrument.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A box violin is a simple practice model: a small box with a wooden stick attached for the neck, decorated to look like a violin. It doesn't make a sound, and that's the point. It lets a young child learn the parts of playing that come <em>before</em> sound.</p>
+
+      <figure class="mt-8">
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="/images/insights/suzuki-box-violin-blue.jpg"
+            alt="A homemade box violin covered in blue paper, with a wooden stick for the neck and black f-holes, bridge, and chinrest drawn on, standing upright against a white wall."
+            width="369"
+            height="374"
+            class="w-full h-auto aspect-square object-cover rounded-card border border-lavender-200"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/images/insights/suzuki-box-violin-pink.jpg"
+            alt="A homemade box violin covered in bright pink paper, with a wooden stick neck and dark purple f-holes and glittery black chinrest, lying on a wooden floor."
+            width="424"
+            height="373"
+            class="w-full h-auto aspect-square object-cover rounded-card border border-lavender-200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Two box violins from the studio. A box violin gives a young child a violin of their very own to hold, carry, and care for long before sound enters the picture.</figcaption>
+      </figure>
+
+      <p class="mt-6 text-base text-ink/70 leading-relaxed">With a box violin, a young beginner can practice:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "Standing in a balanced, relaxed playing posture",
+          "Placing the violin on the shoulder and holding it with the left arm",
+          "Moving between rest position and playing position, and other simple instrument routines",
+          "Carrying and caring for an instrument safely",
+          "Following short, playful instructions during a lesson",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">When those habits feel familiar and your child is ready, we move to a properly sized real violin, measured and fitted the same way as for any other child. Not every Suzuki teacher uses a box violin, and it isn't a requirement of Suzuki teaching. It's simply a step I've found helpful for many very young students. If you're still deciding whether your child is ready to begin at all, <a href="/insights/how-old-should-child-start-violin" class={linkClass}>how old a child should be to start violin</a> covers the signs of readiness in more detail.</p>
+
+      <!-- Section: Renting vs buying -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Renting vs. Buying: Planning for New Sizes</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Because children outgrow instruments, renting is often the most practical choice for young players. <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> notes that many young students move up a size every one to two years, and <a href={sources.sharParents} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music suggests checking fit every 6–12 months</a>.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Many rental programs let you exchange sizes as your child grows, and some apply rental payments toward a future purchase. Ask about both when you compare shops. For a fuller look at the decision—including how much to spend and where to shop in the Denver area—see my guide on <a href="/insights/how-to-buy-your-first-violin" class={linkClass}>how to buy your first violin without wasting money</a>.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Signs it may be time for the next size include a cramped left elbow, a scroll that no longer reaches the wrist, or a child who has simply had a growth spurt. A quick re-measure, plus a check with your teacher, will tell you whether to move up.</p>
+
+      <!-- Section: Preparing for the first lesson -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Preparing for the First Lesson</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You don't need to have everything figured out before the first lesson. A few simple steps help:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "Measure your child's arm and write down the number",
+          "Ask your teacher before renting or buying, especially for a child under five",
+          "Have the violin shop confirm the size and setup in person",
+          "Bring the instrument (or box violin) to the first lesson so fit can be checked together",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're wondering what that first lesson will actually involve, <a href="/insights/what-happens-during-your-first-violin-lesson" class={linkClass}>what happens during your first violin lesson</a> walks through it step by step.</p>
+
+      <!-- FAQ -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Frequently Asked Questions</h2>
+      {faqItems.map(item => (
+        <>
+          <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">{item.question}</h3>
+          <p class="mt-3 text-base text-ink/70 leading-relaxed">{item.answer}</p>
+        </>
+      ))}
+
+      <!-- Sources -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Sources</h2>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          { href: sources.sharSizing, label: "Shar Music, “The Complete String Instrument Sizing Guide” (2026)" },
+          { href: sources.sharFirstInstrument, label: "Shar Music, “How to Choose Your First Instrument: A Guide from Shar Music” (2025)" },
+          { href: sources.sharParents, label: "Shar Music, “Understanding Instrument Sizes: A Parent’s Guide to Choosing the Right Fit” (2025)" },
+          { href: sources.johnson, label: "Johnson String Instrument, “How to properly size a violin for a child” (2026)" },
+        ].map(source => (
+          <li class="flex items-start gap-3 text-sm text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            <a href={source.href} target="_blank" rel="noopener noreferrer" class={linkClass}>{source.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Local SEO closing section -->
+      <div class="mt-12 pt-8 border-t border-lavender-200">
+        <h2 class="font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Not Sure Which Size Is Right?</h2>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">At Vibrations Violin Studio, I'm happy to help families think through sizing, box violins, and renting before you spend anything.</p>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">Beginner-friendly violin lessons for children—including very young beginners—are available in central Denver and online. New families can start with a free 15-minute conversation to ask questions and see whether the studio is a good fit.</p>
+        <a href="/contact" class="btn-primary inline-block mt-8" aria-label="Get started with a free conversation about choosing a violin size for your child">
+          Get Started
+        </a>
+      </div>
+
+    </div>
+    </div>
+  </article>
+
+  <!-- ── Related Articles ── -->
+  <section class="bg-lavender-50 section-pad" aria-labelledby="related-heading">
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Keep Reading</p>
+      <h2 id="related-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+        Related Articles
+      </h2>
+      <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
+
+        <li>
+          <a
+            href="/insights/how-to-buy-your-first-violin"
+            aria-label="Read: How to Buy Your First Violin (Without Wasting Money)"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-to-buy-your-first-violin.jpg"
+                alt="A wall of instruments on display, including violins, guitars, and a trumpet, at a music shop."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>July 6, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How to Buy Your First Violin (Without Wasting Money)
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Buying a violin doesn't have to be complicated. Here's how to decide between renting and buying, how much to spend, and what to avoid when choosing your first instrument.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-old-should-child-start-violin"
+            aria-label="Read: How Old Should My Child Be to Start Violin?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/child-starting-violin-lessons.jpg"
+                alt="Young violin student learning alongside a young cello player"
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>August 24, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How Old Should My Child Be to Start Violin?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Wondering when your child should start violin? Age matters less than readiness. Learn what to look for, what lessons can look like at different ages, and how to know when your child may be ready to begin.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/what-happens-during-your-first-violin-lesson"
+            aria-label="Read: What Happens During Your First Violin Lesson?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/first-violin-lesson.jpg"
+                alt="A father sits nearby as his young daughter practices violin at home."
+                width="480"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>July 13, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                What Happens During Your First Violin Lesson?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                A guide for kids and adult beginners: what to expect, what to bring, and why your first lesson is about curiosity—not proving anything.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="/insights/how-much-should-beginners-practice-violin"
+            aria-label="Read: How Much Should Beginners Practice Violin?"
+            class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+          >
+            <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+              <img
+                src="/images/insights/how-much-should-beginners-practice-violin.jpg"
+                alt="A violin resting on a kitchen counter beside its bow, open sheet music, and a laptop, set up for home practice."
+                width="640"
+                height="480"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-ink/50 font-light mb-3">
+                <span>August 9, 2026</span>
+                <span aria-hidden="true">·</span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                How Much Should Beginners Practice Violin?
+              </h3>
+              <p class="mt-3 text-sm text-ink/60 font-light leading-relaxed line-clamp-3 flex-1">
+                Beginner violin practice does not need to take hours. Learn how often children and adults should practice, how to build a sustainable routine, and what to do when practice feels difficult.
+              </p>
+              <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                Read article →
+              </span>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <CTABand />
+
+</Layout>
+
+  <ArticleSchema
+    title="What Size Violin Does My Child Need? A Parent's Guide to Violin Sizes (Ages 3–12)"
+    description="Not sure what size violin your child needs? Explore violin sizes, arm measurements, fitting tips, and how children as young as three can begin."
+    imageUrl="/images/insights/how-to-choose-the-right-violin-size-for-your-child.jpg"
+    imageAlt="Violin size chart for kids showing approximate arm length and age for each violin size from 1/32 through 4/4."
+    imageWidth={1200}
+    imageHeight={900}
+    publishedDate={publishedDate}
+    articleSection="Violin Sizing"
+    faqItems={faqItems}
+    aboutEntities={[{"name":"Violin","sameAs":"https://www.wikidata.org/wiki/Q8355"},{"name":"Denver","sameAs":"https://www.wikidata.org/wiki/Q16554"}]}
+  />
+
+<script>
+  // ── Article page: scroll-reveal ──
+  const heroSection = document.querySelector('section[aria-labelledby="post-heading"]');
+  if (heroSection) {
+    const inner = heroSection.querySelector('.container-narrow');
+    if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
+  }
+
+  // Article body
+  const articleBody = document.querySelector('article .container-narrow');
+  if (articleBody) articleBody.classList.add('reveal');
+
+  // CTA Band
+  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
+  if (ctaBand) ctaBand.classList.add('reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+</script>
