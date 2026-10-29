@@ -61,15 +61,16 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Denver Violin Programs for Kids at a Glance</h2>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Details for the other programs come from their official websites. "Not publicly listed" means the information wasn't on their site when this guide was reviewed, not that it doesn't exist.</p>
       <div class="mt-6 overflow-x-auto">
-        <table class="w-full text-left border-collapse" style="min-width: 36rem;">
-          <caption class="sr-only">Comparison of four Denver violin lesson providers for children, plus Vibrations Violin Studio, this guide's publisher, based on official websites as of October 2026</caption>
+        <table class="w-full text-left border-collapse" style="min-width: 44rem;">
+          <caption class="sr-only">Comparison of four Denver violin lesson providers for children, plus Vibrations Violin Studio, this guide's publisher, including who each is best suited for, based on official websites as of October 2026</caption>
           <thead>
             <tr class="border-b border-lavender-200">
               <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Provider</th>
               <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Type</th>
               <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Ages</th>
               <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Group classes</th>
-              <th scope="col" class="py-3 font-heading font-semibold text-ink text-sm">Lesson scheduling</th>
+              <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Lesson scheduling</th>
+              <th scope="col" class="py-3 font-heading font-semibold text-ink text-sm">Best suited for</th>
             </tr>
           </thead>
           <tbody>
@@ -78,28 +79,32 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Suzuki program</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Early childhood classes from 3 weeks; lesson ages not publicly listed</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Yes, regular</td>
-              <td class="py-3 text-sm text-ink/70 font-light">Weekly private lessons, parent attends</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Weekly private lessons, parent attends</td>
+              <td class="py-3 text-sm text-ink/70 font-light">Families who want close involvement in a structured Suzuki program from an early age</td>
             </tr>
             <tr class="border-b border-lavender-100">
               <th scope="row" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">West Denver Suzuki Strings</th>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Suzuki program (violin, viola, cello)</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">3–18</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Yes, every other week in the school year</td>
-              <td class="py-3 text-sm text-ink/70 font-light">Weekly 30, 45, or 60-minute lessons in the school year</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Weekly 30, 45, or 60-minute lessons in the school year</td>
+              <td class="py-3 text-sm text-ink/70 font-light">West-metro families who want a Suzuki group community, or siblings on different string instruments</td>
             </tr>
             <tr class="border-b border-lavender-100">
               <th scope="row" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Swallow Hill Music</th>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Community music school (fiddle/violin)</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">5+ for private lessons</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Youth classes offered; not violin-specific</td>
-              <td class="py-3 text-sm text-ink/70 font-light">Weekly or every other week; in person or online</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Weekly or every other week; in person or online</td>
+              <td class="py-3 text-sm text-ink/70 font-light">Families who value flexible scheduling, or kids drawn to folk and fiddle</td>
             </tr>
             <tr class="border-b border-lavender-100">
               <th scope="row" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Denver Academy of Musical Arts</th>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Multi-instrument music school</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Not publicly listed for violin</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Workshops and preschool classes; not violin-specific</td>
-              <td class="py-3 text-sm text-ink/70 font-light">Weekly, six days a week; month to month</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Weekly, six days a week; month to month</td>
+              <td class="py-3 text-sm text-ink/70 font-light">Busy families with several children, or kids motivated by milestones and rewards</td>
             </tr>
             <!-- Featured: the guide's publisher (labeled in text, not by color alone) -->
             <tr class="bg-mint-50 border-b border-lavender-100">
@@ -110,7 +115,8 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Independent private studio, Suzuki-informed</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Children, teens, and adults</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">No children's group classes</td>
-              <td class="py-3 pr-3 text-sm text-ink/70 font-light">Private 30, 45, or 60-minute lessons in Denver or online; 20-minute trial</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Private 30, 45, or 60-minute lessons in Denver or online; 20-minute trial</td>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">Families who want individualized private lessons adapted to their child</td>
             </tr>
           </tbody>
         </table>
