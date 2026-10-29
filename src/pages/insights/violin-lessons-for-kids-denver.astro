@@ -60,9 +60,10 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
       <!-- Section 1 -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Denver Violin Programs for Kids at a Glance</h2>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Details for the other programs come from their official websites. "Not publicly listed" means the information wasn't on their site when this guide was reviewed, not that it doesn't exist.</p>
-      <div class="mt-6 overflow-x-auto">
-        <table class="w-full text-left border-collapse" style="min-width: 44rem;">
-          <caption class="sr-only">Comparison of four Denver violin lesson providers for children, plus Vibrations Violin Studio, this guide's publisher, including who each is best suited for, based on official websites as of October 2026</caption>
+      <p class="mt-6 sm:hidden text-xs text-ink/70" aria-hidden="true">Swipe to see all columns →</p>
+      <div class="mt-2 sm:mt-6 overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary" tabindex="0" role="region" aria-label="Comparison table, scrolls horizontally">
+        <table class="w-full text-left border-collapse" style="min-width: 40rem;">
+          <caption class="sr-only">Comparison of four Denver violin lesson providers for children, plus Vibrations Violin Studio, our studio, including who each is best suited for, based on official websites as of October 2026</caption>
           <thead>
             <tr class="border-b border-lavender-200">
               <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Provider</th>
@@ -110,7 +111,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
             <tr class="bg-mint-50 border-b border-lavender-100">
               <th scope="row" class="py-3 pl-3 pr-4 bg-mint-100 border-l-4 border-mint-600 font-heading font-semibold text-ink text-sm">
                 <a href="/contact" data-cta-location="comparison_table" class={linkClass}>Vibrations Violin Studio</a>
-                <span class="block mt-1 text-xs font-normal text-ink/70">This guide's publisher</span>
+                <span class="block mt-1 text-xs font-normal text-ink/70">Our studio</span>
               </th>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Independent private studio, Suzuki-informed</td>
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Children, teens, and adults</td>
@@ -121,6 +122,32 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
           </tbody>
         </table>
       </div>
+
+      <!-- Tradeoffs at a glance (separate from the table, Pay the Gym-style) -->
+      <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">Tradeoffs at a Glance</h3>
+      <p class="mt-3 text-base text-ink/70 leading-relaxed">Every option involves tradeoffs. Here's the main one to weigh for each.</p>
+      <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3" role="list">
+          <li class="rounded-card border border-lavender-200 bg-white p-4">
+            <p class="font-heading font-semibold text-ink text-sm">Suzuki Strings of Denver</p>
+            <p class="mt-1 text-sm text-ink/70 leading-relaxed">Parent attends every lesson; significant family time commitment</p>
+          </li>
+          <li class="rounded-card border border-lavender-200 bg-white p-4">
+            <p class="font-heading font-semibold text-ink text-sm">West Denver Suzuki Strings</p>
+            <p class="mt-1 text-sm text-ink/70 leading-relaxed">Weekly lessons plus group classes; school-year schedule</p>
+          </li>
+          <li class="rounded-card border border-lavender-200 bg-white p-4">
+            <p class="font-heading font-semibold text-ink text-sm">Swallow Hill Music</p>
+            <p class="mt-1 text-sm text-ink/70 leading-relaxed">Fiddle and violin share one listing; private lessons from age 5</p>
+          </li>
+          <li class="rounded-card border border-lavender-200 bg-white p-4">
+            <p class="font-heading font-semibold text-ink text-sm">Denver Academy of Musical Arts</p>
+            <p class="mt-1 text-sm text-ink/70 leading-relaxed">Multi-instrument school; not a violin-specialist or Suzuki program</p>
+          </li>
+          <li class="rounded-card border border-lavender-200 border-l-4 border-l-mint-600 bg-mint-50 p-4">
+            <p class="font-heading font-semibold text-ink text-sm">Vibrations Violin Studio <span class="font-normal text-xs text-ink/70">· Our studio</span></p>
+            <p class="mt-1 text-sm text-ink/70 leading-relaxed">One teacher; no group classes for kids; performances optional</p>
+          </li>
+      </ul>
 
       <!-- Section 2 -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">What to Compare Before You Choose</h2>
@@ -201,7 +228,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">About Vibrations Violin Studio, the Studio Behind This Guide</h2>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Since I wrote this guide, it's only fair to describe my own studio the same way. I'm a Suzuki-trained violin teacher, and I've taught for about twenty years in private studios, school programs, and community music organizations. My teaching is Suzuki-informed rather than Suzuki-only: listening, imitation, and family support are a big part of how young children learn, and I adapt lessons to each child's interests, pace, and way of learning.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Lessons are private, in Denver or online, for children, teens, and adults. Current rates are a $35 20-minute trial lesson, then $50, $75, or $100 for 30, 45, or 60 minutes, as listed in <a href="/about#rates" class={linkClass}>rates and lesson options</a>.</p>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">One honest tradeoff: I don't offer group classes for children. If a weekly Suzuki group program is important to your family, one of the Suzuki programs above may be a better fit, and I'd encourage you to look at them. Vibrations tends to suit families who want individualized private lessons, a teacher who adapts to their child, and a calm, encouraging studio.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">One honest tradeoff: I don't offer group classes for children. If a weekly Suzuki group program is important to your family, one of the Suzuki programs above may be a better fit, and I'd encourage you to look at them. I do offer performance opportunities for students who are interested, but participation is never required. Vibrations tends to suit families who want individualized private lessons, a teacher who adapts to their child, and a calm, encouraging studio.</p>
 
       <!-- Mid-article CTA -->
       <div class="mt-10 flex">
