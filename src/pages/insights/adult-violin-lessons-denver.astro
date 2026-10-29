@@ -53,16 +53,16 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
 
       <!-- Disclosure -->
       <aside class="mt-8 rounded-card bg-lavender-50 border border-lavender-200 p-5 sm:p-6" aria-label="About this guide">
-        <p class="text-sm text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">A note on who wrote this.</strong> This guide is published by Vibrations Violin Studio, where I teach. It isn't an independent ranking. I've described each provider using only what their official websites state, and where something isn't published, I say so rather than guess. Vibrations is discussed separately at the end, not in the comparison. Details change, so please confirm current offerings with each provider directly.</p>
+        <p class="text-sm text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">A note on who wrote this.</strong> This guide is published by Vibrations Violin Studio, where I teach. It isn't an independent ranking. I've described each provider using only what their official websites state, and where something isn't published, I say so rather than guess. Vibrations is included in the comparison table, clearly labeled, and described in more detail in its own section near the end. Details change, so please confirm current offerings with each provider directly.</p>
         <p class="mt-3 text-sm text-ink/50">Last reviewed <time datetime={lastReviewedDate}>October 29, 2026</time></p>
       </aside>
 
       <!-- Section 1 -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Denver Adult Violin Lesson Options at a Glance</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">This table is based on each provider's official website and compares how and where each one teaches. Rates change and are billed in different ways, so please check current pricing with each provider directly. "Not publicly listed" means the detail wasn't on their site when this guide was reviewed.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Details for the other providers come from their official websites, and the table compares how and where each one teaches. Rates change and are billed in different ways, so please check current pricing with each provider directly. "Not publicly listed" means the detail wasn't on their site when this guide was reviewed.</p>
       <div class="mt-6 overflow-x-auto">
         <table class="w-full text-left border-collapse" style="min-width: 36rem;">
-          <caption class="sr-only">Comparison of four Denver violin lesson providers that teach adults, based on their official websites as of October 2026</caption>
+          <caption class="sr-only">Comparison of four Denver violin lesson providers that teach adults, plus Vibrations Violin Studio, this guide's publisher, based on official websites as of October 2026</caption>
           <thead>
             <tr class="border-b border-lavender-200">
               <th scope="col" class="py-3 pr-4 font-heading font-semibold text-ink text-sm">Provider</th>
@@ -101,6 +101,17 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
               <td class="py-3 pr-4 text-sm text-ink/70 font-light">Occasional group lessons; adult details not listed</td>
               <td class="py-3 text-sm text-ink/70 font-light">Weekly, September–May; summer lessons as available</td>
             </tr>
+            <!-- Featured: the guide's publisher (labeled in text, not by color alone) -->
+            <tr class="bg-mint-50 border-b border-lavender-100">
+              <th scope="row" class="py-3 pl-3 pr-4 bg-mint-100 border-l-4 border-mint-600 font-heading font-semibold text-ink text-sm">
+                <a href="/contact" data-cta-location="comparison_table" class={linkClass}>Vibrations Violin Studio</a>
+                <span class="block mt-1 text-xs font-normal text-ink/70">This guide's publisher</span>
+              </th>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Independent private studio, Suzuki-informed</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Denver studio or online</td>
+              <td class="py-3 pr-4 text-sm text-ink/70 font-light">Violin Kickstart online course (waitlist)</td>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">Private 30, 45, or 60-minute lessons; 20-minute trial</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -114,19 +125,19 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">The Four Options, Up Close</h2>
 
       <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">Swallow Hill Music</h3>
-      <p class="mt-3 text-base text-ink/70 leading-relaxed"><a href="https://swallowhillmusic.org/private-lessons" class={linkClass}>Swallow Hill Music</a> is a community music school offering private "Fiddle/Violin" lessons for adults, in person at its East Yale Avenue location or online. Lessons can be booked weekly, every other week, or one at a time. Beyond private lessons, <a href="https://swallowhillmusic.org/music-school/" class={linkClass}>its music school</a> runs eight-week group classes, ensembles in styles like folk, Celtic, and blues, workshops, and open jams.</p>
+      <p class="mt-3 text-base text-ink/70 leading-relaxed">Swallow Hill Music is a community music school offering private "Fiddle/Violin" lessons for adults, in person at its East Yale Avenue location or online. Lessons can be booked weekly, every other week, or one at a time. Beyond private lessons, its music school runs eight-week group classes, ensembles in styles like folk, Celtic, and blues, workshops, and open jams.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">Strengths:</strong> flexible booking, online and in-person options, and a lively community with many ways to play alongside other adults. <strong class="font-semibold text-ink">Tradeoffs to consider:</strong> violin and fiddle share one listing, and its site doesn't spell out which group classes suit adult violinists, so it's worth asking each teacher about their style and experience with beginners. <strong class="font-semibold text-ink">May suit:</strong> adults drawn to folk, fiddle, or social music-making, or anyone who wants to try lessons without a long commitment.</p>
 
       <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">Karen Kinzie Violin Studio</h3>
-      <p class="mt-3 text-base text-ink/70 leading-relaxed"><a href="https://www.kinzieviolin.com/denver-violin-lessons" class={linkClass}>Karen Kinzie</a> is an independent teacher in southeast Denver, near I-25 and Hampden, and a Colorado Symphony Orchestra violinist since 1993. Her website has a dedicated section for adults of all levels, explaining that adult lessons start immediately with note reading, theory, and technique, using Suzuki pieces supplemented with other material. Lessons run 30 to 60 minutes, she offers a free 30-minute consultation, and her studio holds a master class each winter and a recital later in the year.</p>
+      <p class="mt-3 text-base text-ink/70 leading-relaxed">Karen Kinzie is an independent teacher in southeast Denver, near I-25 and Hampden, and a Colorado Symphony Orchestra violinist since 1993. Her website has a dedicated section for adults of all levels, explaining that adult lessons start immediately with note reading, theory, and technique, using Suzuki pieces supplemented with other material. Lessons run 30 to 60 minutes, she offers a free 30-minute consultation, and her studio holds a master class each winter and a recital later in the year.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">Strengths:</strong> deep orchestral experience, a clear adult approach that includes reading music from the start, and a free consultation. <strong class="font-semibold text-ink">Tradeoffs to consider:</strong> availability and online options aren't listed on her website. <strong class="font-semibold text-ink">May suit:</strong> adults who want a structured, classical path with strong reading skills, or returning players hoping to play in an orchestra or chamber group again.</p>
 
       <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">City Strings &amp; Piano</h3>
-      <p class="mt-3 text-base text-ink/70 leading-relaxed"><a href="https://citystrings.com/denver" class={linkClass}>City Strings &amp; Piano</a> sends teachers to students' homes across the Denver area and teaches ages 3 through adult, using Suzuki or traditional methods. A local director matches you with a nearby teacher, and you keep the same teacher each week. Lessons are weekly, a trial lesson is available, and lessons can be started or stopped at any time.</p>
+      <p class="mt-3 text-base text-ink/70 leading-relaxed">City Strings &amp; Piano sends teachers to students' homes across the Denver area and teaches ages 3 through adult, using Suzuki or traditional methods. A local director matches you with a nearby teacher, and you keep the same teacher each week. Lessons are weekly, a trial lesson is available, and lessons can be started or stopped at any time.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">Strengths:</strong> no commute, a matched teacher, and the flexibility to stop or start. <strong class="font-semibold text-ink">Tradeoffs to consider:</strong> its cancellation policy wasn't available on its website when reviewed, so ask about it before you start. <strong class="font-semibold text-ink">May suit:</strong> busy adults for whom getting to a studio is the biggest barrier, or households where a parent and child both want lessons.</p>
 
       <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">Julyan Violin Studio</h3>
-      <p class="mt-3 text-base text-ink/70 leading-relaxed"><a href="https://www.julyanviolinstudio.com" class={linkClass}>Robyn Julyan</a> is a professional violinist and a trained Suzuki teacher registered with the Suzuki Association of the Americas. She teaches students age 6 to adult at a home studio near Evans and Broadway and offers a free trial lesson. Her <a href="https://www.julyanviolinstudio.com/tuition-and-schedule.html" class={linkClass}>schedule page</a> describes weekly 30, 45, or 60-minute lessons through the September-to-May school year, with summer lessons scheduled as available.</p>
+      <p class="mt-3 text-base text-ink/70 leading-relaxed">Robyn Julyan is a professional violinist and a trained Suzuki teacher registered with the Suzuki Association of the Americas. She teaches students age 6 to adult at a home studio near Evans and Broadway and offers a free trial lesson. Her website describes weekly 30, 45, or 60-minute lessons through the September-to-May school year, with summer lessons scheduled as available.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">Strengths:</strong> recognized Suzuki training, a clear school-year structure, and a free trial lesson. <strong class="font-semibold text-ink">Tradeoffs to consider:</strong> the studio's policies are written mainly for families with children, and the website doesn't describe adult lessons specifically, so ask about the adult experience and current availability. <strong class="font-semibold text-ink">May suit:</strong> adults who value a steady, structured Suzuki approach and a consistent weekly rhythm through the school year.</p>
 
     </div><!-- /max-w-2xl -->
@@ -193,16 +204,6 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
 
       <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">How do I choose between violin teachers in Denver?</h3>
       <p class="mt-3 text-base text-ink/70 leading-relaxed">Start with your goals and musical style, then talk with two or three teachers. Ask how they work with adult beginners or returning players, how lessons are structured, and how billing works. A consultation or trial lesson is the best way to judge fit.</p>
-
-      <!-- Sources -->
-      <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Sources</h2>
-      <p class="mt-4 text-sm text-ink/60 leading-relaxed">Provider details come from each provider's official website, accessed October 29, 2026:</p>
-      <ul class="mt-3 space-y-1 pl-5 list-disc text-sm text-ink/60 leading-relaxed">
-        <li><a href="https://swallowhillmusic.org/private-lessons" class={linkClass}>Swallow Hill Music: Private Lessons</a> and <a href="https://swallowhillmusic.org/music-school/" class={linkClass}>Music School</a></li>
-        <li><a href="https://www.kinzieviolin.com/denver-violin-lessons" class={linkClass}>Karen Kinzie Violin Studio: Lessons</a>, <a href="https://www.kinzieviolin.com/violin-faq" class={linkClass}>FAQ</a>, and <a href="https://www.kinzieviolin.com/about-karen-kinzie" class={linkClass}>About</a></li>
-        <li><a href="https://citystrings.com/denver" class={linkClass}>City Strings &amp; Piano: Denver</a></li>
-        <li><a href="https://www.julyanviolinstudio.com" class={linkClass}>Julyan Violin Studio</a> and <a href="https://www.julyanviolinstudio.com/tuition-and-schedule.html" class={linkClass}>Schedule</a></li>
-      </ul>
 
       <!-- Local SEO closing section -->
       <div class="mt-12 pt-8 border-t border-lavender-200">
