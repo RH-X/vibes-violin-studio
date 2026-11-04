@@ -1,0 +1,20 @@
+---
+// Early in-article conversion prompt for Insights articles. Reuses the card
+// treatment of the article disclosure asides and the site's secondary button.
+// data-cta-location feeds the existing get_started_click listener in Layout.astro,
+// so /contact links need no separate tracking.
+interface Props {
+  heading: string;
+  body: string;
+  label: string;
+  href?: string;
+}
+
+const { heading, body, label, href = '/contact' } = Astro.props;
+---
+
+<aside class="mt-8 rounded-card bg-lavender-50 border border-lavender-200 p-5 sm:p-6" aria-label={heading}>
+  <p class="font-heading font-semibold text-ink">{heading}</p>
+  <p class="mt-2 text-base text-ink/70 leading-relaxed">{body}</p>
+  <a href={href} data-cta-location="article_early" class="btn-secondary inline-block mt-4">{label}</a>
+</aside>

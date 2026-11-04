@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
+import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
 
 const publishedDate = '2026-10-29';
 ---
@@ -72,6 +73,12 @@ const publishedDate = '2026-10-29';
         ))}
       </ul>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">These advantages matter most when habits are still forming. The first weeks of violin are full of small physical details, like where the violin rests, how the fingers curve around the bow, and how relaxed the left hand stays. Getting those comfortable early makes everything afterward easier. That doesn't mean they can't be taught online. It means in-person lessons give a teacher a few more tools for teaching them.</p>
+
+      <ArticleInlineCTA
+        heading="Thinking about lessons in Denver or online?"
+        body="I teach both. Tell me a little about your goals and what you're hoping for from lessons."
+        label="Get Started"
+      />
 
       <!-- Section 3 -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Which Format Fits Which Learner?</h2>

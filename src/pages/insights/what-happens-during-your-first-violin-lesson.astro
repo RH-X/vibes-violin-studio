@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
+import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
 
 const publishedDate = '2026-07-13';
 ---
@@ -92,6 +93,12 @@ const publishedDate = '2026-07-13';
       <p class="mt-4 text-base text-ink/70 leading-relaxed">For adults, the lesson usually includes a little more explanation about <em>why</em> we're doing each step, because understanding the process often makes learning feel less mysterious.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">There isn't a single "correct" first lesson. That's one of the benefits of individualized teaching.</p>
 
+      <ArticleInlineCTA
+        heading="Picturing your own first lesson?"
+        body="Tell me a little about your goals and what you're looking for in a teacher."
+        label="Get Started"
+      />
+
       <!-- Section 4 -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">What If I Make Mistakes?</h2>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're worried about making mistakes during your first lesson, I have some good news.</p>
@@ -179,7 +186,7 @@ const publishedDate = '2026-07-13';
       <!-- Local SEO closing section -->
       <div class="mt-12 pt-8 border-t border-lavender-200">
         <h2 class="font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Denver and Online Violin Lessons</h2>
-        <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're looking for violin lessons in Denver, or thoughtful online violin lessons from anywhere, you're always welcome to reach out with questions before getting started.</p>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">If you're <a href="/" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">looking for violin lessons in Denver</a>, or thoughtful online violin lessons from anywhere, you're always welcome to reach out with questions before getting started.</p>
         <p class="mt-4 text-base text-ink/70 leading-relaxed">Finding the right teacher matters, and I'm happy to help you decide whether Vibrations Violin Studio is the right fit for your musical journey.</p>
         <a href="/contact" class="btn-primary inline-block mt-8" aria-label="Contact Vibrations Violin Studio about your first violin lesson">
           Get in Touch
