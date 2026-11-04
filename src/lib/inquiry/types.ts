@@ -49,6 +49,9 @@ export interface InquiryConfig {
   emailTemplate: InquiryEmailTemplate;
   /** Set false to skip the Turnstile widget for this inquiry. */
   turnstile?: boolean;
+  /** Save and forward new messages from an already-verified email instead of stopping at
+   * "/already". For conversations, not lists, where a repeat signup adds nothing. */
+  allowRepeatInquiries?: boolean;
   /** Shown on the "pending" status page right after submission, before email verification completes.
    * Falls back to a generic message if omitted (see practice-pals' dedicated pending.astro). */
   successMessage?: string;

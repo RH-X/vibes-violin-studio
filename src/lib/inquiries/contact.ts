@@ -48,6 +48,7 @@ export const contactConfig: InquiryConfig = {
     notificationSubjectPrefix: '🤖 Congratulations, Boss! A New Violin Lessons Inquiry Has Been Received',
   },
   turnstile: true,
+  allowRepeatInquiries: true,
   backHref: '/contact',
   successMessage: "Thanks for reaching out! Once your email has been verified, your inquiry will be sent. I'll respond within one business day whenever possible.",
   emailConfirmedHeading: 'Hooray! 🎻',

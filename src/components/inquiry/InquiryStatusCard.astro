@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import type { InquiryConfig } from '../../lib/inquiry/types';
 import { INQUIRY_EVENTS } from '../../lib/inquiry/analytics-events';
 
-type Kind = 'pending' | 'success' | 'invalid' | 'expired' | 'already';
+type Kind = 'pending' | 'success' | 'invalid' | 'expired' | 'already' | 'received';
 
 interface Props {
   config: InquiryConfig;
@@ -41,6 +41,12 @@ const copy: Record<Kind, { label: string; heading: string; body: string; iconCol
     label: 'Already confirmed',
     heading: "You're already confirmed",
     body: 'This email address has already been verified — no further action needed.',
+    iconColor: '#059669',
+  },
+  received: {
+    label: 'Message received',
+    heading: 'We got your new message',
+    body: "Thanks for reaching out again. Your new message has been received and sent to Rae, who will respond within one business day whenever possible.",
     iconColor: '#059669',
   },
 };
@@ -84,13 +90,14 @@ const { label, heading, body, iconColor } = copy[kind];
       if (kind === 'pending') {
         window.gtag('event', events.verificationEmailSent, { inquiry_slug: slug });
 
-        // lead_form_submit: the server only redirects here after the inquiry is
-        // saved and the verification email sent (errors go back to the form).
+        // lead_form_submit: the server sets this one-time cookie only after a new
+        // inquiry is saved and its verification email sent, so honeypot trips,
+        // resubmissions, direct visits and reloads can't count as leads.
         // Fired here, in the same session as the form, so GA4 keeps the visit's
-        // original source; skipped on reload/back so one inquiry counts once.
-        const nav = performance.getEntriesByType('navigation')[0];
-        const isRepeatView = nav && (nav.type === 'reload' || nav.type === 'back_forward');
-        if (slug === 'contact' && !isRepeatView) {
+        // original source.
+        const isNewLead = document.cookie.split('; ').includes('vvs_lead_ok=1');
+        if (slug === 'contact' && isNewLead) {
+          document.cookie = `vvs_lead_ok=; Path=/inquiry/contact; Max-Age=0; SameSite=Lax`;
           let lessonType = 'not_selected';
           try {
             lessonType = sessionStorage.getItem('vvs_lesson_type') || 'not_selected';

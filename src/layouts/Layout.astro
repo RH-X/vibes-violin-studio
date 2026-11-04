@@ -41,6 +41,9 @@ const isKickstartPage = Astro.url.pathname === '/violin-kickstart';
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // Keep localhost and Vercel previews out of the production GA4 property.
+      // dataLayer still fills, so events can be inspected there.
+      if (location.hostname !== 'www.vibesviolin.studio') window['ga-disable-G-SVE1CSG4NC'] = true;
       gtag('config', 'G-SVE1CSG4NC');
 
       // ── get_started_click: any link into the /contact (Get Started) page ──

@@ -4,6 +4,16 @@ import type { FieldValues } from './validate';
 
 export const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
+/** Form input is untrusted: escape it before it goes into any email HTML. */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export function buildVerificationEmail(
   config: InquiryConfig,
   opts: { name: string | null; verifyUrl: string }
@@ -35,7 +45,7 @@ export function buildVerificationEmail(
           <!-- Body -->
           <tr>
             <td style="padding:36px 40px;">
-              <p style="margin:0 0 16px;font-size:15px;color:#2f2a35;">${greeting}</p>
+              <p style="margin:0 0 16px;font-size:15px;color:#2f2a35;">${escapeHtml(greeting)}</p>
               <p style="margin:0 0 16px;font-size:15px;color:#3a3140;line-height:1.6;">
                 ${config.emailTemplate.verificationIntro}
               </p>
@@ -113,22 +123,29 @@ Rae McGee
 
 export function buildNotificationEmail(
   config: InquiryConfig,
-  fields: FieldValues
+  fields: FieldValues,
+  opts: { returning?: boolean } = {}
 ): { subject: string; html: string; text: string } {
   const email = String(fields.email ?? '');
-  const subject = `${config.emailTemplate.notificationSubjectPrefix}: ${email}`;
+  const subject = opts.returning
+    ? `Returning contact sent a new message: ${email}`
+    : `${config.emailTemplate.notificationSubjectPrefix}: ${email}`;
+  const intro = opts.returning
+    ? 'A returning contact sent a new message. This email address was verified on an earlier inquiry, but this message was not confirmed by email, so the sender is not proven to be the address owner.'
+    : `A new ${config.title} submission just verified their email.`;
 
   const rows = config.fields
     .filter((f) => f.name !== 'email')
     .map((f) => ({ label: f.label, value: fields[f.name] ?? 'not provided' }));
 
-  const html = `<p>A new ${config.title} submission just verified their email.</p>
+  const html = `<p>${escapeHtml(intro)}</p>
 <ul>
-  <li><strong>Email:</strong> ${email}</li>
-  ${rows.map((r) => `<li><strong>${r.label}:</strong> ${r.value}</li>`).join('\n  ')}
+  <li><strong>Email:</strong> ${escapeHtml(email)}</li>
+  ${rows.map((r) => `<li><strong>${escapeHtml(r.label)}:</strong> ${escapeHtml(r.value)}</li>`).join('\n  ')}
 </ul>`;
 
-  const text = `New ${config.title} verified submission:\nEmail: ${email}\n${rows
+  const textIntro = opts.returning ? intro : `New ${config.title} verified submission:`;
+  const text = `${textIntro}\nEmail: ${email}\n${rows
     .map((r) => `${r.label}: ${r.value}`)
     .join('\n')}`;
 
