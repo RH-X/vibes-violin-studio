@@ -1,0 +1,400 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import CTABand from '../../components/CTABand.astro';
+import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
+
+const publishedDate = '2026-11-04';
+
+const headline = 'How Often Should You Take Violin Lessons? Finding a Schedule That Fits Your Life';
+const description = 'How often should you take violin lessons? Compare weekly and biweekly schedules and 30, 45, or 60-minute lessons to find a rhythm that fits your life.';
+const imageUrl = '/images/insights/how-often-should-you-take-violin-lessons.jpg';
+const imageAlt = "An adult in a red sweater stands beside a young violinist in a yellow sweater, gently guiding the bow arm in a bright living room, with a music stand in front of them.";
+
+const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition-colors duration-150';
+const h2Style = 'font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;';
+
+// Sources cited in the article body and listed in the Sources section.
+const sources = {
+  how: 'https://doi.org/10.1177/10298649211005531',
+  shao: 'https://doi.org/10.3389/feduc.2025.1683580',
+  cepeda: 'https://doi.org/10.1037/0033-2909.132.3.354',
+  simmons: 'https://doi.org/10.1177/0022429411424798',
+  wiseheart: 'https://doi.org/10.1371/journal.pone.0182986',
+  winstein: 'https://doi.org/10.1037/0278-7393.16.4.677',
+  chiviacowsky: 'https://doi.org/10.1080/02701367.2002.10609040',
+};
+
+const faqItems = [
+  {
+    question: 'Are two violin lessons a week better than one?',
+    answer: "Not automatically. A second lesson can help during a focused stretch, but only if there's time to absorb and practice what came up in the first one. For many students, one lesson plus regular practice gives plenty to work with.",
+  },
+  {
+    question: 'If I take fewer lessons, should I practice more?',
+    answer: 'Not necessarily. Practice depends on your goals, attention, and current material, not on the lesson calendar. Lessons further apart do call for a clearer plan, so you know what to work on and what to bring back.',
+  },
+];
+
+const relatedArticles = [
+  {
+    href: '/insights/how-much-do-violin-lessons-cost-denver',
+    title: 'How Much Do Violin Lessons Cost in Denver?',
+    image: '/images/insights/how-much-do-violin-lessons-cost-denver.jpg',
+    alt: "A violin viewed from above against a black background, showing its scroll, fingerboard, and body.",
+    date: 'August 4, 2026',
+    readTime: '7 min read',
+    summary: 'Wondering how much violin lessons cost in Denver? Compare typical rates, lesson lengths, teacher experience, and what families and adult beginners should consider.',
+  },
+  {
+    href: '/insights/how-much-should-beginners-practice-violin',
+    title: 'How Much Should Beginners Practice Violin?',
+    image: '/images/insights/how-much-should-beginners-practice-violin.jpg',
+    alt: 'A violin resting on a kitchen counter beside its bow, open sheet music, and a laptop, set up for home practice.',
+    date: 'August 9, 2026',
+    readTime: '8 min read',
+    summary: 'How long should a beginner practice violin? Explore flexible practice ranges for children and adults, daily routines, and ways to build consistency without pressure.',
+  },
+  {
+    href: '/insights/what-to-expect-first-three-months-violin-lessons',
+    title: 'What to Expect in the First Three Months of Violin Lessons',
+    image: '/images/insights/what-to-expect-first-three-months-violin-lessons.jpg',
+    alt: "Close-up of a violinist's hands holding the bow and pressing the strings on the fingerboard, with the violin's scroll visible in the foreground.",
+    date: 'July 22, 2026',
+    readTime: '6 min read',
+    summary: 'A practical, month-by-month look at what beginner violin lessons may include—from instrument setup and first bow strokes to simple music and realistic home-practice habits.',
+  },
+  {
+    href: '/insights/what-happens-during-your-first-violin-lesson',
+    title: 'What Happens During Your First Violin Lesson?',
+    image: '/images/insights/first-violin-lesson.jpg',
+    alt: 'A father sits nearby as his young daughter practices violin at home.',
+    date: 'July 13, 2026',
+    readTime: '7 min read',
+    summary: 'A guide for kids and adult beginners: what to expect, what to bring, and why your first lesson is about curiosity—not proving anything.',
+  },
+];
+---
+
+<Layout
+  title="How Often Should You Take Violin Lessons? | Vibrations Violin Studio"
+  description={description}
+  ogImage={imageUrl}
+>
+
+  <!-- ── Hero banner ── -->
+  <section
+    class="hero-interior"
+    style="background: linear-gradient(135deg, #b4e7d0 0%, #fde68a 100%);"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">
+        Insights
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <time datetime="2026-11-04" class="font-normal normal-case tracking-normal text-ink/80">November 4, 2026</time>
+        <span aria-hidden="true" class="mx-2 font-normal normal-case tracking-normal opacity-50">·</span>
+        <span class="font-normal normal-case tracking-normal text-ink/80">7 min read</span>
+      </p>
+      <h1
+        id="post-heading"
+        class="font-heading font-bold text-ink"
+        style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 0.95; letter-spacing: -0.045em;"
+      >
+        How Often Should You Take Violin Lessons? Finding a Schedule That Fits Your Life
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── Article body ── -->
+  <article
+    class="bg-white section-pad"
+    aria-labelledby="post-heading"
+  >
+    <div class="container-narrow">
+    <div class="max-w-2xl">
+
+      <!-- Direct answer -->
+      <p class="text-base text-ink/70 leading-relaxed">For most new students, one lesson a week is a sensible place to start. A week is usually long enough to try something on your own, and short enough that your questions are still fresh when you come back. But weekly is a common starting point, not a rule. The right lesson rhythm balances useful feedback, independent practice, your sense of ownership, and what your life can sustain.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">More lessons aren't automatically better, and a slower rhythm doesn't mean less commitment. This guide covers how often to meet with a teacher and how long those lessons should be. How much to play between lessons is a separate question, covered in <a href="/insights/how-much-should-beginners-practice-violin" class={linkClass}>how much beginners should practice violin</a>.</p>
+
+      <!-- Section: Weekly vs. biweekly -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Weekly vs. Biweekly Violin Lessons</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">By "biweekly," most people mean every other week, so that's how I'm using it here. Neither rhythm is the better one. Each gives you something and asks for something.</p>
+
+      <div class="mt-6 overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <caption class="sr-only">Comparison of weekly and every-other-week violin lessons by feedback, independent practice, schedule, lessons per month, and main tradeoff.</caption>
+          <thead>
+            <tr class="border-b border-lavender-200">
+              <th scope="col" class="py-3 pr-3 font-heading font-semibold text-ink text-sm"><span class="sr-only">Aspect</span></th>
+              <th scope="col" class="py-3 pr-3 font-heading font-semibold text-ink text-sm">Weekly</th>
+              <th scope="col" class="py-3 font-heading font-semibold text-ink text-sm">Every other week</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-lavender-100">
+              <th scope="row" class="py-3 pr-3 font-heading font-semibold text-ink text-sm">Feedback</th>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">A check-in every 7 days</td>
+              <td class="py-3 text-sm text-ink/70 font-light">A check-in every 14 days</td>
+            </tr>
+            <tr class="border-b border-lavender-100">
+              <th scope="row" class="py-3 pr-3 font-heading font-semibold text-ink text-sm">On your own</th>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">A few clear things to try</td>
+              <td class="py-3 text-sm text-ink/70 font-light">A longer plan you can carry yourself</td>
+            </tr>
+            <tr class="border-b border-lavender-100">
+              <th scope="row" class="py-3 pr-3 font-heading font-semibold text-ink text-sm">Schedule</th>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">A steady routine, with less slack</td>
+              <td class="py-3 text-sm text-ink/70 font-light">More breathing room in full months</td>
+            </tr>
+            <tr class="border-b border-lavender-100">
+              <th scope="row" class="py-3 pr-3 font-heading font-semibold text-ink text-sm">Per month</th>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">4 or 5 lessons</td>
+              <td class="py-3 text-sm text-ink/70 font-light">2 or 3 lessons</td>
+            </tr>
+            <tr class="border-b border-lavender-100">
+              <th scope="row" class="py-3 pr-3 font-heading font-semibold text-ink text-sm">Tradeoff</th>
+              <td class="py-3 pr-3 text-sm text-ink/70 font-light">More time and money each month</td>
+              <td class="py-3 text-sm text-ink/70 font-light">A longer wait when you get stuck</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6 text-base text-ink/70 leading-relaxed">Every-other-week lessons tend to work best when someone can already notice what's happening in their playing and work through a problem between check-ins. That's a skill that develops with experience. It has nothing to do with how much a person cares.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A note on my own studio: I don't offer every-other-week lessons, but alongside weekly lessons, three lessons a month with one week off is an option. If neither looks workable for you, tell me. We can talk honestly about what's possible, including whether another teacher's schedule would suit you better. For budgeting, <a href="/insights/how-much-do-violin-lessons-cost-denver" class={linkClass}>what violin lessons cost</a> covers current rates.</p>
+
+      <ArticleInlineCTA
+        heading="Not sure what lesson schedule fits?"
+        body="Share a little about your goals and experience, and we can explore a starting point that makes sense."
+        label="Get Started"
+      />
+
+      <!-- Section: Learning science -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>What Learning Science Actually Tells Us</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The honest answer starts with a gap. A literature search for this article didn't turn up a peer-reviewed study comparing weekly and every-other-week private violin lessons. A <a href={sources.how} target="_blank" rel="noopener noreferrer" class={linkClass}>review of 296 publications on music practice</a> lists topics like practice strategies and self-regulation as its most common, not lesson schedules. A <a href={sources.shao} target="_blank" rel="noopener noreferrer" class={linkClass}>recent systematic review of violin teaching</a> looks at teaching approaches rather than how often lessons happen. So research doesn't prove that weekly beats biweekly, or the reverse.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">What we do have is evidence on nearby questions, mostly about practice rather than lessons:</p>
+      <ul class="mt-4 space-y-3 pl-5 list-none">
+        <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+          <span><span class="font-semibold text-ink">Spacing helps memory.</span> A <a href={sources.cepeda} target="_blank" rel="noopener noreferrer" class={linkClass}>synthesis of 317 experiments on verbal recall</a> examined distributed practice and found that the most useful gap grows with how long you need to remember something.</span>
+        </li>
+        <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+          <span><span class="font-semibold text-ink">Music results are less settled.</span> In <a href={sources.simmons} target="_blank" rel="noopener noreferrer" class={linkClass}>one study of 29 musicians</a> learning a short keyboard sequence, accuracy improved at the second session only when sessions were 24 hours apart, rather than 5 minutes or 6 hours. <a href={sources.wiseheart} target="_blank" rel="noopener noreferrer" class={linkClass}>Another study of 100 students</a>, most of them new to piano, found no benefit from gaps of up to 15 minutes, and its authors described music spacing research as inconclusive.</span>
+        </li>
+        <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+          <span><span class="font-semibold text-ink">More feedback isn't always better.</span> In motor-learning experiments, <a href={sources.winstein} target="_blank" rel="noopener noreferrer" class={linkClass}>reducing how often learners received feedback</a> improved skill learning, and <a href={sources.chiviacowsky} target="_blank" rel="noopener noreferrer" class={linkClass}>learners who chose when to get feedback</a> showed learning benefits over those who couldn't. These were laboratory tasks, not violin lessons.</span>
+        </li>
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">None of these studies measured paid lessons a week or two apart. They looked at gaps of minutes to days, or feedback on individual attempts.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">My own view, as a teacher rather than as a research finding: the days between lessons matter as much as the lesson itself. The useful question is whether a student has enough guidance to use those days well, and enough say in the process to stay engaged.</p>
+
+      <!-- Section: Different learners -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Different Learners Need Different Rhythms</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed"><span class="font-semibold text-ink">Young beginners.</span> Almost everything is new, and a young child depends on an adult to carry the plan home. In Suzuki-informed teaching, that adult is part of the learning, so the schedule has to work for them too. A steady weekly rhythm often helps children and caregivers settle in. If you're still weighing formats, here's a guide to <a href="/insights/violin-lessons-for-kids-denver" class={linkClass}>children's lesson options in Denver</a>.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed"><span class="font-semibold text-ink">Adult beginners.</span> Adults often bring focus and good questions, along with work, family, and travel. A weekly lesson can anchor a busy life. It can also feel like one more deadline if you rarely get to play in between. Be honest about an ordinary week, and compare <a href="/insights/adult-violin-lessons-denver" class={linkClass}>adult lesson options in Denver</a> if you're still exploring.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed"><span class="font-semibold text-ink">Returning players.</span> You may remember more than you expect while your body catches up. Some returners want weekly structure at first, and others do well with more time between lessons once their footing is back. <a href="/insights/returning-to-violin-after-years-away" class={linkClass}>Returning to violin after years away</a> covers what that restart can feel like.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed"><span class="font-semibold text-ink">Learners who benefit from adaptive pacing.</span> Some students, neurodivergent or not, learn best with fewer new ideas at once, a predictable routine, more repetition, or more time to process. That might mean shorter lessons, one focus at a time, written notes, or more room between new material. Two people with the same diagnosis may want opposite things, and you never need to share one with me. Tell me what helps, and we'll build from there.</p>
+
+      <!-- Section: Lesson length -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Choosing 30, 45, or 60 Minutes</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Length is its own decision. It depends on attention, physical stamina, learning stage, musical goals, and what fits your calendar. Longer doesn't mean more serious, and a lesson should end before focus or comfort runs out. Here's how the options at my studio tend to break down, with <a href="/about#rates" class={linkClass}>current rates and details</a> on the About page:</p>
+      <ul class="mt-4 space-y-3 pl-5 list-none">
+        <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+          <span><span class="font-semibold text-ink">30 minutes ($50).</span> Recommended for ages 6 and up. Often a good fit for newer learners of any age: one or two clear ideas, with attention still intact at the end.</span>
+        </li>
+        <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+          <span><span class="font-semibold text-ink">45 minutes ($75).</span> Room for technique, repertoire, and questions. Often suits older children, curious adults, and students whose music has grown.</span>
+        </li>
+        <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+          <span><span class="font-semibold text-ink">60 minutes ($100).</span> Best for advanced students or intensive focus, when the material and stamina can fill the hour.</span>
+        </li>
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Deciding between 30 and 45 minutes? Notice whether a shorter lesson would leave you wanting more, or whether a longer one would leave you tired. You can also start with a 20-minute trial lesson to get a feel for how we work together. If your child is under 6, ask me what would make sense for them.</p>
+
+      <!-- Section: Decision guide -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Find Your Starting Rhythm</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">These aren't rules, just a way to narrow things down:</p>
+      <ul class="mt-4 space-y-3 pl-5 list-none">
+        {[
+          { lead: "Everything is new:", text: "Start weekly, at a length you can stay attentive for." },
+          { lead: "You have a specific goal or date:", text: "Weekly lessons give you more chances to adjust along the way." },
+          { lead: "You want more feedback:", text: "Shorter, more frequent lessons usually mean more check-ins for the same total minutes." },
+          { lead: "You're experienced and work well independently:", text: "More time between lessons may be worth discussing with a teacher." },
+          { lead: "Time or energy is tight:", text: "Choose what you can sustain in an ordinary week, not your best week." },
+          { lead: "Budget is the main limit:", text: "Compare the monthly total. A shorter lesson can keep the rhythm at a lower cost, and scholarships are considered at my studio." },
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            <span><span class="font-semibold text-ink">{item.lead}</span> {item.text}</span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Section: Reassessing -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>When Should Your Schedule Change?</h2>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Your first schedule is a starting point. You and your teacher can revisit it whenever your experience suggests it, rather than after a set number of weeks or a particular piece. A few questions help:</p>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          "Do you arrive with something to show or ask?",
+          "Do you leave knowing what to do next?",
+          "Does the time between lessons feel too long, too short, or about right?",
+          "Do lessons regularly run out of time, or out of energy?",
+          "Have your goals, your energy, or your week changed?",
+        ].map(item => (
+          <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A change in either direction just means the schedule is being fitted to the learner. Progress is often uneven, as <a href="/insights/what-to-expect-first-three-months-violin-lessons" class={linkClass}>the first three months of lessons</a> show, so one hard week isn't a reason to change anything. A pattern that keeps repeating is worth talking about.</p>
+
+      <!-- FAQ -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Frequently Asked Questions</h2>
+      {faqItems.map(item => (
+        <>
+          <h3 class="mt-8 font-heading font-semibold text-ink" style="font-size: 1.1rem; letter-spacing: -0.015em;">{item.question}</h3>
+          <p class="mt-3 text-base text-ink/70 leading-relaxed">{item.answer}</p>
+        </>
+      ))}
+
+      <!-- Sources -->
+      <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Sources</h2>
+      <ul class="mt-4 space-y-2 pl-5 list-none">
+        {[
+          { href: sources.cepeda, label: "Cepeda, Pashler, Vul, Wixted & Rohrer, “Distributed Practice in Verbal Recall Tasks: A Review and Quantitative Synthesis,” Psychological Bulletin 132(3) (2006)" },
+          { href: sources.chiviacowsky, label: "Chiviacowsky & Wulf, “Self-Controlled Feedback: Does It Enhance Learning Because Performers Get Feedback When They Need It?,” Research Quarterly for Exercise and Sport 73(4) (2002)" },
+          { href: sources.how, label: "How, Tan & Miksza, “A PRISMA Review of Research on Music Practice,” Musicae Scientiae 26(3) (first published 2021)" },
+          { href: sources.shao, label: "Shao, “Enhancing Learning Outcomes in Violin Music Education: A Systematic Review,” Frontiers in Education 10 (2026)" },
+          { href: sources.simmons, label: "Simmons, “Distributed Practice and Procedural Memory Consolidation in Musicians’ Skill Learning,” Journal of Research in Music Education 59(4) (2011)" },
+          { href: sources.winstein, label: "Winstein & Schmidt, “Reduced Frequency of Knowledge of Results Enhances Motor Skill Learning,” Journal of Experimental Psychology: Learning, Memory, and Cognition 16(4) (1990)" },
+          { href: sources.wiseheart, label: "Wiseheart, D’Souza & Chae, “Lack of Spacing Effects During Piano Learning,” PLOS ONE 12(8) (2017)" },
+        ].map(source => (
+          <li class="flex items-start gap-3 text-sm text-ink/70 font-light leading-relaxed">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+            <a href={source.href} target="_blank" rel="noopener noreferrer" class={linkClass}>{source.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Closing section -->
+      <div class="mt-12 pt-8 border-t border-lavender-200">
+        <h2 class="font-heading font-bold text-ink" style={h2Style}>Next Steps</h2>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">You don't need to know your ideal schedule before reaching out. If you're considering private lessons in Denver or online, tell me a little about your goals, your experience, and what a typical week looks like.</p>
+        <p class="mt-4 text-base text-ink/70 leading-relaxed">We can start with a message or a free 15-minute conversation and work out a sensible starting point together, with no pressure to enroll.</p>
+        <a href="/contact" class="btn-primary inline-block mt-8" aria-label="Get started with a free conversation about your violin lesson schedule">
+          Get Started
+        </a>
+      </div>
+
+    </div>
+    </div>
+  </article>
+
+  <!-- ── Related Articles ── -->
+  <section class="bg-lavender-50 section-pad" aria-labelledby="related-heading">
+    <div class="container-narrow">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Keep Reading</p>
+      <h2 id="related-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+        Related Articles
+      </h2>
+      <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
+        {relatedArticles.map(article => (
+          <li>
+            <a
+              href={article.href}
+              aria-label={`Read: ${article.title}`}
+              class="group insight-card flex flex-col h-full overflow-hidden bg-white border border-lavender-200 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+            >
+              <div class="aspect-[4/3] overflow-hidden flex-shrink-0">
+                <img
+                  src={article.image}
+                  alt={article.alt}
+                  width="640"
+                  height="480"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="flex flex-col flex-1 p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 text-xs text-ink/70 font-light mb-3">
+                  <span>{article.date}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{article.readTime}</span>
+                </div>
+                <h3 class="font-heading font-bold text-ink leading-snug transition-colors duration-200 group-hover:text-purplePrimary" style="font-size: clamp(1.1rem, 2.2vw, 1.35rem); letter-spacing: -0.02em;">
+                  {article.title}
+                </h3>
+                <p class="mt-3 text-sm text-ink/70 font-light leading-relaxed line-clamp-3 flex-1">
+                  {article.summary}
+                </p>
+                <span class="inline-block mt-5 text-sm font-medium text-purplePrimary underline underline-offset-4 decoration-lavender-400 transition-all duration-200 group-hover:text-purple-800 group-hover:decoration-purple-800" aria-hidden="true">
+                  Read article →
+                </span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTABand />
+
+</Layout>
+
+  <ArticleSchema
+    title={headline}
+    description={description}
+    imageUrl={imageUrl}
+    imageAlt={imageAlt}
+    imageWidth={640}
+    imageHeight={480}
+    publishedDate={publishedDate}
+    articleSection="Violin Lesson Planning"
+    faqItems={faqItems}
+  />
+
+<script>
+  // ── Article page: scroll-reveal ──
+  const heroSection = document.querySelector('section[aria-labelledby="post-heading"]');
+  if (heroSection) {
+    const inner = heroSection.querySelector('.container-narrow');
+    if (inner) inner.classList.add('hero-animate', 'hero-delay-1');
+  }
+
+  const articleBody = document.querySelector('article .container-narrow');
+  if (articleBody) articleBody.classList.add('reveal');
+
+  const relatedSection = document.querySelector('section[aria-labelledby="related-heading"] .container-narrow');
+  if (relatedSection) relatedSection.classList.add('reveal');
+
+  const ctaBand = document.querySelector('section[aria-labelledby="cta-heading"] .container-narrow');
+  if (ctaBand) ctaBand.classList.add('reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+</script>
