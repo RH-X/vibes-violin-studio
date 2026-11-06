@@ -1,17 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
+import Cite from '../../components/Cite.astro';
+import SourceList from '../../components/SourceList.astro';
 import CTABand from '../../components/CTABand.astro';
 
 const publishedDate = '2026-10-21';
 
-// Sources cited in the article body and listed in the Sources section.
-const sources = {
-  sharSizing: 'https://www.sharmusic.com/blogs/all/the-complete-string-instrument-sizing-guide',
-  sharFirstInstrument: 'https://www.sharmusic.com/blogs/all/how-to-choose-your-first-instrument-a-guide-from-shar-music',
-  sharParents: 'https://www.sharmusic.com/blogs/all/understanding-instrument-sizes-a-parent-s-guide-to-choosing-the-right-fit',
-  johnson: 'https://www.johnsonstring.com/resources/articles/music-students/violin-sizing-for-children/',
-};
+// Sources in order of first appearance: a source's position here is its Cite number.
+// `uses` is how many times the article cites it.
+const sources = [
+  { citation: "Shar Music, “The Complete String Instrument Sizing Guide” (2026)", locator: 'https://www.sharmusic.com/blogs/all/the-complete-string-instrument-sizing-guide', uses: 7 },
+  { citation: "Johnson String Instrument, “How to properly size a violin for a child” (2026)", locator: 'https://www.johnsonstring.com/resources/articles/music-students/violin-sizing-for-children/', uses: 4 },
+  { citation: "Shar Music, “How to Choose Your First Instrument: A Guide from Shar Music” (2025)", locator: 'https://www.sharmusic.com/blogs/all/how-to-choose-your-first-instrument-a-guide-from-shar-music', uses: 1 },
+  { citation: "Shar Music, “Understanding Instrument Sizes: A Parent’s Guide to Choosing the Right Fit” (2025)", locator: 'https://www.sharmusic.com/blogs/all/understanding-instrument-sizes-a-parent-s-guide-to-choosing-the-right-fit', uses: 1 },
+];
 
 const faqItems = [
   {
@@ -86,11 +89,11 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
       <!-- Section: Direct answer -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">The Short Answer: Measure the Arm, Then Check the Fit</h2>
       <p class="mt-4 text-base text-ink/70 leading-relaxed"><strong class="font-semibold text-ink">Violin size is determined by arm length, not age.</strong> Measure your child's left arm from the base of the neck to the center of the palm, with the arm extended and turned palm-up, then compare that measurement with a violin size chart. Finally, confirm the fit with the actual instrument—ideally with help from a teacher or violin shop.</p>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">Age ranges can give you a rough idea, but children of the same age can vary a great deal in arm length, which is why sizing guides from both <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music</a> and <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> treat measurement as more reliable than age.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Age ranges can give you a rough idea, but children of the same age can vary a great deal in arm length, which is why sizing guides from both Shar Music<Cite n={1} /> and Johnson String Instrument<Cite n={2} /> treat measurement as more reliable than age.</p>
 
       <!-- Section: Size chart -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Violin Size Chart for Kids: 1/32 Through 4/4</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">The chart below uses the arm measurements and approximate ages published in <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's string instrument sizing guide</a>. Shar describes the ages as general guidelines only—measurement should come first.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The chart below uses the arm measurements and approximate ages published in Shar Music's string instrument sizing guide.<Cite n={1} use={2} /> Shar describes the ages as general guidelines only—measurement should come first.</p>
 
       <figure class="mt-8">
         <img
@@ -101,7 +104,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
           class="w-full h-auto rounded-card border border-lavender-200"
           decoding="async"
         />
-        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Measurements and age ranges from <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's sizing guide</a>. Chart by Vibrations Violin Studio.</figcaption>
+        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Measurements and age ranges from Shar Music's sizing guide.<Cite n={1} use={3} /> Chart by Vibrations Violin Studio.</figcaption>
       </figure>
 
       <div class="mt-8 overflow-x-auto">
@@ -136,12 +139,12 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
         </table>
       </div>
 
-      <p class="mt-6 text-base text-ink/70 leading-relaxed">Published charts don't all agree to the inch—even different guides from the same retailer list slightly different numbers—so treat any chart as a starting point rather than a final answer. If your child lands between two sizes, <a href={sources.sharFirstInstrument} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music recommends going slightly smaller</a> for comfort and healthy technique.</p>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">Fractional sizes aren't only for children, either. <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music notes</a> that some adults with shorter arms or smaller hands find a 3/4 violin more comfortable than a full-size instrument, and one of my own adult violin teachers played a 7/8. If you're a smaller adult, measure the same way and choose the size that fits you.</p>
+      <p class="mt-6 text-base text-ink/70 leading-relaxed">Published charts don't all agree to the inch—even different guides from the same retailer list slightly different numbers—so treat any chart as a starting point rather than a final answer. If your child lands between two sizes, Shar Music recommends going slightly smaller for comfort and healthy technique.<Cite n={3} /></p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Fractional sizes aren't only for children, either. Shar Music notes that some adults with shorter arms or smaller hands find a 3/4 violin more comfortable than a full-size instrument,<Cite n={1} use={4} /> and one of my own adult violin teachers played a 7/8. If you're a smaller adult, measure the same way and choose the size that fits you.</p>
 
       <!-- Section: How to measure -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">How to Measure Your Child's Arm for a Violin</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">You'll need a soft measuring tape and a second pair of hands. Following <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's measuring method</a>:</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">You'll need a soft measuring tape and a second pair of hands. Following Shar Music's measuring method:<Cite n={1} use={5} /></p>
       <ol class="mt-4 space-y-4 pl-5 list-decimal marker:text-purplePrimary marker:font-semibold">
         <li class="text-base text-ink/70 leading-relaxed">
           <span class="font-semibold text-ink">Extend the left arm to the side.</span> Have your child stand and hold their left arm straight out to the side, parallel to the floor and in line with the shoulders.
@@ -167,14 +170,14 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
           loading="lazy"
           decoding="async"
         />
-        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Measuring method from <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music's sizing guide</a>. Original illustration by Vibrations Violin Studio.</figcaption>
+        <figcaption class="mt-3 text-sm text-ink/60 font-light leading-relaxed">Measuring method from Shar Music's sizing guide.<Cite n={1} use={6} /> Original illustration by Vibrations Violin Studio.</figcaption>
       </figure>
 
       <p class="mt-6 text-base text-ink/70 leading-relaxed">Use the same method every time you re-measure. Different shops sometimes measure to different points on the hand, and mixing methods is one of the easiest ways to end up with a confusing result.</p>
 
       <!-- Section: Check the actual instrument -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">How to Check the Fit With the Actual Violin</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">A tape measure gets you close. The instrument itself tells you whether the size truly works. <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> suggests two simple checks:</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">A tape measure gets you close. The instrument itself tells you whether the size truly works. Johnson String Instrument suggests two simple checks:<Cite n={2} use={2} /></p>
       <ul class="mt-4 space-y-2 pl-5 list-none">
         {[
           "Place the violin on your child's left shoulder and have them extend the left arm straight out under the instrument, palm up. The scroll should reach about the wrist—no further than the bottom of the palm.",
@@ -190,7 +193,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
 
       <!-- Section: Don't buy to grow into -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Why Not Buy a Violin to Grow Into?</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">It's an understandable instinct—kids grow, and a bigger instrument seems like it will last longer. But both <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> and <a href={sources.sharSizing} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music</a> name sizing up "for growth" as one of the most common sizing mistakes.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">It's an understandable instinct—kids grow, and a bigger instrument seems like it will last longer. But both Johnson String Instrument<Cite n={2} use={3} /> and Shar Music<Cite n={1} use={7} /> name sizing up "for growth" as one of the most common sizing mistakes.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">A violin that's too large forces a child to compensate: shoulders creep up, the left arm overreaches, and the bow becomes harder to control. Over time that can build tension and habits that are difficult to undo. It's also discouraging. When the instrument is hard to hold, a child may decide that <em>they</em> are the problem.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">The right size is the one that fits today.</p>
 
@@ -258,7 +261,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
 
       <!-- Section: Renting vs buying -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Renting vs. Buying: Planning for New Sizes</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">Because children outgrow instruments, renting is often the most practical choice for young players. <a href={sources.johnson} target="_blank" rel="noopener noreferrer" class={linkClass}>Johnson String Instrument</a> notes that many young students move up a size every one to two years, and <a href={sources.sharParents} target="_blank" rel="noopener noreferrer" class={linkClass}>Shar Music suggests checking fit every 6–12 months</a>.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">Because children outgrow instruments, renting is often the most practical choice for young players. Johnson String Instrument notes that many young students move up a size every one to two years,<Cite n={2} use={4} /> and Shar Music suggests checking fit every 6–12 months.<Cite n={4} /></p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Many rental programs let you exchange sizes as your child grows, and some apply rental payments toward a future purchase. Ask about both when you compare shops. For a fuller look at the decision—including how much to spend and where to shop in the Denver area—see my guide on <a href="/insights/how-to-buy-your-first-violin" class={linkClass}>how to buy your first violin without wasting money</a>.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Signs it may be time for the next size include a cramped left elbow, a scroll that no longer reaches the wrist, or a child who has simply had a growth spurt. A quick re-measure, plus a check with your teacher, will tell you whether to move up.</p>
 
@@ -291,19 +294,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
 
       <!-- Sources -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Sources</h2>
-      <ul class="mt-4 space-y-2 pl-5 list-none">
-        {[
-          { href: sources.sharSizing, label: "Shar Music, “The Complete String Instrument Sizing Guide” (2026)" },
-          { href: sources.sharFirstInstrument, label: "Shar Music, “How to Choose Your First Instrument: A Guide from Shar Music” (2025)" },
-          { href: sources.sharParents, label: "Shar Music, “Understanding Instrument Sizes: A Parent’s Guide to Choosing the Right Fit” (2025)" },
-          { href: sources.johnson, label: "Johnson String Instrument, “How to properly size a violin for a child” (2026)" },
-        ].map(source => (
-          <li class="flex items-start gap-3 text-sm text-ink/70 font-light leading-relaxed">
-            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-            <a href={source.href} target="_blank" rel="noopener noreferrer" class={linkClass}>{source.label}</a>
-          </li>
-        ))}
-      </ul>
+      <SourceList sources={sources} />
 
       <!-- Local SEO closing section -->
       <div class="mt-12 pt-8 border-t border-lavender-200">

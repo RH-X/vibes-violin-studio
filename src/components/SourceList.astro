@@ -1,0 +1,43 @@
+---
+// Numbered, unlinked source list for Insights articles. Sources go in order of
+// first appearance, because a source's position is its Cite number. The locator
+// (a DOI or page address) is plain text on purpose: readers can copy it, but no
+// source link takes them away from the article.
+interface Source {
+  citation: string;
+  locator: string;
+  uses: number;
+}
+
+interface Props {
+  sources: Source[];
+}
+
+const { sources } = Astro.props;
+const backLinkClass = 'text-purplePrimary underline hover:text-purple-800 transition-colors duration-150';
+const letters = 'abcdefghijklmnopqrstuvwxyz';
+---
+
+<ol class="mt-4 space-y-3 pl-6 list-decimal marker:text-ink/70">
+  {sources.map((source, index) => {
+    const n = index + 1;
+    return (
+      <li id={`source-${n}`} class="scroll-mt-6 rounded-sm text-sm text-ink/70 font-light leading-relaxed target:bg-lavender-100">
+        {source.citation}.{' '}
+        <span class="[overflow-wrap:anywhere]">{source.locator}</span>{' '}
+        <span class="whitespace-nowrap">
+          {source.uses === 1 ? (
+            <a href={`#cite-${n}-1`} class={`${backLinkClass} inline-block min-h-6 leading-6`} aria-label={`Back to where source ${n} is cited`}>Back to text</a>
+          ) : (
+            <>
+              Back to text:
+              {Array.from({ length: source.uses }, (_, i) => (
+                <a href={`#cite-${n}-${i + 1}`} class={`${backLinkClass} inline-block min-w-6 min-h-6 leading-6 text-center`} aria-label={`Back to citation ${i + 1} of ${source.uses} for source ${n}`}>{letters[i]}</a>
+              ))}
+            </>
+          )}
+        </span>
+      </li>
+    );
+  })}
+</ol>

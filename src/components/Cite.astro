@@ -1,0 +1,14 @@
+---
+// Numbered citation marker for Insights articles. Jumps to the matching entry in
+// SourceList on the same page, so readers can check a source without leaving.
+// `use` counts repeat citations of one source (1, 2, 3…) and must match that
+// source's `uses` in SourceList, which links back to each marker.
+interface Props {
+  n: number;
+  use?: number;
+}
+
+const { n, use = 1 } = Astro.props;
+---
+
+<sup><a id={`cite-${n}-${use}`} href={`#source-${n}`} aria-label={`Source ${n}`} class="scroll-mt-6 -mx-0.5 rounded-sm px-1.5 py-1.5 font-semibold text-purplePrimary hover:text-purple-800 hover:underline target:bg-lavender-200 transition-colors duration-150">[{n}]</a></sup>

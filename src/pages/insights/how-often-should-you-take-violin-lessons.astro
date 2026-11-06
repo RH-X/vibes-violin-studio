@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
+import Cite from '../../components/Cite.astro';
+import SourceList from '../../components/SourceList.astro';
 import CTABand from '../../components/CTABand.astro';
 import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
 
@@ -14,16 +16,17 @@ const imageAlt = "An adult in a red sweater stands beside a young violinist in a
 const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition-colors duration-150';
 const h2Style = 'font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;';
 
-// Sources cited in the article body and listed in the Sources section.
-const sources = {
-  how: 'https://doi.org/10.1177/10298649211005531',
-  shao: 'https://doi.org/10.3389/feduc.2025.1683580',
-  cepeda: 'https://doi.org/10.1037/0033-2909.132.3.354',
-  simmons: 'https://doi.org/10.1177/0022429411424798',
-  wiseheart: 'https://doi.org/10.1371/journal.pone.0182986',
-  winstein: 'https://doi.org/10.1037/0278-7393.16.4.677',
-  chiviacowsky: 'https://doi.org/10.1080/02701367.2002.10609040',
-};
+// Sources in order of first appearance: a source's position here is its Cite number.
+// `uses` is how many times the article cites it.
+const sources = [
+  { citation: "How, Tan & Miksza, “A PRISMA Review of Research on Music Practice,” Musicae Scientiae 26(3) (first published 2021)", locator: 'DOI: 10.1177/10298649211005531', uses: 1 },
+  { citation: "Shao, “Enhancing Learning Outcomes in Violin Music Education: A Systematic Review,” Frontiers in Education 10 (2026)", locator: 'DOI: 10.3389/feduc.2025.1683580', uses: 1 },
+  { citation: "Cepeda, Pashler, Vul, Wixted & Rohrer, “Distributed Practice in Verbal Recall Tasks: A Review and Quantitative Synthesis,” Psychological Bulletin 132(3) (2006)", locator: 'DOI: 10.1037/0033-2909.132.3.354', uses: 1 },
+  { citation: "Simmons, “Distributed Practice and Procedural Memory Consolidation in Musicians’ Skill Learning,” Journal of Research in Music Education 59(4) (2011)", locator: 'DOI: 10.1177/0022429411424798', uses: 1 },
+  { citation: "Wiseheart, D’Souza & Chae, “Lack of Spacing Effects During Piano Learning,” PLOS ONE 12(8) (2017)", locator: 'DOI: 10.1371/journal.pone.0182986', uses: 1 },
+  { citation: "Winstein & Schmidt, “Reduced Frequency of Knowledge of Results Enhances Motor Skill Learning,” Journal of Experimental Psychology: Learning, Memory, and Cognition 16(4) (1990)", locator: 'DOI: 10.1037/0278-7393.16.4.677', uses: 1 },
+  { citation: "Chiviacowsky & Wulf, “Self-Controlled Feedback: Does It Enhance Learning Because Performers Get Feedback When They Need It?,” Research Quarterly for Exercise and Sport 73(4) (2002)", locator: 'DOI: 10.1080/02701367.2002.10609040', uses: 1 },
+];
 
 const faqItems = [
   {
@@ -173,20 +176,20 @@ const relatedArticles = [
 
       <!-- Section: Learning science -->
       <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>What Learning Science Actually Tells Us</h2>
-      <p class="mt-4 text-base text-ink/70 leading-relaxed">The honest answer starts with a gap. A literature search for this article didn't turn up a peer-reviewed study comparing weekly and every-other-week private violin lessons. A <a href={sources.how} target="_blank" rel="noopener noreferrer" class={linkClass}>review of 296 publications on music practice</a> lists topics like practice strategies and self-regulation as its most common, not lesson schedules. A <a href={sources.shao} target="_blank" rel="noopener noreferrer" class={linkClass}>recent systematic review of violin teaching</a> looks at teaching approaches rather than how often lessons happen. So research doesn't prove that weekly beats biweekly, or the reverse.</p>
+      <p class="mt-4 text-base text-ink/70 leading-relaxed">The honest answer starts with a gap. A literature search for this article didn't turn up a peer-reviewed study comparing weekly and every-other-week private violin lessons. A review of 296 publications on music practice lists topics like practice strategies and self-regulation as its most common, not lesson schedules.<Cite n={1} /> A recent systematic review of violin teaching looks at teaching approaches rather than how often lessons happen.<Cite n={2} /> So research doesn't prove that weekly beats biweekly, or the reverse.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">What we do have is evidence on nearby questions, mostly about practice rather than lessons:</p>
       <ul class="mt-4 space-y-3 pl-5 list-none">
         <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
           <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-          <span><span class="font-semibold text-ink">Spacing helps memory.</span> A <a href={sources.cepeda} target="_blank" rel="noopener noreferrer" class={linkClass}>synthesis of 317 experiments on verbal recall</a> examined distributed practice and found that the most useful gap grows with how long you need to remember something.</span>
+          <span><span class="font-semibold text-ink">Spacing helps memory.</span> A synthesis of 317 experiments on verbal recall examined distributed practice and found that the most useful gap grows with how long you need to remember something.<Cite n={3} /></span>
         </li>
         <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
           <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-          <span><span class="font-semibold text-ink">Music results are less settled.</span> In <a href={sources.simmons} target="_blank" rel="noopener noreferrer" class={linkClass}>one study of 29 musicians</a> learning a short keyboard sequence, accuracy improved at the second session only when sessions were 24 hours apart, rather than 5 minutes or 6 hours. <a href={sources.wiseheart} target="_blank" rel="noopener noreferrer" class={linkClass}>Another study of 100 students</a>, most of them new to piano, found no benefit from gaps of up to 15 minutes, and its authors described music spacing research as inconclusive.</span>
+          <span><span class="font-semibold text-ink">Music results are less settled.</span> In one study of 29 musicians learning a short keyboard sequence, accuracy improved at the second session only when sessions were 24 hours apart, rather than 5 minutes or 6 hours.<Cite n={4} /> Another study of 100 students, most of them new to piano, found no benefit from gaps of up to 15 minutes, and its authors described music spacing research as inconclusive.<Cite n={5} /></span>
         </li>
         <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
           <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-          <span><span class="font-semibold text-ink">More feedback isn't always better.</span> In motor-learning experiments, <a href={sources.winstein} target="_blank" rel="noopener noreferrer" class={linkClass}>reducing how often learners received feedback</a> improved skill learning, and <a href={sources.chiviacowsky} target="_blank" rel="noopener noreferrer" class={linkClass}>learners who chose when to get feedback</a> showed learning benefits over those who couldn't. These were laboratory tasks, not violin lessons.</span>
+          <span><span class="font-semibold text-ink">More feedback isn't always better.</span> In motor-learning experiments, reducing how often learners received feedback improved skill learning,<Cite n={6} /> and learners who chose when to get feedback showed learning benefits over those who couldn't.<Cite n={7} /> These were laboratory tasks, not violin lessons.</span>
         </li>
       </ul>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">None of these studies measured paid lessons a week or two apart. They looked at gaps of minutes to days, or feedback on individual attempts.</p>
@@ -267,22 +270,7 @@ const relatedArticles = [
 
       <!-- Sources -->
       <h2 class="mt-12 font-heading font-bold text-ink" style={h2Style}>Sources</h2>
-      <ul class="mt-4 space-y-2 pl-5 list-none">
-        {[
-          { href: sources.cepeda, label: "Cepeda, Pashler, Vul, Wixted & Rohrer, “Distributed Practice in Verbal Recall Tasks: A Review and Quantitative Synthesis,” Psychological Bulletin 132(3) (2006)" },
-          { href: sources.chiviacowsky, label: "Chiviacowsky & Wulf, “Self-Controlled Feedback: Does It Enhance Learning Because Performers Get Feedback When They Need It?,” Research Quarterly for Exercise and Sport 73(4) (2002)" },
-          { href: sources.how, label: "How, Tan & Miksza, “A PRISMA Review of Research on Music Practice,” Musicae Scientiae 26(3) (first published 2021)" },
-          { href: sources.shao, label: "Shao, “Enhancing Learning Outcomes in Violin Music Education: A Systematic Review,” Frontiers in Education 10 (2026)" },
-          { href: sources.simmons, label: "Simmons, “Distributed Practice and Procedural Memory Consolidation in Musicians’ Skill Learning,” Journal of Research in Music Education 59(4) (2011)" },
-          { href: sources.winstein, label: "Winstein & Schmidt, “Reduced Frequency of Knowledge of Results Enhances Motor Skill Learning,” Journal of Experimental Psychology: Learning, Memory, and Cognition 16(4) (1990)" },
-          { href: sources.wiseheart, label: "Wiseheart, D’Souza & Chae, “Lack of Spacing Effects During Piano Learning,” PLOS ONE 12(8) (2017)" },
-        ].map(source => (
-          <li class="flex items-start gap-3 text-sm text-ink/70 font-light leading-relaxed">
-            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-            <a href={source.href} target="_blank" rel="noopener noreferrer" class={linkClass}>{source.label}</a>
-          </li>
-        ))}
-      </ul>
+      <SourceList sources={sources} />
 
       <!-- Closing section -->
       <div class="mt-12 pt-8 border-t border-lavender-200">
