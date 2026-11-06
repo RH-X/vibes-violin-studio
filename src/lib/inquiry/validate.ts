@@ -27,6 +27,14 @@ export function extractAndValidateFields(config: InquiryConfig, formData: FormDa
   for (const field of config.fields) {
     const raw = String(formData.get(field.name) ?? '').trim();
 
+    if (field.type === 'checkbox') {
+      if (field.required && !raw) {
+        return { values, error: 'required' };
+      }
+      values[field.name] = raw ? new Date().toISOString() : null;
+      continue;
+    }
+
     if (field.type === 'radio') {
       const allowed = field.options?.map((o) => o.value) ?? [];
       const value = allowed.includes(raw) ? raw : null;

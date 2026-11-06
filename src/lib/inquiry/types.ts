@@ -6,7 +6,8 @@ export interface InquiryFieldOption {
 export interface InquiryField {
   name: string;
   label: string;
-  type: 'text' | 'email' | 'textarea' | 'radio';
+  /** A required checkbox stores the time it was ticked, so name it after a timestamp column. */
+  type: 'text' | 'email' | 'textarea' | 'radio' | 'checkbox';
   required?: boolean;
   optionalLabel?: string;
   placeholder?: string;
@@ -49,6 +50,17 @@ export interface InquiryConfig {
   emailTemplate: InquiryEmailTemplate;
   /** Set false to skip the Turnstile widget for this inquiry. */
   turnstile?: boolean;
+  /** Use browser validation, and show a busy button that blocks double submits. The server
+   * still validates everything. */
+  enhancedForm?: boolean;
+  /** Also tell the studio when a new signup is saved, before the person confirms by email,
+   * so a filtered confirmation email can't lose the lead. */
+  notifyOnSubmit?: boolean;
+  /** GA4 event fired once on the pending page after a new row is saved. `field` is a radio
+   * field whose value is sent as a parameter of the same name. */
+  leadEvent?: { name: string; field: string };
+  /** Replace the default "received" page copy, which is worded for messages, not lists. */
+  receivedCopy?: { label: string; heading: string; body: string };
   /** Save and forward new messages from an already-verified email instead of stopping at
    * "/already". For conversations, not lists, where a repeat signup adds nothing. */
   allowRepeatInquiries?: boolean;

@@ -82,9 +82,10 @@ export const POST: APIRoute = async ({ params, request, clientAddress }) => {
         }
 
         // An identical re-send (double-click, retried tab) was already delivered.
-        const isSameMessage = config.fields.every(
-          (field) => (existing[field.name] ?? null) === (values[field.name] ?? null)
-        );
+        // Checkboxes store a fresh timestamp each time, so they can't be compared.
+        const isSameMessage = config.fields
+          .filter((field) => field.type !== 'checkbox')
+          .every((field) => (existing[field.name] ?? null) === (values[field.name] ?? null));
         if (isSameMessage) {
           return redirect('/received');
         }
@@ -177,11 +178,34 @@ export const POST: APIRoute = async ({ params, request, clientAddress }) => {
       return redirectToForm('server');
     }
 
+    // The row is saved and the person has their email, so a failed notice mustn't fail the
+    // signup. The studio still hears about it when they confirm.
+    if (config.notifyOnSubmit) {
+      try {
+        const notif = buildNotificationEmail(config, values, { unconfirmed: true });
+        const { error: notifError } = await resend.emails.send({
+          from: FROM_EMAIL,
+          to: config.notifyEmail,
+          subject: notif.subject,
+          html: notif.html,
+          text: notif.text,
+        });
+        if (notifError) console.error(`[inquiry:${config.slug}] signup notification error:`, notifError);
+      } catch (notifError) {
+        console.error(`[inquiry:${config.slug}] signup notification error:`, notifError);
+      }
+    }
+
     // Only a genuinely new, saved inquiry reaches this line. The one-time cookie is
     // what lets /pending fire lead_form_submit (see InquiryStatusCard.astro).
     const response = redirect('/pending');
     if (config.slug === 'contact') {
       response.headers.set('Set-Cookie', `vvs_lead_ok=1; Path=${config.basePath}; Max-Age=120; SameSite=Lax`);
+    }
+    if (config.leadEvent) {
+      // The value comes from a validated radio field, so it's safe in a cookie.
+      const leadValue = values[config.leadEvent.field] ?? 'not_selected';
+      response.headers.set('Set-Cookie', `vvs_lead_value=${leadValue}; Path=${config.basePath}; Max-Age=120; SameSite=Lax`);
     }
     return response;
   } catch (err) {

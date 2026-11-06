@@ -50,6 +50,16 @@ const isKickstartPage = Astro.url.pathname === '/violin-kickstart';
       document.addEventListener('click', function (event) {
         var link = event.target.closest && event.target.closest('a[href]');
         if (!link) return;
+        // ── kickstart_waitlist_cta_click: any Join the Waitlist link for the January campaign ──
+        if (link.dataset.kickstartCta) {
+          gtag('event', 'kickstart_waitlist_cta_click', {
+            page_path: location.pathname,
+            cta_location: link.dataset.kickstartCta,
+            program_interest: link.dataset.program || 'not_selected',
+            transport_type: 'beacon'
+          });
+          return;
+        }
         var url = new URL(link.href, location.href);
         if (url.origin !== location.origin || url.pathname !== '/contact' || location.pathname === '/contact') return;
         var ctaLocation = link.dataset.ctaLocation ||

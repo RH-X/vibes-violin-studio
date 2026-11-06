@@ -25,7 +25,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 <div class="inquiry-engine" data-inquiry-slug={config.slug} data-inquiry-error={error ?? ''}>
 
 {errorMessage && (
-  <div class="mb-6 rounded-lg border border-red-200 bg-red-50 px-5 py-4" role="alert">
+  <div class="inquiry-error mb-6 focus:outline-none rounded-lg border border-red-200 bg-red-50 px-5 py-4" role="alert" tabindex="-1">
     <p class="text-sm text-red-700">{errorMessage}</p>
   </div>
 )}
@@ -34,7 +34,8 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   <form
     method="POST"
     action={`/api/inquiry/${config.slug}/submit`}
-    novalidate
+    novalidate={!config.enhancedForm}
+    data-enhanced={config.enhancedForm ? 'true' : undefined}
     aria-label={`${config.title} ${config.subtitle}`.trim()}
   >
     <!-- Honeypot — hidden from real users, filled by bots -->
@@ -68,6 +69,17 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
               ))}
             </div>
           </fieldset>
+        ) : field.type === 'checkbox' ? (
+          <label class="flex items-start gap-3 text-sm text-ink cursor-pointer">
+            <input
+              type="checkbox"
+              name={field.name}
+              value="yes"
+              required={field.required}
+              class="mt-0.5 h-5 w-5 shrink-0 rounded border-lavender-300 accent-purplePrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary"
+            />
+            <span>{field.label}{field.required && <>&nbsp;<span class="text-purplePrimary" aria-label="required">*</span></>}</span>
+          </label>
         ) : field.type === 'textarea' ? (
           <>
             <label for={field.name} class="block text-sm font-semibold text-ink mb-1.5">
@@ -119,12 +131,13 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       </div>
     )}
 
-    <p class="text-xs text-ink/50 leading-relaxed mb-6">
+    <p class="text-xs text-ink/70 leading-relaxed mb-6">
       {config.consentText}
     </p>
 
-    <button type="submit" class="btn-primary">
-      {config.buttonText}
+    <button type="submit" class="btn-primary inline-flex items-center gap-2">
+      <slot name="button-icon" />
+      <span class="inquiry-button-label">{config.buttonText}</span>
     </button>
   </form>
 </div>
@@ -162,8 +175,34 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       if (error === 'ratelimit') gtag('event', events.rateLimited, { inquiry_slug: slug });
     }
 
+    // Wait for load: the browser's own jump to the #hash would otherwise take focus back.
+    const errorBox = root.querySelector('.inquiry-error');
+    if (errorBox) window.addEventListener('load', () => setTimeout(() => errorBox.focus(), 0));
+
     const form = root.querySelector('form');
     if (!form) return;
+
+    if (form.dataset.enhanced) {
+      const button = form.querySelector('button[type="submit"]');
+      const label = form.querySelector('.inquiry-button-label');
+      const idleText = label.textContent;
+      form.addEventListener('submit', (event) => {
+        if (button.disabled) {
+          event.preventDefault();
+          return;
+        }
+        button.disabled = true;
+        button.setAttribute('aria-busy', 'true');
+        label.textContent = 'Sending…';
+      });
+      // A page restored by the Back button must not keep a stuck, disabled button.
+      window.addEventListener('pageshow', () => {
+        button.disabled = false;
+        button.removeAttribute('aria-busy');
+        label.textContent = idleText;
+      });
+    }
+
     let interacted = false;
     form.addEventListener('focusin', () => {
       if (interacted) return;

@@ -124,15 +124,17 @@ Rae McGee
 export function buildNotificationEmail(
   config: InquiryConfig,
   fields: FieldValues,
-  opts: { returning?: boolean } = {}
+  opts: { returning?: boolean; unconfirmed?: boolean } = {}
 ): { subject: string; html: string; text: string } {
   const email = String(fields.email ?? '');
   const subject = opts.returning
     ? `Returning contact sent a new message: ${email}`
-    : `${config.emailTemplate.notificationSubjectPrefix}: ${email}`;
+    : `${opts.unconfirmed ? 'Unconfirmed: ' : ''}${config.emailTemplate.notificationSubjectPrefix}: ${email}`;
   const intro = opts.returning
     ? 'A returning contact sent a new message. This email address was verified on an earlier inquiry, but this message was not confirmed by email, so the sender is not proven to be the address owner.'
-    : `A new ${config.title} submission just verified their email.`;
+    : opts.unconfirmed
+      ? `A new ${config.title} signup was just saved. They haven't confirmed their email yet, and you'll get a second email if they do.`
+      : `A new ${config.title} submission just verified their email.`;
 
   const rows = config.fields
     .filter((f) => f.name !== 'email')
@@ -144,7 +146,7 @@ export function buildNotificationEmail(
   ${rows.map((r) => `<li><strong>${escapeHtml(r.label)}:</strong> ${escapeHtml(r.value)}</li>`).join('\n  ')}
 </ul>`;
 
-  const textIntro = opts.returning ? intro : `New ${config.title} verified submission:`;
+  const textIntro = opts.returning || opts.unconfirmed ? intro : `New ${config.title} verified submission:`;
   const text = `${textIntro}\nEmail: ${email}\n${rows
     .map((r) => `${r.label}: ${r.value}`)
     .join('\n')}`;

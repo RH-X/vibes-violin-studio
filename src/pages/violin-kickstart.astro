@@ -2,7 +2,9 @@
 export const prerender = false;
 import Layout from '../layouts/Layout.astro';
 import InquiryEngine from '../components/InquiryEngine.astro';
+import KickstartCta from '../components/KickstartCta.astro';
 import { violinKickstartConfig } from '../lib/inquiries/violin-kickstart';
+import { KICKSTART_OFFERS, KICKSTART_START_LABEL, KICKSTART_TIME_LABEL } from '../lib/kickstart';
 
 const VIOLIN_KICKSTART_LAUNCHED = true;
 
@@ -10,11 +12,21 @@ const error = Astro.url.searchParams.get('error');
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
+
+const faqs = [
+  { q: "What's the difference between the two experiences?", a: "Both run for four weeks, live online. Violin Kickstart has one live session each week, plus an optional check-in with your teacher between sessions. Kickstart Intensive has two live sessions each week and includes a private lesson." },
+  { q: 'Do I need any experience?', a: "No. Both are for adults starting for the first time and for returning players. You don't need a musical background, and you don't need to read music." },
+  { q: 'Do I need a violin before the first session?', a: "No. You don't need an instrument for the first session, and I'll help you figure out how to get one." },
+  { q: 'When do the sessions meet?', a: `Both start ${KICKSTART_START_LABEL} at ${KICKSTART_TIME_LABEL}. Violin Kickstart meets on Tuesdays. Kickstart Intensive meets on Tuesdays and Thursdays.` },
+  { q: 'How much does it cost?', a: "Pricing hasn't been announced yet. Join the waitlist and I'll send enrollment details as soon as they're ready." },
+  { q: 'Does joining the waitlist reserve my seat?', a: 'No. Joining the waitlist does not reserve a seat or require payment.' },
+  { q: "What if I'm not sure which one is right for me?", a: "That's fine. Choose \"I'm not sure yet\" on the form and I'll send you details about both. A free live Q&A is also planned, and everyone on the waitlist will get the invitation." },
+];
 ---
 
 <Layout
-  title="Violin Kickstart — 4-Week Violin Course for Adult Beginners & Returning Players | Vibrations Violin Studio"
-  description="A 4-week live online violin course for adults—new beginners and returning players alike. No musical background or instrument required for session one. Enrollment isn't currently open—join the waitlist to hear when the next cohort is announced."
+  title="Violin Kickstart: Live Online Violin for Adults | Vibrations Violin Studio"
+  description="Two live online violin experiences for adult beginners and returning players, starting January 12, 2027. Four weeks, no experience required. Join the waitlist."
   ogImage="/images/violin-kickstart-hero-bg.jpg"
   noindex={!VIOLIN_KICKSTART_LAUNCHED}
   nofollow={!VIOLIN_KICKSTART_LAUNCHED}
@@ -34,45 +46,98 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
     <div class="container-narrow relative w-full" style="z-index: 2;">
       <div class="kickstart-hero-card">
-        <p class="kickstart-eyebrow font-heading">Violin Kickstart — A 4-Week Violin Course for Adult Beginners &amp; Returning Players</p>
+        <p class="kickstart-eyebrow font-heading">Violin Kickstart</p>
         <h1 id="kickstart-heading" class="kickstart-heading font-heading">
-          Violin Kickstart
+          Ready to start (or restart) <span class="kickstart-gold">violin?</span>
         </h1>
-        <p class="kickstart-body mt-4" style="font-weight: 600;">
-          You don't need to know how to start violin. That's what this is for.
-        </p>
         <p class="kickstart-body mt-4">
-          Violin Kickstart is a four-week live experience for adults who have wanted to learn violin—or pick it back up again after years away—but haven't known quite how to begin.
+          Two live online experiences for adults. Starting <strong class="font-semibold">{KICKSTART_START_LABEL}</strong>.
         </p>
-        <p class="kickstart-body mt-4">
-          No musical background required. No need to read music. You don't even need an instrument for the first session.
-        </p>
-        <p class="kickstart-body mt-4">
-          You'll begin alongside other adults, with live instruction, individual support, a manageable approach to practice, and help figuring out everything from your first violin to what to do between lessons.
-        </p>
+        <KickstartCta location="hero" class="kickstart-cta mt-5" />
+        <p class="kickstart-facts mt-3">Four weeks. Live online. No experience required.</p>
 
-        <!-- Quiet trust strip — scannable details, no badges -->
-        <div class="kickstart-trust-strip font-heading mt-7 pt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <span>4 Weeks</span>
-          <span aria-hidden="true" class="kickstart-trust-sep">·</span>
-          <span>Live Online</span>
-          <span aria-hidden="true" class="kickstart-trust-sep">·</span>
-          <span>Adult Beginners &amp; Returning Players</span>
-          <span aria-hidden="true" class="kickstart-trust-sep">·</span>
-          <span>Waitlist Open</span>
-        </div>
+        <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3" role="list">
+          {KICKSTART_OFFERS.map((offer) => (
+            <li class="kickstart-mini">
+              <p class="font-heading font-bold kickstart-mini-name">{offer.name}</p>
+              <p class="kickstart-mini-detail">{offer.frequency}</p>
+              <KickstartCta
+                location="hero_offer"
+                program={offer.formValue}
+                class="kickstart-mini-link"
+                ariaLabel={`Join the waitlist for ${offer.name}`}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        <p class="kickstart-body mt-6" style="font-weight: 600;">Cohorts are kept intentionally small.</p>
-        <p class="kickstart-body mt-3">
-          I keep each Kickstart group small so I can give every participant individual attention, personalized feedback, and a genuinely high-quality first experience.
+  <!-- The two January offers -->
+  <section class="section-pad bg-white" aria-labelledby="offers-heading">
+    <div class="container-narrow">
+      <div class="max-w-2xl reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">January 2027</p>
+        <h2 id="offers-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          Two ways to begin
+        </h2>
+        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
+          Both are four weeks, live online, for adult first-time beginners and returning players. Both start {KICKSTART_START_LABEL} at {KICKSTART_TIME_LABEL}.
         </p>
+      </div>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+        {KICKSTART_OFFERS.map((offer) => (
+          <article class="flex flex-col rounded-2xl border border-lavender-200 bg-white p-6 sm:p-8 shadow-sm" aria-labelledby={`${offer.id}-heading`}>
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary" style="letter-spacing: 0.14em;">{offer.positioning}</p>
+            <h3 id={`${offer.id}-heading`} class="mt-2 font-heading font-bold text-ink" style="font-size: clamp(1.35rem, 2.5vw, 1.6rem); line-height: 1.1; letter-spacing: -0.03em;">{offer.name}</h3>
+            <p class="mt-3 text-base text-ink/70 font-light leading-relaxed">{offer.message}</p>
+            <p class="mt-4 self-start rounded-full bg-lavender-100 px-4 py-1.5 text-sm font-semibold text-purplePrimary">{offer.frequency}</p>
+            <dl class="mt-5 space-y-1 text-sm text-ink/70 leading-relaxed">
+              <div><dt class="inline font-semibold text-ink">When: </dt><dd class="inline">{offer.schedule}</dd></div>
+              <div><dt class="inline font-semibold text-ink">Dates: </dt><dd class="inline">{offer.dates}</dd></div>
+              <div><dt class="inline font-semibold text-ink">Good fit for: </dt><dd class="inline">{offer.fit}</dd></div>
+            </dl>
+            <ul class="mt-5 mb-6 space-y-2" role="list">
+              {offer.support.map((item) => (
+                <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+                  <span class="mt-2.5 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto">
+              <KickstartCta location="offer_card" program={offer.formValue} ariaLabel={`Join the waitlist for ${offer.name}`} />
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-ink/70">Pricing will be announced soon. A free live Q&amp;A is also planned, and the waitlist will hear first.</p>
+    </div>
+  </section>
 
-        <a href="#waitlist" class="btn-primary inline-block mt-7">
-          Join the Violin Kickstart Waitlist →
-        </a>
-        <p class="mt-4" style="font-size: 0.85rem; color: #F1E7DD; opacity: 0.85;">
-          Enrollment isn't currently open. Join the waitlist to hear when the next cohort is announced.
-        </p>
+  <!-- What live online learning includes -->
+  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="included-heading">
+    <div class="container-narrow">
+      <div class="rounded-2xl border border-lavender-200 bg-white p-6 sm:p-8 md:p-10 shadow-sm reveal">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Live online learning</p>
+        <h2 id="included-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          Here's how we'll do it.
+        </h2>
+        <ul class="mt-6 space-y-4 pl-5 list-none" role="list">
+          {[
+            ["Live, not pre-recorded", "We meet together in real time, so you're learning with a teacher rather than following a video."],
+            ["Learning alongside other adults", "You'll be with other adults who are beginning or beginning again."],
+            ["Small groups", "I keep each Kickstart group intentionally small, so this isn't a large webinar-style class."],
+            ["A manageable approach to practice", "You'll get help figuring out what to do between sessions, from your first violin to your practice routine."],
+          ].map(([label, value]) => (
+            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
+              <span><strong class="font-semibold text-ink">{label}.</strong> {value}</span>
+            </li>
+          ))}
+        </ul>
+        <KickstartCta location="live_online" class="btn-primary mt-8" />
       </div>
     </div>
   </section>
@@ -103,9 +168,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
           <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
             Violin Kickstart exists to get you out of the "someday" stage and give you a supported place to actually begin. You don't have to figure out the beginning by yourself.
           </p>
-          <a href="#waitlist" class="btn-primary inline-block mt-8">
-            Join the Violin Kickstart Waitlist →
-          </a>
+          <KickstartCta location="why_now" class="btn-primary mt-8" />
         </div>
         <div class="w-full max-w-xs mx-auto md:w-80 md:mx-0 flex-shrink-0">
           <img
@@ -156,42 +219,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
         <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
           Violin will no longer be something you've always thought about learning. You'll have started.
         </p>
-        <a href="#waitlist" class="btn-primary inline-block mt-8">
-          Join the Violin Kickstart Waitlist →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- What's Included section -->
-  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="included-heading">
-    <div class="container-narrow">
-      <div class="rounded-2xl border border-lavender-200 bg-white p-6 sm:p-8 md:p-10 shadow-sm reveal">
-        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">What's included</p>
-        <h2 id="included-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-          Here's how we'll do it.
-        </h2>
-        <ul class="mt-6 space-y-4 pl-5 list-none" role="list">
-          {[
-            ["Four live group sessions", "We'll meet once a week for four weeks. You'll learn alongside other adults who are beginning or beginning again."],
-            ["One private 30-minute lesson", "We'll work individually on your particular goals, questions, setup, and technique."],
-            ["Weekly personalized feedback", "You'll have support figuring out what to practice next instead of being left alone between classes."],
-            ["Direct access to Rae", "Questions are expected. You can reach out when something isn't making sense."],
-            ["A better way to practice between lessons", "You'll also get early access to Practice Pals, a teacher-guided practice tool I'm developing to help students—new and returning—turn overwhelming practice sessions into short, manageable steps."],
-          ].map(([label, value]) => (
-            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
-              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-              <span><strong class="font-semibold text-ink">{label}.</strong> {value}</span>
-            </li>
-          ))}
-        </ul>
-        <p class="mt-6 text-base text-ink/70 font-light leading-relaxed">
-          This is why the cohort stays small. Kickstart isn't designed to be a large webinar-style class. Keeping groups small is what makes individual attention, feedback, and the ability to respond to the actual people in the room possible.
-        </p>
-        <a href="#waitlist" class="btn-primary inline-block mt-8">
-          Join the Violin Kickstart Waitlist →
-        </a>
-        <p class="mt-4 text-sm text-ink/50">Enrollment isn't currently open — join the waitlist to be notified.</p>
+        <KickstartCta location="outcomes" class="btn-primary mt-8" />
       </div>
     </div>
   </section>
@@ -256,9 +284,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
         <p class="mt-6 text-base text-ink/70 font-light leading-relaxed">
           Four weeks isn't the end of learning violin. It's enough time to stop wondering what starting would be like.
         </p>
-        <a href="#waitlist" class="btn-primary inline-block mt-8">
-          Join the Violin Kickstart Waitlist →
-        </a>
+        <KickstartCta location="curriculum" class="btn-primary mt-8" />
       </div>
     </div>
   </section>
@@ -288,66 +314,25 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
     </div>
   </section>
 
-  <!-- Practice Pals founding-participant section -->
-  <section class="section-pad" style="background: #f5f3ff;" aria-labelledby="practice-pals-heading">
+  <!-- Beginner FAQs -->
+  <section class="section-pad bg-white" aria-labelledby="faq-heading">
     <div class="container-narrow">
       <div class="max-w-2xl reveal">
-        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Help shape something new</p>
-        <h2 id="practice-pals-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-          Help shape something new.
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Questions</p>
+        <h2 id="faq-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
+          Good questions to ask before you start
         </h2>
-        <div class="mt-4 space-y-3 text-base text-ink/70 font-light leading-relaxed">
-          <p>
-            Kickstart participants also get early access to <a href="/practice-pals" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">Practice Pals</a>.
-          </p>
-          <p>
-            Practice Pals is a teacher-guided practice tool I'm developing specifically around one of the hardest parts of learning violin: what do I actually do when I'm practicing by myself?
-          </p>
-          <p>
-            Cohort members get early access and can share feedback about what genuinely helps.
-          </p>
-          <p>
-            You're not being asked to become a software tester. You're getting additional between-lesson support while helping me build a better practice experience for future beginners.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Planned timeline section -->
-  <section class="section-pad bg-white" aria-labelledby="timeline-heading">
-    <div class="container-narrow">
-      <div class="max-w-2xl reveal">
-        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">Violin Kickstart</p>
-        <h2 id="timeline-heading" class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-          The next cohort is being planned.
-        </h2>
-        <ul class="mt-4 space-y-2 pl-5 list-none" role="list">
-          {[
-            ["Format", "Four weekly live online group sessions"],
-            ["Includes", "One individual 30-minute lesson, weekly personalized feedback, Practice Pals early access, and direct communication with Rae"],
-            ["Group size", "Kept intentionally small for real individual attention"],
-            ["Enrollment", "Not currently open"],
-          ].map(([label, value]) => (
-            <li class="flex items-start gap-3 text-base text-ink/70 font-light leading-relaxed">
-              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-purplePrimary opacity-60 shrink-0" aria-hidden="true"></span>
-              <span><strong class="font-semibold text-ink">{label}:</strong> {value}</span>
-            </li>
+        <div class="mt-6 divide-y divide-lavender-200 border-y border-lavender-200">
+          {faqs.map(({ q, a }) => (
+            <details class="group py-1">
+              <summary class="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-3 font-heading font-semibold text-ink rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purplePrimary">
+                <span>{q}</span>
+                <span class="text-purplePrimary transition-transform duration-150 group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="pb-4 text-base text-ink/70 font-light leading-relaxed">{a}</p>
+            </details>
           ))}
-        </ul>
-        <p class="mt-6 text-base text-ink/70 font-light leading-relaxed">
-          I haven't announced dates or pricing for the next cohort yet. Join the waitlist and you'll be the first to hear when they're set.
-        </p>
-        <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
-          If you've been waiting for a reason to finally try violin, this is a very good place to start.
-        </p>
-        <a href="#waitlist" class="btn-primary inline-block mt-8">
-          Join the Violin Kickstart Waitlist →
-        </a>
-        <p class="mt-4 text-sm text-ink/60">Enrollment isn't currently open · Join the waitlist for updates</p>
-        <p class="mt-3 text-sm text-ink/60">
-          Not sure what the four weeks actually look like? <a href="/insights/what-to-expect-violin-kickstart" class="text-purplePrimary underline hover:text-purple-800 transition-colors duration-150">Read what to expect →</a>
-        </p>
+        </div>
       </div>
     </div>
   </section>
@@ -360,7 +345,7 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
         <div class="mb-10 reveal">
           <p class="font-heading font-semibold text-xs uppercase tracking-widest text-purplePrimary mb-3" style="letter-spacing: 0.14em;">What happens after I join?</p>
           <h2 class="font-heading font-bold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.0; letter-spacing: -0.035em;">
-            You've thought about learning violin. Here's how to be first in line when the next cohort opens.
+            You've thought about learning violin. Here's how to be first to hear about January.
           </h2>
           <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">
             You don't have to decide whether you're going to play violin for the next ten years. You don't have to prove you're talented. You don't need to know how to read music. You don't even need to own a violin yet.
@@ -368,10 +353,10 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
           <p class="mt-4 text-base text-ink/70 font-light leading-relaxed">You just need to begin.</p>
           <ol class="mt-6 space-y-4 list-none" role="list">
             {[
-              ["Join the waitlist", "Tell me a bit about where you're starting from — it only takes a minute."],
-              ["I'll personally follow up", "When the next cohort is announced, you'll be the first to hear the dates and how to enroll."],
-              ["Show up on day one", "You don't need a violin for the first session, and you aren't expected to arrive knowing anything."],
-              ["Start", "That's it. We'll take it from there together."],
+              ["Join the waitlist", "Tell me which experience interests you most. It only takes a minute."],
+              ["Confirm your email", "Click the link in the email I send you, so I know it reached you."],
+              ["Watch for the free Q&A invitation", "You'll also get January enrollment details as soon as they're ready."],
+              ["Decide when you're ready", "Joining doesn't commit you to anything."],
             ].map(([title, desc], i) => (
               <li class="flex items-start gap-3">
                 <span class="flex-shrink-0 w-7 h-7 rounded-full bg-lavender-100 border border-lavender-300 flex items-center justify-center font-heading font-bold text-purplePrimary text-xs" aria-hidden="true">{i + 1}</span>
@@ -379,9 +364,6 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
               </li>
             ))}
           </ol>
-          <p class="mt-6 text-base text-ink/70 font-light leading-relaxed" style="font-weight: 600;">Cohorts are kept intentionally small.</p>
-          <p class="mt-3 text-sm text-ink/60">Enrollment isn't currently open · Join the waitlist for updates</p>
-          <p class="mt-2 text-sm text-ink/60">Group size stays small every cohort, so you always get real individual attention.</p>
         </div>
 
         <div id="kickstart-enrollment" class="mb-8 reveal" style="scroll-margin-top: 24px;">
@@ -396,7 +378,12 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
 
         <div class="reveal">
           <h2 id="form-heading" class="sr-only">Join the Violin Kickstart waitlist</h2>
-          <InquiryEngine config={violinKickstartConfig} error={error} />
+          <InquiryEngine config={violinKickstartConfig} error={error}>
+            <svg slot="button-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </InquiryEngine>
         </div>
 
         <div class="mt-14 pt-8 border-t border-lavender-200 reveal">
@@ -445,16 +432,22 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Violin Kickstart",
-  "description": "A 4-week live violin course for adults—new beginners and returning players alike—who have wanted to learn violin, or pick it back up after years away, but haven't known how to begin. No musical background required and no instrument needed for the first session. Held online with optional in-person support for local Denver students.",
+  "description": "Two four-week live online violin experiences for adult first-time beginners and returning players, starting January 12, 2027. No previous experience required.",
   "provider": { "@id": `${siteOrigin}/#business` },
   "url": canonicalURL,
+  "hasCourseInstance": KICKSTART_OFFERS.map((offer) => ({
+    "@type": "CourseInstance",
+    "name": offer.name,
+    "courseMode": "online",
+    "startDate": "2027-01-12",
+  })),
 })} />
 
 <style>
   /* ── Kickstart hero: cinematic layout shell ── */
   .kickstart-hero {
     min-height: 620px;
-    padding: clamp(72px, 8vw, 112px) clamp(24px, 8vw, 96px);
+    padding: clamp(32px, 5vw, 72px) clamp(16px, 6vw, 96px);
   }
 
   /* ── Background: approved hero artwork — fades in softly on load ── */
@@ -487,8 +480,8 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
   }
 
   .kickstart-heading {
-    font-size: clamp(3.25rem, 6vw, 5.75rem);
-    line-height: 0.95;
+    font-size: clamp(3rem, 5vw, 4.75rem);
+    line-height: 1;
     font-weight: 800;
     letter-spacing: -0.06em;
     color: #FFF8EC;
@@ -502,26 +495,72 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
     max-width: 620px;
   }
 
-  .kickstart-trust-strip {
-    font-size: 0.86rem;
-    letter-spacing: 0.16em;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #FFF8EC;
-    border-top: 1px solid rgba(246, 197, 92, 0.55);
+  .kickstart-gold {
+    color: #F6C55C;
   }
 
-  .kickstart-trust-sep {
-    color: rgba(246, 197, 92, 0.55);
+  .kickstart-facts {
+    font-size: 0.95rem;
+    color: #F1E7DD;
+  }
+
+  /* Lavender CTA for the dark hero, matching the campaign artwork. Dark text on
+     #C9A7F5 clears AA contrast. */
+  :global(.kickstart-cta) {
+    padding: 0.8rem 1.5rem;
+    border-radius: 9999px;
+    background: #C9A7F5;
+    color: #18161B;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    transition: background-color 150ms, transform 150ms;
+  }
+  :global(.kickstart-cta:hover) {
+    background: #DCC5FA;
+    transform: translateY(-2px);
+  }
+  :global(.kickstart-cta:focus-visible),
+  :global(.kickstart-mini-link:focus-visible) {
+    outline: 2px solid #FFF8EC;
+    outline-offset: 2px;
+  }
+
+  .kickstart-mini {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(196, 165, 255, 0.45);
+    border-radius: 16px;
+    background: rgba(255, 248, 236, 0.05);
+  }
+  .kickstart-mini-name {
+    color: #FFF8EC;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  .kickstart-mini-detail {
+    color: #F1E7DD;
+    font-size: 0.9rem;
+  }
+
+  /* :global because the class lands on the KickstartCta link, which has its own scope. */
+  :global(.kickstart-mini-link) {
+    min-height: 44px;
+    color: #DCC5FA;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  :global(.kickstart-mini-link:hover) {
+    color: #FFF8EC;
   }
 
   @media (max-width: 640px) {
     .kickstart-hero-card {
-      width: calc(100% - 32px);
-      padding: 28px;
+      width: 100%;
+      padding: 20px;
     }
     .kickstart-heading {
-      font-size: clamp(2.6rem, 8vw, 3.2rem);
+      font-size: clamp(2.3rem, 10vw, 2.8rem);
     }
     .kickstart-body {
       font-size: 1.02rem;
@@ -565,14 +604,21 @@ const siteOrigin = Astro.site?.origin ?? 'https://www.vibesviolin.studio';
     const eyebrow = card?.querySelector('.kickstart-eyebrow');
     const heading = card?.querySelector('.kickstart-heading');
     const body = card?.querySelector('.kickstart-body');
-    const trustStrip = card?.querySelector('.kickstart-trust-strip');
-    ([[eyebrow, 700], [heading, 700], [body, 800], [trustStrip, 900]] as const).forEach(([el, delayMs]) => {
+    ([[eyebrow, 700], [heading, 700], [body, 800]] as const).forEach(([el, delayMs]) => {
       if (el) {
         el.classList.add('hero-animate');
         (el as HTMLElement).style.animationDelay = `${delayMs}ms`;
       }
     });
   }
+
+  // Choosing an offer's waitlist link preselects that offer in the form.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-program]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const option = document.querySelector<HTMLInputElement>(`input[name="program_interest"][value="${link.dataset.program}"]`);
+      if (option) option.checked = true;
+    });
+  });
 
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver((entries) => {

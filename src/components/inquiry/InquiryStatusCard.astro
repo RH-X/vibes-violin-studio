@@ -44,9 +44,9 @@ const copy: Record<Kind, { label: string; heading: string; body: string; iconCol
     iconColor: '#059669',
   },
   received: {
-    label: 'Message received',
-    heading: 'We got your new message',
-    body: "Thanks for reaching out again. Your new message has been received and sent to Rae, who will respond within one business day whenever possible.",
+    label: config.receivedCopy?.label ?? 'Message received',
+    heading: config.receivedCopy?.heading ?? 'We got your new message',
+    body: config.receivedCopy?.body ?? "Thanks for reaching out again. Your new message has been received and sent to Rae, who will respond within one business day whenever possible.",
     iconColor: '#059669',
   },
 };
@@ -85,7 +85,7 @@ const { label, heading, body, iconColor } = copy[kind];
 </Layout>
 
 {(kind === 'pending' || kind === 'success') && (
-  <script define:vars={{ kind, slug: config.slug, events: INQUIRY_EVENTS }}>
+  <script define:vars={{ kind, slug: config.slug, events: INQUIRY_EVENTS, leadEvent: config.leadEvent ?? null, basePath: config.basePath }}>
     if (typeof window.gtag === 'function') {
       if (kind === 'pending') {
         window.gtag('event', events.verificationEmailSent, { inquiry_slug: slug });
@@ -104,6 +104,13 @@ const { label, heading, body, iconColor } = copy[kind];
             sessionStorage.removeItem('vvs_lesson_type');
           } catch (e) { /* storage unavailable */ }
           window.gtag('event', 'lead_form_submit', { lesson_type: lessonType, form_location: 'contact_page' });
+        }
+
+        // Same one-time cookie pattern as above, for inquiries with their own lead event.
+        const leadCookie = document.cookie.split('; ').find((c) => c.startsWith('vvs_lead_value='));
+        if (leadEvent && leadCookie) {
+          document.cookie = `vvs_lead_value=; Path=${basePath}; Max-Age=0; SameSite=Lax`;
+          window.gtag('event', leadEvent.name, { [leadEvent.field]: leadCookie.split('=')[1] });
         }
       } else if (kind === 'success') {
         window.gtag('event', events.verificationCompleted, { inquiry_slug: slug });
