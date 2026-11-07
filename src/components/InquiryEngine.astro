@@ -132,7 +132,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     )}
 
     <p class="text-xs text-ink/70 leading-relaxed mb-6">
-      {config.consentText}
+      {config.consentText} <slot name="consent-note" />
     </p>
 
     <button type="submit" class="btn-primary inline-flex items-center gap-2">
