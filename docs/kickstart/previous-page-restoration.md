@@ -1,17 +1,29 @@
 # Restoring the previous Violin Kickstart page
 
-The page as it stood before the January 2027 campaign is kept in Git. It isn't a live route, so there's no duplicate content for search engines.
+The page and waitlist form as they stood before the January 2027 campaign are saved here. None of this is a live route, so there's no duplicate content for search engines.
 
-- **Tag:** `kickstart-page-pre-jan2027` (local until it's pushed)
-- **Commit:** `1da8cd5`, which is on `main` and on GitHub, so it stays available even if the tag is never pushed
+## Where everything is
 
-## Restore the page
+| What | Where |
+|---|---|
+| Old page, form settings and banner | `docs/kickstart/archive/`, which isn't part of the website build |
+| Full-page screenshots, desktop and phone | `docs/kickstart/archive/live-page-desktop.png` and `live-page-phone.png` |
+| Git commit | `1da8cd5`, on `main` and on GitHub |
+| Git tag | `kickstart-page-pre-jan2027` |
+| Frozen live copy | `vibesviolinstudio-juat7xykh-raes-projects-333d0fbe.vercel.app`, after signing in to Vercel. Its form can't submit, because Turnstile rejects that address. |
+| Old form answers | The same columns in `violin_kickstart_waitlist`, which are unchanged |
+
+## Restore the page and form
+
+On a new branch:
 
 ```bash
 git checkout 1da8cd5 -- src/pages/violin-kickstart.astro src/lib/inquiries/violin-kickstart.ts src/components/KickstartAnnouncementBanner.astro
 ```
 
-Then run `npm run build` and review the page. The shared form changes (checkbox fields and so on) are opt-in and can stay. So can the `program_interest` and `email_consent_at` columns, which are nullable and go unused by the old form.
+Then run `npm run build`, review the page, and release as usual. This was rehearsed on 2026-11-07: the build passed, the old page and all five old questions appeared, and a test submission against fake services saved every answer.
+
+No database change is needed. `program_interest` and `email_consent_at` stay in the table and are left empty by the old form. The shared form changes (checkbox fields and so on) are opt-in and can stay.
 
 ## Copy retired from the page
 
