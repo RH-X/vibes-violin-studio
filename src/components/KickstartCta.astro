@@ -1,20 +1,22 @@
 ---
 // Join the Waitlist link for the January campaign. `location` and `program` feed the
 // kickstart_waitlist_cta_click listener in Layout.astro, and `program` also preselects
-// that offer in the form.
+// that offer in the form. `href` defaults to the on-page form; pages other than
+// /violin-kickstart pass the full path.
 interface Props {
   location: string;
   program?: string;
   label?: string;
   ariaLabel?: string;
   class?: string;
+  href?: string;
 }
 
-const { location, program, label = 'Join the Waitlist', ariaLabel, class: className = 'btn-primary' } = Astro.props;
+const { location, program, label = 'Join the Waitlist', ariaLabel, class: className = 'btn-primary', href = '#waitlist' } = Astro.props;
 ---
 
 <a
-  href="#waitlist"
+  href={href}
   class={`inline-flex items-center gap-2 ${className}`}
   data-kickstart-cta={location}
   data-program={program}

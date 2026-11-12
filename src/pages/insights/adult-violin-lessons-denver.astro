@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
+import ArticleKickstartCTA from '../../components/ArticleKickstartCTA.astro';
 
 const publishedDate = '2026-10-29';
 const lastReviewedDate = '2026-10-29';
@@ -216,6 +217,7 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Since I wrote this guide, it's only fair to describe my own studio the same way. I'm a Suzuki-trained violin teacher and a performing violinist, and I've taught for about twenty years in private studios, school programs, and community music organizations. I started violin later than many of my peers, so I know what it feels like to be a beginner who wonders if they're behind.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Adult beginners and returning players are a big part of my studio. Lessons are private, in Denver or online, Suzuki-informed rather than Suzuki-only, and shaped around your goals, whether that's a favorite piece, rebuilding old skills, or understanding how the instrument works. Current rates are a $35 20-minute trial lesson, then $50, $75, or $100 for 30, 45, or 60 minutes, as listed in <a href="/about#rates" class={linkClass}>rates and lesson options</a>. I also offer performance opportunities for students who want them, though participation is never required.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">For adults who'd like to begin in a small group, I also run Violin Kickstart, a four-week live online course for new and returning adult players. Enrollment isn't open right now, but you can <a href="/violin-kickstart#waitlist" class={linkClass}>join the Violin Kickstart waitlist</a>. If you're looking for in-person group classes, ensembles, or jams, a community music school like Swallow Hill may be a better fit.</p>
+      <ArticleKickstartCTA />
 
       <!-- Mid-article CTA -->
       <div class="mt-10 flex">
