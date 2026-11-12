@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
+import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
+import ArticleKickstartCTA from '../../components/ArticleKickstartCTA.astro';
 
 const publishedDate = '2026-10-07';
 ---
@@ -72,6 +74,12 @@ const publishedDate = '2026-10-07';
         </div>
       </div>
     <div class="max-w-2xl"><!-- resume narrow column -->
+
+      <ArticleInlineCTA
+        heading="Wondering what lessons built around your goals would look like?"
+        body="Tell me what you'd like to play and why, and I can suggest a good place to start."
+        label="Get Started"
+      />
 
       <!-- Section 3 -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Every Violinist's Toolbox Develops in a Different Order</h2>
@@ -148,6 +156,8 @@ const publishedDate = '2026-10-07';
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Violin lessons are likely worth it for you if you want to improve, you're curious about the instrument, you value knowledgeable feedback, and you're willing to spend some attentive, reasonably consistent time practicing between lessons.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">You don't need professional ambitions. You don't need to progress at anyone else's pace, whether that's a child prodigy or another adult you know. What you do need is enough engagement with the process for your teacher's feedback and your own practice to build on each other. That partnership is where lessons earn their value.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Playing for yourself is a legitimate reason to learn seriously. It may even be one of the best ones, because the music you're working toward is the music you actually care about.</p>
+
+      <ArticleKickstartCTA />
 
       <!-- FAQ -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Frequently Asked Questions</h2>

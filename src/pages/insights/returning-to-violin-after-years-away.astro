@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import CTABand from '../../components/CTABand.astro';
+import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
+import ArticleKickstartCTA from '../../components/ArticleKickstartCTA.astro';
 
 
 const publishedDate = '2026-08-18';
@@ -84,6 +86,12 @@ const publishedDate = '2026-08-18';
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Exactly what remains will vary enormously from person to person.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">A thoughtful return to violin isn't about pretending you're a complete beginner or expecting yourself to immediately resume where you stopped. It's about figuring out your current starting point.</p>
 
+      <ArticleInlineCTA
+        heading="Not sure where your starting point is now?"
+        body="Tell me what you used to play and how long it has been, and I can suggest a sensible way back in."
+        label="Get Started"
+      />
+
       <!-- Section: Your adult brain may approach violin differently -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">Your Adult Brain May Approach Violin Differently</h2>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">You aren't the same learner you were at 10, 14, or 18.</p>
@@ -137,6 +145,8 @@ const publishedDate = '2026-08-18';
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Maybe you miss making music. Maybe you've wanted to come back for years. Maybe something recently reminded you of how it felt to play. Maybe you're simply curious about who you would be as a violinist now.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">That's enough.</p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Returning to violin isn't about recovering an earlier version of yourself perfectly. It can be about discovering what music has to offer the person you've become.</p>
+
+      <ArticleKickstartCTA />
 
       <!-- Local SEO closing section -->
       <div class="mt-12 pt-8 border-t border-lavender-200">
