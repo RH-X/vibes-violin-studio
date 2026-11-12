@@ -333,7 +333,7 @@ const error = Astro.url.searchParams.get('error');
 
           <!-- Bottom CTA bar -->
           <div class="border-t border-lavender-200 px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
-            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
+            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">Next: tell me a little about you. No pressure, no commitment.</p>
             <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
               <a href="#inquiry-engine" class="btn-primary text-sm send-message-link">Send a Message</a>
             </div>
@@ -424,7 +424,7 @@ const error = Astro.url.searchParams.get('error');
 
           <!-- Bottom CTA bar -->
           <div class="border-t border-lavender-200 px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
-            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
+            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">Next: tell me a little about you. No pressure, no commitment.</p>
             <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
               <a href="#inquiry-engine" class="btn-primary text-sm send-message-link">Send a Message</a>
             </div>
@@ -516,7 +516,7 @@ const error = Astro.url.searchParams.get('error');
 
           <!-- Bottom CTA bar -->
           <div class="border-t border-lavender-200 px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
-            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">No pressure, no commitment.</p>
+            <p class="text-sm leading-relaxed flex-1" style="color: #3A3140;">Next: tell me a little about you. No pressure, no commitment.</p>
             <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
               <a href="#inquiry-engine" class="btn-primary text-sm send-message-link">Send a Message</a>
             </div>
@@ -525,8 +525,8 @@ const error = Astro.url.searchParams.get('error');
         </div>
       </div>
 
-      <!-- ── Inquiry Engine — revealed once a buyer-type pathway is selected ── -->
-      <div id="inquiry-engine" class="inquiry-engine-wrapper hidden mt-10 reveal relative" role="region" aria-label="Send an inquiry">
+      <!-- ── Inquiry Engine — always shown; the pathway cards above are optional guidance ── -->
+      <div id="inquiry-engine" class="inquiry-engine-wrapper mt-10 reveal relative" style="scroll-margin-top: 24px;" role="region" aria-label="Send an inquiry">
 
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-12 items-start relative">
 
@@ -639,7 +639,7 @@ const error = Astro.url.searchParams.get('error');
   /* ── Expanded panel image column ── */
   .panel-image-col {
     /* Mobile: fixed height so absolute-positioned img has something to fill */
-    height: 220px;
+    height: 160px;
   }
   @media (min-width: 768px) {
     .panel-image-col {
@@ -723,14 +723,7 @@ const error = Astro.url.searchParams.get('error');
   const cards = document.querySelectorAll<HTMLButtonElement>('.fit-card');
   const panels = document.querySelectorAll<HTMLElement>('.pathway-panel');
   const inquiryEngineEl = document.getElementById('inquiry-engine');
-
-  function showInquiryEngine() {
-    inquiryEngineEl?.classList.remove('hidden');
-    inquiryEngineEl?.classList.add('visible');
-  }
-  function hideInquiryEngine() {
-    inquiryEngineEl?.classList.add('hidden');
-  }
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function openPanel(pathwayId: string) {
     // Close all panels and reset all cards first
@@ -748,14 +741,13 @@ const error = Astro.url.searchParams.get('error');
       panel.classList.remove('hidden');
       // Scroll panel into view smoothly
       setTimeout(() => {
-        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       }, 50);
     }
     if (card) {
       card.setAttribute('aria-expanded', 'true');
       card.classList.add('border-purplePrimary', 'bg-white', 'shadow-card');
     }
-    showInquiryEngine();
   }
 
   function closePanel(pathwayId: string) {
@@ -766,14 +758,22 @@ const error = Astro.url.searchParams.get('error');
       card.setAttribute('aria-expanded', 'false');
       card.classList.remove('border-purplePrimary', 'bg-white', 'shadow-card');
     }
-    hideInquiryEngine();
   }
 
-  // If we were redirected back here with an error (e.g. #inquiry-engine?error=...),
-  // keep the engine visible even though no pathway card is selected.
-  if (new URLSearchParams(window.location.search).has('error')) {
-    showInquiryEngine();
-  }
+  // ── "Send a Message": scroll to the form and put the cursor in its first field ──
+  // The href="#inquiry-engine" stays as the no-JS fallback.
+  document.querySelectorAll<HTMLAnchorElement>('.send-message-link').forEach(link => {
+    link.addEventListener('click', (event) => {
+      if (!inquiryEngineEl) return;
+      event.preventDefault();
+      inquiryEngineEl.classList.add('visible');
+      inquiryEngineEl.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      const firstField = inquiryEngineEl.querySelector<HTMLElement>(
+        'form :is(input, textarea, select):not([type="hidden"]):not([tabindex="-1"])'
+      );
+      firstField?.focus({ preventScroll: true });
+    });
+  });
 
   // ── Analytics: lesson_type_selected (GA4 via gtag in Layout) ──
   // The choice is also kept for this tab so a successful inquiry can report it.

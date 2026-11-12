@@ -4,6 +4,7 @@ import ArticleSchema from '../../components/ArticleSchema.astro';
 import Cite from '../../components/Cite.astro';
 import SourceList from '../../components/SourceList.astro';
 import CTABand from '../../components/CTABand.astro';
+import ArticleInlineCTA from '../../components/ArticleInlineCTA.astro';
 
 const publishedDate = '2026-10-21';
 
@@ -141,6 +142,12 @@ const linkClass = 'text-purplePrimary underline hover:text-purple-800 transition
 
       <p class="mt-6 text-base text-ink/70 leading-relaxed">Published charts don't all agree to the inch—even different guides from the same retailer list slightly different numbers—so treat any chart as a starting point rather than a final answer. If your child lands between two sizes, Shar Music recommends going slightly smaller for comfort and healthy technique.<Cite n={3} /></p>
       <p class="mt-4 text-base text-ink/70 leading-relaxed">Fractional sizes aren't only for children, either. Shar Music notes that some adults with shorter arms or smaller hands find a 3/4 violin more comfortable than a full-size instrument,<Cite n={1} use={4} /> and one of my own adult violin teachers played a 7/8. If you're a smaller adult, measure the same way and choose the size that fits you.</p>
+
+      <ArticleInlineCTA
+        heading="Between sizes, or not sure what fits?"
+        body="I'm happy to help families think through sizing and renting before you spend anything, with lessons in Denver or online."
+        label="Get Started"
+      />
 
       <!-- Section: How to measure -->
       <h2 class="mt-12 font-heading font-bold text-ink" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.1; letter-spacing: -0.025em;">How to Measure Your Child's Arm for a Violin</h2>
