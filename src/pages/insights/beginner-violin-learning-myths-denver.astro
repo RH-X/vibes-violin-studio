@@ -334,7 +334,7 @@ const publishedDate = '2026-05-15';
       entries.forEach(entry => {
         if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0 });
     document.querySelectorAll('.reveal').forEach(el => {
       // If already in the viewport on page load, reveal immediately
       const rect = el.getBoundingClientRect();
